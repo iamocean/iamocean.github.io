@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mac下生成ssh keys连接github | iamocean</title>
+  <meta name="author" content="ocean">
+  
+  <meta name="description" content="mac下一般都自带安装了git，在这就不继续说如何安装git了.
+检查是否存在ssh keys
+$ cd ~/.ssh
+如果显示No such file or directory，则直接跳到第三步去
+如果存在.ssh目录，请先备份好你的ssh keys
+mkdir ssh_key_backup    // 创建备份
+cp id_rsa* ssh_key_backup    // 移动到备份文件夹下
+rm id_rsa*">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="mac下生成ssh keys连接github"/>
+  <meta property="og:site_name" content="iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">mac下生成ssh keys连接github</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-07T14:06:26.000Z"><a href="/2013/12/07/mac-generating-ssh-keys/">12月 7 2013</a></time>
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>mac下一般都自带安装了<code>git</code>，在这就不继续说如何安装<code>git</code>了.</p>
+<h2>检查是否存在ssh keys</h2>
+<pre><code><span class="variable">$ </span>cd ~<span class="regexp">/.ssh</code></pre>
+<p>如果显示<code>No such file or directory</code>，则直接跳到第三步去</p>
+<h2>如果存在<code>.ssh</code>目录，请先备份好你的ssh keys</h2>
+<pre><code><span class="title">mkdir</span> ssh_key_backup    // 创建备份
+<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
+<span class="title">rm</span> id_rsa*</code></pre>
+<p><a id="more"></a></p>
+<h2>生成一个新的ssh keys</h2>
+<pre><code>$ ssh-keygen -t rsa -C “your_email@example.com”    <span class="comment">// 输入您的邮箱</span>
+# Creates a <span class="keyword">new</span> ssh key, using the provided email <span class="keyword">as</span> a label
+Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.
+Enter file <span class="keyword">in</span> which to save the key (/Users/you/.ssh/id_rsa): [Press enter]     <span class="comment">// 按下Enter键即可</span></code></pre>
+<p><strong>按完<code>Enter</code>键后，会出现下面的提示</strong></p>
+<pre><code>Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span>
+Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span></code></pre>
+<p><strong>接着会出现类似下面的提示</strong></p>
+<pre><code><span class="class">Your</span> identification has been saved in /<span class="class">Users</span>/you/.ssh/id_rsa.
+<span class="class">Your</span> public key has been saved in /<span class="class">Users</span>/you/.ssh/id_rsa.pub.
+<span class="class">The</span> key fingerprint <span class="method">is:</span>
+<span class="number">01</span>:<span class="number">0</span><span class="method">f:</span><span class="method">f4:</span><span class="number">3</span><span class="method">b:</span><span class="method">ca:</span><span class="number">85</span>:<span class="method">d6:</span><span class="number">17</span>:<span class="method">a1:</span><span class="number">7</span><span class="method">d:</span><span class="method">f0:</span><span class="number">68</span>:<span class="number">9</span><span class="method">d:</span><span class="method">f0:</span><span class="method">a2:</span>db  your_email@example.com</code></pre>
+<p>说明已生成成功，在<code>./ssh</code>目录下面会多出<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件</p>
+<h2>在<a href="https://github.com/" target="_blank">GitHub</a>网站上添加你的ssh keys</h2>
+<ul>
+<li>找到刚才生成的 <code>id_rsa.pub</code>，复制里面的内容</li>
+<li>打开 <a href="https://github.com/" target="_blank">GitHub</a> 网站并登录，找到 “<code>Account Settings</code>”，点击 “<code>SSH Keys</code>”，然后”<code>Add SSH key</code>”, 把刚才<code>id_rsa.pub</code>里面的内容粘贴进去就可以了</li>
+</ul>
+<h2>验证你的<a href="https://github.com/" target="_blank">GitHub</a>连接</h2>
+<pre><code><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com</code></pre>
+<p>然后有又一堆提示，输入<code>yes</code>就可以了</p>
+<p>最后验证成功的话，会出现类似下面的提示</p>
+<pre><code>Hi username! Yo<span class="string">u've successfully authenticated, but GitHub does not provide shell access.</code></pre>
+<p>大功告成..!<br>少年觉得如何？简单吧，使劲的折腾吧..!</p>
+<h4>参考资料</h4>
+<p><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html" target="_blank"><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html">http://justjavac.com/git/2011/11/22/mac-git-and-github.html</a></a></p>
+<p><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank"><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a></a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/mac/">mac</a> <a href="/tags/ssh-keys/">ssh-keys</a> <a href="/tags/git/">git</a> <a href="/tags/github/">github</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
+  
+    <li><a href="/tags/Sublime Text 插件/">Sublime Text 插件</a><small>1</small></li>
+  
+    <li><a href="/tags/Sublime Text 设置/">Sublime Text 设置</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/github/">github</a><small>1</small></li>
+  
+    <li><a href="/tags/mac/">mac</a><small>1</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <div class="alignleft">
+  
+  &copy; 2014 ocean
+  
+</div>
+<div class="clearfix"></div>
+  </footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iamocean"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
