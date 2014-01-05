@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Github | iamocean</title>
+  <title>MAC OS X 安装MongoDB | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="MAC OS X 安装MongoDB"/>
   <meta property="og:site_name" content="iamocean"/>
 
   
@@ -67,23 +67,18 @@
   <div id="content" class="container clearfix">
     <div id="main-col" class="main">
       <div id="wrapper">
-        
-<h2 class="archive-title tag">Github</h2>
-
-
-  
-    <article class="post">
+        <article class="post">
   
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">MAC下生成ssh keys连接Github</a></h1>
+    <h1 class="title">MAC OS X 安装MongoDB</h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
+        <time class="date" datetime="2014-01-05T08:18:50.000Z">日期：<a href="/2014/01/05/install-mongodb-on-os-x/">2014/01/05</a></time>
         
   
   <span class="categories">
@@ -95,32 +90,77 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>MAC下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
+        <p>前提是你的MAC里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
+<h2>安装MongoDB</h2>
+<p>打开 terminal，往命令行里敲入如下命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
+</pre></td><td class="code"><pre><span class="title">brew</span> install MongoDB
 </pre></td></tr></table></figure>
 
-<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+<p>耐心等待下载安装完成后会出现几行提示信息</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>Pouring mongodb-2.4.8.mavericks.bottle.tar.gz
+==&gt; Caveats
+To have launchd <span class="operator"><span class="keyword">start</span> mongodb <span class="keyword">at</span> login:
+    ln -sfv /usr/<span class="keyword">local</span>/opt/mongodb/*.plist ~/Library/LaunchAgents
+<span class="keyword">Then</span> <span class="keyword">to</span> <span class="keyword">load</span> mongodb now:
+    launchctl <span class="keyword">load</span> ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+<span class="keyword">Or</span>, if you don<span class="string">'t want/need launchctl, you can just run:
+    mongod
+==&gt; Summary
+    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M
 </pre></td></tr></table></figure>
 
+<a id="more"></a>
+
+<h2>设置开机时自动启用MongoDB</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">ln</span> -sfv /usr/local/opt/mongodb/<span class="regexp">*.plist</span> ~/Library/LaunchAgents
+</pre></td></tr></table></figure>
+
+<p>launchd 主要功能是进程管理，可以理解成一个常驻再后台的进程。<br>~/Library/LaunchAgents 这个目录里存放的都是用户的进程</p>
+<p><strong>然后加载 MongoDB服务</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>launchctl load ~/Library/LaunchAgents/homebrew<span class="variable">.mxcl</span><span class="variable">.mongodb</span><span class="variable">.plist</span>
+</pre></td></tr></table></figure>
+
+<p>到这里MongoDB就已经装完了</p>
+<h2>查看是否安装成功</h2>
+<ul>
+<li>关闭terminal，再重新打开</li>
+<li>在命令行里输入 Mongod 启动数据库</li>
+<li>然后输入 mongo，再输入 show dbs 可以查看显示所有的数据库</li>
+</ul>
+<p>更多的命令，请自行查看 <a href="http://www.mongodb.org/display/DOCS/Tutorial" target="_blank"><a href="http://www.mongodb.org/display/DOCS/Tutorial">http://www.mongodb.org/display/DOCS/Tutorial</a></a>;</p>
+<h4>参考资料</h4>
+<ul>
+<li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank"><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/</a></a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html" target="_blank"><a href="http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html">http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html</a></a></li>
+<li><a href="http://sexywp.com/the-launchd-on-macos.htm" target="_blank"><a href="http://sexywp.com/the-launchd-on-macos.htm">http://sexywp.com/the-launchd-on-macos.htm</a></a></li>
+<li><a href="http://zhengwei.name/2011/11/lanunchctl-notes/" target="_blank"><a href="http://zhengwei.name/2011/11/lanunchctl-notes/">http://zhengwei.name/2011/11/lanunchctl-notes/</a></a></li>
+</ul>
 
       
     </div>
     <footer>
       
+
         
-          <div class="more">
-            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读...</a>
-          </div>
-        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/mac/">mac</a> <a href="/tags/MongoDB/">MongoDB</a> <a href="/tags/Homebrew/">Homebrew</a> <a href="/tags/安装/">安装</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
@@ -129,14 +169,16 @@
 </article>
 
 
+<section id="comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
 
 
-  
-
-  <nav id="pagination" class="clearfix">
-  
-  
-</nav>
 
       </div>
     </div>

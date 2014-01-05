@@ -222,6 +222,19 @@ a:active {
 #comment header .title a:active {
   color: #ff4b33;
 }
+.photo header .date,
+.post header .date,
+.about header .date,
+#comment header .date {
+  color: #666;
+}
+.photo header .categories,
+.post header .categories,
+.about header .categories,
+#comment header .categories {
+  margin-left: 12px;
+  color: #666;
+}
 .photo .entry,
 .post .entry,
 .about .entry,

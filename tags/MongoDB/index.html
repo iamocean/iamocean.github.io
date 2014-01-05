@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Github | iamocean</title>
+  <title>MongoDB | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -68,7 +68,7 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
-<h2 class="archive-title tag">Github</h2>
+<h2 class="archive-title tag">MongoDB</h2>
 
 
   
@@ -78,12 +78,12 @@
     <header>
       
   
-    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">MAC下生成ssh keys连接Github</a></h1>
+    <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">MAC OS X 安装MongoDB</a></h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
+        <time class="date" datetime="2014-01-05T08:18:50.000Z">日期：<a href="/2014/01/05/install-mongodb-on-os-x/">2014/01/05</a></time>
         
   
   <span class="categories">
@@ -95,20 +95,34 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>MAC下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
+        <p>前提是你的MAC里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
+<h2>安装MongoDB</h2>
+<p>打开 terminal，往命令行里敲入如下命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
+</pre></td><td class="code"><pre><span class="title">brew</span> install MongoDB
 </pre></td></tr></table></figure>
 
-<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+<p>耐心等待下载安装完成后会出现几行提示信息</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>Pouring mongodb-2.4.8.mavericks.bottle.tar.gz
+==&gt; Caveats
+To have launchd <span class="operator"><span class="keyword">start</span> mongodb <span class="keyword">at</span> login:
+    ln -sfv /usr/<span class="keyword">local</span>/opt/mongodb/*.plist ~/Library/LaunchAgents
+<span class="keyword">Then</span> <span class="keyword">to</span> <span class="keyword">load</span> mongodb now:
+    launchctl <span class="keyword">load</span> ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+<span class="keyword">Or</span>, if you don<span class="string">'t want/need launchctl, you can just run:
+    mongod
+==&gt; Summary
+    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M
 </pre></td></tr></table></figure>
 
 
@@ -118,7 +132,7 @@
       
         
           <div class="more">
-            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读...</a>
+            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读...</a>
           </div>
         
         

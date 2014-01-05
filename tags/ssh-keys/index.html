@@ -6,6 +6,8 @@
   <title>ssh-keys | iamocean</title>
   <meta name="author" content="ocean">
   
+  <meta name="description" content="学习、记录、分享">
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -76,25 +78,40 @@
     <header>
       
   
-    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">mac下生成ssh keys连接github</a></h1>
+    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">MAC下生成ssh keys连接Github</a></h1>
   
 
       
         <div class="icon"></div>
-        <time datetime="2013-12-07T14:06:26.000Z"><a href="/2013/12/07/mac-generating-ssh-keys/">12月 7 2013</a></time>
+        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
       
     </header>
     <div class="entry markdown-body">
       
-        <p>mac下一般都自带安装了<code>git</code>，在这就不继续说如何安装<code>git</code>了.</p>
+        <p>MAC下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
 <h2>检查是否存在ssh keys</h2>
-<pre><code><span class="variable">$ </span>cd ~<span class="regexp">/.ssh</code></pre>
-<p>如果显示<code>No such file or directory</code>，则直接跳到第三步去</p>
-<h2>如果存在<code>.ssh</code>目录，请先备份好你的ssh keys</h2>
-<pre><code><span class="title">mkdir</span> ssh_key_backup    // 创建备份
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
+</pre></td></tr></table></figure>
+
+<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
+<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
 <span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*</code></pre>
-<p>
+<span class="title">rm</span> id_rsa*
+</pre></td></tr></table></figure>
+
+
       
     </div>
     <footer>
@@ -133,27 +150,42 @@
 </div>
 
   
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>3</sup></li>
+  
+  </ul>
+</div>
+
 
   
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
   
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
     <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
-  
-    <li><a href="/tags/Sublime Text 插件/">Sublime Text 插件</a><small>1</small></li>
-  
-    <li><a href="/tags/Sublime Text 设置/">Sublime Text 设置</a><small>1</small></li>
   
     <li><a href="/tags/git/">git</a><small>1</small></li>
   
-    <li><a href="/tags/github/">github</a><small>1</small></li>
-  
-    <li><a href="/tags/mac/">mac</a><small>1</small></li>
+    <li><a href="/tags/mac/">mac</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
   
   </ul>
 </div>
