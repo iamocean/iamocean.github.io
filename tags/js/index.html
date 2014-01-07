@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>常用软件 | iamocean</title>
+  <title>js | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -68,7 +68,7 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
-<h2 class="archive-title tag">常用软件</h2>
+<h2 class="archive-title tag">js</h2>
 
 
   
@@ -78,41 +78,44 @@
     <header>
       
   
-    <h1 class="title"><a href="/2014/01/06/mac-recommend-software/">Mac下常用的软件</a></h1>
+    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2014-01-06T15:20:16.000Z">日期：<a href="/2014/01/06/mac-recommend-software/">2014/01/06</a></time>
+        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
         
+  
+  <span class="categories">
+    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+  </span>
+
 
       
     </header>
     <div class="entry markdown-body">
       
-        <p>在这里介绍的软件，主要是一些免费开源的，根据本人需求而推荐的。</p>
-<ul>
-<li><a href="http://www.freemacsoft.net/appcleaner/" target="_blank">App cleaner</a>  用来彻底删除应用软件，包括各种相关的配置文件资料等。</li>
-<li><a href="http://www.kekaosx.com/zh-cn/" target="_blank">keka</a> 压缩软件</li>
-<li><a href="http://www.foxmail.com/" target="_blank">Foxmail</a> 邮件客户端  日常工作必需品</li>
-<li><a href="https://www.dropbox.com/" target="_blank">Dropbox</a>  网盘方便、无缝同步数据</li>
-<li><a href="https://www.evernote.com/" target="_blank">Evernote</a>  笔记  外加＋“悦读” 用来保存文章、记录代码片断、提醒事项等</li>
-<li><a href="http://www.alfredapp.com/" target="_blank">Alfred</a>  神器之快速启动软件</li>
-<li><a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>   编辑器   小而美</li>
-<li><a href="http://brew.sh/" target="_blank">Homebrew</a>  包管理器  安装git、monogdb等等，直接 brew install 开发你懂的</li>
-<li><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>   虚拟机   一些网银和工作需要</li>
-</ul>
-<p><strong>另外两个收费的，如有能力，建议买正版</strong></p>
-<ul>
-<li>Photoshop  图片处理</li>
-<li><a href="http://www.charlesproxy.com/" target="_blank">Charles</a> 俗称“花瓶”，抓包用的</li>
-</ul>
-<p>PS：部分第三方下载的软件在安装时提示“无法打开，来自不受信任的开发者”。<br>解决办法是：系统偏好设置 －&gt; 安全与隐私 －&gt; 点左下角的小锁头图标然后输入自己的密码 －&gt; 在“通用”标签下点选“任何来源”。</p>
+        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
+<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
+<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+</pre></td></tr></table></figure>
+
+<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
+</pre></td></tr></table></figure>
+
 
       
     </div>
     <footer>
       
+        
+          <div class="more">
+            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读...</a>
+          </div>
         
         
       
