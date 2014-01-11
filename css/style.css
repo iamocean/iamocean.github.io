@@ -459,6 +459,7 @@ a:active {
   color: #999;
   border: 1px solid #ddd;
   background-color: #f7f7f7;
+  -webkit-transition: background-color 0.4s linear, border-color 0.4s linear, color 0.4s linear;
 }
 #pagination a:hover {
   color: #18b4f0;
