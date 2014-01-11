@@ -31,6 +31,12 @@
 #comment header .title {
   font-size: 30px;
 }
+.photo header .title a,
+.post header .title a,
+.about header .title a,
+#comment header .title a {
+  -webkit-transition: color .4s linear;
+}
 .photo header .title a:link,
 .post header .title a:link,
 .about header .title a:link,
