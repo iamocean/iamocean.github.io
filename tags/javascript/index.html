@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javascript | iamocean</title>
+  <title>JavaScript | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -68,7 +68,75 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
-<h2 class="archive-title tag">javascript</h2>
+<h2 class="archive-title tag">JavaScript</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/01/12/javascript-some-skill/">JavaScript的一些技巧</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-01-12T14:14:49.000Z">日期：<a href="/2014/01/12/javascript-some-skill/">2014/01/12</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <h3>1. 为什么有一些匿名函数前面会多个分号呢？</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="comment">;(function()</span> <span class="comment">{</span>
+    <span class="comment">//</span> <span class="comment">coding</span>.<span class="string">.</span><span class="string">.</span>
+<span class="comment">});
+</pre></td></tr></table></figure>
+
+<ul>
+<li>防止多文件合并成一个文件后，高压缩导致语法错误。</li>
+<li>这是一个匿名函数，一般js库都采用这种自执行的匿名函数来保护内部变量 (function(){})()</li>
+<li>因为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined作比较的话，程序就可以不用搜索undefined到window，可以提高程序性能</li>
+</ul>
+<h3>2. 这样声明变量有什么好处呢？</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">var</span> obj = obj || {};
+</pre></td></tr></table></figure>
+
+<ul>
+<li>如果第一个操作数是对象，则返回第一个操作数；</li>
+<li>如果第一个操作数的求值结果为false，则返回第二个操作数；</li>
+<li>如果两个操作数都是对象，则返回第一个操作数；</li>
+<li>如果两个操作数都是null，则返回null；</li>
+<li>如果两个操作数都是NaN，则返回NaN；</li>
+<li>如果两个操作数都是undefined，则返回undefined；</li>
+</ul>
+<p>简单来说就是：<strong>如果已存在obj，则保持不变，否则将 {} 赋值给obj。</strong></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
 
 
   
@@ -96,10 +164,10 @@
     <div class="entry markdown-body">
       
         <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
-<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
-<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
+var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
 </pre></td></tr></table></figure>
 
 <p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
@@ -150,9 +218,9 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/JavaScript/">JavaScript</a><sup>1</sup></li>
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>1</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>3</sup></li>
   
@@ -171,15 +239,15 @@
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
   
     <li><a href="/tags/git/">git</a><small>1</small></li>
   
-    <li><a href="/tags/javascript/">javascript</a><small>1</small></li>
-  
-    <li><a href="/tags/js/">js</a><small>1</small></li>
+    <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/mac/">mac</a><small>3</small></li>
   
@@ -190,6 +258,10 @@
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
