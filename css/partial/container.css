@@ -35,7 +35,7 @@
 .post header .title a,
 .about header .title a,
 #comment header .title a {
-  -webkit-transition: color .4s linear;
+  -webkit-transition: color 0.25s ease-in-out;
 }
 .photo header .title a:link,
 .post header .title a:link,
@@ -251,6 +251,7 @@
   color: #999;
   background: #f0f0f0;
   text-decoration: none;
+  -webkit-transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .photo footer .more a:hover,
 .post footer .more a:hover,
@@ -290,7 +291,7 @@
   color: #999;
   border: 1px solid #ddd;
   background-color: #f7f7f7;
-  -webkit-transition: background-color 0.4s linear, border-color 0.4s linear, color 0.4s linear;
+  -webkit-transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 #pagination a:hover {
   color: #18b4f0;
