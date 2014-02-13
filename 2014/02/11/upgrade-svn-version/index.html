@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mac下生成ssh keys连接Github | iamocean</title>
+  <title>升级Mac自带的SVN版本 | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Mac下生成ssh keys连接Github"/>
+  <meta property="og:title" content="升级Mac自带的SVN版本"/>
   <meta property="og:site_name" content="iamocean"/>
 
   
@@ -73,12 +73,12 @@
     <header>
       
   
-    <h1 class="title">Mac下生成ssh keys连接Github</h1>
+    <h1 class="title">升级Mac自带的SVN版本</h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
+        <time class="date" datetime="2014-02-11T14:30:46.000Z">日期：<a href="/2014/02/11/upgrade-svn-version/">2014/02/11</a></time>
         
   
   <span class="categories">
@@ -90,78 +90,107 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
-</pre></td></tr></table></figure>
-
-<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
-</pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-
-<h2>生成一个新的ssh keys</h2>
+        <p>Mac在10.9.1版本里，系统默认安装了<strong>subversion(svn)</strong>，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在<strong>Terminal</strong>里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
+<h2>准备工作：</h2>
+<p>首先要确保您的<strong>Mac</strong>已经安装好了 <strong>git</strong>(默认已安装) 和 <strong>Homebrew</strong></p>
+<h2>备份系统自带的SVN</h2>
+<p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre>$ ssh-keygen -t rsa -C “your_email@example.com”    <span class="comment">// 输入您的邮箱</span>
-# Creates a <span class="keyword">new</span> ssh key, using the provided email <span class="keyword">as</span> a label
-Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.
-Enter file <span class="keyword">in</span> which to save the key (/Users/you/.ssh/id_rsa): [Press enter]     <span class="comment">// 按下Enter键即可</span>
+5
+</pre></td><td class="code"><pre><span class="title">which</span> svn
+<span class="title">cd</span> /usr/bin
+<span class="title">mkdir</span> ~/.backup
+(sudo) cp -rp svn* ~/.backup
+(sudo) rm -rf svn*
 </pre></td></tr></table></figure>
 
-<ul>
-<li>按完Enter键后，会出现下面的提示</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span>
-Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span>
-</pre></td></tr></table></figure>
+<a id="more"></a>
 
-<ul>
-<li>接着会出现类似下面的提示</li>
-</ul>
+<h2>安装最新版本SVN</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="class">Your</span> identification has been saved in /<span class="class">Users</span>/you/.ssh/id_rsa.
-<span class="class">Your</span> public key has been saved in /<span class="class">Users</span>/you/.ssh/id_rsa.pub.
-<span class="class">The</span> key fingerprint <span class="method">is:</span><span class="number">01</span>:<span class="number">0</span><span class="method">f:</span><span class="method">f4:</span><span class="number">3</span><span class="method">b:</span><span class="method">ca:</span><span class="number">85</span>:<span class="method">d6:</span><span class="number">17</span>:<span class="method">a1:</span><span class="number">7</span><span class="method">d:</span><span class="method">f0:</span><span class="number">68</span>:<span class="number">9</span><span class="method">d:</span><span class="method">f0:</span><span class="method">a2:</span>db  your_email@example.com
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre>❯ brew install <span class="function"><span class="title">subversion</span></span>
+==&gt; Downloading https:<span class="regexp">//</span>downloads.sf.net<span class="regexp">/project/machomebrew/Bottles/</span>subversion-
+Already downloaded: <span class="regexp">/Library/Caches/Homebrew/</span>subversion-<span class="number">1.8</span><span class="number">.5</span>.mavericks.bottle.tar.<span class="function"><span class="title">gz</span></span>
+==&gt; Pouring subversion-<span class="number">1.8</span><span class="number">.5</span>.mavericks.bottle.tar.<span class="function"><span class="title">gz</span></span>
+==&gt; Caveats
+svntools have been installed to:
+  <span class="regexp">/usr/local/opt/subversion/</span>libexec
+
+Bash completion has been installed to:
+  <span class="regexp">/usr/local/etc/</span>bash_completion.d
+Warning: Could <span class="keyword">not</span> link subversion. Unlinking...
+Error: The `<span class="javascript">brew link</span>` step did <span class="keyword">not</span> complete successfully
+The formula built, but <span class="keyword">is</span> <span class="keyword">not</span> symlinked into <span class="regexp">/usr/</span>local
+You can <span class="keyword">try</span> again using `<span class="undefined">brew link subversion'
+
+Possible conflicting files are:
+==&gt; Summary
+🍺  /usr/local/Cellar/subversion/1.8.5: 116 files, 9.3M</span>
 </pre></td></tr></table></figure>
 
-<p>说明已生成成功，在<strong> ./ssh </strong>目录下面会多出<strong> id_rsa </strong>和<strong> id_rsa.pub </strong>这两个文件</p>
-<h2>在<a href="https://github.com/" target="_blank">GitHub</a>网站上添加你的ssh keys</h2>
-<ul>
-<li>找到刚才生成的 <strong>id_rsa.pub</strong>，复制里面的内容</li>
-<li>打开 <a href="https://github.com/" target="_blank">GitHub</a> 网站并登录，找到 “<strong>Account Settings</strong>”，点击 “<strong>SSH Keys</strong>”，然后”<strong>Add SSH key</strong>”, 把刚才<strong>id_rsa.pub</strong>里面的内容粘贴进去就可以了</li>
-</ul>
-<h2>验证你的<a href="https://github.com/" target="_blank">GitHub</a>连接</h2>
+<p>因为之前安装过，有些依赖就不会重复安装了，可能安装过程跟以上有些出入，不过没关系。<br>安装完后注意看最后的提示(<strong>Error</strong>)，说明还没完全安装成功的。。</p>
+<p>如果现在直接在<strong>Terminal</strong>终端里输入<strong>brew link subversion</strong>，则会出现如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com
+2
+3
+4
+5
+</pre></td><td class="code"><pre>❯ brew link subversion
+Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span><span class="keyword">...</span> Warning: Could not link subversion. Unlinking...
+
+Error: Could not symlink file: /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span>/lib/libsvn_wc-<span class="number">1.</span>dylib
+/usr/local/lib is not writable. You should change its permissions.
 </pre></td></tr></table></figure>
 
-<p>然后有又一堆提示，输入<strong>yes</strong>就可以了</p>
-<p>最后验证成功的话，会出现类似下面的提示</p>
+<p>结果还是没完全安装成功，失败的原因是文件权限不够、写入失败。</p>
+<h2>修改文件权限</h2>
+<p>按照上面安装完后的提示，去修改对应文件的权限，至于是755还是777，个人觉得随便都行，只要加个写入的权限就可以了</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>Hi username! Yo<span class="string">u've successfully authenticated, but GitHub does not provide shell access.
+2
+</pre></td><td class="code"><pre><span class="keyword">chmod</span> <span class="number">777</span> /usr/<span class="keyword">local</span>/Cellar/subversion/<span class="number">1.8</span>.<span class="number">5</span>/lib/libsvn_wc-<span class="number">1</span>.dylib
+<span class="keyword">chmod</span> <span class="number">777</span> /usr/<span class="keyword">local</span>/lib
 </pre></td></tr></table></figure>
 
-<p>大功告成..!<br>少年觉得如何？简单吧，使劲的折腾吧..!</p>
-<h4>参考资料</h4>
+<h2>创建软链接</h2>
+<p>接下来再次尝试创建软件链接，如果一切顺利的话则会出现如下提示，则表示软链接已成功创建。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>❯ brew link subversion
+Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span><span class="keyword">...</span> <span class="number">60</span> symlinks created
+</pre></td></tr></table></figure>
+
+<h2>验证是否安装成功</h2>
+<p>继续在<strong>Terminal</strong>终端里，敲入<strong>svn —version</strong>进行验证</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">svn</span> —version
+</pre></td></tr></table></figure>
+
+<p><img src="http://iamocean.qiniudn.com/uploads/images/svn.png" alt="svn"></p>
+<p>注意看看红线那部分，看看是不是你安装了那个版本…</p>
+<h3>参考资料</h3>
 <ul>
-<li><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html" target="_blank"><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html">http://justjavac.com/git/2011/11/22/mac-git-and-github.html</a></a></li>
-<li><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank"><a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a></a></li>
+<li><a href="http://www.mobibrw.com/?p=610" target="_blank"><a href="http://www.mobibrw.com/?p=610">http://www.mobibrw.com/?p=610</a></a></li>
+<li><a href="https://www.open.collab.net/scdocs/ddUsingSVN_command-line.html.zh-cn" target="_blank"><a href="https://www.open.collab.net/scdocs/ddUsingSVN_command-line.html.zh-cn">https://www.open.collab.net/scdocs/ddUsingSVN_command-line.html.zh-cn</a></a></li>
 </ul>
 
       
@@ -173,7 +202,7 @@ Enter same passphrase again: [<span class="keyword">Type</span> passphrase again
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Mac/">Mac</a> <a href="/tags/ssh-keys/">ssh-keys</a> <a href="/tags/git/">git</a> <a href="/tags/Github/">Github</a>
+    <a href="/tags/Mac/">Mac</a> <a href="/tags/svn/">svn</a> <a href="/tags/自带svn/">自带svn</a> <a href="/tags/升级/">升级</a>
   </div>
 
         
