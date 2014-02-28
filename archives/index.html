@@ -78,6 +78,66 @@
     <header>
       
   
+    <h1 class="title"><a href="/2014/02/19/start-sublime-text-from-the-terminal/">从终端里直接打开Sublime Text编辑器</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-02-19T10:29:22.000Z">日期：<a href="/2014/02/19/start-sublime-text-from-the-terminal/">2014/02/19</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>最近经常在<strong>Terminal</strong>里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对<strong>VIM</strong> 编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用<strong>Sublime Text</strong>编辑器，所以就想着能不能从终端里直接打开<strong>Sublime Text</strong>编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">ln</span> -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/local/bin/subl
+</pre></td></tr></table></figure>
+
+<p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
+<h2>常用命令：</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">subl</span>  xxx.txt       打开某文件
+<span class="title">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）
+</pre></td></tr></table></figure>
+
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://gist.github.com/artero/1236170" target="_blank">https://gist.github.com/artero/1236170</a></li>
+<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
+<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2014/02/11/upgrade-svn-version/">升级Mac自带的SVN版本</a></h1>
   
 
@@ -95,7 +155,7 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>Mac在10.9.1版本里，系统默认安装了<strong>subversion(svn)</strong>，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在<strong>Terminal</strong>里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
+        <p>Mac在10.9.1版本里，系统默认安装了<strong>subversion(svn)</strong>，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在<strong>Terminal</strong>终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
 <h2>准备工作：</h2>
 <p>首先要确保您的<strong>Mac</strong>已经安装好了 <strong>git</strong>(默认已安装) 和 <strong>Homebrew</strong></p>
 <h2>备份系统自带的SVN</h2>
@@ -310,80 +370,6 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">Mac OS X 安装MongoDB</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-01-05T08:18:50.000Z">日期：<a href="/2014/01/05/install-mongodb-on-os-x/">2014/01/05</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
-<h2>安装MongoDB</h2>
-<p>打开 terminal，往命令行里敲入如下命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">brew</span> install MongoDB
-</pre></td></tr></table></figure>
-
-<p>耐心等待下载安装完成后会出现几行提示信息</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre>Pouring mongodb-2.4.8.mavericks.bottle.tar.gz
-==&gt; Caveats
-To have launchd <span class="operator"><span class="keyword">start</span> mongodb <span class="keyword">at</span> login:
-    ln -sfv /usr/<span class="keyword">local</span>/opt/mongodb/*.plist ~/Library/LaunchAgents
-<span class="keyword">Then</span> <span class="keyword">to</span> <span class="keyword">load</span> mongodb now:
-    launchctl <span class="keyword">load</span> ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-<span class="keyword">Or</span>, if you don<span class="string">'t want/need launchctl, you can just run:
-    mongod
-==&gt; Summary
-    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M
-</pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="more">
-            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
 
   <nav id="pagination" class="clearfix">
   
@@ -414,6 +400,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
+    <li><a href="/categories/Tools/">Tools</a><sup>1</sup></li>
+  
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>4</sup></li>
   
   </ul>
@@ -437,7 +425,9 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
+    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/git/">git</a><small>1</small></li>
   
@@ -466,6 +456,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
   

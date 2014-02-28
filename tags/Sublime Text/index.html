@@ -78,6 +78,66 @@
     <header>
       
   
+    <h1 class="title"><a href="/2014/02/19/start-sublime-text-from-the-terminal/">从终端里直接打开Sublime Text编辑器</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-02-19T10:29:22.000Z">日期：<a href="/2014/02/19/start-sublime-text-from-the-terminal/">2014/02/19</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>最近经常在<strong>Terminal</strong>里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对<strong>VIM</strong> 编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用<strong>Sublime Text</strong>编辑器，所以就想着能不能从终端里直接打开<strong>Sublime Text</strong>编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="title">ln</span> -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/local/bin/subl
+</pre></td></tr></table></figure>
+
+<p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
+<h2>常用命令：</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">subl</span>  xxx.txt       打开某文件
+<span class="title">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）
+</pre></td></tr></table></figure>
+
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://gist.github.com/artero/1236170" target="_blank">https://gist.github.com/artero/1236170</a></li>
+<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
+<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2013/12/14/sublime-text-install-and-settings/">Sublime Text 安装与配置</a></h1>
   
 
@@ -163,6 +223,8 @@
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
+    <li><a href="/categories/Tools/">Tools</a><sup>1</sup></li>
+  
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>4</sup></li>
   
   </ul>
@@ -186,7 +248,9 @@
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
+    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/git/">git</a><small>1</small></li>
   
@@ -215,6 +279,8 @@
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
   

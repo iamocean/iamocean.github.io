@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2013 | iamocean</title>
+  <title>从终端里直接打开Sublime Text编辑器 | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="从终端里直接打开Sublime Text编辑器"/>
   <meta property="og:site_name" content="iamocean"/>
 
   
@@ -67,27 +67,22 @@
   <div id="content" class="container clearfix">
     <div id="main-col" class="main">
       <div id="wrapper">
-        
-<h2 class="archive-title">2013</h2>
-
-
-  
-    <article class="post">
+        <article class="post">
   
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2013/12/14/sublime-text-install-and-settings/">Sublime Text 安装与配置</a></h1>
+    <h1 class="title">从终端里直接打开Sublime Text编辑器</h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-12-14T15:15:06.000Z">日期：<a href="/2013/12/14/sublime-text-install-and-settings/">2013/12/14</a></time>
+        <time class="date" datetime="2014-02-19T10:29:22.000Z">日期：<a href="/2014/02/19/start-sublime-text-from-the-terminal/">2014/02/19</a></time>
         
   
   <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>
+    所属：<a href="/categories/Tools/">Tools</a>
   </span>
 
 
@@ -95,95 +90,39 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>最近刚换新电脑，刚好要重新安装 <strong>Sublime Text</strong>，顺便把安装的过程给记下来，留着以备不时之需。。。</p>
-<h1>安装 Package Control</h1>
-<ul>
-<li>打开 Sublime Text, 按下Control + <code>(Mac)或者Ctrl +</code>(Windows)，调出console</li>
-<li>粘贴以下代码</li>
-</ul>
-<h3>Sublime Text 2</h3>
+        <p>最近经常在<strong>Terminal</strong>里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对<strong>VIM</strong> 编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用<strong>Sublime Text</strong>编辑器，所以就想着能不能从终端里直接打开<strong>Sublime Text</strong>编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">os.</span>makedirs( ipp ) <span class="keyword">if</span> not <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>exists(ipp) <span class="keyword">else</span> None; <span class="transposed_variable">urllib2.</span>install_opener( <span class="transposed_variable">urllib2.</span>build_opener( <span class="transposed_variable">urllib2.</span>ProxyHandler( ))); open( <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join( ipp, pf), <span class="string">'wb'</span> ).write( <span class="transposed_variable">urllib2.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> +<span class="transposed_variable">pf.</span>replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); print( <span class="string">'Please restart Sublime Text to finish installation’)
+</pre></td><td class="code"><pre><span class="title">ln</span> -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/local/bin/subl
 </pre></td></tr></table></figure>
 
-<h3>Sublime Text 3</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import <span class="transposed_variable">urllib.</span>request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>install_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>build_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>ProxyHandler()) ); open(<span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join(ipp, pf), <span class="string">'wb'</span>).write(<span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> + <span class="transposed_variable">pf.</span>replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())
-</pre></td></tr></table></figure>
-
-<ul>
-<li>重启Sublime Text，点击 Preferences -&gt; Package Settings。如果安装成功了，Package Control会出现在菜单里。</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="more">
-            <a href="/2013/12/14/sublime-text-install-and-settings/#more" class="more-link">继续阅读...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">Mac下生成ssh keys连接Github</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
-</pre></td></tr></table></figure>
-
-<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+<p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
+<h2>常用命令：</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
+</pre></td><td class="code"><pre><span class="title">subl</span>  xxx.txt       打开某文件
+<span class="title">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）
 </pre></td></tr></table></figure>
 
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://gist.github.com/artero/1236170" target="_blank">https://gist.github.com/artero/1236170</a></li>
+<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
+<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
+</ul>
 
       
     </div>
     <footer>
       
+
         
-          <div class="more">
-            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读...</a>
-          </div>
-        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/Sublime Text/">Sublime Text</a> <a href="/tags/编辑器/">编辑器</a> <a href="/tags/Terminal/">Terminal</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
@@ -192,50 +131,16 @@
 </article>
 
 
+<section id="comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
 
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2013/10/10/hello-world/">Hello World</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2013-10-10T15:06:30.000Z">日期：<a href="/2013/10/10/hello-world/">2013/10/10</a></time>
-        
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav id="pagination" class="clearfix">
-  
-  
-</nav>
 
       </div>
     </div>

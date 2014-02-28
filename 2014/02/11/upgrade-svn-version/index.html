@@ -90,7 +90,7 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>Mac在10.9.1版本里，系统默认安装了<strong>subversion(svn)</strong>，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在<strong>Terminal</strong>里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
+        <p>Mac在10.9.1版本里，系统默认安装了<strong>subversion(svn)</strong>，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在<strong>Terminal</strong>终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
 <h2>准备工作：</h2>
 <p>首先要确保您的<strong>Mac</strong>已经安装好了 <strong>git</strong>(默认已安装) 和 <strong>Homebrew</strong></p>
 <h2>备份系统自带的SVN</h2>
@@ -148,7 +148,7 @@ Possible conflicting files are:
 🍺  /usr/local/Cellar/subversion/1.8.5: 116 files, 9.3M</span>
 </pre></td></tr></table></figure>
 
-<p>因为之前安装过，有些依赖就不会重复安装了，可能安装过程跟以上有些出入，不过没关系。<br>安装完后注意看最后的提示(<strong>Error</strong>)，说明还没完全安装成功的。。</p>
+<p>因为之前安装过，有些依赖就不会重复安装了，可能安装过程跟以上有些出入，不过没关系。<br>安装完后注意看最后的提示(<strong>Warning</strong>和<strong>Error</strong>)，说明还没完全安装成功的。。</p>
 <p>如果现在直接在<strong>Terminal</strong>终端里输入<strong>brew link subversion</strong>，则会出现如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -162,7 +162,7 @@ Error: Could not symlink file: /usr/local/Cellar/subversion/<span class="number"
 /usr/local/lib is not writable. You should change its permissions.
 </pre></td></tr></table></figure>
 
-<p>结果还是没完全安装成功，失败的原因是文件权限不够、写入失败。</p>
+<p>结果还是没能完全安装成功，失败的原因是文件权限不够、写入失败。</p>
 <h2>修改文件权限</h2>
 <p>按照上面安装完后的提示，去修改对应文件的权限，至于是755还是777，个人觉得随便都行，只要加个写入的权限就可以了</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -246,6 +246,8 @@ Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class=
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
+    <li><a href="/categories/Tools/">Tools</a><sup>1</sup></li>
+  
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>4</sup></li>
   
   </ul>
@@ -269,7 +271,9 @@ Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class=
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>1</small></li>
+    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/git/">git</a><small>1</small></li>
   
@@ -298,6 +302,8 @@ Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class=
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
   
