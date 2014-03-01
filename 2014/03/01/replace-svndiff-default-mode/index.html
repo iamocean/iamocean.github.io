@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档：2013 | iamocean</title>
+  <title>将SVN diff 默认模式更换为 vimdiff | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录、分享">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="将SVN diff 默认模式更换为 vimdiff"/>
   <meta property="og:site_name" content="iamocean"/>
 
   
@@ -67,27 +67,22 @@
   <div id="content" class="container clearfix">
     <div id="main-col" class="main">
       <div id="wrapper">
-        
-<h2 class="archive-title">2013</h2>
-
-
-  
-    <article class="post">
+        <article class="post">
   
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2013/12/14/sublime-text-install-and-settings/">Sublime Text 安装与配置</a></h1>
+    <h1 class="title">将SVN diff 默认模式更换为 vimdiff</h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-12-14T15:15:06.000Z">日期：<a href="/2013/12/14/sublime-text-install-and-settings/">2013/12/14</a></time>
+        <time class="date" datetime="2014-03-01T15:08:39.000Z">日期：<a href="/2014/03/01/replace-svndiff-default-mode/">2014/03/01</a></time>
         
   
   <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>
+    所属：<a href="/categories/Tools/">Tools</a>
   </span>
 
 
@@ -95,95 +90,101 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>最近刚换新电脑，刚好要重新安装 <strong>Sublime Text</strong>，顺便把安装的过程给记下来，留着以备不时之需。。。</p>
-<h1>安装 Package Control</h1>
-<ul>
-<li>打开 Sublime Text, 按下Control + <code>(Mac)或者Ctrl +</code>(Windows)，调出console</li>
-<li>粘贴以下代码</li>
-</ul>
-<h3>Sublime Text 2</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">os.</span>makedirs( ipp ) <span class="keyword">if</span> not <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>exists(ipp) <span class="keyword">else</span> None; <span class="transposed_variable">urllib2.</span>install_opener( <span class="transposed_variable">urllib2.</span>build_opener( <span class="transposed_variable">urllib2.</span>ProxyHandler( ))); open( <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join( ipp, pf), <span class="string">'wb'</span> ).write( <span class="transposed_variable">urllib2.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> +<span class="transposed_variable">pf.</span>replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); print( <span class="string">'Please restart Sublime Text to finish installation’)
-</pre></td></tr></table></figure>
-
-<h3>Sublime Text 3</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import <span class="transposed_variable">urllib.</span>request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>install_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>build_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>ProxyHandler()) ); open(<span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join(ipp, pf), <span class="string">'wb'</span>).write(<span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> + <span class="transposed_variable">pf.</span>replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())
-</pre></td></tr></table></figure>
-
-<ul>
-<li>重启Sublime Text，点击 Preferences -&gt; Package Settings。如果安装成功了，Package Control会出现在菜单里。</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="more">
-            <a href="/2013/12/14/sublime-text-install-and-settings/#more" class="more-link">继续阅读...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">Mac下生成ssh keys连接Github</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2013-12-07T14:06:26.000Z">日期：<a href="/2013/12/07/mac-generating-ssh-keys/">2013/12/07</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
-</pre></td></tr></table></figure>
-
-<p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+        <p>自从由图形操作转到命令行<strong>终端（Terminal）</strong>上操作后，<strong>SVN diff</strong> 一直让我很纠结，刚好某天看到标哥在diff文件时，他那种类似<strong>Compare Beyond</strong>左右对比的画面，正式我想要的——<strong>vimdiff</strong>。</p>
+<h1>创建svndiff文件</h1>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
+4
+5
+</pre></td><td class="code"><pre>~
+❯ cd /usr/<span class="keyword">local</span>/bin
+
+<span class="keyword">local</span>/bin git/master
+❯ touch svndiff
 </pre></td></tr></table></figure>
 
+<p>进入到指定目录，新建一个文件名为<strong>svndiff</strong>。</p>
+<h1>编辑svndiff文件内容</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">local</span>/bin git/master
+❯ vim svndiff
+</pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>打开<strong>svndiff</strong>, 输入内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="shebang">#!/bin/sh</span>
+
+<span class="comment"># 配置你喜欢的diff程序路径</span>
+DIFF=<span class="string">"vimdiff"</span>
+
+<span class="comment"># SVN diff命令会传入两个文件的参数</span>
+LEFT=<span class="variable">${6}</span>
+RIGHT=<span class="variable">${7}</span>
+
+<span class="comment"># 拼接成diff命令所需要的命令格式</span>
+<span class="variable">$DIFF</span> <span class="variable">$LEFT</span> <span class="variable">$RIGHT</span>
+</pre></td></tr></table></figure>
+
+<h1>修改svndiff文件权限</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">local</span>/bin git/master
+❯ <span class="keyword">chmod</span> <span class="number">775</span> svndiff
+</pre></td></tr></table></figure>
+
+<p>默认创建<strong>svndiff</strong>时，只有读的权限，需要给它加上可以执行的权限才行，不然在对比时文件会执行失败，提示权限不够的。</p>
+<h1>修改svn的默认配置</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>local<span class="regexp">/bin git/m</span>aster
+❯ vim ~<span class="regexp">/.subversion/</span>config
+</pre></td></tr></table></figure>
+
+<p>找到<strong>diff-cmd</strong>这一行<br>把默认的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="preprocessor"># diff-cmd = diff_program (diff, gdiff, etc.)</span>
+</pre></td></tr></table></figure>
+
+<p>替换成</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>diff-cmd = <span class="regexp">/usr/local</span><span class="regexp">/bin/svndiff</span>
+</pre></td></tr></table></figure>
+
+<p>最终效果如下：</p>
+<p><img src="http://iamocean.qiniudn.com/uploads/images/vimdiff.png" alt=""></p>
+<h3>参考资料</h3>
+<ul>
+<li><a href="http://www.ccvita.com/445.html" target="_blank"><a href="http://www.ccvita.com/445.html">http://www.ccvita.com/445.html</a></a></li>
+<li><a href="http://svndoc.minitw.com/svn.advanced.externaldifftools.html" target="_blank"><a href="http://svndoc.minitw.com/svn.advanced.externaldifftools.html">http://svndoc.minitw.com/svn.advanced.externaldifftools.html</a></a></li>
+<li><a href="http://www.cnblogs.com/zhouej/archive/2012/02/09/2343756.html" target="_blank"><a href="http://www.cnblogs.com/zhouej/archive/2012/02/09/2343756.html">http://www.cnblogs.com/zhouej/archive/2012/02/09/2343756.html</a></a></li>
+</ul>
 
       
     </div>
     <footer>
       
+
         
-          <div class="more">
-            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读...</a>
-          </div>
-        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/SVN/">SVN</a> <a href="/tags/svndiff/">svndiff</a> <a href="/tags/vimdiff/">vimdiff</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
@@ -192,50 +193,16 @@
 </article>
 
 
+<section id="comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
 
 
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2013/10/10/hello-world/">Hello World</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2013-10-10T15:06:30.000Z">日期：<a href="/2013/10/10/hello-world/">2013/10/10</a></time>
-        
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav id="pagination" class="clearfix">
-  
-  
-</nav>
 
       </div>
     </div>

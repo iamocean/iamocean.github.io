@@ -74,6 +74,72 @@
     <header>
       
   
+    <h1 class="title"><a href="/2014/03/01/replace-svndiff-default-mode/">将SVN diff 默认模式更换为 vimdiff</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-03-01T15:08:39.000Z">日期：<a href="/2014/03/01/replace-svndiff-default-mode/">2014/03/01</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>自从由图形操作转到命令行<strong>终端（Terminal）</strong>上操作后，<strong>SVN diff</strong> 一直让我很纠结，刚好某天看到标哥在diff文件时，他那种类似<strong>Compare Beyond</strong>左右对比的画面，正式我想要的——<strong>vimdiff</strong>。</p>
+<h1>创建svndiff文件</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>~
+❯ cd /usr/<span class="keyword">local</span>/bin
+
+<span class="keyword">local</span>/bin git/master
+❯ touch svndiff
+</pre></td></tr></table></figure>
+
+<p>进入到指定目录，新建一个文件名为<strong>svndiff</strong>。</p>
+<h1>编辑svndiff文件内容</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">local</span>/bin git/master
+❯ vim svndiff
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="more">
+            <a href="/2014/03/01/replace-svndiff-default-mode/#more" class="more-link">继续阅读...</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2014/02/19/start-sublime-text-from-the-terminal/">从终端里直接打开Sublime Text编辑器</a></h1>
   
 
@@ -313,59 +379,6 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/01/06/mac-recommend-software/">Mac下常用的软件</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-01-06T15:20:16.000Z">日期：<a href="/2014/01/06/mac-recommend-software/">2014/01/06</a></time>
-        
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>在这里介绍的软件，主要是一些免费开源的，根据本人需求而推荐的。</p>
-<ul>
-<li><a href="http://www.freemacsoft.net/appcleaner/" target="_blank">App cleaner</a>  用来彻底删除应用软件，包括各种相关的配置文件资料等。</li>
-<li><a href="http://www.kekaosx.com/zh-cn/" target="_blank">keka</a> 压缩软件</li>
-<li><a href="http://www.foxmail.com/" target="_blank">Foxmail</a> 邮件客户端  日常工作必需品</li>
-<li><a href="https://www.dropbox.com/" target="_blank">Dropbox</a>  网盘方便、无缝同步数据</li>
-<li><a href="https://www.evernote.com/" target="_blank">Evernote</a>  笔记  外加＋“悦读” 用来保存文章、记录代码片断、提醒事项等</li>
-<li><a href="http://www.alfredapp.com/" target="_blank">Alfred</a>  神器之快速启动软件</li>
-<li><a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>   编辑器   小而美</li>
-<li><a href="http://brew.sh/" target="_blank">Homebrew</a>  包管理器  安装git、monogdb等等，直接 brew install 开发你懂的</li>
-<li><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>   虚拟机   一些网银和工作需要</li>
-</ul>
-<p><strong>另外两个收费的，如有能力，建议买正版</strong></p>
-<ul>
-<li>Photoshop  图片处理</li>
-<li><a href="http://www.charlesproxy.com/" target="_blank">Charles</a> 俗称“花瓶”，抓包用的</li>
-</ul>
-<p>PS：部分第三方下载的软件在安装时提示“无法打开，来自不受信任的开发者”。<br>解决办法是：系统偏好设置 －&gt; 安全与隐私 －&gt; 点左下角的小锁头图标然后输入自己的密码 －&gt; 在“通用”标签下点选“任何来源”。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination" class="clearfix">
   
@@ -395,7 +408,7 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>1</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>4</sup></li>
   
@@ -420,6 +433,8 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
     <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
@@ -434,9 +449,11 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
-    <li><a href="/tags/svn/">svn</a><small>1</small></li>
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
     <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
   
@@ -455,8 +472,6 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
-  
-    <li><a href="/tags/自带svn/">自带svn</a><small>1</small></li>
   
   </ul>
 </div>
