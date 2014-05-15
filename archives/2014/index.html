@@ -80,6 +80,61 @@
     <header>
       
   
+    <h1 class="title"><a href="/2014/05/11/git-dropbox/">利用Git+Dropbox搭建私有仓库</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-05-11T10:48:46.000Z">日期：<a href="/2014/05/11/git-dropbox/">2014/05/11</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>开源的项目放在<a href="https://github.com" target="_blank">GitHub</a>上很个不错的选择，但是有时候有些私人项目可能还不想放出来或是怎么样的，那怎么办呢？<a href="https://github.com" target="_blank">GitHub</a>上面也提供了私人的项目存放，但是是需要收费的，如不想付费那就要自己去动手实现啦。</p>
+<h2>准备工作</h2>
+<p>首先您需要有一个<a href="https://db.tt/UaGAIAsd" target="_blank">Dropbox</a> 帐号，如果没有那就先到这里去<a href="https://db.tt/UaGAIAsd" target="_blank">申请</a>，然后下载并安装好<a href="https://www.dropbox.com" target="_blank">Dropbox</a>客户端。（当然你也可以用其他云盘应该也ok啦）</p>
+<h2>创建私有仓库</h2>
+<p>首页切换到刚刚安装好的<strong>Dropbox</strong>目录下，创建一个私有仓库。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">cd</span> ~/<span class="type">Dropbox</span>
+<span class="title">git</span> init <span class="comment">--bare demo.git</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="more">
+            <a href="/2014/05/11/git-dropbox/#more" class="more-link">继续阅读...</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+  
     <h1 class="title"><a href="/2014/03/01/replace-svndiff-default-mode/">将SVN diff 默认模式更换为 vimdiff</a></h1>
   
 
@@ -178,10 +233,10 @@
 
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a href="https://gist.github.com/artero/1236170" target="_blank">https://gist.github.com/artero/1236170</a></li>
-<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
-<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
-<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
+<li><a href="https://gist.github.com/artero/1236170" target="_blank"><a href="https://gist.github.com/artero/1236170">https://gist.github.com/artero/1236170</a></a></li>
+<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank"><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></a></li>
+<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank"><a href="http://www.sublimetext.com/docs/2/osx_command_line.html">http://www.sublimetext.com/docs/2/osx_command_line.html</a></a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank"><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></a></li>
 </ul>
 
       
@@ -329,62 +384,6 @@
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
-</pre></td></tr></table></figure>
-
-<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
-</pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="more">
-            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
 
   <nav id="pagination" class="clearfix">
   
@@ -417,7 +416,7 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>4</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
   </ul>
 </div>
@@ -429,6 +428,10 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   <ul class="entry clearfix">
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   

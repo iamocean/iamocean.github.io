@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Array | iamocean</title>
+  <title>利用Git+Dropbox搭建私有仓库 | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录与分享">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="利用Git+Dropbox搭建私有仓库"/>
   <meta property="og:site_name" content="iamocean"/>
 
   
@@ -69,27 +69,22 @@
   <div id="content" class="container clearfix">
     <div id="main-col" class="main">
       <div id="wrapper">
-        
-<h2 class="archive-title tag">Array</h2>
-
-
-  
-    <article class="post">
+        <article class="post">
   
   <div class="post-content">
     <header>
       
   
-    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
+    <h1 class="title">利用Git+Dropbox搭建私有仓库</h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
+        <time class="date" datetime="2014-05-11T10:48:46.000Z">日期：<a href="/2014/05/11/git-dropbox/">2014/05/11</a></time>
         
   
   <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
   </span>
 
 
@@ -97,28 +92,59 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
+        <p>开源的项目放在<a href="https://github.com" target="_blank">GitHub</a>上很个不错的选择，但是有时候有些私人项目可能还不想放出来或是怎么样的，那怎么办呢？<a href="https://github.com" target="_blank">GitHub</a>上面也提供了私人的项目存放，但是是需要收费的，如不想付费那就要自己去动手实现啦。</p>
+<h2>准备工作</h2>
+<p>首先您需要有一个<a href="https://db.tt/UaGAIAsd" target="_blank">Dropbox</a> 帐号，如果没有那就先到这里去<a href="https://db.tt/UaGAIAsd" target="_blank">申请</a>，然后下载并安装好<a href="https://www.dropbox.com" target="_blank">Dropbox</a>客户端。（当然你也可以用其他云盘应该也ok啦）</p>
+<h2>创建私有仓库</h2>
+<p>首页切换到刚刚安装好的<strong>Dropbox</strong>目录下，创建一个私有仓库。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="title">cd</span> ~/<span class="type">Dropbox</span>
+<span class="title">git</span> init <span class="comment">--bare demo.git</span>
 </pre></td></tr></table></figure>
 
-<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
+<a id="more"></a>
+
+<h2>复制私有仓库的内容</h2>
+<p>私有仓库我们创建好了，现在把它复制到需要让它工作的目录去，在这里我用<strong>workspare</strong>目录代替（个人习惯）。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
+2
+</pre></td><td class="code"><pre><span class="title">cd</span> ~/workspare
+<span class="title">git</span> clone ~/<span class="type">Dropbox</span>/demo.git demo
 </pre></td></tr></table></figure>
 
+<h2>检验是否创建成功</h2>
+<p>切换到<strong>demo</strong>目录下，新建个文件，尝试push看看。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="title">cd</span> demo
+<span class="title">touch</span> <span class="type">README</span>.md
+<span class="title">git</span> add .
+<span class="title">git</span> commit -m <span class="string">"init commit"</span>
+<span class="title">git</span> push origin master
+</pre></td></tr></table></figure>
+
+<p>当你每次push后，<strong>Dropbox</strong>就会把你push的内容自动同步到服务器上，你可以通过 <a href="https://www.dropbox.com" target="_blank">Dropbox</a> 查看。<br>到这里私有仓库的搭建就完成了。</p>
+<p><strong>参考资料</strong></p>
+<ul>
+<li><a href="http://weizhifeng.net/git-with-dropbox.html" target="_blank"><a href="http://weizhifeng.net/git-with-dropbox.html">http://weizhifeng.net/git-with-dropbox.html</a></a></li>
+</ul>
 
       
     </div>
     <footer>
       
+
         
-          <div class="more">
-            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读...</a>
-          </div>
-        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/Git/">Git</a> <a href="/tags/Dropbox/">Dropbox</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
@@ -127,14 +153,16 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
 </article>
 
 
+<section id="comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
 
 
-  
-
-  <nav id="pagination" class="clearfix">
-  
-  
-</nav>
 
       </div>
     </div>
