@@ -71,6 +71,18 @@
       <div id="wrapper">
         <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -93,11 +105,12 @@
     <div class="entry markdown-body">
       
         <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
-<h2>安装MongoDB</h2>
+<h2 id="安装MongoDB">安装MongoDB</h2>
 <p>打开 terminal，往命令行里敲入如下命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">brew</span> install MongoDB
+</pre></td><td class="code"><pre>brew <span class="keyword">install</span> MongoDB
 </pre></td></tr></table></figure>
+
 
 <p>耐心等待下载安装完成后会出现几行提示信息</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -110,45 +123,48 @@
 8
 9
 10
-</pre></td><td class="code"><pre>Pouring mongodb-2.4.8.mavericks.bottle.tar.gz
+</pre></td><td class="code"><pre>Pouring mongodb-<span class="number">2.4</span><span class="number">.8</span>.mavericks.bottle.tar.gz
 ==&gt; Caveats
-To have launchd <span class="operator"><span class="keyword">start</span> mongodb <span class="keyword">at</span> login:
-    ln -sfv /usr/<span class="keyword">local</span>/opt/mongodb/*.plist ~/Library/LaunchAgents
-<span class="keyword">Then</span> <span class="keyword">to</span> <span class="keyword">load</span> mongodb now:
-    launchctl <span class="keyword">load</span> ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-<span class="keyword">Or</span>, if you don<span class="string">'t want/need launchctl, you can just run:
+<span class="keyword">To</span> have launchd start mongodb at login:
+    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
+<span class="keyword">Then</span> <span class="keyword">to</span> load mongodb now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+<span class="keyword">Or</span>, <span class="keyword">if</span> you don<span class="comment">'t want/need launchctl, you can just run:</span>
     mongod
 ==&gt; Summary
-    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M
+    /usr/local/Cellar/mongodb/<span class="number">2.4</span><span class="number">.8</span>: <span class="number">18</span> files, <span class="number">271</span>M
 </pre></td></tr></table></figure>
+
 
 <a id="more"></a>
 
-<h2>设置开机时自动启用MongoDB</h2>
+<h2 id="设置开机时自动启用MongoDB">设置开机时自动启用MongoDB</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">ln</span> -sfv /usr/local/opt/mongodb/<span class="regexp">*.plist</span> ~/Library/LaunchAgents
+</pre></td><td class="code"><pre><span class="built_in">ln</span> -sfv /usr/<span class="built_in">local</span>/opt/mongodb<span class="comment">/*.plist ~/Library/LaunchAgents</span>
 </pre></td></tr></table></figure>
+
 
 <p>launchd 主要功能是进程管理，可以理解成一个常驻再后台的进程。<br>~/Library/LaunchAgents 这个目录里存放的都是用户的进程</p>
 <p><strong>然后加载 MongoDB服务</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>launchctl load ~/Library/LaunchAgents/homebrew<span class="variable">.mxcl</span><span class="variable">.mongodb</span><span class="variable">.plist</span>
+</pre></td><td class="code"><pre>launchctl load ~/Library/LaunchAgents/homebrew<span class="preprocessor">.mxcl</span><span class="preprocessor">.mongodb</span><span class="preprocessor">.plist</span>
 </pre></td></tr></table></figure>
 
+
 <p>到这里MongoDB就已经装完了</p>
-<h2>查看是否安装成功</h2>
+<h2 id="查看是否安装成功">查看是否安装成功</h2>
 <ul>
 <li>关闭terminal，再重新打开</li>
 <li>在命令行里输入 Mongod 启动数据库</li>
 <li>然后输入 mongo，再输入 show dbs 可以查看显示所有的数据库</li>
 </ul>
-<p>更多的命令，请自行查看 <a href="http://www.mongodb.org/display/DOCS/Tutorial" target="_blank"><a href="http://www.mongodb.org/display/DOCS/Tutorial">http://www.mongodb.org/display/DOCS/Tutorial</a></a>;</p>
-<h4>参考资料</h4>
+<p>更多的命令，请自行查看 <a href="http://www.mongodb.org/display/DOCS/Tutorial" target="_blank">http://www.mongodb.org/display/DOCS/Tutorial</a>;</p>
+<h4 id="参考资料">参考资料</h4>
 <ul>
-<li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank"><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/</a></a></li>
-<li><a href="http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html" target="_blank"><a href="http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html">http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html</a></a></li>
-<li><a href="http://sexywp.com/the-launchd-on-macos.htm" target="_blank"><a href="http://sexywp.com/the-launchd-on-macos.htm">http://sexywp.com/the-launchd-on-macos.htm</a></a></li>
-<li><a href="http://zhengwei.name/2011/11/lanunchctl-notes/" target="_blank"><a href="http://zhengwei.name/2011/11/lanunchctl-notes/">http://zhengwei.name/2011/11/lanunchctl-notes/</a></a></li>
+<li><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html" target="_blank">http://blog.sina.com.cn/s/blog_7c8dc2d50101lwka.html</a></li>
+<li><a href="http://sexywp.com/the-launchd-on-macos.htm" target="_blank">http://sexywp.com/the-launchd-on-macos.htm</a></li>
+<li><a href="http://zhengwei.name/2011/11/lanunchctl-notes/" target="_blank">http://zhengwei.name/2011/11/lanunchctl-notes/</a></li>
 </ul>
 
       
@@ -198,13 +214,17 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
+    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
@@ -221,7 +241,9 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
-    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
@@ -231,6 +253,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
@@ -239,7 +263,7 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/git/">git</a><small>1</small></li>
+    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -251,8 +275,6 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
-    <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
-  
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
@@ -260,6 +282,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
@@ -272,6 +296,10 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
   
   </ul>
 </div>

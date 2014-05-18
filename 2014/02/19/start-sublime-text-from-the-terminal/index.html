@@ -71,6 +71,18 @@
       <div id="wrapper">
         <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -92,25 +104,27 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>最近经常在<strong>Terminal</strong>里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对<strong>VIM</strong> 编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用<strong>Sublime Text</strong>编辑器，所以就想着能不能从终端里直接打开<strong>Sublime Text</strong>编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
+        <p>最近经常在 <strong>Terminal</strong> 里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对 <strong>VIM</strong>  编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用 <strong>Sublime Text</strong> 编辑器，所以就想着能不能从终端里直接打开 <strong>Sublime Text</strong> 编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">ln</span> -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/local/bin/subl
+</pre></td><td class="code"><pre><span class="built_in">ln</span> -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/<span class="built_in">local</span>/bin/subl
 </pre></td></tr></table></figure>
 
+
 <p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
-<h2>常用命令：</h2>
+<h2 id="常用命令：">常用命令：</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="title">subl</span>  xxx.txt       打开某文件
-<span class="title">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）
+</pre></td><td class="code"><pre>subl  xxx.txt       打开某文件
+<span class="built_in">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）
 </pre></td></tr></table></figure>
+
 
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a href="https://gist.github.com/artero/1236170" target="_blank"><a href="https://gist.github.com/artero/1236170">https://gist.github.com/artero/1236170</a></a></li>
-<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank"><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></a></li>
-<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank"><a href="http://www.sublimetext.com/docs/2/osx_command_line.html">http://www.sublimetext.com/docs/2/osx_command_line.html</a></a></li>
-<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank"><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></a></li>
+<li><a href="https://gist.github.com/artero/1236170" target="_blank">https://gist.github.com/artero/1236170</a></li>
+<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
+<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
+<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
 </ul>
 
       
@@ -160,13 +174,17 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
+    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
@@ -183,7 +201,9 @@
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
-    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
@@ -193,6 +213,8 @@
   
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
@@ -201,7 +223,7 @@
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/git/">git</a><small>1</small></li>
+    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -213,8 +235,6 @@
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
-    <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
-  
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
@@ -222,6 +242,8 @@
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
@@ -234,6 +256,10 @@
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
   
   </ul>
 </div>

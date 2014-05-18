@@ -76,6 +76,18 @@
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -97,24 +109,26 @@
     </header>
     <div class="entry markdown-body">
       
-        <h3>1. 为什么有一些匿名函数前面会多个分号呢？</h3>
+        <h3 id="1-_为什么有一些匿名函数前面会多个分号呢？">1. 为什么有一些匿名函数前面会多个分号呢？</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="comment">;(function()</span> <span class="comment">{</span>
-    <span class="comment">//</span> <span class="comment">coding</span>.<span class="string">.</span><span class="string">.</span>
-<span class="comment">});
+</pre></td><td class="code"><pre>;(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    <span class="comment">// coding...</span>
+});
 </pre></td></tr></table></figure>
+
 
 <ul>
 <li>防止多文件合并成一个文件后，高压缩导致语法错误。</li>
 <li>这是一个匿名函数，一般js库都采用这种自执行的匿名函数来保护内部变量 (function(){})()</li>
 <li>因为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined作比较的话，程序就可以不用搜索undefined到window，可以提高程序性能</li>
 </ul>
-<h3>2. 这样声明变量有什么好处呢？</h3>
+<h3 id="2-_这样声明变量有什么好处呢？">2. 这样声明变量有什么好处呢？</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="keyword">var</span> obj = obj || {};
+</pre></td><td class="code"><pre><span class="attribute">var obj </span>=<span class="string"> obj || {};</span>
 </pre></td></tr></table></figure>
+
 
 <ul>
 <li>如果第一个操作数是对象，则返回第一个操作数；</li>
@@ -144,6 +158,18 @@
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -168,14 +194,16 @@
         <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
+<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
 </pre></td></tr></table></figure>
+
 
 <p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
 </pre></td></tr></table></figure>
+
 
 
       
@@ -200,6 +228,18 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -211,6 +251,11 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
         <div class="icon"></div>
         <time class="date" datetime="2014-01-06T15:20:16.000Z">日期：<a href="/2014/01/06/mac-recommend-software/">2014/01/06</a></time>
         
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
 
       
     </header>
@@ -253,6 +298,18 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -275,11 +332,12 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
     <div class="entry markdown-body">
       
         <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
-<h2>安装MongoDB</h2>
+<h2 id="安装MongoDB">安装MongoDB</h2>
 <p>打开 terminal，往命令行里敲入如下命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="title">brew</span> install MongoDB
+</pre></td><td class="code"><pre>brew <span class="keyword">install</span> MongoDB
 </pre></td></tr></table></figure>
+
 
 <p>耐心等待下载安装完成后会出现几行提示信息</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
@@ -292,17 +350,18 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
 8
 9
 10
-</pre></td><td class="code"><pre>Pouring mongodb-2.4.8.mavericks.bottle.tar.gz
+</pre></td><td class="code"><pre>Pouring mongodb-<span class="number">2.4</span><span class="number">.8</span>.mavericks.bottle.tar.gz
 ==&gt; Caveats
-To have launchd <span class="operator"><span class="keyword">start</span> mongodb <span class="keyword">at</span> login:
-    ln -sfv /usr/<span class="keyword">local</span>/opt/mongodb/*.plist ~/Library/LaunchAgents
-<span class="keyword">Then</span> <span class="keyword">to</span> <span class="keyword">load</span> mongodb now:
-    launchctl <span class="keyword">load</span> ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-<span class="keyword">Or</span>, if you don<span class="string">'t want/need launchctl, you can just run:
+<span class="keyword">To</span> have launchd start mongodb at login:
+    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
+<span class="keyword">Then</span> <span class="keyword">to</span> load mongodb now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+<span class="keyword">Or</span>, <span class="keyword">if</span> you don<span class="comment">'t want/need launchctl, you can just run:</span>
     mongod
 ==&gt; Summary
-    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M
+    /usr/local/Cellar/mongodb/<span class="number">2.4</span><span class="number">.8</span>: <span class="number">18</span> files, <span class="number">271</span>M
 </pre></td></tr></table></figure>
+
 
 
       
@@ -347,13 +406,17 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
+    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
@@ -370,7 +433,9 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
-    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
@@ -380,6 +445,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
@@ -388,7 +455,7 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/git/">git</a><small>1</small></li>
+    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -400,8 +467,6 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
-    <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
-  
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
@@ -409,6 +474,8 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
@@ -421,6 +488,10 @@ To have launchd <span class="operator"><span class="keyword">start</span> mongod
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
   
   </ul>
 </div>

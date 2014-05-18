@@ -71,6 +71,18 @@
       <div id="wrapper">
         <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -95,14 +107,16 @@
         <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
+<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
 </pre></td></tr></table></figure>
+
 
 <p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
 </pre></td></tr></table></figure>
+
 
 <a id="more"></a>
 
@@ -116,16 +130,17 @@ var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <s
 7
 8
 9
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
-var obj = {}<span class="comment">;</span>
+</pre></td><td class="code"><pre><span class="reserved">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
+<span class="reserved">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+<span class="reserved">var</span> obj = {};
 
-for(var i=<span class="number">0</span>, len=arr1<span class="preprocessor">.length</span><span class="comment">; i&lt;len; i++) {</span>
-    obj[arr1[i]] = arr2[i]<span class="comment">;</span>
+<span class="keyword">for</span>(<span class="reserved">var</span> i=<span class="number">0</span>, len=arr1.length; i&lt;len; i++) {
+    obj[arr1[i]] = arr2[i];
 }
 
-console<span class="preprocessor">.log</span>(obj)<span class="comment">;   // Object {5: "a", 6: "b", 7: "c", 8: "d", 9: "e"}</span>
+<span class="built_in">console</span>.log(obj);   <span class="regexp">//</span> Object {<span class="number">5</span>: <span class="string">"a"</span>, <span class="number">6</span>: <span class="string">"b"</span>, <span class="number">7</span>: <span class="string">"c"</span>, <span class="number">8</span>: <span class="string">"d"</span>, <span class="number">9</span>: <span class="string">"e"</span>}
 </pre></td></tr></table></figure>
+
 
 <p>看到了这个答案后，狠狠的给自己扇一把掌<br>自己的思路跟他的一样，就是不知道自己为什么要再循环一次，蠢si了…</p>
 <p>最后结合项目本身的情况，直接使用 <a href="http://underscorejs.org/underscore.js" target="_blank">Underscore.js</a> 里面的方法</p>
@@ -133,11 +148,12 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;   // O
 2
 3
 4
-</pre></td><td class="code"><pre>var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]<span class="comment">;</span>
-var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>]<span class="comment">;</span>
-var obj = _<span class="preprocessor">.object</span>(arr1, arr2)<span class="comment">;</span>
-console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Object {5: "a", 6: "b", 7: "c", 8: "d", 9: "e"}</span>
+</pre></td><td class="code"><pre><span class="reserved">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
+<span class="reserved">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+<span class="reserved">var</span> obj = _.object(arr1, arr2);
+<span class="built_in">console</span>.log(obj);  <span class="regexp">//</span> Object {<span class="number">5</span>: <span class="string">"a"</span>, <span class="number">6</span>: <span class="string">"b"</span>, <span class="number">7</span>: <span class="string">"c"</span>, <span class="number">8</span>: <span class="string">"d"</span>, <span class="number">9</span>: <span class="string">"e"</span>}
 </pre></td></tr></table></figure>
+
 
 <p>Underscore.js 里面的 _.object() 方法也写得挺简单的，找个时间把源码给翻翻看。。。</p>
 <p><strong>ps：感谢所有帮忙解答这个问题的人。。</strong></p>
@@ -151,7 +167,7 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/js/">js</a> <a href="/tags/JavaScript/">JavaScript</a> <a href="/tags/Array/">Array</a> <a href="/tags/underscore.js/">underscore.js</a> <a href="/tags/object/">object</a> <a href="/tags/数组合并/">数组合并</a>
+    <a href="/tags/js/">js</a> <a href="/tags/JavaScript/">JavaScript</a> <a href="/tags/Array/">Array</a> <a href="/tags/Underscore.js/">Underscore.js</a> <a href="/tags/object/">object</a> <a href="/tags/数组合并/">数组合并</a>
   </div>
 
         
@@ -189,13 +205,17 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
+    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
@@ -212,7 +232,9 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
-    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
@@ -222,6 +244,8 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
@@ -230,7 +254,7 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/git/">git</a><small>1</small></li>
+    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -242,8 +266,6 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
-    <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
-  
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
@@ -251,6 +273,8 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
@@ -263,6 +287,10 @@ console<span class="preprocessor">.log</span>(obj)<span class="comment">;  // Ob
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
   
   </ul>
 </div>

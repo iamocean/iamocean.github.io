@@ -76,6 +76,18 @@
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -98,20 +110,22 @@
     <div class="entry markdown-body">
       
         <p>最近刚换新电脑，刚好要重新安装 <strong>Sublime Text</strong>，顺便把安装的过程给记下来，留着以备不时之需。。。</p>
-<h1>安装 Package Control</h1>
+<h1 id="安装_Package_Control">安装 Package Control</h1>
 <ul>
 <li>打开 Sublime Text, 按下Control + <code>(Mac)或者Ctrl +</code>(Windows)，调出console</li>
 <li>粘贴以下代码</li>
 </ul>
-<h3>Sublime Text 2</h3>
+<h3 id="Sublime_Text_2">Sublime Text 2</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">os.</span>makedirs( ipp ) <span class="keyword">if</span> not <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>exists(ipp) <span class="keyword">else</span> None; <span class="transposed_variable">urllib2.</span>install_opener( <span class="transposed_variable">urllib2.</span>build_opener( <span class="transposed_variable">urllib2.</span>ProxyHandler( ))); open( <span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join( ipp, pf), <span class="string">'wb'</span> ).write( <span class="transposed_variable">urllib2.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> +<span class="transposed_variable">pf.</span>replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); print( <span class="string">'Please restart Sublime Text to finish installation’)
+</pre></td><td class="code"><pre>    import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.<span class="keyword">exists</span>(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); <span class="keyword">open</span>( os.path.<span class="keyword">join</span>( ipp, pf), <span class="string">'wb'</span> ).<span class="keyword">write</span>( urllib2.urlopen( <span class="string">'http://sublime.wbond.net/'</span> +pf.replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).<span class="keyword">read</span>()); <span class="keyword">print</span>( <span class="string">'Please restart Sublime Text to finish installation’)</span>
 </pre></td></tr></table></figure>
 
-<h3>Sublime Text 3</h3>
+
+<h3 id="Sublime_Text_3">Sublime Text 3</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>    import <span class="transposed_variable">urllib.</span>request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = <span class="transposed_variable">sublime.</span>installed_packages_path(); <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>install_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>build_opener( <span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>ProxyHandler()) ); open(<span class="transposed_variable">os.</span><span class="transposed_variable">path.</span>join(ipp, pf), <span class="string">'wb'</span>).write(<span class="transposed_variable">urllib.</span><span class="transposed_variable">request.</span>urlopen( <span class="string">'http://sublime.wbond.net/'</span> + <span class="transposed_variable">pf.</span>replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())
+</pre></td><td class="code"><pre>    import urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="built_in">open</span>(os.path.join(ipp, pf), <span class="string">'wb'</span>).<span class="built_in">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="built_in">read</span>())
 </pre></td></tr></table></figure>
+
 
 <ul>
 <li>重启Sublime Text，点击 Preferences -&gt; Package Settings。如果安装成功了，Package Control会出现在菜单里。</li>
@@ -139,6 +153,18 @@
   
     <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
   <div class="post-content">
     <header>
       
@@ -161,20 +187,22 @@
     <div class="entry markdown-body">
       
         <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2>检查是否存在ssh keys</h2>
+<h2 id="检查是否存在ssh_keys">检查是否存在ssh keys</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ~<span class="regexp">/.ssh
+</pre></td><td class="code"><pre>$ <span class="built_in">cd</span> ~/.ssh
 </pre></td></tr></table></figure>
 
+
 <p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2>如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
+<h2 id="如果存在-ssh目录，请先备份好你的ssh_keys">如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
-</pre></td><td class="code"><pre><span class="title">mkdir</span> ssh_key_backup    // 创建备份
-<span class="title">cp</span> id_rsa* ssh_key_backup    // 移动到备份文件夹下
-<span class="title">rm</span> id_rsa*
+</pre></td><td class="code"><pre>mkdir ssh_key_backup    <span class="comment">// 创建备份</span>
+cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span>
+rm id_rsa*
 </pre></td></tr></table></figure>
+
 
 
       
@@ -219,13 +247,17 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>2</sup></li>
+    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
   
@@ -242,7 +274,9 @@
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
-    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
@@ -252,6 +286,8 @@
   
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
@@ -260,7 +296,7 @@
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/git/">git</a><small>1</small></li>
+    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -272,8 +308,6 @@
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
-    <li><a href="/tags/underscore.js/">underscore.js</a><small>1</small></li>
-  
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
@@ -281,6 +315,8 @@
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
@@ -293,6 +329,10 @@
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
   
   </ul>
 </div>
