@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Array | iamocean</title>
+  <title>第 3 页 | 归档：2014 | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录与分享">
@@ -70,7 +70,7 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
-<h2 class="archive-title tag">Array</h2>
+<h2 class="archive-title">2014</h2>
 
 
   
@@ -92,16 +92,16 @@
     <header>
       
   
-    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
+    <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">Mac OS X 安装MongoDB</a></h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
+        <time class="date" datetime="2014-01-05T08:18:50.000Z">日期：<a href="/2014/01/05/install-mongodb-on-os-x/">2014/01/05</a></time>
         
   
   <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
   </span>
 
 
@@ -109,17 +109,35 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
+        <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
+<h2 id="安装MongoDB">安装MongoDB</h2>
+<p>打开 terminal，往命令行里敲入如下命令</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
-<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+</pre></td><td class="code"><pre>brew <span class="keyword">install</span> MongoDB
 </pre></td></tr></table></figure>
 
 
-<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
+<p>耐心等待下载安装完成后会出现几行提示信息</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>Pouring mongodb-<span class="number">2.4</span><span class="number">.8</span>.mavericks.bottle.tar.gz
+==&gt; Caveats
+<span class="keyword">To</span> have launchd start mongodb at login:
+    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
+<span class="keyword">Then</span> <span class="keyword">to</span> load mongodb now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+<span class="keyword">Or</span>, <span class="keyword">if</span> you don<span class="comment">'t want/need launchctl, you can just run:</span>
+    mongod
+==&gt; Summary
+    /usr/local/Cellar/mongodb/<span class="number">2.4</span><span class="number">.8</span>: <span class="number">18</span> files, <span class="number">271</span>M
 </pre></td></tr></table></figure>
 
 
@@ -130,7 +148,7 @@
       
         
           <div class="more">
-            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读...</a>
+            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读...</a>
           </div>
         
         
@@ -146,6 +164,8 @@
   
 
   <nav id="pagination" class="clearfix">
+  
+    <a href="/archives/2014/page/2/" class="prev">上一页</a>
   
   
 </nav>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Array | iamocean</title>
+  <title>软链接 | iamocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录与分享">
@@ -70,7 +70,7 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
-<h2 class="archive-title tag">Array</h2>
+<h2 class="archive-title tag">软链接</h2>
 
 
   
@@ -92,16 +92,16 @@
     <header>
       
   
-    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
+    <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
+        <time class="date" datetime="2014-05-19T14:58:13.000Z">日期：<a href="/2014/05/19/mac-symbolic-link/">2014/05/19</a></time>
         
   
   <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+    所属：<a href="/categories/Learning/">Learning</a>
   </span>
 
 
@@ -109,29 +109,46 @@
     </header>
     <div class="entry markdown-body">
       
-        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
+        <p>今天在做活动页面时，发现要找个 <strong>PSD</strong> 文件竟然要 <strong>cd</strong> 深入5、6层才能找到，当然这也可能是目录本身设计的时候就有问题的，由于这目录是 <strong>SVN</strong> 上的，大家公用的东西不好大整改，只能另想办法解决了。</p>
+<p>这时候软链接就该派上用场，先看看 <strong>Linux</strong> 链接使用说明。</p>
+<h2 id="软链接">软链接</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];
-<span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];
+3
+4
+5
+</pre></td><td class="code"><pre>ln [option]  source_file dist_file
+   -<span class="ruby">f  建立时将同档案删除
+</span>   -<span class="ruby">i  删除前进行询问
+</span>   -<span class="ruby">s  建立软链接
+</span>   ln source dist 建立硬链接
 </pre></td></tr></table></figure>
 
 
-<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
+<h2 id="实际应用">实际应用</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="comment">// 没建立软链接之前</span>
+cd ~<span class="regexp">/Dropbox/</span>html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd
+
+<span class="comment">// 建立软链接后</span>
+cd ~<span class="regexp">/dragon_boat_festival/</span>psd
 </pre></td></tr></table></figure>
 
 
+<p>轻轻松松的少敲好几个英文单词，顺便也学习了软链接是如何使用的。</p>
+<p><strong>参考资料</strong></p>
+<ul>
+<li><a href="http://blog.csdn.net/russle/article/details/4482784" target="_blank">http://blog.csdn.net/russle/article/details/4482784</a></li>
+</ul>
 
       
     </div>
     <footer>
       
-        
-          <div class="more">
-            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读...</a>
-          </div>
         
         
       
