@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Learning | iamocean</title>
+  <title>Learning | IAMocean</title>
   <meta name="author" content="ocean">
   
   <meta name="description" content="学习、记录与分享">
@@ -14,14 +14,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="iamocean"/>
+  <meta property="og:site_name" content="IAMocean"/>
 
   
     <meta property="og:image" content="undefined"/>
   
 
   <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="iamocean" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="IAMocean" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -45,7 +45,7 @@
     <div class="inner">
       <div class="logo">
     <h1 class="title">
-        <a href="/">iamocean</a>
+        <a href="/">IAMocean</a>
     </h1>
     <h2 class="description">
         <a href="/">
@@ -71,6 +71,66 @@
       <div id="wrapper">
         
 <h2 class="archive-title category">Learning</h2>
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/07/21/mamp-php-cache/">MAMP里面PHP修改后没实时更新</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-07-21T01:00:23.000Z">日期：<a href="/2014/07/21/mamp-php-cache/">2014/07/21</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Learning/">Learning</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body">
+      
+        <p>在用 <strong>MAMP</strong>(v2.2) 开发时，遇到了一个问题，每次修改完 <strong>PHP</strong> 文件，再刷新浏览器后都没能实时显示出修改后的内容，每次都必须等待一会后再刷新才能显示出来，请教 <a href="https://www.google.com.hk/" target="_blank">Google大神</a> 才发现是 <strong>PHP cache</strong> 没设置好的原因。</p>
+<p><strong>解决的方法如下:</strong></p>
+<ol>
+<li>先找到 /Applications/MAMP/bin/php/php5.5.3/conf/php.ini 这个文件</li>
+<li>然后把里面的 opcache.revalidate_freq=60 改成 opcache.revalidate_freq=0</li>
+<li>最后再重启下 MAMP</li>
+</ol>
+<p>注意路径千万别搞错..</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
 
 
   
@@ -125,6 +185,14 @@
 </pre></td></tr></table></figure>
 
 
+<h2 id="如何建立软连接呢？">如何建立软连接呢？</h2>
+<p>假如psd当前所在的路径为/Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>ln <span class="operator">-s</span> /Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival /dargon_boat_festival
+</pre></td></tr></table></figure>
+
+
+<p>这样软链接就建立起来了</p>
 <h2 id="实际应用">实际应用</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -174,7 +242,7 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
+    <input type="hidden" name="q" value="site:iamocean.net">
   </form>
 </div>
 
@@ -187,9 +255,11 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
   
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
@@ -222,11 +292,17 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
     <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
@@ -235,6 +311,8 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -264,6 +342,8 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
   
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
     <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
   
     <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
@@ -290,7 +370,7 @@ cd ~<span class="regexp">/dragon_boat_festival/</span>psd
 <div class="clearfix"></div>
   </footer>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
