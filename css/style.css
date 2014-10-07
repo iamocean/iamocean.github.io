@@ -134,14 +134,18 @@ a:active {
 }
 .header .logo .title a {
   display: inline-block;
-  color: #FFF;
   font-size: 28px;
   line-height: 50px;
-  text-shadow: 0 0 1px #00BBFF;
 }
-.header .logo .title a:hover {
-  color: #F0F0F0;
-  text-decoration: none;
+.header .logo .title a:link,
+.header .logo .title a:visited {
+  color: #FFF;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+.header .logo .title a:hover,
+.header .logo .title a:active {
+  color: #F2F2F2;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 .header .logo .description {
   display: none;
@@ -512,6 +516,10 @@ a:active {
 /**
  * @overview: 公用部分
  */
+::selection {
+  color: #FFF;
+  background-color: #00BBFF;
+}
 /**
  * @overview: 底部
  */
