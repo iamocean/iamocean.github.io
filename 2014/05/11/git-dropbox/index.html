@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -84,7 +86,7 @@
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title">利用Git+Dropbox搭建私有仓库</h1>
@@ -102,57 +104,36 @@
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
-        <p>开源的项目放在 <a href="https://github.com" target="_blank">GitHub</a> 上很个不错的选择，但是有时候有些私人项目可能还不想放出来或是怎么样的，那怎么办呢？ <a href="https://github.com" target="_blank">GitHub</a> 上面也提供了私人的项目存放，但是是需要收费的，如不想付费那就要自己去动手实现啦。</p>
+        <p>开源的项目放在 <a href="https://github.com" target="_blank" rel="external">GitHub</a> 上很个不错的选择，但是有时候有些私人项目可能还不想放出来或是怎么样的，那怎么办呢？ <a href="https://github.com" target="_blank" rel="external">GitHub</a> 上面也提供了私人的项目存放，但是是需要收费的，如不想付费那就要自己去动手实现啦。</p>
 <h2 id="准备工作">准备工作</h2>
-<p>首先您需要有一个 <a href="https://db.tt/UaGAIAsd" target="_blank">Dropbox</a> 帐号，如果没有那就先到这里去<a href="https://db.tt/UaGAIAsd" target="_blank">申请</a>，然后下载并安装好 <a href="https://www.dropbox.com" target="_blank">Dropbox</a> 客户端。（当然你也可以用其他云盘应该也ok啦）</p>
+<p>首先您需要有一个 <a href="https://db.tt/UaGAIAsd" target="_blank" rel="external">Dropbox</a> 帐号，如果没有那就先到这里去<a href="https://db.tt/UaGAIAsd" target="_blank" rel="external">申请</a>，然后下载并安装好 <a href="https://www.dropbox.com" target="_blank" rel="external">Dropbox</a> 客户端。（当然你也可以用其他云盘应该也ok啦）</p>
 <h2 id="创建私有仓库">创建私有仓库</h2>
 <p>首页切换到刚刚安装好的 <strong>Dropbox</strong> 目录下，创建一个私有仓库。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/Dropbox
-git init --bare demo.git
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/Dropbox</div><div class="line">git init --bare demo.git</div></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
 <h2 id="复制私有仓库的内容">复制私有仓库的内容</h2>
 <p>私有仓库我们创建好了，现在把它复制到需要让它工作的目录去，在这里我用 <strong>workspare</strong> 目录代替（个人习惯）。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/workspare
-git clone ~/Dropbox/demo.git demo
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/workspare</div><div class="line">git clone ~/Dropbox/demo.git demo</div></pre></td></tr></table></figure>
 
 <h2 id="检验是否创建成功">检验是否创建成功</h2>
 <p>切换到 <strong>demo</strong> 目录下，新建个文件，尝试push看看。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>cd demo
-touch README<span class="preprocessor">.md</span>
-git <span class="keyword">add</span> .
-git commit -m <span class="string">"init commit"</span>
-git <span class="keyword">push</span> origin master
-</pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> demo</div><div class="line">touch README.md</div><div class="line">git <span class="built_in">add</span> .</div><div class="line">git commit -<span class="keyword">m</span> <span class="string">"init commit"</span></div><div class="line">git push origin master</div></pre></td></tr></table></figure>
 
-
-<p>当你每次push后， <strong>Dropbox</strong> 就会把你push的内容自动同步到服务器上，你可以通过 <a href="https://www.dropbox.com" target="_blank">Dropbox</a> 查看。<br>到这里私有仓库的搭建就完成了。</p>
+<p>当你每次push后， <strong>Dropbox</strong> 就会把你push的内容自动同步到服务器上，你可以通过 <a href="https://www.dropbox.com" target="_blank" rel="external">Dropbox</a> 查看。<br>到这里私有仓库的搭建就完成了。</p>
 <p><strong>参考资料</strong></p>
 <ul>
-<li><a href="http://weizhifeng.net/git-with-dropbox.html" target="_blank">http://weizhifeng.net/git-with-dropbox.html</a></li>
-<li><a href="http://wlog.cn/discover/dropbox-git.html" target="_blank">http://wlog.cn/discover/dropbox-git.html</a></li>
-<li><a href="http://www.drupal001.com/2013/11/free-private-git-repositories-dropbox/" target="_blank">http://www.drupal001.com/2013/11/free-private-git-repositories-dropbox/</a></li>
+<li><a href="http://weizhifeng.net/git-with-dropbox.html" target="_blank" rel="external">http://weizhifeng.net/git-with-dropbox.html</a></li>
+<li><a href="http://wlog.cn/discover/dropbox-git.html" target="_blank" rel="external">http://wlog.cn/discover/dropbox-git.html</a></li>
+<li><a href="http://www.drupal001.com/2013/11/free-private-git-repositories-dropbox/" target="_blank" rel="external">http://www.drupal001.com/2013/11/free-private-git-repositories-dropbox/</a></li>
 </ul>
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
 
         
@@ -170,7 +151,7 @@ git <span class="keyword">push</span> origin master
 </article>
 
 
-<section id="comment">
+<section id="comment" class="extra-comment">
     <h1 class="title">留言</h1>
 
     <!-- Duoshuo Comment BEGIN -->
@@ -203,17 +184,21 @@ git <span class="keyword">push</span> origin master
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -226,6 +211,12 @@ git <span class="keyword">push</span> origin master
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -233,6 +224,8 @@ git <span class="keyword">push</span> origin master
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -242,7 +235,7 @@ git <span class="keyword">push</span> origin master
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -252,17 +245,21 @@ git <span class="keyword">push</span> origin master
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -282,11 +279,15 @@ git <span class="keyword">push</span> origin master
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -308,12 +309,16 @@ git <span class="keyword">push</span> origin master
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>

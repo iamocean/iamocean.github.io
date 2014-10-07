@@ -1,0 +1,214 @@
+/**
+ * @overview: 首页
+ */
+.post {
+  padding: 24px;
+  margin-bottom: 32px;
+  background-color: #FFF;
+  border-radius: 3px;
+}
+.post .gallery {
+  display: none;
+}
+.post .post-content .post-hd {
+  margin-bottom: 24px;
+}
+.post .post-content .post-hd h1 {
+  font-size: 30px;
+  font-weight: normal;
+  text-shadow: 0 0 1px #FFF;
+}
+.post .post-content .post-hd h1 a:link,
+.post .post-content .post-hd h1 a:visited {
+  color: #555;
+}
+.post .post-content .post-hd h1 a:hover,
+.post .post-content .post-hd h1 a:active {
+  color: #00BBFF;
+}
+.post .post-content .post-hd .date,
+.post .post-content .post-hd .categories {
+  color: #CCC;
+}
+.post .post-content .post-hd .date {
+  margin-right: 8px;
+}
+.post .post-content .post-bd.markdown-body h1 {
+  font-size: 24px;
+}
+.post .post-content .post-bd.markdown-body h2 {
+  font-size: 20px;
+}
+.post .post-content .post-bd.markdown-body h3 {
+  font-size: 18px;
+}
+.post .post-content .post-bd.markdown-body h4 {
+  font-size: 16px;
+}
+.post .post-content .post-bd.markdown-body h5 {
+  font-size: 14px;
+}
+.post .post-content .post-bd.markdown-body h6 {
+  font-size: 12px;
+}
+.post .post-content .post-bd.markdown-body h1,
+.post .post-content .post-bd.markdown-body h2,
+.post .post-content .post-bd.markdown-body h3,
+.post .post-content .post-bd.markdown-body h4,
+.post .post-content .post-bd.markdown-body h5,
+.post .post-content .post-bd.markdown-body h6 {
+  margin: 16px 0;
+  padding-bottom: 8px;
+}
+.post .post-content .post-bd.markdown-body p {
+  margin-bottom: 16px;
+}
+.post .post-content .post-bd.markdown-body .highlight {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #F7F7F7;
+  overflow: auto;
+  border-radius: 3px;
+}
+.post .post-content .post-bd.markdown-body .highlight .gutter pre {
+  color: #999;
+  text-align: right;
+  padding-right: 16px;
+}
+.post .post-content .post-bd.markdown-body .highlight .code pre {
+  padding-right: 16px;
+  color: #555;
+}
+.post .post-content .post-bd.markdown-body .highlight .line {
+  height: 24px;
+}
+.post .post-content .post-bd.markdown-body .highlight pre,
+.post .post-content .post-bd.markdown-body .highlight code {
+  font-family: Monaco, Menlo, Consolas, monospace;
+}
+.post .post-content .post-bd.markdown-body .highlight pre {
+  word-wrap: break-word;
+  word-break: normal;
+}
+.post .post-content .post-bd.markdown-body .highlight table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.post .post-content .post-bd.markdown-body pre .comment,
+.post .post-content .post-bd.markdown-body pre .title {
+  color: #CCC;
+}
+.post .post-content .post-bd.markdown-body pre .css .id,
+.post .post-content .post-bd.markdown-body pre .css .class,
+.post .post-content .post-bd.markdown-body pre .css .pseudo {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .css .rules .attribute {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .css .hexcolor {
+  color: #6cc;
+}
+.post .post-content .post-bd.markdown-body pre .javascript .title,
+.post .post-content .post-bd.markdown-body pre .coffeescript .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .javascript .function,
+.post .post-content .post-bd.markdown-body pre .coffeescript .function {
+  color: #c9c;
+}
+.post .post-content .post-bd.markdown-body pre .xml .tag .title {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .xml .pi,
+.post .post-content .post-bd.markdown-body pre .xml .doctype {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .xml .cdata {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .python .decorator,
+.post .post-content .post-bd.markdown-body pre .python .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .constant {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .function .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .title .keyword {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .symbol {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .class .title {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .class {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .variable,
+.post .post-content .post-bd.markdown-body pre .attribute,
+.post .post-content .post-bd.markdown-body pre .tag,
+.post .post-content .post-bd.markdown-body pre .regexp,
+.post .post-content .post-bd.markdown-body pre .html .doctype {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .number,
+.post .post-content .post-bd.markdown-body pre .preprocessor,
+.post .post-content .post-bd.markdown-body pre .built_in,
+.post .post-content .post-bd.markdown-body pre .literal,
+.post .post-content .post-bd.markdown-body pre .params,
+.post .post-content .post-bd.markdown-body pre .constant {
+  color: #f99157;
+}
+.post .post-content .post-bd.markdown-body pre .string,
+.post .post-content .post-bd.markdown-body pre .value,
+.post .post-content .post-bd.markdown-body pre .inheritance,
+.post .post-content .post-bd.markdown-body pre .header {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .keyword {
+  color: #c9c;
+}
+.post .post-content .post-bd.markdown-body pre .function,
+.post .post-content .post-bd.markdown-body pre .perl .sub {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body code {
+  padding: 2px 4px;
+  text-shadow: 0 0 1px #FFF;
+  background-color: #F0F0F0;
+}
+.post .post-content .post-bd.markdown-body ol,
+.post .post-content .post-bd.markdown-body ul {
+  margin: 0 24px 24px 24px;
+}
+.post .post-content .post-bd.markdown-body strong {
+  font-weight: bold;
+}
+.post .post-content .post-ft .more {
+  text-align: right;
+}
+.post .post-content .post-ft .more a,
+.post .post-content .post-ft .tags a {
+  padding: 6px 8px;
+  background-color: #00BBFF;
+  border-radius: 3px;
+}
+.post .post-content .post-ft .more a:link,
+.post .post-content .post-ft .tags a:link,
+.post .post-content .post-ft .more a:visited,
+.post .post-content .post-ft .tags a:visited {
+  color: #FFF;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+.post .post-content .post-ft .more a:hover,
+.post .post-content .post-ft .tags a:hover,
+.post .post-content .post-ft .more a:active,
+.post .post-content .post-ft .tags a:active {
+  color: #F2F2F2;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}

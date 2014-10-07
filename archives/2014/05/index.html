@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -70,317 +72,57 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
+
 <h2 class="archive-title">2014/5</h2>
 
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+
+  <div class="archive">
+    <dl class="archive-list">
     
-      <img src="">
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
       
-  
-    <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
-  
 
       
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-19T14:58:13.000Z">日期：<a href="/2014/05/19/mac-symbolic-link/">2014/05/19</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>今天在做活动页面时，发现要找个 <strong>PSD</strong> 文件竟然要 <strong>cd</strong> 深入5、6层才能找到，当然这也可能是目录本身设计的时候就有问题的，由于这目录是 <strong>SVN</strong> 上的，大家公用的东西不好大整改，只能另想办法解决了。</p>
-<p>这时候软链接就该派上用场，先看看 <strong>Linux</strong> 链接使用说明。</p>
-<h2 id="软链接">软链接</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>ln [option]  source_file dist_file
-   -<span class="ruby">f  建立时将同档案删除
-</span>   -<span class="ruby">i  删除前进行询问
-</span>   -<span class="ruby">s  建立软链接
-</span>   ln source dist 建立硬链接
-</pre></td></tr></table></figure>
-
-
-<h2 id="如何建立软连接呢？">如何建立软连接呢？</h2>
-<p>假如psd当前所在的路径为/Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>ln <span class="operator">-s</span> /Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival /dargon_boat_festival
-</pre></td></tr></table></figure>
-
-
-<p>这样软链接就建立起来了</p>
-<h2 id="实际应用">实际应用</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="comment">// 没建立软链接之前</span>
-cd ~<span class="regexp">/Dropbox/</span>html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd
-
-<span class="comment">// 建立软链接后</span>
-cd ~<span class="regexp">/dragon_boat_festival/</span>psd
-</pre></td></tr></table></figure>
-
-
-<p>轻轻松松的少敲好几个英文单词，顺便也学习了软链接是如何使用的。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://blog.csdn.net/russle/article/details/4482784" target="_blank">http://blog.csdn.net/russle/article/details/4482784</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
+        <dt> 2014 </dt>
         
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
 
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+        <dd>
+          <time class="date" datetime="2014-05-19T14:58:13.000Z">2014-05-19</time>
+          <a href="/2014/05/19/mac-symbolic-link/" class="title">Mac建立软链接</a>
+        </dd>
     
-      <img src="">
+      
+
+      
+
+        <dd>
+          <time class="date" datetime="2014-05-17T15:27:18.000Z">2014-05-17</time>
+          <a href="/2014/05/17/ejs-escape/" class="title">EJS模板特殊字符转义</a>
+        </dd>
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
       
-  
-    <h1 class="title"><a href="/2014/05/17/ejs-escape/">EJS模板特殊字符转义</a></h1>
-  
 
       
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-17T15:27:18.000Z">日期：<a href="/2014/05/17/ejs-escape/">2014/05/17</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/EJS/">EJS</a>, <a href="/categories/EJS/Node.js/">Node.js</a>
-  </span>
 
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>在做 <a href="https://github.com/iamocean/Todos" target="_blank">Todos</a> 项目的过程中，遇到了个特殊字符转义问题，主要是为了防止被 <strong>XSS</strong>，因此在用户输入完内容后，提交时需对其特殊字符进一步处理。</p>
-<p>在 <strong>EJS</strong> 模板中，字符串输出时默认是经过 <strong>escape</strong> 转义编码的，让我们来了解下 <strong>&lt;%- 变量 %&gt;</strong> 和 <strong>&lt;%= 变量 %&gt;</strong> 这两种输出方式的区别</p>
-<ul>
-<li>&lt;%= 变量 %&gt;<br>  用 = 号输出，就会被 <strong>escape</strong> 转义编码，但是当我们想动态生成 <strong>HTML</strong> 标签时，这种方式可能会有点问题</li>
-<li>&lt;%- 变量 %&gt;<br>  用 - 号输出原始内容，不会被 <strong>escape</strong></li>
-</ul>
-<p>到这里似乎还没有解决如何防止被 <strong>XSS</strong> 的问题哦。<br>是的，但是答案已经出来了。</p>
-<p>我们直接翻翻 <strong>EJS</strong> 模板源码看看它自带的 <a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank">escape</a> 方法是如何实现的？<br>然后把它摘过来，在用户输入完内容提交时用这个方法直接处理下就ok了。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://cnodejs.org/topic/505bcced417be95272064f9e" target="_blank">http://cnodejs.org/topic/505bcced417be95272064f9e</a></li>
-<li><a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank">https://github.com/visionmedia/ejs/blob/master/lib/utils.js</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+        <dd>
+          <time class="date" datetime="2014-05-16T15:25:04.000Z">2014-05-16</time>
+          <a href="/2014/05/16/markdown-table/" class="title">Markdown里如何生成表格</a>
+        </dd>
     
-      <img src="">
+      
+
+      
+
+        <dd>
+          <time class="date" datetime="2014-05-11T10:48:46.000Z">2014-05-11</time>
+          <a href="/2014/05/11/git-dropbox/" class="title">利用Git+Dropbox搭建私有仓库</a>
+        </dd>
     
+    </dl>
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/05/16/markdown-table/">Markdown里如何生成表格</a></h1>
-  
 
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-16T15:25:04.000Z">日期：<a href="/2014/05/16/markdown-table/">2014/05/16</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tools/">Tools</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>最近在用 <strong>Markdown</strong> 写作工具来为项目里写一些文档时，遇到了个问题，如何在 <strong>Markdown</strong> 里添加表格呢？<br>后来通过 <a href="https://www.google.com.hk/" target="_blank">Google</a> 发现，原来 <strong>Markdown</strong> 官方默认是没有提供的，只能自己写 <strong>HTML</strong> 代码来实现的。</p>
-<p>由于在 <strong>MAC</strong> 下有个APP叫做 <a href="http://mouapp.com/" target="_blank">Mou</a> ，它里面默认是支持表格的，具体写法如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>日期    <span class="string">|   内容    |   备注</span>
------- <span class="string">| ------ | ------</span>
-<span class="number">2014.05</span>.<span class="number">16</span> <span class="string">| Markdown表格1 | 测试</span>
-<span class="number">2014.05</span>.<span class="number">16</span> <span class="string">| Markdown表格2 |</span>
-<span class="number">2014.05</span>.<span class="number">16</span> <span class="string">| Markdown表格3 | 测试</span>
-</pre></td></tr></table></figure>
-
-
-<p>到里就完成了。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://wowubuntu.com/markdown/" target="_blank">http://wowubuntu.com/markdown/</a></li>
-<li><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">http://daringfireball.net/projects/markdown/syntax</a></li>
-<li><a href="http://www.zfanw.com/blog/markdown-and-table.html" target="_blank">http://www.zfanw.com/blog/markdown-and-table.html</a></li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-  
-    <h1 class="title"><a href="/2014/05/11/git-dropbox/">利用Git+Dropbox搭建私有仓库</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-11T10:48:46.000Z">日期：<a href="/2014/05/11/git-dropbox/">2014/05/11</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body">
-      
-        <p>开源的项目放在 <a href="https://github.com" target="_blank">GitHub</a> 上很个不错的选择，但是有时候有些私人项目可能还不想放出来或是怎么样的，那怎么办呢？ <a href="https://github.com" target="_blank">GitHub</a> 上面也提供了私人的项目存放，但是是需要收费的，如不想付费那就要自己去动手实现啦。</p>
-<h2 id="准备工作">准备工作</h2>
-<p>首先您需要有一个 <a href="https://db.tt/UaGAIAsd" target="_blank">Dropbox</a> 帐号，如果没有那就先到这里去<a href="https://db.tt/UaGAIAsd" target="_blank">申请</a>，然后下载并安装好 <a href="https://www.dropbox.com" target="_blank">Dropbox</a> 客户端。（当然你也可以用其他云盘应该也ok啦）</p>
-<h2 id="创建私有仓库">创建私有仓库</h2>
-<p>首页切换到刚刚安装好的 <strong>Dropbox</strong> 目录下，创建一个私有仓库。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre><span class="built_in">cd</span> ~/Dropbox
-git init --bare demo.git
-</pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="more">
-            <a href="/2014/05/11/git-dropbox/#more" class="more-link">继续阅读...</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav id="pagination" class="clearfix">
-  
-  
-</nav>
 
       </div>
     </div>
@@ -404,17 +146,21 @@ git init --bare demo.git
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -427,6 +173,12 @@ git init --bare demo.git
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -434,6 +186,8 @@ git init --bare demo.git
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -443,7 +197,7 @@ git init --bare demo.git
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -453,17 +207,21 @@ git init --bare demo.git
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -483,11 +241,15 @@ git init --bare demo.git
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -509,12 +271,16 @@ git init --bare demo.git
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>

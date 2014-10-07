@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac下搭建TAE开发环境 | Iamocean</title>
+  <meta name="author" content="ocean">
+  
+  <meta name="description" content="学习、记录与分享">
+  
+  
+  <meta name="keywords" content="前端开发、HTML5、CSS3、游戏开发">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Mac下搭建TAE开发环境"/>
+  <meta property="og:site_name" content="Iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">Iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+        <li><a href="/about">关于我</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title">Mac下搭建TAE开发环境</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-09-28T08:39:06.000Z">日期：<a href="/2014/09/28/tae-environment-configuration/">2014/09/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>由于 <strong>Mac</strong> 的安全机制问题，<strong>JDK</strong> 默认是不会自动升级的， <strong>Mac OS X</strong>里默认自带有 <em>v1.6.0</em> 版本的，而 <strong>TAE</strong> 只支持 <em>v.1.7.x</em> 的。</p>
+<p>现在让小编先来看看 <strong>Mac OS X</strong> 里默认都安装了几个版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">❯ whereis java</span></span></div><div class="line">/usr/bin/java</div><div class="line"></div><div class="line">❯ ls -la /usr/bin/java</div><div class="line">lrwxr-xr-x  1 root  wheel  74  9 25 16:06 /usr/bin/java -&gt; /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span>/<span class="constant">Current</span>/<span class="constant">Commands</span>/java</div><div class="line"></div><div class="line">❯ cd /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span></div></pre></td></tr></table></figure>
+
+<h1 id="下载并安装软件">下载并安装软件</h1>
+<h2 id="Java_SE_Development_Kit_7">Java SE Development Kit 7</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">Java SE Development Kit 7</a><br>这里需要注意下，千万别下载 <em>v1.8.x</em> 以上的，记住一定要是 <em>v1.7.x</em> 版本的</p>
+<p><a id="more"></a></p>
+<h2 id="验证是否安装成功">验证是否安装成功</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -<span class="keyword">version</span></div></pre></td></tr></table></figure>
+
+<p>看看是不是你自己安装的那个版本。</p>
+<h2 id="配置">配置</h2>
+<p>小编终端工具用的是 <strong>oh-my-zsh</strong>，在根目录下可以找到 <strong>.zshrc</strong> 添加环境变量</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export JAV<span class="built_in">A_HOME</span>=<span class="escape">`/</span>usr/libexec/jav<span class="built_in">a_home</span>`</div></pre></td></tr></table></figure>
+
+<p>注：由于小编之前安装过 <em>v1.8.x</em> 版本，卸了半天都没卸载成功。<br>最后没辙了，直接指定让它运行 <em>v1.7.x</em> 版本，具体设置如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export JAV<span class="built_in">A_HOME</span>=<span class="escape">`/</span>usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.7</span>`</div></pre></td></tr></table></figure>
+
+<p>最后运行下 <code>source .zshrc</code> 让环境变量生效。</p>
+<h1 id="TAE_SDK安装">TAE SDK安装</h1>
+<p>到官方网站上去下载 <strong>SDK</strong> （小编用的是<strong>PHP</strong>）<br>假设目录为 <strong>php/</strong> 打开终端运行代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> php</div><div class="line">./install_<span class="keyword">for</span>_mac  // 敲下回车键</div></pre></td></tr></table></figure>
+
+<p>注：千万别再傻傻的去双击这个文件，这里不是 <strong>windows</strong> 吖。</p>
+<p>安装过程中会询问你安装的路径<br>安装完成后在 <strong>TAE_Cloud_SDK</strong> 里的 <strong>webapps/</strong> 目录下，新建个 <strong>index.html</strong> 文件<br>然后在浏览里访问 <code>http://localhost:8080/index.html</code> 就可以</p>
+<p>然后没有然后了….</p>
+<h3 id="参考资料：">参考资料：</h3>
+<p><a href="http://han.guokai.blog.163.com/blog/static/136718271201301183938165/" target="_blank" rel="external">http://han.guokai.blog.163.com/blog/static/136718271201301183938165/</a></p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/TAE/">TAE</a> <a href="/tags/Mac/">Mac</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment" class="extra-comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:iamocean.net">
+  </form>
+</div>
+
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
+  
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
+  
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/升级/">升级</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>1</small></li>
+  
+    <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
+  
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
+  </footer>
+
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iamocean"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

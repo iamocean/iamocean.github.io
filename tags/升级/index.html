@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -70,7 +72,9 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
+
 <h2 class="archive-title tag">升级</h2>
+
 
 
   
@@ -89,7 +93,7 @@
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title"><a href="/2014/02/11/upgrade-svn-version/">升级Mac自带的SVN版本</a></h1>
@@ -107,34 +111,23 @@
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>Mac在10.9.1版本里，系统默认安装了 <strong>subversion(svn)</strong> ，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在 <strong>Terminal</strong> 终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
 <h2 id="准备工作：">准备工作：</h2>
 <p>首先要确保您的 <strong>Mac</strong> 已经安装好了 <strong>Git</strong> (默认已安装) 和 <strong>Homebrew</strong></p>
 <h2 id="备份系统自带的SVN">备份系统自带的SVN</h2>
 <p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>which svn
-<span class="built_in">cd</span> /usr/bin
-mkdir ~/.backup
-(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup
-(<span class="built_in">sudo</span>) rm -rf svn*
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">which svn</div><div class="line"><span class="built_in">cd</span> /usr/bin</div><div class="line">mkdir ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) rm -rf svn*</div></pre></td></tr></table></figure>
 
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
           <div class="more">
-            <a href="/2014/02/11/upgrade-svn-version/#more" class="more-link">继续阅读...</a>
+            <a href="/2014/02/11/upgrade-svn-version/#more" class="more-link">继续阅读…</a>
           </div>
         
         
@@ -149,10 +142,11 @@ mkdir ~/.backup
 
   
 
-  <nav id="pagination" class="clearfix">
-  
-  
+  <nav class="page-nav clearfix">
+  <span class="page-number current">1</span>
 </nav>
+
+
 
       </div>
     </div>
@@ -176,17 +170,21 @@ mkdir ~/.backup
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -199,6 +197,12 @@ mkdir ~/.backup
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -206,6 +210,8 @@ mkdir ~/.backup
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -215,7 +221,7 @@ mkdir ~/.backup
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -225,17 +231,21 @@ mkdir ~/.backup
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -255,11 +265,15 @@ mkdir ~/.backup
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -281,12 +295,16 @@ mkdir ~/.backup
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>

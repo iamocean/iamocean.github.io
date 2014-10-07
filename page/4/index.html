@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -85,26 +87,50 @@
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
-    <h1 class="title"><a href="/2013/10/10/hello-world/">Hello World</a></h1>
+    <h1 class="title"><a href="/2014/01/12/javascript-some-skill/">JavaScript的一些技巧</a></h1>
   
 
       
         <div class="icon"></div>
-        <time class="date" datetime="2013-10-10T15:06:30.000Z">日期：<a href="/2013/10/10/hello-world/">2013/10/10</a></time>
+        <time class="date" datetime="2014-01-12T14:14:49.000Z">日期：<a href="/2014/01/12/javascript-some-skill/">2014/01/12</a></time>
         
+  
+  <span class="categories">
+    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+  </span>
+
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
-        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
+        <h3 id="1-_为什么有一些匿名函数前面会多个分号呢？">1. 为什么有一些匿名函数前面会多个分号呢？</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="comment">// coding...</span></div><div class="line">});</div></pre></td></tr></table></figure>
+
+<ul>
+<li>防止多文件合并成一个文件后，高压缩导致语法错误。</li>
+<li>这是一个匿名函数，一般js库都采用这种自执行的匿名函数来保护内部变量 (function(){})()</li>
+<li>因为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined作比较的话，程序就可以不用搜索undefined到window，可以提高程序性能</li>
+</ul>
+<h3 id="2-_这样声明变量有什么好处呢？">2. 这样声明变量有什么好处呢？</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var obj </span>=<span class="string"> obj || {};</span></div></pre></td></tr></table></figure>
+
+<ul>
+<li>如果第一个操作数是对象，则返回第一个操作数；</li>
+<li>如果第一个操作数的求值结果为false，则返回第二个操作数；</li>
+<li>如果两个操作数都是对象，则返回第一个操作数；</li>
+<li>如果两个操作数都是null，则返回null；</li>
+<li>如果两个操作数都是NaN，则返回NaN；</li>
+<li>如果两个操作数都是undefined，则返回undefined；</li>
+</ul>
+<p>简单来说就是：<strong>如果已存在obj，则保持不变，否则将 {} 赋值给obj。</strong></p>
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
         
@@ -118,13 +144,278 @@
 
 
 
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
+  
 
-<nav id="pagination" class="clearfix">
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
+        
   
-    <a href="/page/3/" class="prev">上一页</a>
+  <span class="categories">
+    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</div></pre></td></tr></table></figure>
+
+<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
   
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/01/06/mac-recommend-software/">Mac下常用的软件</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-01-06T15:20:16.000Z">日期：<a href="/2014/01/06/mac-recommend-software/">2014/01/06</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>在这里介绍的软件，主要是一些免费开源的，根据本人需求而推荐的。</p>
+<ul>
+<li><a href="http://www.freemacsoft.net/appcleaner/" target="_blank" rel="external">App cleaner</a>  用来彻底删除应用软件，包括各种相关的配置文件资料等。</li>
+<li><a href="http://www.kekaosx.com/zh-cn/" target="_blank" rel="external">keka</a> 压缩软件</li>
+<li><a href="http://www.foxmail.com/" target="_blank" rel="external">Foxmail</a> 邮件客户端  日常工作必需品</li>
+<li><a href="https://www.dropbox.com/" target="_blank" rel="external">Dropbox</a>  网盘方便、无缝同步数据</li>
+<li><a href="https://www.evernote.com/" target="_blank" rel="external">Evernote</a>  笔记  外加＋“悦读” 用来保存文章、记录代码片断、提醒事项等</li>
+<li><a href="http://www.alfredapp.com/" target="_blank" rel="external">Alfred</a>  神器之快速启动软件</li>
+<li><a href="http://www.sublimetext.com/" target="_blank" rel="external">SublimeText</a>   编辑器   小而美</li>
+<li><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>  包管理器  安装git、monogdb等等，直接 brew install 开发你懂的</li>
+<li><a href="https://www.virtualbox.org/" target="_blank" rel="external">VirtualBox</a>   虚拟机   一些网银和工作需要</li>
+</ul>
+<p><strong>另外两个收费的，如有能力，建议买正版</strong></p>
+<ul>
+<li>Photoshop  图片处理</li>
+<li><a href="http://www.charlesproxy.com/" target="_blank" rel="external">Charles</a> 俗称“花瓶”，抓包用的</li>
+</ul>
+<p>PS：部分第三方下载的软件在安装时提示“无法打开，来自不受信任的开发者”。<br>解决办法是：系统偏好设置 －&gt; 安全与隐私 －&gt; 点左下角的小锁头图标然后输入自己的密码 －&gt; 在“通用”标签下点选“任何来源”。</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">Mac OS X 安装MongoDB</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-01-05T08:18:50.000Z">日期：<a href="/2014/01/05/install-mongodb-on-os-x/">2014/01/05</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
+<h2 id="安装MongoDB">安装MongoDB</h2>
+<p>打开 terminal，往命令行里敲入如下命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew <span class="operator"><span class="keyword">install</span> MongoDB</span></div></pre></td></tr></table></figure>
+
+<p>耐心等待下载安装完成后会出现几行提示信息</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Pouring mongodb-2.4.8.mavericks.bottle.tar.gz</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Caveats</span></span></span></div><div class="line">To have launchd start mongodb at login:</div><div class="line">    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents</div><div class="line">Then to load mongodb now:</div><div class="line">    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</div><div class="line">Or, if you don't want/need launchctl, you can just run:</div><div class="line">    mongod</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Summary</span></span></span></div><div class="line"><span class="comment">    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2013/12/14/sublime-text-install-and-settings/">Sublime Text 安装与配置</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2013-12-14T15:15:06.000Z">日期：<a href="/2013/12/14/sublime-text-install-and-settings/">2013/12/14</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>最近刚换新电脑，刚好要重新安装 <strong>Sublime Text</strong>，顺便把安装的过程给记下来，留着以备不时之需。。。</p>
+<h1 id="安装_Package_Control">安装 Package Control</h1>
+<ul>
+<li>打开 Sublime Text, 按下Control + <code>(Mac)或者Ctrl +</code>(Windows)，调出console</li>
+<li>粘贴以下代码</li>
+</ul>
+<h3 id="Sublime_Text_2">Sublime Text 2</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.<span class="keyword">exists</span>(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); <span class="keyword">open</span>( os.path.<span class="keyword">join</span>( ipp, pf), <span class="string">'wb'</span> ).<span class="keyword">write</span>( urllib2.urlopen( <span class="string">'http://sublime.wbond.net/'</span> +pf.replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).<span class="keyword">read</span>()); <span class="keyword">print</span>( <span class="string">'Please restart Sublime Text to finish installation’)</span></div></pre></td></tr></table></figure>
+
+<h3 id="Sublime_Text_3">Sublime Text 3</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">open</span>(os.path.<span class="built_in">join</span>(ipp, pf), <span class="string">'wb'</span>).<span class="keyword">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="keyword">read</span>())</div></pre></td></tr></table></figure>
+
+<ul>
+<li>重启Sublime Text，点击 Preferences -&gt; Package Settings。如果安装成功了，Package Control会出现在菜单里。</li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2013/12/14/sublime-text-install-and-settings/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav class="page-nav clearfix">
+  <a class="extend prev" rel="prev" href="/page/3/">« 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页 »</a>
 </nav>
+
       </div>
     </div>
     <aside id="sidebar" class="sidebar">
@@ -147,17 +438,21 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -170,6 +465,12 @@
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -177,6 +478,8 @@
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -186,7 +489,7 @@
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -196,17 +499,21 @@
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -226,11 +533,15 @@
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -252,12 +563,16 @@
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>

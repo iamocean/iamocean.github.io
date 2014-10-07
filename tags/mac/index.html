@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -70,7 +72,9 @@
     <div id="main-col" class="main">
       <div id="wrapper">
         
+
 <h2 class="archive-title tag">Mac</h2>
+
 
 
   
@@ -89,7 +93,71 @@
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/09/28/tae-environment-configuration/">Mac下搭建TAE开发环境</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-09-28T08:39:06.000Z">日期：<a href="/2014/09/28/tae-environment-configuration/">2014/09/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>由于 <strong>Mac</strong> 的安全机制问题，<strong>JDK</strong> 默认是不会自动升级的， <strong>Mac OS X</strong>里默认自带有 <em>v1.6.0</em> 版本的，而 <strong>TAE</strong> 只支持 <em>v.1.7.x</em> 的。</p>
+<p>现在让小编先来看看 <strong>Mac OS X</strong> 里默认都安装了几个版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">❯ whereis java</span></span></div><div class="line">/usr/bin/java</div><div class="line"></div><div class="line">❯ ls -la /usr/bin/java</div><div class="line">lrwxr-xr-x  1 root  wheel  74  9 25 16:06 /usr/bin/java -&gt; /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span>/<span class="constant">Current</span>/<span class="constant">Commands</span>/java</div><div class="line"></div><div class="line">❯ cd /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span></div></pre></td></tr></table></figure>
+
+<h1 id="下载并安装软件">下载并安装软件</h1>
+<h2 id="Java_SE_Development_Kit_7">Java SE Development Kit 7</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">Java SE Development Kit 7</a><br>这里需要注意下，千万别下载 <em>v1.8.x</em> 以上的，记住一定要是 <em>v1.7.x</em> 版本的</p>
+<p>
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/09/28/tae-environment-configuration/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
       
   
     <h1 class="title"><a href="/2014/02/11/upgrade-svn-version/">升级Mac自带的SVN版本</a></h1>
@@ -107,34 +175,23 @@
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>Mac在10.9.1版本里，系统默认安装了 <strong>subversion(svn)</strong> ，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在 <strong>Terminal</strong> 终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
 <h2 id="准备工作：">准备工作：</h2>
 <p>首先要确保您的 <strong>Mac</strong> 已经安装好了 <strong>Git</strong> (默认已安装) 和 <strong>Homebrew</strong></p>
 <h2 id="备份系统自带的SVN">备份系统自带的SVN</h2>
 <p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>which svn
-<span class="built_in">cd</span> /usr/bin
-mkdir ~/.backup
-(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup
-(<span class="built_in">sudo</span>) rm -rf svn*
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">which svn</div><div class="line"><span class="built_in">cd</span> /usr/bin</div><div class="line">mkdir ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) rm -rf svn*</div></pre></td></tr></table></figure>
 
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
           <div class="more">
-            <a href="/2014/02/11/upgrade-svn-version/#more" class="more-link">继续阅读...</a>
+            <a href="/2014/02/11/upgrade-svn-version/#more" class="more-link">继续阅读…</a>
           </div>
         
         
@@ -163,7 +220,7 @@ mkdir ~/.backup
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title"><a href="/2014/01/06/mac-recommend-software/">Mac下常用的软件</a></h1>
@@ -181,30 +238,30 @@ mkdir ~/.backup
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>在这里介绍的软件，主要是一些免费开源的，根据本人需求而推荐的。</p>
 <ul>
-<li><a href="http://www.freemacsoft.net/appcleaner/" target="_blank">App cleaner</a>  用来彻底删除应用软件，包括各种相关的配置文件资料等。</li>
-<li><a href="http://www.kekaosx.com/zh-cn/" target="_blank">keka</a> 压缩软件</li>
-<li><a href="http://www.foxmail.com/" target="_blank">Foxmail</a> 邮件客户端  日常工作必需品</li>
-<li><a href="https://www.dropbox.com/" target="_blank">Dropbox</a>  网盘方便、无缝同步数据</li>
-<li><a href="https://www.evernote.com/" target="_blank">Evernote</a>  笔记  外加＋“悦读” 用来保存文章、记录代码片断、提醒事项等</li>
-<li><a href="http://www.alfredapp.com/" target="_blank">Alfred</a>  神器之快速启动软件</li>
-<li><a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>   编辑器   小而美</li>
-<li><a href="http://brew.sh/" target="_blank">Homebrew</a>  包管理器  安装git、monogdb等等，直接 brew install 开发你懂的</li>
-<li><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>   虚拟机   一些网银和工作需要</li>
+<li><a href="http://www.freemacsoft.net/appcleaner/" target="_blank" rel="external">App cleaner</a>  用来彻底删除应用软件，包括各种相关的配置文件资料等。</li>
+<li><a href="http://www.kekaosx.com/zh-cn/" target="_blank" rel="external">keka</a> 压缩软件</li>
+<li><a href="http://www.foxmail.com/" target="_blank" rel="external">Foxmail</a> 邮件客户端  日常工作必需品</li>
+<li><a href="https://www.dropbox.com/" target="_blank" rel="external">Dropbox</a>  网盘方便、无缝同步数据</li>
+<li><a href="https://www.evernote.com/" target="_blank" rel="external">Evernote</a>  笔记  外加＋“悦读” 用来保存文章、记录代码片断、提醒事项等</li>
+<li><a href="http://www.alfredapp.com/" target="_blank" rel="external">Alfred</a>  神器之快速启动软件</li>
+<li><a href="http://www.sublimetext.com/" target="_blank" rel="external">SublimeText</a>   编辑器   小而美</li>
+<li><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>  包管理器  安装git、monogdb等等，直接 brew install 开发你懂的</li>
+<li><a href="https://www.virtualbox.org/" target="_blank" rel="external">VirtualBox</a>   虚拟机   一些网银和工作需要</li>
 </ul>
 <p><strong>另外两个收费的，如有能力，建议买正版</strong></p>
 <ul>
 <li>Photoshop  图片处理</li>
-<li><a href="http://www.charlesproxy.com/" target="_blank">Charles</a> 俗称“花瓶”，抓包用的</li>
+<li><a href="http://www.charlesproxy.com/" target="_blank" rel="external">Charles</a> 俗称“花瓶”，抓包用的</li>
 </ul>
 <p>PS：部分第三方下载的软件在安装时提示“无法打开，来自不受信任的开发者”。<br>解决办法是：系统偏好设置 －&gt; 安全与隐私 －&gt; 点左下角的小锁头图标然后输入自己的密码 －&gt; 在“通用”标签下点选“任何来源”。</p>
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
         
@@ -233,7 +290,7 @@ mkdir ~/.backup
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">Mac OS X 安装MongoDB</a></h1>
@@ -251,48 +308,24 @@ mkdir ~/.backup
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>前提是你的Mac里已经安装好Homebrew，如果没有请自行先安装后再继续往下看…</p>
 <h2 id="安装MongoDB">安装MongoDB</h2>
 <p>打开 terminal，往命令行里敲入如下命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>brew <span class="keyword">install</span> MongoDB
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew <span class="operator"><span class="keyword">install</span> MongoDB</span></div></pre></td></tr></table></figure>
 
 <p>耐心等待下载安装完成后会出现几行提示信息</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre>Pouring mongodb-<span class="number">2.4</span><span class="number">.8</span>.mavericks.bottle.tar.gz
-==&gt; Caveats
-<span class="keyword">To</span> have launchd start mongodb at login:
-    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
-<span class="keyword">Then</span> <span class="keyword">to</span> load mongodb now:
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-<span class="keyword">Or</span>, <span class="keyword">if</span> you don<span class="comment">'t want/need launchctl, you can just run:</span>
-    mongod
-==&gt; Summary
-    /usr/local/Cellar/mongodb/<span class="number">2.4</span><span class="number">.8</span>: <span class="number">18</span> files, <span class="number">271</span>M
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Pouring mongodb-2.4.8.mavericks.bottle.tar.gz</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Caveats</span></span></span></div><div class="line">To have launchd start mongodb at login:</div><div class="line">    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents</div><div class="line">Then to load mongodb now:</div><div class="line">    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</div><div class="line">Or, if you don't want/need launchctl, you can just run:</div><div class="line">    mongod</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Summary</span></span></span></div><div class="line"><span class="comment">    /usr/local/Cellar/mongodb/2.4.8: 18 files, 271M</span></div></pre></td></tr></table></figure>
 
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
           <div class="more">
-            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读...</a>
+            <a href="/2014/01/05/install-mongodb-on-os-x/#more" class="more-link">继续阅读…</a>
           </div>
         
         
@@ -321,7 +354,7 @@ mkdir ~/.backup
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title"><a href="/2013/12/07/mac-generating-ssh-keys/">Mac下生成ssh keys连接Github</a></h1>
@@ -339,34 +372,24 @@ mkdir ~/.backup
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
 <h2 id="检查是否存在ssh_keys">检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ <span class="built_in">cd</span> ~/.ssh
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
 
 <p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
 <h2 id="如果存在-ssh目录，请先备份好你的ssh_keys">如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>mkdir ssh_key_backup    <span class="comment">// 创建备份</span>
-cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span>
-rm id_rsa*
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir ssh_key_backup    <span class="comment">// 创建备份</span></div><div class="line">cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span></div><div class="line">rm id_rsa*</div></pre></td></tr></table></figure>
 
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
         
           <div class="more">
-            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读...</a>
+            <a href="/2013/12/07/mac-generating-ssh-keys/#more" class="more-link">继续阅读…</a>
           </div>
         
         
@@ -381,10 +404,11 @@ rm id_rsa*
 
   
 
-  <nav id="pagination" class="clearfix">
-  
-  
+  <nav class="page-nav clearfix">
+  <span class="page-number current">1</span>
 </nav>
+
+
 
       </div>
     </div>
@@ -408,17 +432,21 @@ rm id_rsa*
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -431,6 +459,12 @@ rm id_rsa*
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -438,6 +472,8 @@ rm id_rsa*
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -447,7 +483,7 @@ rm id_rsa*
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -457,17 +493,21 @@ rm id_rsa*
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -487,11 +527,15 @@ rm id_rsa*
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -513,12 +557,16 @@ rm id_rsa*
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>

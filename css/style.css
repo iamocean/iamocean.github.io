@@ -1,6 +1,6 @@
 html {
   color: #333;
-  background-color: #FFF;
+  background-color: #F2F2F2;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body,
@@ -37,7 +37,7 @@ button,
 input,
 select,
 textarea {
-  font: 14px/1.5 "Consolas", "monaco", "monospace", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", "sans-serif";
+  font: 14px/1.5 "Helvetica neue", "Helvetica", "Tahoma", "Arial", "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", "sans-serif";
 }
 article,
 aside,
@@ -90,11 +90,11 @@ a:link,
 a:visited {
   color: #999;
   text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 a:hover,
 a:active {
-  color: #18b4f0;
+  color: #00BBFF;
+  text-decoration: none;
 }
 .clearfix {
   *zoom: 1;
@@ -123,7 +123,7 @@ a:active {
   z-index: 100;
   width: 100%;
   height: 50px;
-  background-color: #FFF;
+  background-color: #00BBFF;
   border-bottom: 1px solid #d9d9d9;
 }
 .header .inner {
@@ -134,13 +134,14 @@ a:active {
 }
 .header .logo .title a {
   display: inline-block;
-  color: #555;
+  color: #FFF;
   font-size: 28px;
   line-height: 50px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), -1px 0 1px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 0 1px #00BBFF;
 }
 .header .logo .title a:hover {
-  color: #18b4f0;
+  color: #F0F0F0;
+  text-decoration: none;
 }
 .header .logo .description {
   display: none;
@@ -162,471 +163,33 @@ a:active {
 }
 .header .nav li a {
   display: block;
-  padding: 14px 18px;
-  color: #555;
+  padding: 13px 18px;
+  font-size: 16px;
   text-decoration: none;
-  -webkit-transition: color 0.25s ease-in-out;
 }
-.header .nav li a:hover {
-  color: #18b4f0;
+.header .nav li a:link,
+.header .nav li a:visited {
+  color: #FFF;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+.header .nav li a:hover,
+.header .nav li a:active {
+  color: #F2F2F2;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 .container {
   margin: 80px auto 0 auto;
-  width: 960px;
+  width: 740px;
 }
 .main {
   width: 740px;
   margin: 0 auto;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 /**
  * 文章列表
  */
-.photo,
-.post,
-.about,
-#comment {
-  position: relative;
-  z-index: 1;
-  padding: 30px;
-  margin-bottom: 30px;
-  background-color: #FFF;
-}
-.photo:after,
-.post:after,
-.about:after,
-#comment:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
-}
-.photo .gallery,
-.post .gallery,
-.about .gallery,
-#comment .gallery {
-  display: none;
-}
-.photo header,
-.post header,
-.about header,
-#comment header {
-  margin-bottom: 30px;
-}
-.photo header .title,
-.post header .title,
-.about header .title,
-#comment header .title {
-  font-size: 30px;
-}
-.photo header .title a,
-.post header .title a,
-.about header .title a,
-#comment header .title a {
-  -webkit-transition: color 0.25s ease-in-out;
-}
-.photo header .title a:link,
-.post header .title a:link,
-.about header .title a:link,
-#comment header .title a:link,
-.photo header .title a:visited,
-.post header .title a:visited,
-.about header .title a:visited,
-#comment header .title a:visited {
-  color: #333;
-}
-.photo header .title a:hover,
-.post header .title a:hover,
-.about header .title a:hover,
-#comment header .title a:hover,
-.photo header .title a:active,
-.post header .title a:active,
-.about header .title a:active,
-#comment header .title a:active {
-  color: #18b4f0;
-}
-.photo header .date,
-.post header .date,
-.about header .date,
-#comment header .date {
-  color: #666;
-}
-.photo header .categories,
-.post header .categories,
-.about header .categories,
-#comment header .categories {
-  margin-left: 12px;
-  color: #666;
-}
-.photo .entry,
-.post .entry,
-.about .entry,
-#comment .entry {
-  color: #0C0C0C;
-  /* for markdown */
-  /*
-            blockquote {
-                border-top: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
-                font-style: italic;
-                font-family: "Georgia", serif;
-                font-size: 1.2em;
-                padding: 0 30px 15px;
-                text-align: center;
-
-                footer {
-                    border-top: none;
-                    font-size: 0.8em;
-                    line-height: 1;
-                    margin: 20px 0 0;
-                    padding-top: 0;
-                }
-
-                cite {
-                    &:before {
-                        content: '—';
-                        color: #ccc;
-                        padding: 0 0.5em;
-                    }
-                }
-            }
-
-            // 高亮代码
-            code,
-            pre {
-                font-family: Monaco, Menlo, Consolas, Courier New, monospace;
-            }
-
-            code {
-                background: #eee;
-                color: #666;
-                padding: 0 5px;
-                margin: 0 2px;
-                font-size: 0.9em;
-                border: 1px solid #ddd;
-                -webkit-border-radius: 3px;
-                border-radius: 3px;
-            }
-
-            pre {
-                background: #eee;
-                border: 1px solid #ddd;
-                margin-top: 15px;
-                overflow: auto;
-                padding: 7px 15px;
-                -webkit-border-radius: 2px;
-                border-radius: 2px;
-
-                code {
-                      background: none;
-                      padding: 0;
-                      margin: 0;
-                      border: none;
-                      -webkit-border-radius: 0;
-                      border-radius: 0;
-                }
-            }
-        */
-}
-.photo .entry > *:first-child,
-.post .entry > *:first-child,
-.about .entry > *:first-child,
-#comment .entry > *:first-child {
-  margin-top: 0;
-}
-.photo .entry h1,
-.post .entry h1,
-.about .entry h1,
-#comment .entry h1 {
-  font-size: 28px;
-}
-.photo .entry h2,
-.post .entry h2,
-.about .entry h2,
-#comment .entry h2 {
-  font-size: 24px;
-}
-.photo .entry h3,
-.post .entry h3,
-.about .entry h3,
-#comment .entry h3 {
-  font-size: 18px;
-}
-.photo .entry h4,
-.post .entry h4,
-.about .entry h4,
-#comment .entry h4 {
-  font-size: 16px;
-}
-.photo .entry h5,
-.post .entry h5,
-.about .entry h5,
-#comment .entry h5 {
-  font-size: 14px;
-}
-.photo .entry h6,
-.post .entry h6,
-.about .entry h6,
-#comment .entry h6 {
-  font-size: 14px;
-}
-.photo .entry h1,
-.post .entry h1,
-.about .entry h1,
-#comment .entry h1,
-.photo .entry h2,
-.post .entry h2,
-.about .entry h2,
-#comment .entry h2,
-.photo .entry h3,
-.post .entry h3,
-.about .entry h3,
-#comment .entry h3,
-.photo .entry h4,
-.post .entry h4,
-.about .entry h4,
-#comment .entry h4,
-.photo .entry h5,
-.post .entry h5,
-.about .entry h5,
-#comment .entry h5,
-.photo .entry h6,
-.post .entry h6,
-.about .entry h6,
-#comment .entry h6 {
-  margin-top: 24px;
-  padding-bottom: 8px;
-}
-.photo .entry ul,
-.post .entry ul,
-.about .entry ul,
-#comment .entry ul,
-.photo .entry ol,
-.post .entry ol,
-.about .entry ol,
-#comment .entry ol {
-  padding-left: 30px;
-}
-.photo .entry p,
-.post .entry p,
-.about .entry p,
-#comment .entry p {
-  margin: 15px 0;
-  word-break: break-all;
-}
-.photo .entry .caption,
-.post .entry .caption,
-.about .entry .caption,
-#comment .entry .caption {
-  display: none;
-}
-.photo footer,
-.post footer,
-.about footer,
-#comment footer {
-  padding-top: 30px;
-}
-.photo footer .more,
-.post footer .more,
-.about footer .more,
-#comment footer .more {
-  text-align: right;
-}
-.photo footer .more a,
-.post footer .more a,
-.about footer .more a,
-#comment footer .more a {
-  display: inline-block;
-  padding: 6px 12px;
-  color: #999;
-  background: #f0f0f0;
-  text-decoration: none;
-  -webkit-transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.photo footer .more a:hover,
-.post footer .more a:hover,
-.about footer .more a:hover,
-#comment footer .more a:hover {
-  color: #18b4f0;
-  background: #f5f5f5;
-}
-.photo footer .tags,
-.post footer .tags,
-.about footer .tags,
-#comment footer .tags {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-.photo footer .tags a,
-.post footer .tags a,
-.about footer .tags a,
-#comment footer .tags a {
-  display: inline-block;
-  padding: 2px 6px;
-  color: #999;
-  background: #f0f0f0;
-  text-decoration: none;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.photo footer .tags a:hover,
-.post footer .tags a:hover,
-.about footer .tags a:hover,
-#comment footer .tags a:hover {
-  color: #18b4f0;
-  background: #f5f5f5;
-}
-/* 导航翻页 */
-#pagination {
-  padding: 0 30px 30px 30px;
-}
-#pagination a {
-  display: inline-block;
-  padding: 4px 14px;
-  color: #666;
-  border: 1px solid #666;
-  -webkit-transition: border-color 0.25s ease-in-out, color 0.25s ease-in-out;
-  -webkit-border-radius: 3px;
-}
-#pagination a:hover {
-  color: #18b4f0;
-  border: 1px solid #18b4f0;
-}
-#pagination .prev {
-  float: left;
-}
-#pagination .next {
-  float: right;
-}
-/* 代码高亮 */
-figure.highlight {
-  position: relative;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  padding: 8px 16px;
-  text-shadow: 0 0 1px #fff;
-  line-height: 1.6;
-  border: 1px solid #d9d9d9;
-  background: #f8f8f8;
-  overflow: auto;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-figure.highlight figcaption {
-  color: #999;
-  font-size: 0.9em;
-  margin-bottom: 5px;
-  text-shadow: 0 0 1px #fff;
-}
-figure.highlight figcaption a {
-  position: absolute;
-  right: 15px;
-}
-figure.highlight pre {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-figure.highlight table {
-  margin-top: 0;
-  border-spacing: 0;
-}
-figure.highlight .gutter {
-  color: #999;
-  padding-right: 15px;
-  border-right: 1px solid #ddd;
-  text-align: right;
-}
-figure.highlight .code {
-  padding-left: 15px;
-  border-left: 1px solid #fff;
-}
-pre {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  padding: 8px 16px;
-  background: #f8f8f8;
-  border: 1px solid #d9d9d9;
-  font-size: 12px;
-  word-wrap: break-word;
-  word-break: normal;
-}
-pre .comment,
-pre .template_comment,
-pre .diff .header,
-pre .doctype,
-pre .pi,
-pre .lisp .string,
-pre .javadoc {
-  color: #93a1a1;
-  font-style: italic;
-}
-pre .keyword,
-pre .winutils,
-pre .method,
-pre .addition,
-pre .css .tag,
-pre .request,
-pre .status,
-pre .nginx .title {
-  color: #859900;
-}
-pre .number,
-pre .command,
-pre .string,
-pre .tag .value,
-pre .phpdoc,
-pre .tex .formula,
-pre .regexp,
-pre .hexcolor {
-  color: #2aa198;
-}
-pre .title,
-pre .localvars,
-pre .chunk,
-pre .decorator,
-pre .built_in,
-pre .identifier,
-pre .vhdl,
-pre .literal,
-pre .id {
-  color: #268bd2;
-}
-pre .attribute,
-pre .variable,
-pre .lisp .body,
-pre .smalltalk .number,
-pre .constant,
-pre .class .title,
-pre .parent,
-pre .haskell .type {
-  color: #b58900;
-}
-pre .preprocessor,
-pre .preprocessor .keyword,
-pre .shebang,
-pre .symbol,
-pre .symbol .string,
-pre .diff .change,
-pre .special,
-pre .attr_selector,
-pre .important,
-pre .subst,
-pre .cdata,
-pre .clojure .title {
-  color: #cb4b16;
-}
-pre .deletion {
-  color: #dc322f;
-}
 /**
  * 侧边栏
  */
@@ -696,15 +259,322 @@ pre .deletion {
   display: none;
 }
 /**
- * 底部
+ * @overview: 归档页面
+ */
+.archive-title {
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  font-size: 24px;
+  color: #999;
+  background-color: #FFF;
+  text-shadow: 0 0 1px #FFF;
+  border-radius: 3px;
+}
+.archive {
+  padding: 16px 24px;
+  background-color: #FFF;
+}
+.archive .archive-list {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.archive .archive-list dt {
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #555;
+  background-color: #F0F0F0;
+  text-shadow: 0 0 1px #F0F0F0;
+  border-radius: 3px;
+}
+.archive .archive-list dd {
+  margin: 4px 8px;
+}
+.archive .archive-list .date {
+  float: right;
+  color: #555;
+}
+/**
+ * @overview: 首页
+ */
+.post {
+  padding: 24px;
+  margin-bottom: 32px;
+  background-color: #FFF;
+  border-radius: 3px;
+}
+.post .gallery {
+  display: none;
+}
+.post .post-content .post-hd {
+  margin-bottom: 24px;
+}
+.post .post-content .post-hd h1 {
+  font-size: 30px;
+  font-weight: normal;
+  text-shadow: 0 0 1px #FFF;
+}
+.post .post-content .post-hd h1 a:link,
+.post .post-content .post-hd h1 a:visited {
+  color: #555;
+}
+.post .post-content .post-hd h1 a:hover,
+.post .post-content .post-hd h1 a:active {
+  color: #00BBFF;
+}
+.post .post-content .post-hd .date,
+.post .post-content .post-hd .categories {
+  color: #CCC;
+}
+.post .post-content .post-hd .date {
+  margin-right: 8px;
+}
+.post .post-content .post-bd.markdown-body h1 {
+  font-size: 24px;
+}
+.post .post-content .post-bd.markdown-body h2 {
+  font-size: 20px;
+}
+.post .post-content .post-bd.markdown-body h3 {
+  font-size: 18px;
+}
+.post .post-content .post-bd.markdown-body h4 {
+  font-size: 16px;
+}
+.post .post-content .post-bd.markdown-body h5 {
+  font-size: 14px;
+}
+.post .post-content .post-bd.markdown-body h6 {
+  font-size: 12px;
+}
+.post .post-content .post-bd.markdown-body h1,
+.post .post-content .post-bd.markdown-body h2,
+.post .post-content .post-bd.markdown-body h3,
+.post .post-content .post-bd.markdown-body h4,
+.post .post-content .post-bd.markdown-body h5,
+.post .post-content .post-bd.markdown-body h6 {
+  margin: 16px 0;
+  padding-bottom: 8px;
+}
+.post .post-content .post-bd.markdown-body p {
+  margin-bottom: 16px;
+}
+.post .post-content .post-bd.markdown-body .highlight {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #F7F7F7;
+  overflow: auto;
+  border-radius: 3px;
+}
+.post .post-content .post-bd.markdown-body .highlight .gutter pre {
+  color: #999;
+  text-align: right;
+  padding-right: 16px;
+}
+.post .post-content .post-bd.markdown-body .highlight .code pre {
+  padding-right: 16px;
+  color: #555;
+}
+.post .post-content .post-bd.markdown-body .highlight .line {
+  height: 24px;
+}
+.post .post-content .post-bd.markdown-body .highlight pre,
+.post .post-content .post-bd.markdown-body .highlight code {
+  font-family: Monaco, Menlo, Consolas, monospace;
+}
+.post .post-content .post-bd.markdown-body .highlight pre {
+  word-wrap: break-word;
+  word-break: normal;
+}
+.post .post-content .post-bd.markdown-body .highlight table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.post .post-content .post-bd.markdown-body pre .comment,
+.post .post-content .post-bd.markdown-body pre .title {
+  color: #CCC;
+}
+.post .post-content .post-bd.markdown-body pre .css .id,
+.post .post-content .post-bd.markdown-body pre .css .class,
+.post .post-content .post-bd.markdown-body pre .css .pseudo {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .css .rules .attribute {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .css .hexcolor {
+  color: #6cc;
+}
+.post .post-content .post-bd.markdown-body pre .javascript .title,
+.post .post-content .post-bd.markdown-body pre .coffeescript .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .javascript .function,
+.post .post-content .post-bd.markdown-body pre .coffeescript .function {
+  color: #c9c;
+}
+.post .post-content .post-bd.markdown-body pre .xml .tag .title {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .xml .pi,
+.post .post-content .post-bd.markdown-body pre .xml .doctype {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .xml .cdata {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .python .decorator,
+.post .post-content .post-bd.markdown-body pre .python .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .constant {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .function .title {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .title .keyword {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .symbol {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .ruby .class .title {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .class {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .variable,
+.post .post-content .post-bd.markdown-body pre .attribute,
+.post .post-content .post-bd.markdown-body pre .tag,
+.post .post-content .post-bd.markdown-body pre .regexp,
+.post .post-content .post-bd.markdown-body pre .html .doctype {
+  color: #f2777a;
+}
+.post .post-content .post-bd.markdown-body pre .number,
+.post .post-content .post-bd.markdown-body pre .preprocessor,
+.post .post-content .post-bd.markdown-body pre .built_in,
+.post .post-content .post-bd.markdown-body pre .literal,
+.post .post-content .post-bd.markdown-body pre .params,
+.post .post-content .post-bd.markdown-body pre .constant {
+  color: #f99157;
+}
+.post .post-content .post-bd.markdown-body pre .string,
+.post .post-content .post-bd.markdown-body pre .value,
+.post .post-content .post-bd.markdown-body pre .inheritance,
+.post .post-content .post-bd.markdown-body pre .header {
+  color: #9c9;
+}
+.post .post-content .post-bd.markdown-body pre .keyword {
+  color: #c9c;
+}
+.post .post-content .post-bd.markdown-body pre .function,
+.post .post-content .post-bd.markdown-body pre .perl .sub {
+  color: #69c;
+}
+.post .post-content .post-bd.markdown-body code {
+  padding: 2px 4px;
+  text-shadow: 0 0 1px #FFF;
+  background-color: #F0F0F0;
+}
+.post .post-content .post-bd.markdown-body ol,
+.post .post-content .post-bd.markdown-body ul {
+  margin: 0 24px 24px 24px;
+}
+.post .post-content .post-bd.markdown-body strong {
+  font-weight: bold;
+}
+.post .post-content .post-ft .more {
+  text-align: right;
+}
+.post .post-content .post-ft .more a,
+.post .post-content .post-ft .tags a {
+  padding: 6px 8px;
+  background-color: #00BBFF;
+  border-radius: 3px;
+}
+.post .post-content .post-ft .more a:link,
+.post .post-content .post-ft .tags a:link,
+.post .post-content .post-ft .more a:visited,
+.post .post-content .post-ft .tags a:visited {
+  color: #FFF;
+  -webkit-transition: color 0.3s ease-in-out;
+}
+.post .post-content .post-ft .more a:hover,
+.post .post-content .post-ft .tags a:hover,
+.post .post-content .post-ft .more a:active,
+.post .post-content .post-ft .tags a:active {
+  color: #F2F2F2;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+/**
+ * @overview: 公用部分
+ */
+/**
+ * @overview: 底部
  */
 .footer {
-  padding: 30px 0;
+  padding: 24px;
+  color: #CCC;
   text-align: center;
+  text-shadow: 0 0 1px #FFF;
+}
+/**
+ * @overview: 导航翻页
+ */
+.page-nav {
+  padding: 16px 24px;
+  margin-bottom: 32px;
+  text-align: center;
+  background-color: #FFF;
+  border-radius: 3px;
+}
+.page-nav .prev {
+  float: left;
+}
+.page-nav .next {
+  float: right;
+}
+.page-nav .page-number {
+  padding: 4px 8px;
+}
+.page-nav .page-number.current {
+  color: #00BBFF;
+}
+.page-nav .space {
   color: #999;
 }
-/* 成就 */
-.archive-title {
-  padding: 30px 30px 0;
-  font-size: 36px;
+/**
+ * @overview: 第三方评论
+ */
+.extra-comment {
+  margin-bottom: 32px;
+  padding: 24px;
+  background-color: #FFF;
+  border-radius: 3px;
+}
+/**
+ * @overview: 关于我
+ */
+.page-about {
+  margin-bottom: 32px;
+  padding: 24px;
+  min-height: 400px;
+  background-color: #FFF;
+  border-radius: 3px;
+}
+.page-about .about-title {
+  font-size: 24px;
+  color: #999;
+  text-shadow: 0 0 1px #FFF;
+}
+.page-about .about-list {
+  margin-bottom: 32px;
+  padding: 24px;
+}
+.page-about .about-list code {
+  padding: 2px 4px;
+  background-color: #F0F0F0;
 }

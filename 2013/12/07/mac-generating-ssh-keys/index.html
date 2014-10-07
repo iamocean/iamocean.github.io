@@ -60,6 +60,8 @@
         
         <li><a href="/archives">归档</a></li>
         
+        <li><a href="/about">关于我</a></li>
+        
     </ul>
 </nav>
 
@@ -84,7 +86,7 @@
 </div>
   
   <div class="post-content">
-    <header>
+    <header class="post-hd">
       
   
     <h1 class="title">Mac下生成ssh keys连接Github</h1>
@@ -102,92 +104,55 @@
 
       
     </header>
-    <div class="entry markdown-body">
+    <div class="entry markdown-body post-bd">
       
         <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
 <h2 id="检查是否存在ssh_keys">检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ <span class="built_in">cd</span> ~/.ssh
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
 
 <p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
 <h2 id="如果存在-ssh目录，请先备份好你的ssh_keys">如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>mkdir ssh_key_backup    <span class="comment">// 创建备份</span>
-cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span>
-rm id_rsa*
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir ssh_key_backup    <span class="comment">// 创建备份</span></div><div class="line">cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span></div><div class="line">rm id_rsa*</div></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
 
 <h2 id="生成一个新的ssh_keys">生成一个新的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>$ ssh-keygen -t rsa -C “your_email@example.com”    <span class="comment">// 输入您的邮箱</span>
-# Creates a <span class="keyword">new</span> ssh key, <span class="keyword">using</span> the provided email <span class="keyword">as</span> a label
-Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.
-Enter file <span class="keyword">in</span> which <span class="keyword">to</span> save the key (/Users/you/.ssh/id_rsa): [Press enter]     <span class="comment">// 按下Enter键即可</span>
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C “your_email@example.com”   <span class="comment"> // 输入您的邮箱</span></div><div class="line"><span class="comment"># Creates a new ssh key, using the provided email as a label</span></div><div class="line">Generating public/<span class="keyword">private</span> rsa key pair.</div><div class="line">Enter <span class="built_in">file</span> <span class="operator">in</span> which <span class="built_in">to</span> save <span class="operator">the</span> key (/Users/you/.ssh/id_rsa): [Press enter]    <span class="comment"> // 按下Enter键即可</span></div></pre></td></tr></table></figure>
 
 <ul>
 <li>按完Enter键后，会出现下面的提示</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>Enter passphrase (<span class="keyword">empty</span> <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span>
-Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span>
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (<span class="keyword">empty</span> <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span></div><div class="line">Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span></div></pre></td></tr></table></figure>
 
 <ul>
 <li>接着会出现类似下面的提示</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>Your identification has been saved <span class="keyword">in</span> /Users/you/.ssh/id_rsa.
-Your <span class="keyword">public</span> <span class="keyword">key</span> has been saved <span class="keyword">in</span> /Users/you/.ssh/id_rsa.pub.
-The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>:<span class="number">01</span>:<span class="number">0</span>f:f4:<span class="number">3</span>b:ca:<span class="number">85</span>:d6:<span class="number">17</span>:a1:<span class="number">7</span>d:f0:<span class="number">68</span>:<span class="number">9</span>d:f0:a2:db  your_email@example.com
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Your identification has been saved <span class="keyword">in</span> /Users/you/<span class="string">.ssh</span>/id_rsa.</div><div class="line">Your <span class="preprocessor">public</span> key has been saved <span class="keyword">in</span> /Users/you/<span class="string">.ssh</span>/id_rsa.pub.</div><div class="line">The key fingerprint is:<span class="number">01</span>:0f:f4:3b:ca:<span class="number">85</span>:d6:<span class="number">17</span>:a1:<span class="number">7d</span>:f0:<span class="number">68</span>:<span class="number">9d</span>:f0:a2:<span class="pseudo">db</span>  your_email@example.com</div></pre></td></tr></table></figure>
 
 <p>说明已生成成功，在<strong> ./ssh </strong>目录下面会多出<strong> id_rsa </strong>和<strong> id_rsa.pub </strong>这两个文件</p>
-<h2 id="在GitHub网站上添加你的ssh_keys">在<a href="https://github.com/" target="_blank">GitHub</a>网站上添加你的ssh keys</h2>
+<h2 id="在GitHub网站上添加你的ssh_keys">在<a href="https://github.com/" target="_blank" rel="external">GitHub</a>网站上添加你的ssh keys</h2>
 <ul>
 <li>找到刚才生成的 <strong>id_rsa.pub</strong>，复制里面的内容</li>
-<li>打开 <a href="https://github.com/" target="_blank">GitHub</a> 网站并登录，找到 “<strong>Account Settings</strong>”，点击 “<strong>SSH Keys</strong>”，然后”<strong>Add SSH key</strong>”, 把刚才<strong>id_rsa.pub</strong>里面的内容粘贴进去就可以了</li>
+<li>打开 <a href="https://github.com/" target="_blank" rel="external">GitHub</a> 网站并登录，找到 “<strong>Account Settings</strong>”，点击 “<strong>SSH Keys</strong>”，然后”<strong>Add SSH key</strong>”, 把刚才<strong>id_rsa.pub</strong>里面的内容粘贴进去就可以了</li>
 </ul>
-<h2 id="验证你的GitHub连接">验证你的<a href="https://github.com/" target="_blank">GitHub</a>连接</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com
-</pre></td></tr></table></figure>
-
+<h2 id="验证你的GitHub连接">验证你的<a href="https://github.com/" target="_blank" rel="external">GitHub</a>连接</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com</div></pre></td></tr></table></figure>
 
 <p>然后有又一堆提示，输入<strong>yes</strong>就可以了</p>
 <p>最后验证成功的话，会出现类似下面的提示</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>Hi username! You<span class="attribute">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.
-</pre></td></tr></table></figure>
-
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi username! You<span class="attribute">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</div></pre></td></tr></table></figure>
 
 <p>大功告成..!<br>少年觉得如何？简单吧，使劲的折腾吧..!</p>
 <h4 id="参考资料">参考资料</h4>
 <ul>
-<li><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html" target="_blank">http://justjavac.com/git/2011/11/22/mac-git-and-github.html</a></li>
-<li><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank">https://help.github.com/articles/generating-ssh-keys</a></li>
+<li><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html" target="_blank" rel="external">http://justjavac.com/git/2011/11/22/mac-git-and-github.html</a></li>
+<li><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="external">https://help.github.com/articles/generating-ssh-keys</a></li>
 </ul>
 
       
     </div>
-    <footer>
+    <footer class="post-ft">
       
 
         
@@ -205,7 +170,7 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
 </article>
 
 
-<section id="comment">
+<section id="comment" class="extra-comment">
     <h1 class="title">留言</h1>
 
     <!-- Duoshuo Comment BEGIN -->
@@ -238,17 +203,21 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
-    <li><a href="/categories/EJS/Node.js/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>5</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
   
   </ul>
 </div>
@@ -261,6 +230,12 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+  
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
@@ -268,6 +243,8 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
   
@@ -277,7 +254,7 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
-    <li><a href="/tags/Mac/">Mac</a><small>4</small></li>
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
@@ -287,17 +264,21 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
-    <li><a href="/tags/Underscore.js/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
@@ -317,11 +298,15 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
     <li><a href="/tags/插件/">插件</a><small>1</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
   
     <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
   
@@ -343,12 +328,16 @@ The <span class="keyword">key</span> fingerprint <span class="keyword">is</span>
   </div>
 
   <footer id="footer" class="footer">
-    <div class="alignleft">
-  
-  &copy; 2014 ocean
-  
-</div>
-<div class="clearfix"></div>
+    <p class="copyright">
+    &copy; 2014 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
   </footer>
 
   <script src="/js/jquery.min.js"></script>
