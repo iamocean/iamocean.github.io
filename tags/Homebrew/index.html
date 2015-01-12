@@ -96,6 +96,68 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2014/11/17/fixing-homebrew-yosemite/">Mac OS X 升级 10.10 后 Homebrew 不能用</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-11-17T07:11:29.000Z">日期：<a href="/2014/11/17/fixing-homebrew-yosemite/">2014/11/17</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Mac-OS-X/">Mac OS X</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>10.9 升级到 10.10 后，Homebrew 报错，原因是在 10.10 里苹果把默认自带的 Ruby 从 1.9 升级到了 2.0 导致的。</p>
+<p>具体解决方法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /usr/local/Library</div><div class="line">git pull origin master</div><div class="line">brew <span class="keyword">update</span></div><div class="line">brew upgrade // 更新所有用 brew 安装的软件</div></pre></td></tr></table></figure>
+
+<p>然后输入 <code>brew --help</code> 验证是否已修复成功。</p>
+<p>当然处女座还可以继续运行 <code>brew doctor</code>，这时可能会出现一些软链接不存在的错误提示，直接根据提示操作即可。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite" target="_blank" rel="external">http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/01/05/install-mongodb-on-os-x/">Mac OS X 安装MongoDB</a></h1>
   
 
@@ -167,17 +229,21 @@
   
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
@@ -185,7 +251,7 @@
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
   </ul>
 </div>
@@ -195,6 +261,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
@@ -212,15 +280,19 @@
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
+    <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
-    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
   
     <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
@@ -240,6 +312,12 @@
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
@@ -255,6 +333,8 @@
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
   
@@ -297,7 +377,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2014 ocean
+    &copy; 2015 ocean
 </p>
 
 <p class="power">

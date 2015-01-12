@@ -4,7 +4,7 @@
 .archive-title {
   margin-bottom: 16px;
   padding: 16px 24px;
-  font-size: 24px;
+  font-size: 2.4em;
   color: #999;
   background-color: #FFF;
   text-shadow: 0 0 1px #FFF;
@@ -22,7 +22,7 @@
   padding: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 1.6em;
   color: #555;
   background-color: #F0F0F0;
   text-shadow: 0 0 1px #F0F0F0;
@@ -34,4 +34,15 @@
 .archive .archive-list .date {
   float: right;
   color: #555;
+}
+.archive .archive-list .title {
+  font-size: 1.4em;
+}
+.archive .archive-list a:link,
+.archive .archive-list a:visited {
+  -webkit-transition: margin-left 0.3s ease-in-out;
+}
+.archive .archive-list a:hover,
+.archive .archive-list a:active {
+  margin-left: 8px;
 }

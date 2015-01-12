@@ -90,6 +90,195 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2014/10/06/debian-server-setup/">Debian 7 服务器环境初次配置</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-10-06T08:00:18.000Z">日期：<a href="/2014/10/06/debian-server-setup/">2014/10/06</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>前段时间在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个云主机，自己也是 <strong>Linux</strong> 新手，刚好十一国庆在家里憋得快疯了，于是就有了这一篇流水账拉。</p>
+<p>小编选的是每月 $5，<strong>SFO1</strong> 地区（据说是离中国大陆速度最快的），<strong>Debian 7</strong> 32位的系统。<br>创建完 <strong>Droplets</strong> 拿到后 <strong>IP</strong> 和密码后，第一件事就是把 <strong>Root</strong> 默认密码给改掉…哈哈！</p>
+<h1 id="登录_ROOT_用户修改密码">登录 ROOT 用户修改密码</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root<span class="annotation">@ip</span>   <span class="comment">// 登录服务器</span></div></pre></td></tr></table></figure>
+
+<p>注：登上后默认会提醒修改 <strong>ROOT</strong> 密码</p>
+<h1 id="创建新用户">创建新用户</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser demo <span class="comment">// 创建新用户</span></div></pre></td></tr></table></figure>
+
+<p>注：过程会提醒完善新用户的个人信息</p>
+<p>
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/10/06/debian-server-setup/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/09/28/tae-environment-configuration/">Mac下搭建TAE开发环境</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-09-28T08:39:06.000Z">日期：<a href="/2014/09/28/tae-environment-configuration/">2014/09/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>由于 <strong>Mac</strong> 的安全机制问题，<strong>JDK</strong> 默认是不会自动升级的， <strong>Mac OS X</strong>里默认自带有 <em>v1.6.0</em> 版本的，而 <strong>TAE</strong> 只支持 <em>v.1.7.x</em> 的。</p>
+<p>现在让小编先来看看 <strong>Mac OS X</strong> 里默认都安装了几个版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">❯ whereis java</span></span></div><div class="line">/usr/bin/java</div><div class="line"></div><div class="line">❯ ls -la /usr/bin/java</div><div class="line">lrwxr-xr-x  1 root  wheel  74  9 25 16:06 /usr/bin/java -&gt; /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span>/<span class="constant">Current</span>/<span class="constant">Commands</span>/java</div><div class="line"></div><div class="line">❯ cd /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span></div></pre></td></tr></table></figure>
+
+<h1 id="下载并安装软件">下载并安装软件</h1>
+<h2 id="Java_SE_Development_Kit_7">Java SE Development Kit 7</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">Java SE Development Kit 7</a><br>这里需要注意下，千万别下载 <em>v1.8.x</em> 以上的，记住一定要是 <em>v1.7.x</em> 版本的</p>
+<p>
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/09/28/tae-environment-configuration/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/08/28/cocos2d-js-environment-configuration/">Mac下配置Cocos2d-js环境</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-08-28T13:30:30.000Z">日期：<a href="/2014/08/28/cocos2d-js-environment-configuration/">2014/08/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="准备工作">准备工作</h1>
+<p>在这里我以 <strong>Mac OS X</strong> 为例<br>首先下载三个软件，分别是 <a href="http://ant.apache.org/bindownload.cgi" target="_blank" rel="external">Apache ANT</a>、<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">Android NDK</a>和<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">Android SDK</a>。</p>
+<p>然后再下载 <strong>Cocos2d-js</strong> 引擎包，可以在<a href="http://cn.cocos2d-x.org/download/" target="_blank" rel="external">官网</a>或者 <a href="https://github.com/cocos2d/cocos2d-js" target="_blank" rel="external">Github</a> 上面去下载</p>
+<h1 id="环境配置">环境配置</h1>
+<h1 id="实战演示">实战演示</h1>
+<p>先占坑，后面补上..</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/08/27/hexo-config/">Hexo 个性化配置</a></h1>
   
 
@@ -195,201 +384,6 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/07/21/mamp-php-cache/">MAMP里面PHP修改后没实时更新</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-07-21T01:00:23.000Z">日期：<a href="/2014/07/21/mamp-php-cache/">2014/07/21</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>在用 <strong>MAMP</strong>(v2.2) 开发时，遇到了一个问题，每次修改完 <strong>PHP</strong> 文件，再刷新浏览器后都没能实时显示出修改后的内容，每次都必须等待一会后再刷新才能显示出来，请教 <a href="https://www.google.com.hk/" target="_blank" rel="external">Google大神</a> 才发现是 <strong>PHP cache</strong> 没设置好的原因。</p>
-<p><strong>解决的方法如下:</strong></p>
-<ol>
-<li>先找到 /Applications/MAMP/bin/php/php5.5.3/conf/php.ini 这个文件</li>
-<li>然后把里面的 opcache.revalidate_freq=60 改成 opcache.revalidate_freq=0</li>
-<li>最后再重启下 MAMP</li>
-</ol>
-<p>注意路径千万别搞错..</p>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-19T14:58:13.000Z">日期：<a href="/2014/05/19/mac-symbolic-link/">2014/05/19</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>今天在做活动页面时，发现要找个 <strong>PSD</strong> 文件竟然要 <strong>cd</strong> 深入5、6层才能找到，当然这也可能是目录本身设计的时候就有问题的，由于这目录是 <strong>SVN</strong> 上的，大家公用的东西不好大整改，只能另想办法解决了。</p>
-<p>这时候软链接就该派上用场，先看看 <strong>Linux</strong> 链接使用说明。</p>
-<h2 id="软链接">软链接</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ln [option]  source_file dist_file</div><div class="line">   -<span class="ruby">f  建立时将同档案删除</span></div><div class="line">   -<span class="ruby">i  删除前进行询问</span></div><div class="line">   -<span class="ruby">s  建立软链接</span></div><div class="line">   ln source dist 建立硬链接</div></pre></td></tr></table></figure>
-
-<h2 id="如何建立软连接呢？">如何建立软连接呢？</h2>
-<p>假如psd当前所在的路径为/Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="regexp">/Users/</span>username<span class="regexp">/Dropbox/</span>html5<span class="regexp">/ext_project/</span>wolf_tooth<span class="regexp">/events/</span>dragon_boat_festival <span class="regexp">/dargon_boat_festival</span></div></pre></td></tr></table></figure>
-
-<p>这样软链接就建立起来了</p>
-<h2 id="实际应用">实际应用</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 没建立软链接之前</span></div><div class="line">cd ~<span class="regexp">/Dropbox/</span>html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</div><div class="line"></div><div class="line"><span class="comment">// 建立软链接后</span></div><div class="line">cd ~<span class="regexp">/dragon_boat_festival/</span>psd</div></pre></td></tr></table></figure>
-
-<p>轻轻松松的少敲好几个英文单词，顺便也学习了软链接是如何使用的。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://blog.csdn.net/russle/article/details/4482784" target="_blank" rel="external">http://blog.csdn.net/russle/article/details/4482784</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/05/17/ejs-escape/">EJS模板特殊字符转义</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-17T15:27:18.000Z">日期：<a href="/2014/05/17/ejs-escape/">2014/05/17</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/EJS/">EJS</a>, <a href="/categories/EJS/Nodejs/">Node.js</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>在做 <a href="https://github.com/iamocean/Todos" target="_blank" rel="external">Todos</a> 项目的过程中，遇到了个特殊字符转义问题，主要是为了防止被 <strong>XSS</strong>，因此在用户输入完内容后，提交时需对其特殊字符进一步处理。</p>
-<p>在 <strong>EJS</strong> 模板中，字符串输出时默认是经过 <strong>escape</strong> 转义编码的，让我们来了解下 <strong>&lt;%- 变量 %&gt;</strong> 和 <strong>&lt;%= 变量 %&gt;</strong> 这两种输出方式的区别</p>
-<ul>
-<li>&lt;%= 变量 %&gt;<br>  用 = 号输出，就会被 <strong>escape</strong> 转义编码，但是当我们想动态生成 <strong>HTML</strong> 标签时，这种方式可能会有点问题</li>
-<li>&lt;%- 变量 %&gt;<br>  用 - 号输出原始内容，不会被 <strong>escape</strong></li>
-</ul>
-<p>到这里似乎还没有解决如何防止被 <strong>XSS</strong> 的问题哦。<br>是的，但是答案已经出来了。</p>
-<p>我们直接翻翻 <strong>EJS</strong> 模板源码看看它自带的 <a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank" rel="external">escape</a> 方法是如何实现的？<br>然后把它摘过来，在用户输入完内容提交时用这个方法直接处理下就ok了。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://cnodejs.org/topic/505bcced417be95272064f9e" target="_blank" rel="external">http://cnodejs.org/topic/505bcced417be95272064f9e</a></li>
-<li><a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank" rel="external">https://github.com/visionmedia/ejs/blob/master/lib/utils.js</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav class="page-nav clearfix">
   <a class="extend prev" rel="prev" href="/">« 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页 »</a>
@@ -413,17 +407,21 @@
   
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
@@ -431,7 +429,7 @@
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
   </ul>
 </div>
@@ -441,6 +439,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
@@ -458,15 +458,19 @@
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
+    <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
-    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
   
     <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
@@ -486,6 +490,12 @@
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
@@ -501,6 +511,8 @@
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
   
@@ -543,7 +555,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2014 ocean
+    &copy; 2015 ocean
 </p>
 
 <p class="power">

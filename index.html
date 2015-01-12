@@ -90,6 +90,209 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2015/01/12/gulp-getting-started/">Gulp 快速入门</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-01-12T15:39:54.000Z">日期：<a href="/2015/01/12/gulp-getting-started/">2015/01/12</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Gulp/">Gulp</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="Gulp_是什么？">Gulp 是什么？</h1>
+<p>来自于官方的解释：The streaming build system</p>
+<p>简单来理解就是：Gulp 是基于 Node.js 的构建工具，处理速度很快。</p>
+<h1 id="Gulp_API">Gulp API</h1>
+<ul>
+<li>Gulp.task(name, fn) 用来定义任务的</li>
+<li>Gulp.run(tasks…) 从3.5开始弃用，将在4.0中删除。<a href="https://github.com/gulpjs/gulp/blob/master/index.js#L16" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/index.js#L16</a></li>
+<li>Gulp.src(glob) 用来读取文件</li>
+<li>Gulp.dest(folder) 用来写入文件</li>
+<li>Gulp.watch(glob, fn) 用来监听文件是否改动过</li>
+</ul>
+<h1 id="快速上手">快速上手</h1>
+<h2 id="安装_Gulp">安装 Gulp</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) npm install -g gulp</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2015/01/12/gulp-getting-started/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/11/17/fixing-homebrew-yosemite/">Mac OS X 升级 10.10 后 Homebrew 不能用</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-11-17T07:11:29.000Z">日期：<a href="/2014/11/17/fixing-homebrew-yosemite/">2014/11/17</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Mac-OS-X/">Mac OS X</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>10.9 升级到 10.10 后，Homebrew 报错，原因是在 10.10 里苹果把默认自带的 Ruby 从 1.9 升级到了 2.0 导致的。</p>
+<p>具体解决方法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /usr/local/Library</div><div class="line">git pull origin master</div><div class="line">brew <span class="keyword">update</span></div><div class="line">brew upgrade // 更新所有用 brew 安装的软件</div></pre></td></tr></table></figure>
+
+<p>然后输入 <code>brew --help</code> 验证是否已修复成功。</p>
+<p>当然处女座还可以继续运行 <code>brew doctor</code>，这时可能会出现一些软链接不存在的错误提示，直接根据提示操作即可。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite" target="_blank" rel="external">http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/11/02/my-book-live/">My Book Live 入手小记</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-11-02T08:55:49.000Z">日期：<a href="/2014/11/02/my-book-live/">2014/11/02</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>很久之前有个同事建议买个 My Book Live 来玩玩，但一直都不太想买，自从把 1TB 移动盘摔坏了，对移动硬盘之类的就不太感兴趣。<br>刚好最近 MAC OS X 要升级 10.10，想开 TimeMachine 备份下发现没硬盘可用。</p>
+<p>网上找了一圈，刚好就看上 My Book Live 这货了。<br>主要有以下两点：</p>
+<ul>
+<li>每次 TimeMachine 备份不用插拔，大大降低了被我摔坏的风险</li>
+<li>可以下大片（家里网络不给力，每次三个人同时在线看电影都受不了那破网速，晚上睡觉时可以偷偷在哪里下载）</li>
+</ul>
+<p>当然 MBL 还有其他更多优点，我不一一列举了，更多功能到官网上去看。</p>
+<h2 id="什么是_Aria2">什么是 Aria2</h2>
+<p>Aria2 是一个命令行下运行、多协议、多来源下载工具（HTTP/HTTPS、FTP、BitTorrent、Metalink）。</p>
+<h2 id="搭建_Aria2_系统服务">搭建 Aria2 系统服务</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">wget</span> -O - <span class="url">http://jiaoting.baotuba.com/aria2/aria2online.sh</span> |sh</div></pre></td></tr></table></figure>
+
+<p>如果网络没问题，等个一分钟应该就装完了。<br>然后打开浏览器输入 <a href="http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看" target="_blank" rel="external">http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看</a> MBL 的相关信息。</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/11/02/my-book-live/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/10/06/debian-install-shadowsocks/">Debian 7 安装 ss 科学上网</a></h1>
   
 
@@ -202,195 +405,6 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/10/06/debian-server-setup/">Debian 7 服务器环境初次配置</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-10-06T08:00:18.000Z">日期：<a href="/2014/10/06/debian-server-setup/">2014/10/06</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Linux/">Linux</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h1 id="前言">前言</h1>
-<p>前段时间在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个云主机，自己也是 <strong>Linux</strong> 新手，刚好十一国庆在家里憋得快疯了，于是就有了这一篇流水账拉。</p>
-<p>小编选的是每月 $5，<strong>SFO1</strong> 地区（据说是离中国大陆速度最快的），<strong>Debian 7</strong> 32位的系统。<br>创建完 <strong>Droplets</strong> 拿到后 <strong>IP</strong> 和密码后，第一件事就是把 <strong>Root</strong> 默认密码给改掉…哈哈！</p>
-<h1 id="登录_ROOT_用户修改密码">登录 ROOT 用户修改密码</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root<span class="annotation">@ip</span>   <span class="comment">// 登录服务器</span></div></pre></td></tr></table></figure>
-
-<p>注：登上后默认会提醒修改 <strong>ROOT</strong> 密码</p>
-<h1 id="创建新用户">创建新用户</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser demo <span class="comment">// 创建新用户</span></div></pre></td></tr></table></figure>
-
-<p>注：过程会提醒完善新用户的个人信息</p>
-<p>
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/10/06/debian-server-setup/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/09/28/tae-environment-configuration/">Mac下搭建TAE开发环境</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-09-28T08:39:06.000Z">日期：<a href="/2014/09/28/tae-environment-configuration/">2014/09/28</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h1 id="前言">前言</h1>
-<p>由于 <strong>Mac</strong> 的安全机制问题，<strong>JDK</strong> 默认是不会自动升级的， <strong>Mac OS X</strong>里默认自带有 <em>v1.6.0</em> 版本的，而 <strong>TAE</strong> 只支持 <em>v.1.7.x</em> 的。</p>
-<p>现在让小编先来看看 <strong>Mac OS X</strong> 里默认都安装了几个版本</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">❯ whereis java</span></span></div><div class="line">/usr/bin/java</div><div class="line"></div><div class="line">❯ ls -la /usr/bin/java</div><div class="line">lrwxr-xr-x  1 root  wheel  74  9 25 16:06 /usr/bin/java -&gt; /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span>/<span class="constant">Current</span>/<span class="constant">Commands</span>/java</div><div class="line"></div><div class="line">❯ cd /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span></div></pre></td></tr></table></figure>
-
-<h1 id="下载并安装软件">下载并安装软件</h1>
-<h2 id="Java_SE_Development_Kit_7">Java SE Development Kit 7</h2>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">Java SE Development Kit 7</a><br>这里需要注意下，千万别下载 <em>v1.8.x</em> 以上的，记住一定要是 <em>v1.7.x</em> 版本的</p>
-<p>
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/09/28/tae-environment-configuration/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/08/28/cocos2d-js-environment-configuration/">Mac下配置Cocos2d-js环境</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-08-28T13:30:30.000Z">日期：<a href="/2014/08/28/cocos2d-js-environment-configuration/">2014/08/28</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h1 id="准备工作">准备工作</h1>
-<p>在这里我以 <strong>Mac OS X</strong> 为例<br>首先下载三个软件，分别是 <a href="http://ant.apache.org/bindownload.cgi" target="_blank" rel="external">Apache ANT</a>、<a href="http://developer.android.com/tools/sdk/ndk/index.html" target="_blank" rel="external">Android NDK</a>和<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">Android SDK</a>。</p>
-<p>然后再下载 <strong>Cocos2d-js</strong> 引擎包，可以在<a href="http://cn.cocos2d-x.org/download/" target="_blank" rel="external">官网</a>或者 <a href="https://github.com/cocos2d/cocos2d-js" target="_blank" rel="external">Github</a> 上面去下载</p>
-<h1 id="环境配置">环境配置</h1>
-<h1 id="实战演示">实战演示</h1>
-<p>先占坑，后面补上..</p>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav class="page-nav clearfix">
   <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页 »</a>
@@ -414,17 +428,21 @@
   
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
@@ -432,7 +450,7 @@
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
   </ul>
 </div>
@@ -442,6 +460,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
@@ -459,15 +479,19 @@
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
+    <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
-    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
   
     <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
@@ -487,6 +511,12 @@
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
@@ -502,6 +532,8 @@
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
   
@@ -544,7 +576,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2014 ocean
+    &copy; 2015 ocean
 </p>
 
 <p class="power">

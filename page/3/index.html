@@ -90,6 +90,201 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2014/07/21/mamp-php-cache/">MAMP里面PHP修改后没实时更新</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-07-21T01:00:23.000Z">日期：<a href="/2014/07/21/mamp-php-cache/">2014/07/21</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Learning/">Learning</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>在用 <strong>MAMP</strong>(v2.2) 开发时，遇到了一个问题，每次修改完 <strong>PHP</strong> 文件，再刷新浏览器后都没能实时显示出修改后的内容，每次都必须等待一会后再刷新才能显示出来，请教 <a href="https://www.google.com.hk/" target="_blank" rel="external">Google大神</a> 才发现是 <strong>PHP cache</strong> 没设置好的原因。</p>
+<p><strong>解决的方法如下:</strong></p>
+<ol>
+<li>先找到 /Applications/MAMP/bin/php/php5.5.3/conf/php.ini 这个文件</li>
+<li>然后把里面的 opcache.revalidate_freq=60 改成 opcache.revalidate_freq=0</li>
+<li>最后再重启下 MAMP</li>
+</ol>
+<p>注意路径千万别搞错..</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-05-19T14:58:13.000Z">日期：<a href="/2014/05/19/mac-symbolic-link/">2014/05/19</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Learning/">Learning</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>今天在做活动页面时，发现要找个 <strong>PSD</strong> 文件竟然要 <strong>cd</strong> 深入5、6层才能找到，当然这也可能是目录本身设计的时候就有问题的，由于这目录是 <strong>SVN</strong> 上的，大家公用的东西不好大整改，只能另想办法解决了。</p>
+<p>这时候软链接就该派上用场，先看看 <strong>Linux</strong> 链接使用说明。</p>
+<h2 id="软链接">软链接</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ln [option]  source_file dist_file</div><div class="line">   -<span class="ruby">f  建立时将同档案删除</span></div><div class="line">   -<span class="ruby">i  删除前进行询问</span></div><div class="line">   -<span class="ruby">s  建立软链接</span></div><div class="line">   ln source dist 建立硬链接</div></pre></td></tr></table></figure>
+
+<h2 id="如何建立软连接呢？">如何建立软连接呢？</h2>
+<p>假如psd当前所在的路径为/Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="regexp">/Users/</span>username<span class="regexp">/Dropbox/</span>html5<span class="regexp">/ext_project/</span>wolf_tooth<span class="regexp">/events/</span>dragon_boat_festival <span class="regexp">/dargon_boat_festival</span></div></pre></td></tr></table></figure>
+
+<p>这样软链接就建立起来了</p>
+<h2 id="实际应用">实际应用</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 没建立软链接之前</span></div><div class="line">cd ~<span class="regexp">/Dropbox/</span>html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</div><div class="line"></div><div class="line"><span class="comment">// 建立软链接后</span></div><div class="line">cd ~<span class="regexp">/dragon_boat_festival/</span>psd</div></pre></td></tr></table></figure>
+
+<p>轻轻松松的少敲好几个英文单词，顺便也学习了软链接是如何使用的。</p>
+<p><strong>参考资料</strong></p>
+<ul>
+<li><a href="http://blog.csdn.net/russle/article/details/4482784" target="_blank" rel="external">http://blog.csdn.net/russle/article/details/4482784</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2014/05/17/ejs-escape/">EJS模板特殊字符转义</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-05-17T15:27:18.000Z">日期：<a href="/2014/05/17/ejs-escape/">2014/05/17</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/EJS/">EJS</a>, <a href="/categories/EJS/Nodejs/">Node.js</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>在做 <a href="https://github.com/iamocean/Todos" target="_blank" rel="external">Todos</a> 项目的过程中，遇到了个特殊字符转义问题，主要是为了防止被 <strong>XSS</strong>，因此在用户输入完内容后，提交时需对其特殊字符进一步处理。</p>
+<p>在 <strong>EJS</strong> 模板中，字符串输出时默认是经过 <strong>escape</strong> 转义编码的，让我们来了解下 <strong>&lt;%- 变量 %&gt;</strong> 和 <strong>&lt;%= 变量 %&gt;</strong> 这两种输出方式的区别</p>
+<ul>
+<li>&lt;%= 变量 %&gt;<br>  用 = 号输出，就会被 <strong>escape</strong> 转义编码，但是当我们想动态生成 <strong>HTML</strong> 标签时，这种方式可能会有点问题</li>
+<li>&lt;%- 变量 %&gt;<br>  用 - 号输出原始内容，不会被 <strong>escape</strong></li>
+</ul>
+<p>到这里似乎还没有解决如何防止被 <strong>XSS</strong> 的问题哦。<br>是的，但是答案已经出来了。</p>
+<p>我们直接翻翻 <strong>EJS</strong> 模板源码看看它自带的 <a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank" rel="external">escape</a> 方法是如何实现的？<br>然后把它摘过来，在用户输入完内容提交时用这个方法直接处理下就ok了。</p>
+<p><strong>参考资料</strong></p>
+<ul>
+<li><a href="http://cnodejs.org/topic/505bcced417be95272064f9e" target="_blank" rel="external">http://cnodejs.org/topic/505bcced417be95272064f9e</a></li>
+<li><a href="https://github.com/visionmedia/ejs/blob/master/lib/utils.js" target="_blank" rel="external">https://github.com/visionmedia/ejs/blob/master/lib/utils.js</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/05/16/markdown-table/">Markdown里如何生成表格</a></h1>
   
 
@@ -198,199 +393,6 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/03/01/replace-svndiff-default-mode/">将SVN diff 默认模式更换为 vimdiff</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-03-01T15:08:39.000Z">日期：<a href="/2014/03/01/replace-svndiff-default-mode/">2014/03/01</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tools/">Tools</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>自从由图形操作转到命令行<strong>终端（Terminal）</strong>上操作后， <strong>SVN diff</strong> 一直让我很纠结，刚好某天看到标哥在 <strong>diff</strong> 文件时，他那种类似 <strong>Compare Beyond</strong> 左右对比的画面，正式我想要的—— <strong>vimdiff</strong> 。</p>
-<h1 id="创建svndiff文件">创建svndiff文件</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">~</div><div class="line">❯ cd /usr/<span class="keyword">local</span>/bin</div><div class="line"></div><div class="line"><span class="keyword">local</span>/bin git/master</div><div class="line">❯ touch svndiff</div></pre></td></tr></table></figure>
-
-<p>进入到指定目录，新建一个文件名为 <strong>svndiff</strong> 。</p>
-<h1 id="编辑svndiff文件内容">编辑svndiff文件内容</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">local/bin git/master</div><div class="line">❯ <span class="keyword">vim</span> svndiff</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/03/01/replace-svndiff-default-mode/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/02/19/start-sublime-text-from-the-terminal/">从终端里直接打开Sublime Text编辑器</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-02-19T10:29:22.000Z">日期：<a href="/2014/02/19/start-sublime-text-from-the-terminal/">2014/02/19</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tools/">Tools</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>最近经常在 <strong>Terminal</strong> 里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对 <strong>VIM</strong>  编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用 <strong>Sublime Text</strong> 编辑器，所以就想着能不能从终端里直接打开 <strong>Sublime Text</strong> 编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>subl</div></pre></td></tr></table></figure>
-
-<p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank" rel="external"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
-<h2 id="常用命令：">常用命令：</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">subl  xxx.txt       打开某文件</div><div class="line"><span class="built_in">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）</div></pre></td></tr></table></figure>
-
-<p><strong>参考资料：</strong></p>
-<ul>
-<li><a href="https://gist.github.com/artero/1236170" target="_blank" rel="external">https://gist.github.com/artero/1236170</a></li>
-<li><a href="http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/" target="_blank" rel="external">http://www.leonzhang.com/2012/02/22/launch_sublime_text_2_from_mac_terminal/</a></li>
-<li><a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank" rel="external">http://www.sublimetext.com/docs/2/osx_command_line.html</a></li>
-<li><a href="http://baelabs.duapp.com/Sublime/osx_command_line.html" target="_blank" rel="external">http://baelabs.duapp.com/Sublime/osx_command_line.html</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/02/11/upgrade-svn-version/">升级Mac自带的SVN版本</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-02-11T14:30:46.000Z">日期：<a href="/2014/02/11/upgrade-svn-version/">2014/02/11</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tutorials/">Tutorials</a>, <a href="/categories/Tutorials/Mac/">Mac</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>Mac在10.9.1版本里，系统默认安装了 <strong>subversion(svn)</strong> ，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在 <strong>Terminal</strong> 终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
-<h2 id="准备工作：">准备工作：</h2>
-<p>首先要确保您的 <strong>Mac</strong> 已经安装好了 <strong>Git</strong> (默认已安装) 和 <strong>Homebrew</strong></p>
-<h2 id="备份系统自带的SVN">备份系统自带的SVN</h2>
-<p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">which svn</div><div class="line"><span class="built_in">cd</span> /usr/bin</div><div class="line">mkdir ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) rm -rf svn*</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/02/11/upgrade-svn-version/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav class="page-nav clearfix">
   <a class="extend prev" rel="prev" href="/page/2/">« 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页 »</a>
@@ -414,17 +416,21 @@
   
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
     <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
@@ -432,7 +438,7 @@
   
     <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>7</sup></li>
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
   </ul>
 </div>
@@ -442,6 +448,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
@@ -459,15 +467,19 @@
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
+    <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
   
-    <li><a href="/tags/Homebrew/">Homebrew</a><small>1</small></li>
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
   
     <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
@@ -487,6 +499,12 @@
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
@@ -502,6 +520,8 @@
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
   
     <li><a href="/tags/分号/">分号</a><small>1</small></li>
   
@@ -544,7 +564,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2014 ocean
+    &copy; 2015 ocean
 </p>
 
 <p class="power">

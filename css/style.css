@@ -37,7 +37,7 @@ button,
 input,
 select,
 textarea {
-  font: 14px/1.5 "Helvetica neue", "Helvetica", "Tahoma", "Arial", "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", "sans-serif";
+  font: 62.5%/1.5 "Helvetica neue", "Helvetica", "Tahoma", "Arial", "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", "sans-serif";
 }
 article,
 aside,
@@ -130,7 +130,7 @@ a:active {
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  width: 740px;
+  max-width: 740px;
 }
 .header .logo .title a {
   display: inline-block;
@@ -181,15 +181,13 @@ a:active {
   color: #F2F2F2;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
-.container {
-  margin: 80px auto 0 auto;
-  width: 740px;
-}
-.main {
-  width: 740px;
-  margin: 0 auto;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+@media only screen and (max-width: 480px) {
+  .header .nav {
+    background-color: #07bdff;
+  }
+  .header .nav li {
+    float: none;
+  }
 }
 /**
  * 文章列表
@@ -268,7 +266,7 @@ a:active {
 .archive-title {
   margin-bottom: 16px;
   padding: 16px 24px;
-  font-size: 24px;
+  font-size: 2.4em;
   color: #999;
   background-color: #FFF;
   text-shadow: 0 0 1px #FFF;
@@ -286,7 +284,7 @@ a:active {
   padding: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 1.6em;
   color: #555;
   background-color: #F0F0F0;
   text-shadow: 0 0 1px #F0F0F0;
@@ -298,6 +296,17 @@ a:active {
 .archive .archive-list .date {
   float: right;
   color: #555;
+}
+.archive .archive-list .title {
+  font-size: 1.4em;
+}
+.archive .archive-list a:link,
+.archive .archive-list a:visited {
+  -webkit-transition: margin-left 0.3s ease-in-out;
+}
+.archive .archive-list a:hover,
+.archive .archive-list a:active {
+  margin-left: 8px;
 }
 /**
  * @overview: 首页
@@ -315,7 +324,7 @@ a:active {
   margin-bottom: 24px;
 }
 .post .post-content .post-hd h1 {
-  font-size: 30px;
+  font-size: 3em;
   font-weight: normal;
   text-shadow: 0 0 1px #FFF;
 }
@@ -329,10 +338,14 @@ a:active {
 }
 .post .post-content .post-hd .date,
 .post .post-content .post-hd .categories {
+  font-size: 1.4em;
   color: #CCC;
 }
 .post .post-content .post-hd .date {
-  margin-right: 8px;
+  margin-right: 1.25%;
+}
+.post .post-content .post-bd {
+  font-size: 1.4em;
 }
 .post .post-content .post-bd.markdown-body h1 {
   font-size: 24px;
@@ -490,6 +503,9 @@ a:active {
 .post .post-content .post-bd.markdown-body strong {
   font-weight: bold;
 }
+.post .post-content .post-bd a {
+  word-break: break-all;
+}
 .post .post-content .post-ft .more {
   text-align: right;
 }
@@ -513,12 +529,43 @@ a:active {
   color: #F2F2F2;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
+@media only screen and (max-width: 480px) {
+  .post .post-content .post-hd {
+    margin-bottom: 12px;
+  }
+  .post .post-content .post-hd h1 {
+    font-size: 2em;
+  }
+  .post .post-content .post-hd h1 a {
+    display: block;
+    width: 100%;
+    height: 1.6em;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .post .post-content .post-hd .date,
+  .post .post-content .post-hd .categories {
+    font-size: 1.2em;
+  }
+}
 /**
  * @overview: 公用部分
  */
 ::selection {
   color: #FFF;
   background-color: #00BBFF;
+}
+body {
+  font-size: 62.5%;
+}
+.container {
+  margin: 80px auto 0 auto;
+  max-width: 740px;
+}
+.main {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 /**
  * @overview: 底部
