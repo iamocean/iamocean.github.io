@@ -96,6 +96,74 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2015/03/29/debian-vpn-pptp/">VPN PPTP 配置教程</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-03-29T08:35:39.000Z">日期：<a href="/2015/03/29/debian-vpn-pptp/">2015/03/29</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="PPTP_是什么?">PPTP 是什么?</h1>
+<p>PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。</p>
+<p>没有自己的 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">VPS</a> 吗？赶紧到 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上注册一个吧。不然别再浪费时间往下继续看了。哈哈哈！！</p>
+<h1 id="安装_PPTP">安装 PPTP</h1>
+<p>这以 <strong>debian</strong> 系统为例，其它 <strong>Linux</strong> 系统类似。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) apt-get install pptpd</div></pre></td></tr></table></figure>
+
+<h1 id="配置_IP_地址">配置 IP 地址</h1>
+<p>修改 <code>/etc/pptpd.conf</code> 文件，在最后面添加以下两行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">localip</span> <span class="number">192.168.9.1</span></div><div class="line">remoteip <span class="number">192.168.9.11</span>-<span class="number">30</span></div></pre></td></tr></table></figure>
+
+<p>这里的 <strong>IP</strong> 地址可以随便填写，只要是 <strong>ABC</strong> 三类中的私有地址都可以的，另外需要注意是 <strong>IP</strong> 地址避免冲突。<br><strong>localip</strong> 是服务器内部使用的网关，<strong>remoteip</strong> 是分配给客户用的。</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2015/03/29/debian-vpn-pptp/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/10/06/debian-install-shadowsocks/">Debian 7 安装 ss 科学上网</a></h1>
   
 
@@ -298,19 +366,23 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
     <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>1</sup></li>
   
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
@@ -320,7 +392,7 @@
   
     <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>6</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
@@ -332,6 +404,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
   
     <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
@@ -359,7 +433,11 @@
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>1</small></li>
+  
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
@@ -373,15 +451,19 @@
   
     <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
   
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>3</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
     <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
   
@@ -390,6 +472,8 @@
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -421,7 +505,7 @@
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
-    <li><a href="/tags/插件/">插件</a><small>1</small></li>
+    <li><a href="/tags/插件/">插件</a><small>2</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
   
@@ -438,6 +522,8 @@
     <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
   
     <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
   
   </ul>
 </div>

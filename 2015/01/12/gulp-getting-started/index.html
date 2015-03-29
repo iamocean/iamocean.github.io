@@ -152,6 +152,11 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>);</div><div class="line"></div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./js/*.js'</span>)</div><div class="line">           .pipe(jshint())</div><div class="line">           .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">           .pipe(concat(<span class="string">'c.js'</span>))</div><div class="line">           .pipe(uglify())</div><div class="line">           .pipe(rename({suffix: <span class="string">'.min'</span>}))</div><div class="line">           .pipe(gulp.dest(<span class="string">'./dist/js'</span>));</div><div class="line">});</div></pre></td></tr></table></figure>
 
 <p>在命令行了直接 <code>gulp</code> 或者 <code>gulp default</code> 即可。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md</a></li>
+<li><a href="http://segmentfault.com/blog/laopopo/1190000000372547" target="_blank" rel="external">http://segmentfault.com/blog/laopopo/1190000000372547</a></li>
+</ul>
 
       
     </div>
@@ -200,19 +205,23 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
     <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
   
     <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>1</sup></li>
   
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>2</sup></li>
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>3</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>4</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
@@ -222,7 +231,7 @@
   
     <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>4</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>6</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
@@ -234,6 +243,8 @@
 <div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
   
     <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
   
@@ -261,7 +272,11 @@
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>1</small></li>
+  
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
   
     <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
   
@@ -275,15 +290,19 @@
   
     <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
   
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>2</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>3</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
     <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
   
@@ -292,6 +311,8 @@
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -323,7 +344,7 @@
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
-    <li><a href="/tags/插件/">插件</a><small>1</small></li>
+    <li><a href="/tags/插件/">插件</a><small>2</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
   
@@ -340,6 +361,8 @@
     <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
   
     <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
   
   </ul>
 </div>
