@@ -96,6 +96,79 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2015/04/12/hexo-to-ghost/">从Hexo迁移到Ghost博客</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-04-12T15:45:05.000Z">日期：<a href="/2015/04/12/hexo-to-ghost/">2015/04/12</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Hexo/">Hexo</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>一时心血来潮，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">DO</a> 上搭建了个 <a href="http://oceanlau.com/" target="_blank" rel="external">Ghost</a> 博客，数据迁移是个问题。<br>经过短暂的搜索，发现了一个好东西 —— <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a>，目测是个外国友人写的。<br>一个 <strong>npm</strong> 包，安装和使用都很简单、很方便。</p>
+<h2 id="使用方法：">使用方法：</h2>
+<ol>
+<li>安装 <strong>oghost npm</strong> 包</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> npm install oghost -g</div></pre></td></tr></table></figure>
+
+<ol>
+<li>进入 <strong>_post</strong> 目录</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</div><div class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</div></pre></td></tr></table></figure>
+
+<ol>
+<li>上传 <strong>data.json</strong></li>
+</ol>
+<p>访问 <code>http://您的域名/ghost/settings/labs</code>, 把刚才导出的 <strong>data.json</strong> 直接即可。</p>
+<p>另外我不太喜欢 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 当前这个版本，自动截取出来的文章 <strong>URL</strong> 路径，我觉得不太好友，所以在 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 的基础上做了些修改，让文章 <strong>URL</strong> 保持和原来 <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> 上的 <strong>URL</strong> 一致，修改后的<a href="https://github.com/iamocean/oghost" target="_blank" rel="external">oghost</a>。</p>
+<h3 id="参考资料">参考资料</h3>
+<ul>
+<li><a href="https://github.com/kuropen/oghost" target="_blank" rel="external">https://github.com/kuropen/oghost</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/08/27/hexo-config/">Hexo 个性化配置</a></h1>
   
 
@@ -123,6 +196,59 @@
 <ul>
 <li><a href="http://yangjian.me/workspace/building-blog-with-hexo/" target="_blank" rel="external">http://yangjian.me/workspace/building-blog-with-hexo/</a></li>
 </ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title"><a href="/2013/10/10/hello-world/">Hello World</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2013-10-10T15:06:30.000Z">日期：<a href="/2013/10/10/hello-world/">2013/10/10</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Hexo/">Hexo</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank" rel="external">documentation</a> to learn how to use.</p>
 
       
     </div>
@@ -169,7 +295,7 @@
   
     <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
   
-    <li><a href="/categories/Hexo/">Hexo</a><sup>1</sup></li>
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
   
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
@@ -185,9 +311,9 @@
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
-  
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>6</sup></li>
   
@@ -208,6 +334,8 @@
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
@@ -218,13 +346,15 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
+    <li><a href="/tags/Ghost/">Ghost</a><small>1</small></li>
+  
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
     <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
   
-    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   

@@ -90,6 +90,70 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2014/09/28/tae-environment-configuration/">Mac下搭建TAE开发环境</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-09-28T08:39:06.000Z">日期：<a href="/2014/09/28/tae-environment-configuration/">2014/09/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1>
+<p>由于 <strong>Mac</strong> 的安全机制问题，<strong>JDK</strong> 默认是不会自动升级的， <strong>Mac OS X</strong>里默认自带有 <em>v1.6.0</em> 版本的，而 <strong>TAE</strong> 只支持 <em>v.1.7.x</em> 的。</p>
+<p>现在让小编先来看看 <strong>Mac OS X</strong> 里默认都安装了几个版本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">❯ whereis java</span></span></div><div class="line">/usr/bin/java</div><div class="line"></div><div class="line">❯ ls -la /usr/bin/java</div><div class="line">lrwxr-xr-x  1 root  wheel  74  9 25 16:06 /usr/bin/java -&gt; /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span>/<span class="constant">Current</span>/<span class="constant">Commands</span>/java</div><div class="line"></div><div class="line">❯ cd /<span class="constant">System</span>/<span class="constant">Library</span>/<span class="constant">Frameworks</span>/<span class="constant">JavaVM</span>.framework/<span class="constant">Versions</span></div></pre></td></tr></table></figure>
+
+<h1 id="下载并安装软件">下载并安装软件</h1>
+<h2 id="Java_SE_Development_Kit_7">Java SE Development Kit 7</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">Java SE Development Kit 7</a><br>这里需要注意下，千万别下载 <em>v1.8.x</em> 以上的，记住一定要是 <em>v1.7.x</em> 版本的</p>
+<p>
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2014/09/28/tae-environment-configuration/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/08/28/cocos2d-js-environment-configuration/">Mac下配置Cocos2d-js环境</a></h1>
   
 
@@ -318,76 +382,6 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-05-19T14:58:13.000Z">日期：<a href="/2014/05/19/mac-symbolic-link/">2014/05/19</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>今天在做活动页面时，发现要找个 <strong>PSD</strong> 文件竟然要 <strong>cd</strong> 深入5、6层才能找到，当然这也可能是目录本身设计的时候就有问题的，由于这目录是 <strong>SVN</strong> 上的，大家公用的东西不好大整改，只能另想办法解决了。</p>
-<p>这时候软链接就该派上用场，先看看 <strong>Linux</strong> 链接使用说明。</p>
-<h2 id="软链接">软链接</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ln [option]  source_file dist_file</div><div class="line">   -<span class="ruby">f  建立时将同档案删除</span></div><div class="line">   -<span class="ruby">i  删除前进行询问</span></div><div class="line">   -<span class="ruby">s  建立软链接</span></div><div class="line">   ln source dist 建立硬链接</div></pre></td></tr></table></figure>
-
-<h2 id="如何建立软连接呢？">如何建立软连接呢？</h2>
-<p>假如psd当前所在的路径为/Users/username/Dropbox/html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="regexp">/Users/</span>username<span class="regexp">/Dropbox/</span>html5<span class="regexp">/ext_project/</span>wolf_tooth<span class="regexp">/events/</span>dragon_boat_festival <span class="regexp">/dargon_boat_festival</span></div></pre></td></tr></table></figure>
-
-<p>这样软链接就建立起来了</p>
-<h2 id="实际应用">实际应用</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 没建立软链接之前</span></div><div class="line">cd ~<span class="regexp">/Dropbox/</span>html5/ext_project/wolf_tooth/events/dragon_boat_festival/psd</div><div class="line"></div><div class="line"><span class="comment">// 建立软链接后</span></div><div class="line">cd ~<span class="regexp">/dragon_boat_festival/</span>psd</div></pre></td></tr></table></figure>
-
-<p>轻轻松松的少敲好几个英文单词，顺便也学习了软链接是如何使用的。</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://blog.csdn.net/russle/article/details/4482784" target="_blank" rel="external">http://blog.csdn.net/russle/article/details/4482784</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav class="page-nav clearfix">
   <a class="extend prev" rel="prev" href="/page/2/">« 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页 »</a>
@@ -415,7 +409,7 @@
   
     <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
   
-    <li><a href="/categories/Hexo/">Hexo</a><sup>1</sup></li>
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
   
     <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
   
@@ -431,9 +425,9 @@
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
-  
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Tools/">Tools</a><sup>6</sup></li>
   
@@ -454,6 +448,8 @@
   
     <li><a href="/tags/Array/">Array</a><small>1</small></li>
   
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
@@ -464,13 +460,15 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
+    <li><a href="/tags/Ghost/">Ghost</a><small>1</small></li>
+  
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
     <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
   
-    <li><a href="/tags/Hexo/">Hexo</a><small>1</small></li>
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
     <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
   
