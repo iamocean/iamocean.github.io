@@ -90,6 +90,66 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2014/07/21/mamp-php-cache/">MAMP里面PHP修改后没实时更新</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2014-07-21T01:00:23.000Z">日期：<a href="/2014/07/21/mamp-php-cache/">2014/07/21</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>在用 <strong>MAMP</strong>(v2.2) 开发时，遇到了一个问题，每次修改完 <strong>PHP</strong> 文件，再刷新浏览器后都没能实时显示出修改后的内容，每次都必须等待一会后再刷新才能显示出来，请教 <a href="https://www.google.com.hk/" target="_blank" rel="external">Google大神</a> 才发现是 <strong>PHP cache</strong> 没设置好的原因。</p>
+<p><strong>解决的方法如下:</strong></p>
+<ol>
+<li>先找到 /Applications/MAMP/bin/php/php5.5.3/conf/php.ini 这个文件</li>
+<li>然后把里面的 opcache.revalidate_freq=60 改成 opcache.revalidate_freq=0</li>
+<li>最后再重启下 MAMP</li>
+</ol>
+<p>注意路径千万别搞错..</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2014/05/19/mac-symbolic-link/">Mac建立软链接</a></h1>
   
 
@@ -333,70 +393,6 @@
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/03/01/replace-svndiff-default-mode/">将SVN diff 默认模式更换为 vimdiff</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-03-01T15:08:39.000Z">日期：<a href="/2014/03/01/replace-svndiff-default-mode/">2014/03/01</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Tools/">Tools</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>自从由图形操作转到命令行<strong>终端（Terminal）</strong>上操作后， <strong>SVN diff</strong> 一直让我很纠结，刚好某天看到标哥在 <strong>diff</strong> 文件时，他那种类似 <strong>Compare Beyond</strong> 左右对比的画面，正式我想要的—— <strong>vimdiff</strong> 。</p>
-<h1 id="创建svndiff文件">创建svndiff文件</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">~</div><div class="line">❯ cd /usr/<span class="keyword">local</span>/bin</div><div class="line"></div><div class="line"><span class="keyword">local</span>/bin git/master</div><div class="line">❯ touch svndiff</div></pre></td></tr></table></figure>
-
-<p>进入到指定目录，新建一个文件名为 <strong>svndiff</strong> 。</p>
-<h1 id="编辑svndiff文件内容">编辑svndiff文件内容</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">local/bin git/master</div><div class="line">❯ <span class="keyword">vim</span> svndiff</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/03/01/replace-svndiff-default-mode/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav class="page-nav clearfix">
   <a class="extend prev" rel="prev" href="/page/3/">« 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页 »</a>
@@ -444,7 +440,7 @@
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>6</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
@@ -517,6 +513,8 @@
   
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
+    <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
+  
     <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
@@ -532,6 +530,8 @@
     <li><a href="/tags/height/">height</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/license/">license</a><small>1</small></li>
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
