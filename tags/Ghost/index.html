@@ -96,6 +96,67 @@
     <header class="post-hd">
       
   
+    <h1 class="title"><a href="/2015/06/21/debian7-ghost-blog/">在 Debian 7上搭建 Ghost 博客</a></h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-06-21T15:02:38.000Z">日期：<a href="/2015/06/21/debian7-ghost-blog/">2015/06/21</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>前段时间，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个 <strong>$5/M</strong> 的 VPS，当时是为了能科学上网，只搭建了个 <a href="http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/" target="_blank" rel="external">Shadowsocks</a> 而已，好像有点浪费的样子，而最近刚好又在学习 <strong>Node.js</strong> 方面的东西，于是就顺便搭了个 <strong>Ghost</strong> 博客…</p>
+<h1 id="下载_Ghost_源码">下载 Ghost 源码</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载源码</span></div><div class="line">wget https:<span class="comment">//ghost.org/zip/ghost-latest.zip</span></div><div class="line"><span class="comment">// 解压</span></div><div class="line">unzip -uo ghost-latest.zip -d ghost</div></pre></td></tr></table></figure>
+
+<p>目前最新版本是 <strong>0.6.4</strong>，可以在 <a href="https://github.com/TryGhost/Ghost/" target="_blank" rel="external">Github</a> 或者 <a href="https://ghost.org/download/" target="_blank" rel="external">Ghost</a> 官方网站上找到。</p>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+        
+          <div class="more">
+            <a href="/2015/06/21/debian7-ghost-blog/#more" class="more-link">继续阅读…</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
     <h1 class="title"><a href="/2015/04/12/hexo-to-ghost/">从Hexo迁移到Ghost博客</a></h1>
   
 
@@ -121,18 +182,15 @@
 <h3 id="进入__post_目录">进入 <strong>_post</strong> 目录</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</div><div class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</div></pre></td></tr></table></figure>
 
-<h3 id="上传_data-json">上传 <strong>data.json</strong></h3>
-<p>访问 <code>http://您的域名/ghost/settings/labs</code>, 把刚才导出的 <strong>data.json</strong> 直接即可。</p>
-<p>另外我不太喜欢 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 当前这个版本，自动截取出来的文章 <strong>URL</strong> 路径，我觉得不太好友，所以在 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 的基础上做了些修改，让文章 <strong>URL</strong> 保持和原来 <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> 上的 <strong>URL</strong> 一致，修改后的<a href="https://github.com/iamocean/oghost" target="_blank" rel="external">oghost</a>。</p>
-<h4 id="参考资料">参考资料</h4>
-<ul>
-<li><a href="https://github.com/kuropen/oghost" target="_blank" rel="external">https://github.com/kuropen/oghost</a></li>
-</ul>
 
       
     </div>
     <footer class="post-ft">
       
+        
+          <div class="more">
+            <a href="/2015/04/12/hexo-to-ghost/#more" class="more-link">继续阅读…</a>
+          </div>
         
         
       
@@ -180,11 +238,11 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
-  
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>4</sup></li>
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
@@ -194,7 +252,7 @@
   
     <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>7</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
   
     <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
   
@@ -217,21 +275,23 @@
   
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
+    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+  
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
   
-    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>1</small></li>
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>1</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
     <li><a href="/tags/Github/">Github</a><small>1</small></li>
   
-    <li><a href="/tags/Gulp/">Gulp</a><small>1</small></li>
+    <li><a href="/tags/Gulp/">Gulp</a><small>2</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
@@ -239,9 +299,11 @@
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
   
-    <li><a href="/tags/JsFormat/">JsFormat</a><small>1</small></li>
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>2</small></li>
   
     <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/LNMP/">LNMP</a><small>1</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
   
@@ -251,7 +313,7 @@
   
     <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
   
-    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+    <li><a href="/tags/Markdown/">Markdown</a><small>2</small></li>
   
     <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
   
@@ -261,7 +323,7 @@
   
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>3</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -274,6 +336,8 @@
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
     <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Wiki/">Wiki</a><small>1</small></li>
   
     <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
   
@@ -315,7 +379,7 @@
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
-    <li><a href="/tags/插件/">插件</a><small>2</small></li>
+    <li><a href="/tags/插件/">插件</a><small>3</small></li>
   
     <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
   

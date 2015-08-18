@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sublime Text 之代码片段 | Iamocean</title>
+  <meta name="author" content="ocean">
+  
+  <meta name="description" content="学习、记录与分享">
+  
+  
+  <meta name="keywords" content="前端开发、HTML5、CSS3、游戏开发">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Sublime Text 之代码片段"/>
+  <meta property="og:site_name" content="Iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">Iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+        <li><a href="/about">关于我</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title">Sublime Text 之代码片段</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-08-11T15:28:49.000Z">日期：<a href="/2015/08/11/sublime-text-snippet/">2015/08/11</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tools/">Tools</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>最近总被人问起，如何提高工作效率？<br>以前写 <strong>CSS</strong> 都是直接用 <strong>LESS</strong> 来弄的，根本就不用担心浏览器的前缀、<strong>CSS 选择器</strong>等问题，而现在这都是问题了，虽然说一直都有把 <strong>CSS</strong> 公用的东西抽离出来，打包成一个个组件，但是每次复制、粘贴、调整也还是有的麻烦的。<br>有天晚上跟龙哥去等车时，边走边无聊中说起来，发现他在琢磨这方面的东西，然后就简单的给我介绍起来，就是 <strong>Sublime Text Snippet</strong> 功能。其实以前也有简单用过来这个功能，感觉没有卵用处，那现在不防试试看吧。</p>
+<h2 id="创建_Snippet">创建 Snippet</h2>
+<p>打开 <strong>SublimeText</strong> 编辑器，找到菜单栏 <code>Tools -&gt; New Snippet...</code></p>
+<p>会看到如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;snippet&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="title">content</span>&gt;</span><span class="cdata">&lt;![CDATA[</span></span></div><div class="line">Hello, ${1:this} is a ${2:snippet}.</div><div class="line">]]&gt;<span class="tag">&lt;/<span class="title">content</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">snippet</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<ol>
+<li>注意下 <code>&lt;![CDATA[ ]]</code> 中括号里面的内容，我们的代码片段要放在这个中括号里面</li>
+<li><code>${1:this}</code> 表示当代码插入后，鼠标会停留在这个位置，<strong>this</strong> 表示自定义参数，默认显示 <strong>this</strong>（可选）</li>
+<li><code>${2:snippet}</code> 表示当代码插入后，点击 <strong>tab</strong> 则会跳到当前这个位置（按顺序跳转），<strong>${3}</strong>、<strong>${4}</strong>等等同理可得，<strong>snippet</strong> 同上</li>
+<li><code>tabTrigger</code> 是指自定义快捷键，比如：<code>1-ocean</code>，然后在 <strong>Sublime Text</strong> 编辑器，敲出 <code>1-ocean</code> 点击 <code>tab键</code> 就是显示出你刚定义好的代码片段</li>
+<li><code>scope</code> 是指限定在某类文件名上生效</li>
+<li>还可以自己加上 <code>&lt;description&gt;这里是描述信息..&lt;/description&gt;</code>，当你敲出快捷键时会显示出相关提示</li>
+</ol>
+<h2 id="编写_Snippet_Demo">编写 Snippet Demo</h2>
+<p>这里先来编写个 HTML Snippet Demo</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;snippet&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="title">content</span>&gt;</span><span class="cdata">&lt;![CDATA[</span></span></div><div class="line">&lt;p class="${1:className}"&gt;${2:HTML Snippet Demo.}&lt;/p&gt;</div><div class="line">]]&gt;<span class="tag">&lt;/<span class="title">content</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">tabTrigger</span>&gt;</span>html-p<span class="tag">&lt;/<span class="title">tabTrigger</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">description</span>&gt;</span>HTML - Snippet Demo<span class="tag">&lt;/<span class="title">description</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">scope</span>&gt;</span>text.html<span class="tag">&lt;/<span class="title">scope</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">snippet</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>然后保存再 <code>Packages\User</code> 文件夹里面，命名为 <strong>xxx.sublime-snippet</strong><br>然后打开一个 <strong>HTML</strong> 文件，输入 <code>html-p</code>，敲入 <strong>TAB 键</strong>，代码就会插入进来了。</p>
+<h4 id="参考资料">参考资料</h4>
+<ul>
+<li><a href="http://docs.sublimetext.info/en/latest/extensibility/snippets.html" target="_blank" rel="external">http://docs.sublimetext.info/en/latest/extensibility/snippets.html</a></li>
+<li><a href="http://www.bluesdream.com/blog/sublime-text-snippets-function.html" target="_blank" rel="external">http://www.bluesdream.com/blog/sublime-text-snippets-function.html</a></li>
+<li><a href="http://stackoverflow.com/questions/18808514/sublime-snippet-not-working" target="_blank" rel="external">http://stackoverflow.com/questions/18808514/sublime-snippet-not-working</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/Sublime-Text/">Sublime Text</a> <a href="/tags/JsFormat/">JsFormat</a> <a href="/tags/插件/">插件</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment" class="extra-comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:iamocean.net">
+  </form>
+</div>
+
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
+  
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+  
+    <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
+  
+    <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
+  
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Gulp/">Gulp</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>2</small></li>
+  
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/LNMP/">LNMP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>2</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
+  
+    <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
+  
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Wiki/">Wiki</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/license/">license</a><small>1</small></li>
+  
+    <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/升级/">升级</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>3</small></li>
+  
+    <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
+  
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <p class="copyright">
+    &copy; 2015 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
+  </footer>
+
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iamocean"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

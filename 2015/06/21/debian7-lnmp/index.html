@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在 Debian 7 上搭建 LNMP 环境 | Iamocean</title>
+  <meta name="author" content="ocean">
+  
+  <meta name="description" content="学习、记录与分享">
+  
+  
+  <meta name="keywords" content="前端开发、HTML5、CSS3、游戏开发">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="在 Debian 7 上搭建 LNMP 环境"/>
+  <meta property="og:site_name" content="Iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">Iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+        <li><a href="/about">关于我</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title">在 Debian 7 上搭建 LNMP 环境</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-06-21T15:03:01.000Z">日期：<a href="/2015/06/21/debian7-lnmp/">2015/06/21</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>最近又在折腾 <strong>VPS</strong>，主要是因为 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 最近抽风得太厉害了，不得不换个新的 <strong>IP</strong> 地址来缓缓下，就顺便再重新搭个 <strong>LNMP</strong> 环境来玩玩，虽然之前有折腾过，但是每次重新折腾还是习惯性的去找 <a href="https://www.google.com/" target="_blank" rel="external">Google大神</a>，这次就想记录下安装的过程和了解下所用到的每个安装包和组件，大概是做什么用的，下面就直接进入主题吧。</p>
+<h1 id="安装_MySQL">安装 MySQL</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get <span class="operator"><span class="keyword">install</span> -y mysql-<span class="keyword">server</span> mysql-client</span></div></pre></td></tr></table></figure>
+
+<p><code>mysql-server</code> 是 <strong>MySQL</strong> 服务器核心程序，服务器端主程序。<br><code>mysql-client</code> 是 <strong>MySQL</strong> 客户端程序，用于连接并操作 <strong>MySQL</strong>。用以通过命令行方式登录管理 <strong>MySQL</strong> 服务器。<br>在安装的过程，会弹出个界面让你输入 <strong>root</strong> 用户的密码</p>
+<h2 id="初始化数据库默认设置">初始化数据库默认设置</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) mysql_secure_installation</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>敲完上面那句命令后，期间会询问以下几个问题</p>
+<ol>
+<li>是否修改 root 用户密码？</li>
+<li>是否删除匿名用户？</li>
+<li>是否禁止 root 用户远程登录？</li>
+<li>是否删除默认 test 数据库表呢？</li>
+<li>对于刚才的修改是否重新刷新呢？</li>
+</ol>
+<p>基本上一路按 <code>Y</code> 就行了</p>
+<h2 id="验证_MySQL_是否安装成功">验证 MySQL 是否安装成功</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">mysql</span> -V</div></pre></td></tr></table></figure>
+
+<h1 id="安装_PHP">安装 PHP</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) apt-get install php5-fpm php5-gd php5-mysql</div></pre></td></tr></table></figure>
+
+<p><code>php5-fpm</code> 服务器端 <strong>PHP-FPM</strong> 程序，对 <strong>Nginx</strong> 处理 <strong>PHP</strong> 很重要。<br><code>php5-gd</code> <strong>PHP5</strong> 的 <strong>GD</strong> 模块，<strong>GD</strong> 是一套开源图像处理库，一般 <strong>DZ</strong> 生成缩略图或者加水印都需要它。<br><code>php5-mysql</code> <strong>PHP5</strong> 的 <strong>MySQL</strong> 模块，让你的网站可以访问到数据库，此模块必备的。</p>
+<h2 id="修改_PHP_默认配置">修改 PHP 默认配置</h2>
+<p>在 <code>/etc/php5/fpm/php.ini</code> 配置文件中，找到 <code>cgi.fix_pathinfo=1</code>，将 <strong>1</strong> 成 <strong>0</strong>,</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">cgi.fix_pathinfo</span>=<span class="string">0</span></div></pre></td></tr></table></figure>
+
+<p>防止 <strong>PHP</strong> 在无穷的解析匹配路径，避免风险。</p>
+<h1 id="安装_Nginx">安装 Nginx</h1>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get <span class="operator"><span class="keyword">install</span> -y nginx-<span class="keyword">full</span></span></div></pre></td></tr></table></figure>
+
+<p><code>nginx-full</code> <strong>Nginx web</strong> 服务器完全安装</p>
+<h2 id="设置_Nginx_默认配置文件">设置 Nginx 默认配置文件</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/</span><span class="keyword">default</span></div></pre></td></tr></table></figure>
+
+<p>先找到配置文件，然后修改成内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="title">server</span> {</div><div class="line">    <span class="comment"># 默认端口</span></div><div class="line">    <span class="title">listen</span> <span class="number">80</span>;</div><div class="line">    <span class="comment"># 默认指向路径</span></div><div class="line">    <span class="title">root</span> /usr/share/nginx/www;</div><div class="line">    <span class="comment"># 默认首页</span></div><div class="line">    <span class="title">index</span> index.html index.htm;</div><div class="line"></div><div class="line">    <span class="comment"># 绑定域名</span></div><div class="line">    <span class="title">server_name</span> localhost;</div><div class="line"></div><div class="line">    <span class="title">location</span> / {</div><div class="line">        <span class="title">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment"># 定义错误页</span></div><div class="line">    <span class="title">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</div><div class="line"></div><div class="line">    <span class="title">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html</div><div class="line">    location = 50x.html {</div><div class="line">      <span class="title">root</span> /usr/share/ngnix/www;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">#PHP</span></div><div class="line">    <span class="title">location</span> <span class="regexp">~ \.php$</span> {</div><div class="line">      <span class="title">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</div><div class="line">      <span class="title">fastcgi_index</span> index.php;</div><div class="line">      <span class="title">fastcgi_pass</span> <span class="url">unix:/var/run/php5-fpm.sock</span>;</div><div class="line">      <span class="title">include</span> fastcgi_params;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>注意： 如果涉及到修改 <strong>Nginx</strong> 配置文件的，一定要重启下 <strong>Nginx</strong>，配置才会生效的。</p>
+<h2 id="启动服务">启动服务</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 启动 Nginx</div><div class="line">(<span class="built_in">sudo</span>) service nginx start</div><div class="line">// 重启 Nginx</div><div class="line">(<span class="built_in">sudo</span>) service nginx restart</div><div class="line">// 停止 Nginx</div><div class="line">(<span class="built_in">sudo</span>) service nginx stop</div></pre></td></tr></table></figure>
+
+<p>如要重启、停止其他服务，把 <strong>nginx</strong> 替换成 <strong>php5-fpm</strong>、<strong>mysql</strong> 即可。</p>
+<h2 id="验证下是否安装成功">验证下是否安装成功</h2>
+<h3 id="先来验证下_Nginx_服务">先来验证下 <strong>Nginx</strong> 服务</h3>
+<p>在浏览器里访问 <code>http://你的IP</code> ，会出现 <code>Welcome to nginx!</code> 字样，则说明你已经安装成功了。</p>
+<h3 id="接着来验证下_PHP_服务">接着来验证下 <strong>PHP</strong> 服务</h3>
+<p>在 <code>/usr/share/nginx/www/</code> 下, 新建一个 <code>test.php</code> 文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>www<span class="regexp">/test.php</span></div></pre></td></tr></table></figure>
+
+<p>敲入内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span></div><div class="line">    phpinfo();</div><div class="line"><span class="preprocessor">?&gt;</span></div></pre></td></tr></table></figure>
+
+<p>然后在浏览器里，访问 <code>http://你的IP/test.php</code>，会出现一个关于 <strong>PHP</strong> 的相关配置信息，能看到表明你已经成功搭建好了 <strong>LNMP</strong> 环境。</p>
+<h4 id="参考资料">参考资料</h4>
+<ul>
+<li><a href="http://www.cnblogs.com/heinoc/p/3808048.html" target="_blank" rel="external">http://www.cnblogs.com/heinoc/p/3808048.html</a></li>
+<li><a href="http://jybb.me/debian-lnmp" target="_blank" rel="external">http://jybb.me/debian-lnmp</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04</a></li>
+<li><a href="http://bbs.aliyun.com/read/135940.html?uid=1349361&amp;displayMode=1" target="_blank" rel="external">http://bbs.aliyun.com/read/135940.html?uid=1349361&amp;displayMode=1</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/Debian/">Debian</a> <a href="/tags/LNMP/">LNMP</a> <a href="/tags/Digitalocean/">Digitalocean</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment" class="extra-comment">
+    <h1 class="title">留言</h1>
+
+    <!-- Duoshuo Comment BEGIN -->
+    <div class="ds-thread"></div>
+    <!-- 移动到 after_footer.ejs -->
+    <!-- Duoshuo Comment END -->
+</section>
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:iamocean.net">
+  </form>
+</div>
+
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
+  
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+  
+    <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
+  
+    <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
+  
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Gulp/">Gulp</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>2</small></li>
+  
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/LNMP/">LNMP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>2</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
+  
+    <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
+  
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Wiki/">Wiki</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/license/">license</a><small>1</small></li>
+  
+    <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/升级/">升级</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>3</small></li>
+  
+    <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
+  
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <p class="copyright">
+    &copy; 2015 ocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
+  </footer>
+
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iamocean"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
