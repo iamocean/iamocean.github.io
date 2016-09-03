@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>js两个数组合并 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,20 +107,15 @@
     <div class="entry markdown-body post-bd">
       
         <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</div></pre></td></tr></table></figure>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</span><br><span class="line">var arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br></pre></td></tr></table></figure>
 <p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }</div></pre></td></tr></table></figure>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> &#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <p>很简单需求吧，想了很久，自己也还没写出来，很惭愧。<br>于是跑到 <a href="http://segmentfault.com/q/1010000000379256" target="_blank" rel="external">sf</a> 上提问，很快就收到了满意的答案。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="reserved">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line"><span class="reserved">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"><span class="reserved">var</span> obj = {};</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="reserved">var</span> i=<span class="number">0</span>, len=arr1.length; i&lt;len; i++) {</div><div class="line">    obj[arr1[i]] = arr2[i];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj);   <span class="regexp">//</span> Object {<span class="number">5</span>: <span class="string">"a"</span>, <span class="number">6</span>: <span class="string">"b"</span>, <span class="number">7</span>: <span class="string">"c"</span>, <span class="number">8</span>: <span class="string">"d"</span>, <span class="number">9</span>: <span class="string">"e"</span>}</div></pre></td></tr></table></figure>
-
+<figure class="highlight cal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len=arr1.length; i&lt;len; i++) &#123;</span><br><span class="line">    obj[arr1[i]] = arr2[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(obj);   // Object &#123;<span class="number">5</span>: <span class="variable">"a"</span>, <span class="number">6</span>: <span class="variable">"b"</span>, <span class="number">7</span>: <span class="variable">"c"</span>, <span class="number">8</span>: <span class="variable">"d"</span>, <span class="number">9</span>: <span class="variable">"e"</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>看到了这个答案后，狠狠的给自己扇一把掌<br>自己的思路跟他的一样，就是不知道自己为什么要再循环一次，蠢si了…</p>
 <p>最后结合项目本身的情况，直接使用 <a href="http://underscorejs.org/underscore.js" target="_blank" rel="external">Underscore.js</a> 里面的方法</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="reserved">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line"><span class="reserved">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"><span class="reserved">var</span> obj = _.object(arr1, arr2);</div><div class="line"><span class="built_in">console</span>.log(obj);  <span class="regexp">//</span> Object {<span class="number">5</span>: <span class="string">"a"</span>, <span class="number">6</span>: <span class="string">"b"</span>, <span class="number">7</span>: <span class="string">"c"</span>, <span class="number">8</span>: <span class="string">"d"</span>, <span class="number">9</span>: <span class="string">"e"</span>}</div></pre></td></tr></table></figure>
-
+<figure class="highlight cal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"><span class="keyword">var</span> obj = _.object(arr1, arr2);</span><br><span class="line">console.log(obj);  // Object &#123;<span class="number">5</span>: <span class="variable">"a"</span>, <span class="number">6</span>: <span class="variable">"b"</span>, <span class="number">7</span>: <span class="variable">"c"</span>, <span class="number">8</span>: <span class="variable">"d"</span>, <span class="number">9</span>: <span class="variable">"e"</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>Underscore.js 里面的 _.object() 方法也写得挺简单的，找个时间把源码给翻翻看。。。</p>
 <p><strong>ps：感谢所有帮忙解答这个问题的人。。</strong></p>
 
@@ -133,7 +128,7 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/js/">js</a> <a href="/tags/JavaScript/">JavaScript</a> <a href="/tags/Array/">Array</a> <a href="/tags/Underscorejs/">Underscore.js</a> <a href="/tags/object/">object</a> <a href="/tags/数组合并/">数组合并</a>
+    <a href="/tags/Array/">Array</a> <a href="/tags/JavaScript/">JavaScript</a> <a href="/tags/Underscore-js/">Underscore.js</a> <a href="/tags/js/">js</a> <a href="/tags/object/">object</a> <a href="/tags/数组合并/">数组合并</a>
   </div>
 
         
@@ -143,15 +138,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -183,23 +169,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -230,7 +218,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -266,9 +254,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -276,7 +266,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -288,9 +280,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -298,13 +296,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -314,13 +320,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -353,7 +361,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -368,18 +376,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

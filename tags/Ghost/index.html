@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Ghost | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -76,139 +76,45 @@
 <h2 class="archive-title tag">Ghost</h2>
 
 
+<div class="archive">
+  <dl class="archive-list">
+  
+  
+    
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
     
-      <img src="">
+      <dt> 2016 </dt>
+      
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+
+      <dd>
+        <time class="date" datetime="2016-08-28T13:53:16.000Z">2016-08-28</time>
+        <a href="/2016/08/28/upgrade-ghost-blog/" class="title">Ghost 博客从 0.6.5 升级到 0.9.0 版本</a>
+      </dd>
+  
+    
+
+    
+      <dt> 2015 </dt>
+      
+    
+
+      <dd>
+        <time class="date" datetime="2015-06-21T15:02:38.000Z">2015-06-21</time>
+        <a href="/2015/06/21/debian7-ghost-blog/" class="title">在 Debian 7上搭建 Ghost 博客</a>
+      </dd>
+  
+    
+
+    
+
+      <dd>
+        <time class="date" datetime="2015-04-12T15:45:05.000Z">2015-04-12</time>
+        <a href="/2015/04/12/hexo-to-ghost/" class="title">从Hexo迁移到Ghost博客</a>
+      </dd>
+  
+  </dl>
 </div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2015/06/21/debian7-ghost-blog/">在 Debian 7上搭建 Ghost 博客</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2015-06-21T15:02:38.000Z">日期：<a href="/2015/06/21/debian7-ghost-blog/">2015/06/21</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Linux/">Linux</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>前段时间，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个 <strong>$5/M</strong> 的 VPS，当时是为了能科学上网，只搭建了个 <a href="http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/" target="_blank" rel="external">Shadowsocks</a> 而已，好像有点浪费的样子，而最近刚好又在学习 <strong>Node.js</strong> 方面的东西，于是就顺便搭了个 <strong>Ghost</strong> 博客…</p>
-<h1 id="下载_Ghost_源码">下载 Ghost 源码</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载源码</span></div><div class="line">wget https:<span class="comment">//ghost.org/zip/ghost-latest.zip</span></div><div class="line"><span class="comment">// 解压</span></div><div class="line">unzip -uo ghost-latest.zip -d ghost</div></pre></td></tr></table></figure>
-
-<p>目前最新版本是 <strong>0.6.4</strong>，可以在 <a href="https://github.com/TryGhost/Ghost/" target="_blank" rel="external">Github</a> 或者 <a href="https://ghost.org/download/" target="_blank" rel="external">Ghost</a> 官方网站上找到。</p>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2015/06/21/debian7-ghost-blog/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2015/04/12/hexo-to-ghost/">从Hexo迁移到Ghost博客</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2015-04-12T15:45:05.000Z">日期：<a href="/2015/04/12/hexo-to-ghost/">2015/04/12</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Hexo/">Hexo</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>一时心血来潮，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">DO</a> 上搭建了个 <a href="http://oceanlau.com/" target="_blank" rel="external">Ghost</a> 博客，数据迁移是个问题。<br>经过短暂的搜索，发现了一个好东西 —— <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a>，目测是个外国友人写的。<br>一个 <strong>npm</strong> 包，安装和使用都很简单、很方便。</p>
-<h2 id="使用方法：">使用方法：</h2>
-<h3 id="安装_oghost_npm_包">安装 <strong>oghost npm</strong> 包</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> npm install oghost -g</div></pre></td></tr></table></figure>
-
-<h3 id="进入__post_目录">进入 <strong>_post</strong> 目录</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</div><div class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2015/04/12/hexo-to-ghost/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav class="page-nav clearfix">
-  <span class="page-number current">1</span>
-</nav>
-
-
 
       </div>
     </div>
@@ -238,23 +144,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -285,7 +193,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -321,9 +229,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -331,7 +241,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -343,9 +255,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -353,13 +271,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -369,13 +295,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -408,7 +336,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -423,18 +351,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

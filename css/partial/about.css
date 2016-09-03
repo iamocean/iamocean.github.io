@@ -10,12 +10,15 @@
 }
 .page-about .about-title {
   font-size: 24px;
-  color: #999;
-  text-shadow: 0 0 1px #FFF;
+  color: #555;
 }
 .page-about .about-list {
   margin-bottom: 32px;
   padding: 24px;
+}
+.page-about .about-list li {
+  font-size: 14px;
+  line-height: 1.5;
 }
 .page-about .about-list code {
   padding: 2px 4px;

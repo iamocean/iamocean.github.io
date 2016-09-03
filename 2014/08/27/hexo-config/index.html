@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Hexo 个性化配置 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -106,14 +106,11 @@
     </header>
     <div class="entry markdown-body post-bd">
       
-        <h1 id="自定义页面">自定义页面</h1>
-<p><strong>Hexo</strong> 里新建页面，直接运行 <code>hexo new page &quot;pageName&quot;</code>，然后在 <strong>themes/</strong> 的主题目录下找到 <strong>_config.yml</strong> 文件配置下路径就可以了。</p>
+        <h1 id="自定义页面">自定义页面</h1><p><strong>Hexo</strong> 里新建页面，直接运行 <code>hexo new page &quot;pageName&quot;</code>，然后在 <strong>themes/</strong> 的主题目录下找到 <strong>_config.yml</strong> 文件配置下路径就可以了。</p>
 <p>比如说我在 <strong>source</strong> 文件夹新建了一个 <strong>HTML</strong> 页面，但是不想让 <strong>Hexo</strong> 用 <strong>render</strong> 再次帮我解析，那么只需再在 <code>.html</code> 页面的头部加上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">layout: <span class="literal">false</span></div><div class="line">---</div></pre></td></tr></table></figure>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">layout: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>这样 <strong>Hexo</strong> 就不会把这个 <strong>HTML</strong> 页面再次 <strong>render</strong> 了。</p>
-<h4 id="参考资料">参考资料</h4>
-<ul>
+<h4 id="参考资料">参考资料</h4><ul>
 <li><a href="http://yangjian.me/workspace/building-blog-with-hexo/" target="_blank" rel="external">http://yangjian.me/workspace/building-blog-with-hexo/</a></li>
 </ul>
 
@@ -136,15 +133,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -176,23 +164,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -223,7 +213,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -259,9 +249,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -269,7 +261,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -281,9 +275,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -291,13 +291,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -307,13 +315,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -346,7 +356,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -361,18 +371,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

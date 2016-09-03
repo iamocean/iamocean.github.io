@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>从终端里直接打开Sublime Text编辑器 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,12 +107,9 @@
     <div class="entry markdown-body post-bd">
       
         <p>最近经常在 <strong>Terminal</strong> 里修改、编辑文件，改动的地方少点还行，需要改动的地方多就有点难受了。由于本人对 <strong>VIM</strong>  编辑器命令行不熟悉、操作不太习惯，加上之前一直都再用 <strong>Sublime Text</strong> 编辑器，所以就想着能不能从终端里直接打开 <strong>Sublime Text</strong> 编辑器来修改呢？<br>没想竟然这么简单，直接做个软链接就搞定了。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>subl</div></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln <span class="operator">-s</span> <span class="string">"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"</span> /usr/<span class="built_in">local</span>/bin/subl</span><br></pre></td></tr></table></figure>
 <p>不过在<a href="https://gist.github.com/artero/1236170" target="_blank" rel="external"><strong>Github</strong></a>上看到有人说 一天只能够启动<strong>500</strong>次，但是对于我来说已经足够了。哈哈~</p>
-<h2 id="常用命令：">常用命令：</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">subl  xxx.txt       打开某文件</div><div class="line"><span class="built_in">cd</span> xxx/  subl .     打开文件夹（默认打开一个新编辑器）</div></pre></td></tr></table></figure>
-
+<h2 id="常用命令：">常用命令：</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">subl </span> xxx.txt       打开某文件</span><br><span class="line"><span class="label">cd</span> xxx/  <span class="keyword">subl </span>.     打开文件夹（默认打开一个新编辑器）</span><br></pre></td></tr></table></figure>
 <p><strong>参考资料：</strong></p>
 <ul>
 <li><a href="https://gist.github.com/artero/1236170" target="_blank" rel="external">https://gist.github.com/artero/1236170</a></li>
@@ -130,7 +127,7 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Sublime-Text/">Sublime Text</a> <a href="/tags/编辑器/">编辑器</a> <a href="/tags/Terminal/">Terminal</a>
+    <a href="/tags/Sublime-Text/">Sublime Text</a> <a href="/tags/Terminal/">Terminal</a> <a href="/tags/编辑器/">编辑器</a>
   </div>
 
         
@@ -140,15 +137,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -180,23 +168,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -227,7 +217,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -263,9 +253,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -273,7 +265,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -285,9 +279,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -295,13 +295,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -311,13 +319,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -350,7 +360,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -365,18 +375,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

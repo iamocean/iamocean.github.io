@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Debian 7 服务器环境初次配置 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -106,56 +106,35 @@
     </header>
     <div class="entry markdown-body post-bd">
       
-        <h1 id="前言">前言</h1>
-<p>前段时间在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个云主机，自己也是 <strong>Linux</strong> 新手，刚好十一国庆在家里憋得快疯了，于是就有了这一篇流水账拉。</p>
+        <h1 id="前言">前言</h1><p>前段时间在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个云主机，自己也是 <strong>Linux</strong> 新手，刚好十一国庆在家里憋得快疯了，于是就有了这一篇流水账拉。</p>
 <p>小编选的是每月 $5，<strong>SFO1</strong> 地区（据说是离中国大陆速度最快的），<strong>Debian 7</strong> 32位的系统。<br>创建完 <strong>Droplets</strong> 拿到后 <strong>IP</strong> 和密码后，第一件事就是把 <strong>Root</strong> 默认密码给改掉…哈哈！</p>
-<h1 id="登录_ROOT_用户修改密码">登录 ROOT 用户修改密码</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root<span class="annotation">@ip</span>   <span class="comment">// 登录服务器</span></div></pre></td></tr></table></figure>
-
+<h1 id="登录_ROOT_用户修改密码">登录 ROOT 用户修改密码</h1><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root<span class="annotation">@ip</span>   <span class="comment">// 登录服务器</span></span><br></pre></td></tr></table></figure>
 <p>注：登上后默认会提醒修改 <strong>ROOT</strong> 密码</p>
-<h1 id="创建新用户">创建新用户</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adduser demo <span class="comment">// 创建新用户</span></div></pre></td></tr></table></figure>
-
+<h1 id="创建新用户">创建新用户</h1><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser demo <span class="comment">// 创建新用户</span></span><br></pre></td></tr></table></figure>
 <p>注：过程会提醒完善新用户的个人信息</p>
-<p><a id="more"></a></p>
-<h1 id="修改新用户权限">修改新用户权限</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">visudo</div></pre></td></tr></table></figure>
-
+<a id="more"></a>
+<h1 id="修改新用户权限">修改新用户权限</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo</span><br></pre></td></tr></table></figure>
 <p>找到这一行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># User privilege specification</span></div><div class="line"><span class="keyword">root</span>    <span class="literal">ALL</span>=(<span class="literal">ALL</span>:<span class="literal">ALL</span>) <span class="literal">ALL</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User privilege specification</span></span><br><span class="line"><span class="keyword">root</span>    <span class="literal">ALL</span>=(<span class="literal">ALL</span>:<span class="literal">ALL</span>) <span class="literal">ALL</span></span><br></pre></td></tr></table></figure>
 <p>给新用户 <strong>demo</strong> 设置权限</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">demo    <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>:<span class="keyword">ALL</span>) <span class="keyword">ALL</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">demo</span>    <span class="literal">ALL</span>=(<span class="literal">ALL</span>:<span class="literal">ALL</span>) <span class="literal">ALL</span></span><br></pre></td></tr></table></figure>
 <p>然后保存退出</p>
-<h1 id="修改_ssh_配置文件">修改 ssh 配置文件</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano <span class="regexp">/etc/</span>ssh<span class="regexp">/sshd_config</span></div></pre></td></tr></table></figure>
-
+<h1 id="修改_ssh_配置文件">修改 ssh 配置文件</h1><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano <span class="regexp">/etc/</span>ssh<span class="regexp">/sshd_config</span></span><br></pre></td></tr></table></figure>
 <p>需要调整的内容：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 修改登录端口号</span></div><div class="line">Port <span class="number">25000</span></div><div class="line"></div><div class="line"><span class="comment">// 协议</span></div><div class="line">Protocol <span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">// 禁止 ROOT 用户登录</span></div><div class="line">PermitRootLogin no</div><div class="line"></div><div class="line"><span class="comment">// 允许新增用户登录</span></div><div class="line">UseNDS no</div><div class="line">AllowUsers demo</div></pre></td></tr></table></figure>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改登录端口号</span></span><br><span class="line">Port <span class="number">25000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 协议</span></span><br><span class="line">Protocol <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 禁止 ROOT 用户登录</span></span><br><span class="line">PermitRootLogin no</span><br><span class="line"></span><br><span class="line"><span class="comment">// 允许新增用户登录</span></span><br><span class="line">UseNDS no</span><br><span class="line">AllowUsers demo</span><br></pre></td></tr></table></figure>
 <p>然后保存退出</p>
 <p>注：端口号修改的范围在 <strong>1025</strong> - <strong>65536</strong> 之间，另外一定要记得加上允许新用户登录。</p>
-<h1 id="重新加载_SSH">重新加载 SSH</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/<span class="keyword">init</span>.d/ssh restart</div></pre></td></tr></table></figure>
-
+<h1 id="重新加载_SSH">重新加载 SSH</h1><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/ssh restart</span></span><br></pre></td></tr></table></figure>
 <p>注：小编用的是 <strong>Debian</strong> 系，别的 <strong>Linux</strong> 重启的 <strong>SSH</strong> 命令略有不同</p>
-<h1 id="验证新用户是否能登录">验证新用户是否能登录</h1>
-<p>先不要把已登录的 <strong>ROOT</strong> 用户退出来，重新打开一个新窗口即可。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">ssh</span> -p 端口号 新用户名<span class="variable">@IP</span></div></pre></td></tr></table></figure>
-
+<h1 id="验证新用户是否能登录">验证新用户是否能登录</h1><p>先不要把已登录的 <strong>ROOT</strong> 用户退出来，重新打开一个新窗口即可。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -p 端口号 新用户名<span class="variable">@IP</span></span><br></pre></td></tr></table></figure>
 <p>注：默认端口已改</p>
-<h1 id="检查系统语言环境">检查系统语言环境</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">locale</div><div class="line">sudo nano /etc/<span class="keyword">default</span>/locale</div><div class="line"></div><div class="line">sudo locale-gen en_US:UTF-<span class="number">8</span>  <span class="comment">// 安装缺失的语言包</span></div><div class="line"><span class="keyword">export</span> LC_CTYPE = <span class="string">"en_US.UTF-8"</span>  <span class="comment">// 修改语言包</span></div></pre></td></tr></table></figure>
-
+<h1 id="检查系统语言环境">检查系统语言环境</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br><span class="line">sudo nano /etc/<span class="keyword">default</span>/locale</span><br><span class="line"></span><br><span class="line">sudo locale-gen en_US:UTF-<span class="number">8</span>  <span class="comment">// 安装缺失的语言包</span></span><br><span class="line"><span class="keyword">export</span> LC_CTYPE = <span class="string">"en_US.UTF-8"</span>  <span class="comment">// 修改语言包</span></span><br></pre></td></tr></table></figure>
 <p>建议修改为 <code>en_US:UTF-8</code> 或者 <code>en_US:en</code></p>
 <p>更多详情：<a href="http://wiki.ubuntu.org.cn/%E4%BF%AE%E6%94%B9locale" target="_blank" rel="external">http://wiki.ubuntu.org.cn/%E4%BF%AE%E6%94%B9locale</a></p>
-<h1 id="更新软件包">更新软件包</h1>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></div><div class="line">apt-<span class="built_in">get</span> upgrade</div></pre></td></tr></table></figure>
-
+<h1 id="更新软件包">更新软件包</h1><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">apt-<span class="built_in">get</span> upgrade</span><br></pre></td></tr></table></figure>
 <p>基本配置调整得差不多了，最后更新下软件。<br>接着干你想干的事情呗。。。</p>
-<h3 id="参考资料">参考资料</h3>
-<ul>
+<h3 id="参考资料">参考资料</h3><ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2014/03/server_setup.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/03/server_setup.html</a></li>
 <li><a href="http://www.csdn.net/article/2014-05-15/2819795" target="_blank" rel="external">http://www.csdn.net/article/2014-05-15/2819795</a></li>
@@ -180,15 +159,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -220,23 +190,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -267,7 +239,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -303,9 +275,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -313,7 +287,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -325,9 +301,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -335,13 +317,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -351,13 +341,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -390,7 +382,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -405,18 +397,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

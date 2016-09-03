@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ghost 博客从 0.6.5 升级到 0.9.0 版本 | Iamocean</title>
+  <meta name="author" content="iamocean">
+  
+  <meta name="description" content="学习、记录与分享">
+  
+  
+  <meta name="keywords" content="前端开发、HTML5、CSS3、游戏开发">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Ghost 博客从 0.6.5 升级到 0.9.0 版本"/>
+  <meta property="og:site_name" content="Iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">Iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+        <li><a href="/about">关于我</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title">Ghost 博客从 0.6.5 升级到 0.9.0 版本</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2016-08-28T13:53:16.000Z">日期：<a href="/2016/08/28/upgrade-ghost-blog/">2016/08/28</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <p>之前用 <a href="https://ghost.org/" target="_blank" rel="external">Ghost</a> 搭建了个<a href="http://oceanlau.com/" target="_blank" rel="external">博客</a>，看了下博客上最新的一篇文章已是一年前的。<br>顺便翻了下 <a href="https://ghost.org/developers/" target="_blank" rel="external">Ghost 官网</a>，发现最新版已是 <code>0.9.0</code>，另外还新推出了个<a href="https://ghost.org/downloads/" target="_blank" rel="external">桌面版</a>，看起来很酷哦！</p>
+<h2 id="升级前准备">升级前准备</h2><p>1.备份文件</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cp</span> -rp path/www/ghost  ./ghost_backup</span><br></pre></td></tr></table></figure>
+<p>2.下载最新版本</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LOk <span class="string">https:</span><span class="comment">//ghost.org/zip/ghost-latest.zip</span></span><br></pre></td></tr></table></figure>
+<p>3.解压 <strong>Ghost</strong> 到临时目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uzip ghost-latest <span class="operator">-d</span> ghost-temp</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>4.删除原 <strong>Ghost</strong> 目录下的旧代码</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="built_in">path</span>/ghost</span><br><span class="line">rm -rf core</span><br></pre></td></tr></table></figure>
+<p>5.把刚刚下载解压好 <code>ghost-temp</code> 目录里的 <strong>core</strong> 文件夹和其他主要文件 <code>index.js</code> 、<code>*.json</code> 复制过来</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -R path/ghost-temp/core ./</span><br><span class="line">cp -R index<span class="class">.js</span> *<span class="class">.json</span> ./</span><br></pre></td></tr></table></figure>
+<p>6.安装生产环境下最新依赖</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> <span class="comment">--production</span></span></span><br></pre></td></tr></table></figure>
+<p>7.启动 <strong>Ghost</strong> 程序</p>
+<p>这里本人推荐使用 <strong>PM2</strong> 来管理 <strong>Ghost</strong> 程序<br>如果你还没有安装请先安装好 <code>PM2</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> pm2 -<span class="keyword">g</span>  // 安装 PM2</span></span><br></pre></td></tr></table></figure>
+<p>如果已安装好的，则使用 <strong>PM2</strong> 来启动 <strong>Ghost</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV=production pm2 <span class="operator"><span class="keyword">start</span> <span class="keyword">index</span>.js <span class="comment">--name "GhostBlog"</span></span></span><br></pre></td></tr></table></figure>
+<p>然后将它添加至 <strong>PM2</strong> 管理列表里</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 <span class="keyword">save</span></span><br></pre></td></tr></table></figure>
+<p>最后把它添加到系统启动项</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo p<span class="title">m2</span> startup</span><br></pre></td></tr></table></figure>
+<p>可以重启下系，统验证是否成功？</p>
+<p><em>注: Ghost 对 Node 版本问题，要一定要求的。0.9.0 目前只要支持 4.2.0 ~ 5.0.0 之间的版本，更多详情请看 <a href="http://support.ghost.org/supported-node-versions/" target="_blank" rel="external">http://support.ghost.org/supported-node-versions/</a> </em></p>
+<h4 id="参考资料">参考资料</h4><ul>
+<li><a href="http://support.ghost.org/how-to-upgrade/#command-guide" target="_blank" rel="external">http://support.ghost.org/how-to-upgrade/#command-guide</a></li>
+<li><a href="http://www.d0u9.xyz/sheng-ji-ghostbo-ke-bing-shi-yong-pm2guan-li/" target="_blank" rel="external">http://www.d0u9.xyz/sheng-ji-ghostbo-ke-bing-shi-yong-pm2guan-li/</a></li>
+<li><a href="https://happycoder.net/how-to-update-ghost-on-digital-ocean/" target="_blank" rel="external">https://happycoder.net/how-to-update-ghost-on-digital-ocean/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/Ghost/">Ghost</a> <a href="/tags/blog/">blog</a> <a href="/tags/博客升级/">博客升级</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:iamocean.net">
+  </form>
+</div>
+
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
+  
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
+  
+    <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
+  
+    <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
+  
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Gulp/">Gulp</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>2</small></li>
+  
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/LNMP/">LNMP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>2</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
+  
+    <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
+  
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
+  
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Wiki/">Wiki</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
+  
+    <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/license/">license</a><small>1</small></li>
+  
+    <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/升级/">升级</a><small>1</small></li>
+  
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>3</small></li>
+  
+    <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
+  
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <p class="copyright">
+    &copy; 2016 iamocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
+  </footer>
+
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

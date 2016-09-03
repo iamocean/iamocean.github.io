@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>升级Mac自带的SVN版本 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,38 +107,24 @@
     <div class="entry markdown-body post-bd">
       
         <p>Mac在10.9.1版本里，系统默认安装了 <strong>subversion(svn)</strong> ，但是往往默认安装的版本都是比较低的（本人系统默认安装的svn版本是 1.7.10）,由于在虚拟机里用的是1.8.x以上的，直接导致在 <strong>Terminal</strong> 终端里直接用命令行提交时会提示失败（由于svn版本过低造成的），因此有了这篇文章，顺便记录下折腾的过程。</p>
-<h2 id="准备工作：">准备工作：</h2>
-<p>首先要确保您的 <strong>Mac</strong> 已经安装好了 <strong>Git</strong> (默认已安装) 和 <strong>Homebrew</strong></p>
-<h2 id="备份系统自带的SVN">备份系统自带的SVN</h2>
-<p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">which svn</div><div class="line"><span class="built_in">cd</span> /usr/bin</div><div class="line">mkdir ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) cp -rp svn* ~/.backup</div><div class="line">(<span class="built_in">sudo</span>) rm -rf svn*</div></pre></td></tr></table></figure>
-
+<h2 id="准备工作：">准备工作：</h2><p>首先要确保您的 <strong>Mac</strong> 已经安装好了 <strong>Git</strong> (默认已安装) 和 <strong>Homebrew</strong></p>
+<h2 id="备份系统自带的SVN">备份系统自带的SVN</h2><p>打开 <strong>Terminal</strong> 终端，查找默认安装的SVN路径并建个文件夹备份下</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">which</span> svn</span><br><span class="line"><span class="label">cd</span> /usr/<span class="keyword">bin</span><br><span class="line"></span><span class="label">mkdir</span> ~/.<span class="keyword">backup</span><br><span class="line"></span>(sudo) <span class="preprocessor">cp</span> -rp svn* ~/.<span class="keyword">backup</span><br><span class="line"></span>(sudo) rm -rf svn*</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<h2 id="安装最新版本SVN">安装最新版本SVN</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">❯ brew install subversion</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Downloading</span> <span class="symbol">https:</span>/<span class="regexp">/downloads.sf.net/project</span><span class="regexp">/machomebrew/</span><span class="constant">Bottles</span>/subversion-</span></span></div><div class="line">Already downloaded: /Library/Caches/Homebrew/subversion-1.8.5.mavericks.bottle.tar.gz</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Pouring</span> subversion-<span class="number">1.8</span>.<span class="number">5</span>.mavericks.bottle.tar.gz</span></span></div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Caveats</span></span></span></div><div class="line">svntools have been installed to:</div><div class="line"><span class="comment">  /usr/local/opt/subversion/libexec</span></div><div class="line"></div><div class="line">Bash completion has been installed to:</div><div class="line"><span class="comment">  /usr/local/etc/bash_completion.d</span></div><div class="line">Warning: Could not link subversion. Unlinking...</div><div class="line">Error: The `brew link` step did not complete successfully</div><div class="line">The formula built, but is not symlinked into /usr/local</div><div class="line">You can try again using `brew link subversion'</div><div class="line"></div><div class="line">Possible conflicting files are:</div><div class="line">=<span class="ruby"><span class="output"><span class="status">=&gt;</span> <span class="constant">Summary</span></span></span></div><div class="line">🍺  /usr/local/Cellar/subversion/1.8.5: 116 files, 9.3M</div></pre></td></tr></table></figure>
-
+<h2 id="安装最新版本SVN">安装最新版本SVN</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">❯ brew <span class="operator"><span class="keyword">install</span> subversion</span><br><span class="line">==&gt; Downloading https://downloads.sf.net/<span class="keyword">project</span>/machomebrew/Bottles/subversion-</span><br><span class="line">Already downloaded: /<span class="keyword">Library</span>/Caches/Homebrew/subversion-<span class="number">1.8</span><span class="number">.5</span>.mavericks.bottle.tar.gz</span><br><span class="line">==&gt; Pouring subversion-<span class="number">1.8</span><span class="number">.5</span>.mavericks.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">svntools have been installed <span class="keyword">to</span>:</span><br><span class="line">  /usr/<span class="keyword">local</span>/opt/subversion/libexec</span><br><span class="line"></span><br><span class="line">Bash completion has been installed <span class="keyword">to</span>:</span><br><span class="line">  /usr/<span class="keyword">local</span>/etc/bash_completion.<span class="keyword">d</span></span><br><span class="line"><span class="keyword">Warning</span>: Could <span class="keyword">not</span> <span class="keyword">link</span> subversion. Unlinking...</span><br><span class="line"><span class="keyword">Error</span>: The <span class="string">`brew link`</span> step did <span class="keyword">not</span> <span class="keyword">complete</span> successfully</span><br><span class="line">The formula built, but <span class="keyword">is</span> <span class="keyword">not</span> symlinked <span class="keyword">into</span> /usr/<span class="keyword">local</span></span><br><span class="line">You can try again <span class="keyword">using</span> <span class="string">`brew link subversion'</span><br><span class="line"></span><br><span class="line">Possible conflicting files are:</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /usr/local/Cellar/subversion/1.8.5: 116 files, 9.3M</span></span></span><br></pre></td></tr></table></figure>
 <p>因为之前安装过，有些依赖就不会重复安装了，可能安装过程跟以上有些出入，不过没关系。<br>安装完后注意看最后的提示( <strong>Warning</strong> 和 <strong>Error</strong> )，说明还没完全安装成功的。。</p>
 <p>如果现在直接在 <strong>Terminal</strong> 终端里输入 <strong>brew link subversion</strong> ，则会出现如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">❯ brew link subversion</div><div class="line">Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span><span class="keyword">...</span> Warning: Could not link subversion. Unlinking...</div><div class="line"></div><div class="line">Error: Could not symlink file: /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span>/lib/libsvn_wc-<span class="number">1.</span>dylib</div><div class="line">/usr/local/lib is not writable. You should change its permissions.</div></pre></td></tr></table></figure>
-
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ brew link subversion</span><br><span class="line"><span class="constant">Linking</span> /usr/local/<span class="constant">Cellar</span>/subversion/<span class="number">1.8</span>.<span class="number">5</span>... <span class="constant">Warning</span>: <span class="constant">Could</span> not link subversion. <span class="constant">Unlinking</span>...</span><br><span class="line"></span><br><span class="line"><span class="constant">Error</span>: <span class="constant">Could</span> not symlink <span class="symbol">file:</span> /usr/local/<span class="constant">Cellar</span>/subversion/<span class="number">1.8</span>.<span class="number">5</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">libsvn_wc</span>-1.<span class="title">dylib</span></span></span><br><span class="line">/usr/local/<span class="class"><span class="keyword">lib</span> <span class="title">is</span> <span class="title">not</span> <span class="title">writable</span>. <span class="title">You</span> <span class="title">should</span> <span class="title">change</span> <span class="title">its</span> <span class="title">permissions</span>.</span></span><br></pre></td></tr></table></figure>
 <p>结果还是没能完全安装成功，失败的原因是文件权限不够、写入失败。</p>
-<h2 id="修改文件权限">修改文件权限</h2>
-<p>按照上面安装完后的提示，去修改对应文件的权限，至于是755还是777，个人觉得随便都行，只要加个写入的权限就可以了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">chmod</span> <span class="number">777</span> /usr/<span class="keyword">local</span>/Cellar/subversion/<span class="number">1.8</span>.<span class="number">5</span>/lib/libsvn_wc-<span class="number">1</span>.dylib</div><div class="line"><span class="keyword">chmod</span> <span class="number">777</span> /usr/<span class="keyword">local</span>/lib</div></pre></td></tr></table></figure>
-
-<h2 id="创建软链接">创建软链接</h2>
-<p>接下来再次尝试创建软件链接，如果一切顺利的话则会出现如下提示，则表示软链接已成功创建。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">❯ brew link subversion</div><div class="line">Linking /usr/local/Cellar/subversion/<span class="number">1.8</span><span class="number">.5</span><span class="keyword">...</span> <span class="number">60</span> symlinks created</div></pre></td></tr></table></figure>
-
-<h2 id="验证是否安装成功">验证是否安装成功</h2>
-<p>继续在 <strong>Terminal</strong> 终端里，敲入 <strong>svn —version</strong> 进行验证</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn —<span class="keyword">version</span></div></pre></td></tr></table></figure>
-
+<h2 id="修改文件权限">修改文件权限</h2><p>按照上面安装完后的提示，去修改对应文件的权限，至于是755还是777，个人觉得随便都行，只要加个写入的权限就可以了</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">777</span> /usr/local/<span class="constant">Cellar</span>/subversion/<span class="number">1.8</span>.<span class="number">5</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">libsvn_wc</span>-1.<span class="title">dylib</span></span></span><br><span class="line">chmod <span class="number">777</span> /usr/local/<span class="class"><span class="keyword">lib</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="创建软链接">创建软链接</h2><p>接下来再次尝试创建软件链接，如果一切顺利的话则会出现如下提示，则表示软链接已成功创建。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ <span class="keyword">brew </span>link <span class="keyword">subversion</span><br><span class="line"></span><span class="label">Linking</span> /usr/local/Cellar/<span class="keyword">subversion/1.8.5... </span><span class="number">60</span> symlinks created</span><br></pre></td></tr></table></figure>
+<h2 id="验证是否安装成功">验证是否安装成功</h2><p>继续在 <strong>Terminal</strong> 终端里，敲入 <strong>svn –version</strong> 进行验证</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn —<span class="property">version</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://iamocean.qiniudn.com/uploads/images/svn.png" alt="svn"></p>
 <p>注意看看红线那部分，看看是不是你安装了那个版本…</p>
-<h3 id="参考资料">参考资料</h3>
-<ul>
+<h3 id="参考资料">参考资料</h3><ul>
 <li><a href="http://www.mobibrw.com/?p=610" target="_blank" rel="external">http://www.mobibrw.com/?p=610</a></li>
 <li><a href="https://www.open.collab.net/scdocs/ddUsingSVN_command-line.html.zh-cn" target="_blank" rel="external">https://www.open.collab.net/scdocs/ddUsingSVN_command-line.html.zh-cn</a></li>
 </ul>
@@ -162,15 +148,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -202,23 +179,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -249,7 +228,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -285,9 +264,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -295,7 +276,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -307,9 +290,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -317,13 +306,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -333,13 +330,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -372,7 +371,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -387,18 +386,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

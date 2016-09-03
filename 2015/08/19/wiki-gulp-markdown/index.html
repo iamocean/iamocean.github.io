@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>用 Gulp 搭建的演示文档 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,25 +107,18 @@
     <div class="entry markdown-body post-bd">
       
         <p>最近在整理项目相关的东西时，要写些注释说明和帮助其他人快速的了解整理个项目的大概情况，不想每次都跟其他人解释一遍，于是就有了这个东西拉。</p>
-<h2 id="Mini_Wiki_是什么？">Mini Wiki 是什么？</h2>
-<p>Mini Wiki —— 用 <strong>Gulp + Markdown</strong> 等开源组件搭建起来的，用于简单文档演示站点。</p>
-<h2 id="Mini_Wiki_目的">Mini Wiki 目的</h2>
-<p><del>解决某些项目里样式文件多、乱…，而且也没多少人明白，此处省略一万个字，说多就是泪呐！</del></p>
+<h2 id="Mini_Wiki_是什么？">Mini Wiki 是什么？</h2><p>Mini Wiki —- 用 <strong>Gulp + Markdown</strong> 等开源组件搭建起来的，用于简单文档演示站点。</p>
+<h2 id="Mini_Wiki_目的">Mini Wiki 目的</h2><p><del>解决某些项目里样式文件多、乱…，而且也没多少人明白，此处省略一万个字，说多就是泪呐！</del></p>
 <p>写文档、写文档、写文档…</p>
-<h2 id="安装与用法">安装与用法</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iamocean/mini-wiki.git</div><div class="line"><span class="keyword">cd</span> mini-wiki/</div><div class="line">npm install</div><div class="line">gulp</div></pre></td></tr></table></figure>
-
+<h2 id="安装与用法">安装与用法</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iamocean/mini-wiki.git</span><br><span class="line"><span class="keyword">cd</span> mini-wiki/</span><br><span class="line">npm install</span><br><span class="line">gulp</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <ol>
 <li>先从 <strong>Github</strong> 上把代码 <strong>clone</strong> 下来</li>
 <li>然后进入对应的目录（如：<strong>mini-wiki</strong>），安装依赖包(<strong>npm install</strong>)</li>
 <li>执行 <strong>gulp</strong> 预览</li>
 <li>修改 <strong>markdown</strong> 文件夹的 <strong>*.md</strong> 可实时更新预览</li>
 </ol>
-<h2 id="目录结构说明">目录结构说明</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mini-wiki</div><div class="line">├── assets/</div><div class="line">│     ├── css/</div><div class="line">│     ├── img/</div><div class="line">│     ├── js/</div><div class="line">├── layout/</div><div class="line">├── markdown/</div><div class="line">├── .gitnore</div><div class="line">├── gulpfile.js</div><div class="line">├── <span class="keyword">index</span>.html</div><div class="line">└── <span class="keyword">package</span>.json</div></pre></td></tr></table></figure>
-
+<h2 id="目录结构说明">目录结构说明</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mini-wiki</span><br><span class="line">├── assets/</span><br><span class="line">│     ├── css/</span><br><span class="line">│     ├── img/</span><br><span class="line">│     ├── js/</span><br><span class="line">├── layout/</span><br><span class="line">├── markdown/</span><br><span class="line">├── <span class="class">.gitnore</span></span><br><span class="line">├── gulpfile<span class="class">.js</span></span><br><span class="line">├── index<span class="class">.html</span></span><br><span class="line">└── package.json</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>assets</strong> 是用来放静态资源的</li>
 <li><strong>markdown</strong> 是用来放 <strong>.md</strong> 的源文件</li>
@@ -152,15 +145,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -192,23 +176,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -239,7 +225,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -275,9 +261,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -285,7 +273,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -297,9 +287,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -307,13 +303,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -323,13 +327,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -362,7 +368,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -377,18 +383,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

@@ -1,0 +1,415 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>搭建 React Native 环境之iOS篇 | Iamocean</title>
+  <meta name="author" content="iamocean">
+  
+  <meta name="description" content="学习、记录与分享">
+  
+  
+  <meta name="keywords" content="前端开发、HTML5、CSS3、游戏开发">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="搭建 React Native 环境之iOS篇"/>
+  <meta property="og:site_name" content="Iamocean"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iamocean" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37221954-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="header">
+    <div class="inner">
+      <div class="logo">
+    <h1 class="title">
+        <a href="/">Iamocean</a>
+    </h1>
+    <h2 class="description">
+        <a href="/">
+            
+        </a>
+    </h2>
+</div>
+<nav class="nav">
+    <ul class="clearfix">
+        
+        <li><a href="/">首页</a></li>
+        
+        <li><a href="/archives">归档</a></li>
+        
+        <li><a href="/about">关于我</a></li>
+        
+    </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <div id="content" class="container clearfix">
+    <div id="main-col" class="main">
+      <div id="wrapper">
+        <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header class="post-hd">
+      
+  
+    <h1 class="title">搭建 React Native 环境之iOS篇</h1>
+  
+
+      
+        <div class="icon"></div>
+        <time class="date" datetime="2015-11-29T14:36:12.000Z">日期：<a href="/2015/11/29/react-native-for-ios/">2015/11/29</a></time>
+        
+  
+  <span class="categories">
+    所属：<a href="/categories/Tutorials/">Tutorials</a>
+  </span>
+
+
+      
+    </header>
+    <div class="entry markdown-body post-bd">
+      
+        <h1 id="前言">前言</h1><p>最近刚好碰到有个需求需要用 <strong>React Native</strong>，在这里我顺便记录下，如何在 <strong>Mac</strong> 下快速搭建 <strong>React Native</strong> 环境，前提是你要有台 <strong>Mac</strong>, 当然你喜欢折腾用黑苹果也是可以的。。。哈哈哈！</p>
+<h1 id="环境配置">环境配置</h1><p><strong>Node.js</strong> 需要 4.0 或 4.0 以上的版本<br>由于之前我已安装过 0.10.x 版本的 <strong>Node.js</strong>，为了方便管理，使用 <strong>NVM</strong> 来管理与安装 <strong>Node.js</strong> 的不同版本</p>
+<p>在 <strong>React Native</strong> 官方推荐下，加上是在 <strong>Mac</strong> 环境里，自己也喜欢用 <strong>Homebrew</strong> 来管理软件包<br>因此这里就统一用 <strong>Homebrew</strong> 来安装</p>
+<h2 id="删除旧版_Node-js">删除旧版 Node.js</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line">lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom \</span><br><span class="line">| <span class="keyword">while</span> read i; <span class="keyword">do</span></span><br><span class="line">  sudo rm /usr/local/<span class="variable">$&#123;</span>i&#125;</span><br><span class="line">done</span><br><span class="line">sudo rm -rf /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">node</span> \</span></span><br><span class="line">     /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">node_modules</span> \</span></span><br><span class="line">     /var/db/receipts/org.nodejs.*</span><br></pre></td></tr></table></figure>
+<p>把这段代码复制文本上另存为 <code>uninstall_node_pkg.sh</code>，然后打开 <code>Terminal</code> (终端)，运行 <code>./uninstall_node_pkg.sh</code> 就会自动删除 <strong>Node.js</strong> 。</p>
+<p>其实这一步可以直接跳过，这是为那(hei)些(chu)爱(nv)干(zuo)净的同学准备的。</p>
+<a id="more"></a>
+<h2 id="安装_NVM_和_Node-js">安装 NVM 和 Node.js</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install nvm  <span class="comment">// 安装 nvm</span></span><br><span class="line">nvm install v4<span class="number">.2</span><span class="number">.2</span>  <span class="comment">// 安装 nodejs v4.2.2 版本</span></span><br><span class="line">nvm use <span class="number">4.2</span><span class="number">.2</span>  <span class="comment">// 用 nvm 切换到 4.2.2 版本</span></span><br><span class="line">nvm alias <span class="keyword">default</span> <span class="number">4.2</span><span class="number">.2</span> <span class="comment">// 修改 nvm 默认指向 4.2.2 版本</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装_React_Native_iOS_版环境">安装 React Native iOS 版环境</h1><h2 id="安装_watchman_和_flow">安装 watchman 和 flow</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install watchman</span><br><span class="line"><span class="keyword">brew </span>install flow</span><br></pre></td></tr></table></figure>
+<p><strong>watchman</strong> 用于监控文件变化<br><strong>flow</strong> 是一个 <code>JavaScript</code> 的静态类型检查器，以方便找出代码中可能存在的类型错误</p>
+<h2 id="安装_xCode">安装 xCode</h2><p><strong>xCode</strong> 需要 7.0 或 7.0 以上的版本<br>如没有安装过或者版本太低，请自行到 <strong>APP Store</strong> 里下载更新</p>
+<h2 id="初始化项目">初始化项目</h2><p>如果输入 <code>react-native -v</code> 显示命令不存在的，请先安装 <strong>React Native Cli</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> react-<span class="keyword">native</span>-cli</span></span><br></pre></td></tr></table></figure>
+<p>然后再初始化名称为 <strong>ReactNativeDemo</strong> 的 <strong>React Native</strong> 项目</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-<span class="keyword">native</span> init ReactNativeDemo</span><br></pre></td></tr></table></figure>
+<p>目录结构大体如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ tree -L <span class="number">2</span></span><br><span class="line">.</span><br><span class="line">└── ReactNativeDemo</span><br><span class="line">    ├── android</span><br><span class="line">    ├── index<span class="class">.android</span><span class="class">.js</span></span><br><span class="line">    ├── index<span class="class">.ios</span><span class="class">.js</span></span><br><span class="line">    ├── ios</span><br><span class="line">    ├── node_modules</span><br><span class="line">    └── package<span class="class">.json</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span> directories, <span class="number">3</span> files</span><br></pre></td></tr></table></figure>
+<p>其中 <code>index.ios.js</code> 和 <code>index.android.js</code> 两个 <strong>JS</strong> 文件分别对应的是 <strong>iOS</strong> 平台和 <strong>Android</strong> 平台的入口</p>
+<h2 id="项目跑起来">项目跑起来</h2><p>切换到 <code>ReactNativeDemo/ios</code> 目录下找到，找到 <strong>ReactNativeDemo.xcodeproj</strong> 然后双击打开 <strong>xCode</strong> 运行起来<br>然后再使用快捷键 <strong>(command + R)</strong> 打开模拟器，第一次可能需要几分钟，就会出现一个新界面显示 <strong>welcome to React Native!</strong>，效果大致如下：</p>
+<p><img src="/images/react-native-ios-demo.png" alt=""></p>
+<h1 id="安装_React_Native_Android_版环境">安装 React Native Android 版环境</h1><h2 id="安装_Java_环境">安装 Java 环境</h2><p>到官方下载 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">SDK</a>，然后自行安装拉</p>
+<p>安装后成功后，输入 <code>java -version</code><br>验证下是否你装安装那个 <strong>Java</strong> 版本</p>
+<h2 id="安装_android-sdk">安装 android-sdk</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install <span class="keyword">android-sdk</span></span><br></pre></td></tr></table></figure>
+<p>安装完后照着提示，把  <code>android sdk</code> 的路径（<code>export ANDROID_HOME=/usr/local/opt/android-sdk</code>）加到 <code>.bashrc</code> 或者 <code>.zshrc</code>中去，具体是那个配置文件是看你自己用的是什么终端</p>
+<h3 id="配置各种代理">配置各种代理</h3><p>打开 <strong>Terminal</strong>（终端），输入 <code>android</code> 会打开 <code>Android SDK Manager</code> ，注意左上角。</p>
+<p><img src="/images/android-sdk-1.jpg" alt=""><br><img src="/images/android-sdk-2.jpg" alt=""><br><img src="/images/android-sdk-3.jpg" alt=""><br><img src="/images/android-sdk-4.jpg" alt=""></p>
+<h3 id="下载_Android_模拟器">下载 Android 模拟器</h3><p>首先到 <a href="https://www.genymotion.com/" target="_blank" rel="external">Genymotion</a> 上注册帐号下载安装包</p>
+<p>添加虚拟设备</p>
+<p><img src="/images/android-genymotion.jpg" alt=""></p>
+<p>然后在命令行里输入 <code>react-native run-android</code> 运行起来，显示如下界面。</p>
+<p><img src="/images/react-native-android-demo.jpg" alt=""></p>
+<p>到这里 <strong>Mac</strong> 上的 <strong>iOS</strong> 和 <strong>Android</strong> 环境都已搭建完成了。</p>
+<h2 id="参考资料">参考资料</h2><ul>
+<li><a href="http://yijiebuyi.com/blog/21f40895e86f4f62bc29956a21a85215.html" target="_blank" rel="external">React Native 环境安装</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="post-ft">
+      
+
+        
+  
+  <div class="tags">
+    <!-- 去掉, -->
+    <a href="/tags/React-Native/">React Native</a> <a href="/tags/iOS/">iOS</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+      </div>
+    </div>
+    <aside id="sidebar" class="sidebar">
+      
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:iamocean.net">
+  </form>
+</div>
+
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/">EJS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tutorials/Gulp/">Gulp</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Hexo/">Hexo</a><sup>3</sup></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><sup>2</sup></li>
+  
+    <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
+  
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
+  
+    <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
+  
+    <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
+  
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry clearfix">
+  
+    <li><a href="/tags/100/">100%</a><small>1</small></li>
+  
+    <li><a href="/tags/Aria2/">Aria2</a><small>1</small></li>
+  
+    <li><a href="/tags/Array/">Array</a><small>1</small></li>
+  
+    <li><a href="/tags/Blog/">Blog</a><small>1</small></li>
+  
+    <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
+  
+    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+  
+    <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
+  
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+  
+    <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
+  
+    <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
+  
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>2</small></li>
+  
+    <li><a href="/tags/Github/">Github</a><small>1</small></li>
+  
+    <li><a href="/tags/Gulp/">Gulp</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Homebrew/">Homebrew</a><small>2</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>2</small></li>
+  
+    <li><a href="/tags/JsFormat/">JsFormat</a><small>2</small></li>
+  
+    <li><a href="/tags/LESSCSS/">LESSCSS</a><small>1</small></li>
+  
+    <li><a href="/tags/LNMP/">LNMP</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>1</small></li>
+  
+    <li><a href="/tags/MAMP/">MAMP</a><small>1</small></li>
+  
+    <li><a href="/tags/MBL/">MBL</a><small>1</small></li>
+  
+    <li><a href="/tags/Mac/">Mac</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>2</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
+  
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
+    <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
+  
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
+  
+    <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
+  
+    <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
+  
+    <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
+  
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
+  
+    <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
+  
+    <li><a href="/tags/Webui/">Webui</a><small>1</small></li>
+  
+    <li><a href="/tags/Wiki/">Wiki</a><small>1</small></li>
+  
+    <li><a href="/tags/Yaaw/">Yaaw</a><small>1</small></li>
+  
+    <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
+  
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
+    <li><a href="/tags/cache/">cache</a><small>1</small></li>
+  
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
+    <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
+  
+    <li><a href="/tags/js/">js</a><small>2</small></li>
+  
+    <li><a href="/tags/license/">license</a><small>1</small></li>
+  
+    <li><a href="/tags/object/">object</a><small>1</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
+  
+    <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
+  
+    <li><a href="/tags/st/">st</a><small>1</small></li>
+  
+    <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
+  
+    <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
+  
+    <li><a href="/tags/入门/">入门</a><small>1</small></li>
+  
+    <li><a href="/tags/分号/">分号</a><small>1</small></li>
+  
+    <li><a href="/tags/升级/">升级</a><small>1</small></li>
+  
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
+    <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
+  
+    <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
+  
+    <li><a href="/tags/安装/">安装</a><small>1</small></li>
+  
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
+  
+    <li><a href="/tags/插件/">插件</a><small>3</small></li>
+  
+    <li><a href="/tags/数组合并/">数组合并</a><small>1</small></li>
+  
+    <li><a href="/tags/科学上网/">科学上网</a><small>1</small></li>
+  
+    <li><a href="/tags/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/tags/编辑器/">编辑器</a><small>1</small></li>
+  
+    <li><a href="/tags/自定义设置/">自定义设置</a><small>1</small></li>
+  
+    <li><a href="/tags/表格/">表格</a><small>1</small></li>
+  
+    <li><a href="/tags/软链接/">软链接</a><small>1</small></li>
+  
+    <li><a href="/tags/过滤/">过滤</a><small>1</small></li>
+  
+    <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+    </aside>
+  </div>
+
+  <footer id="footer" class="footer">
+    <p class="copyright">
+    &copy; 2016 iamocean
+</p>
+
+<p class="power">
+   Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+   Theme by <a href="https://github.com/iamocean" target="_blank">iamocean</a>.
+</p>
+
+
+  </footer>
+
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

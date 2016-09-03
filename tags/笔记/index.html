@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>笔记 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -76,80 +76,24 @@
 <h2 class="archive-title tag">笔记</h2>
 
 
+<div class="archive">
+  <dl class="archive-list">
+  
+  
+    
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
     
-      <img src="">
+      <dt> 2014 </dt>
+      
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+
+      <dd>
+        <time class="date" datetime="2014-07-26T07:25:39.000Z">2014-07-26</time>
+        <a href="/2014/07/26/lesscss-notes/" class="title">LESSCSS学习笔记</a>
+      </dd>
+  
+  </dl>
 </div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/07/26/lesscss-notes/">LESSCSS学习笔记</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-07-26T07:25:39.000Z">日期：<a href="/2014/07/26/lesscss-notes/">2014/07/26</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/LESSCSS/">LESSCSS</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h2 id="把-css文件当作-less文件处理">把.css文件当作.less文件处理</h2>
-<p>之前在整理老项目时，发现有些样式文件以前是没用 <strong>Less</strong> 来编写，那如何把旧的样式文件当做 <strong>Less</strong> 来解析呢？</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="at_rule">@<span class="keyword">import</span> (less) <span class="string">"demo.css"</span></span>;</div><div class="line">……</div></pre></td></tr></table></figure>
-
-<p>这样引用进来，<strong><em>demo.css</em></strong> 就会被当作成 <strong>Less</strong> 文件来解析了。<br>但是这里要注意一下，如果指定了某个文件是 <strong>Less</strong> 但是没有包含后缀名，<strong>Less</strong> 将不会自动添加后缀名。</p>
-<h2 id="变量插值">变量插值</h2>
-<p>在做活动页面时，交付给后端同学后，他要活动页面里用到的所有图片都放到 <strong>CDN</strong> 上面去，他告诉我他的做法是一个个 <strong><em>Ctrl+F</em></strong>，问我有没有更好的做法呢？由于样式是用 <strong>Less</strong> 写的，这就变得容易多了，类似 <strong>JavaScript</strong> 那种字符串拼接的做法，把前半部分路径提取出来，哈哈！</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="at_rule">@imagePath: <span class="string">"../img/"</span>;</span></div><div class="line"><span class="attribute">background-image</span><span class="value">: <span class="function">url</span>(<span class="string">"@{imagePath}/demo.jpg"</span>);</span></div></pre></td></tr></table></figure>
-
-<p>在要注意的地方是不能直接引用变量，要以 <strong>@{变量名}</strong> 的方式才拼接行，不然会报错的耶~！</p>
-<p><strong>参考资料</strong></p>
-<ul>
-<li><a href="http://www.lesscss.net/features/" target="_blank" rel="external">LESSCSS中文官方网站</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav class="page-nav clearfix">
-  <span class="page-number current">1</span>
-</nav>
-
-
 
       </div>
     </div>
@@ -179,23 +123,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -226,7 +172,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -262,9 +208,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -272,7 +220,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -284,9 +234,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -294,13 +250,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -310,13 +274,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -349,7 +315,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -364,18 +330,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

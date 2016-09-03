@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>VPN | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -76,82 +76,24 @@
 <h2 class="archive-title tag">VPN</h2>
 
 
+<div class="archive">
+  <dl class="archive-list">
+  
+  
+    
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
     
-      <img src="">
+      <dt> 2015 </dt>
+      
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+
+      <dd>
+        <time class="date" datetime="2015-03-29T08:35:39.000Z">2015-03-29</time>
+        <a href="/2015/03/29/debian-vpn-pptp/" class="title">VPN PPTP 配置教程</a>
+      </dd>
+  
+  </dl>
 </div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2015/03/29/debian-vpn-pptp/">VPN PPTP 配置教程</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2015-03-29T08:35:39.000Z">日期：<a href="/2015/03/29/debian-vpn-pptp/">2015/03/29</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/Linux/">Linux</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h1 id="PPTP_是什么?">PPTP 是什么?</h1>
-<p>PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。</p>
-<p>没有自己的 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">VPS</a> 吗？赶紧到 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上注册一个吧。不然别再浪费时间往下继续看了。哈哈哈！！</p>
-<h1 id="安装_PPTP">安装 PPTP</h1>
-<p>这以 <strong>debian</strong> 系统为例，其它 <strong>Linux</strong> 系统类似。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) apt-get install pptpd</div></pre></td></tr></table></figure>
-
-<h1 id="配置_IP_地址">配置 IP 地址</h1>
-<p>修改 <code>/etc/pptpd.conf</code> 文件，在最后面添加以下两行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">localip</span> <span class="number">192.168.9.1</span></div><div class="line">remoteip <span class="number">192.168.9.11</span>-<span class="number">30</span></div></pre></td></tr></table></figure>
-
-<p>这里的 <strong>IP</strong> 地址可以随便填写，只要是 <strong>ABC</strong> 三类中的私有地址都可以的，另外需要注意是 <strong>IP</strong> 地址避免冲突。<br>这两句话的意思就是当外部计算机通过 <strong>PPTP</strong> 联接到 <strong>VPN</strong> 后所能拿到的 <strong>IP</strong> 地址范围和服务器的<strong>IP</strong> 地址设置。<br><strong>localip</strong> 是服务器内部使用的网关，<strong>remoteip</strong> 是分配给客户用的。</p>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2015/03/29/debian-vpn-pptp/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav class="page-nav clearfix">
-  <span class="page-number current">1</span>
-</nav>
-
-
 
       </div>
     </div>
@@ -181,23 +123,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -228,7 +172,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -264,9 +208,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -274,7 +220,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -286,9 +234,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -296,13 +250,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -312,13 +274,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -351,7 +315,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -366,18 +330,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

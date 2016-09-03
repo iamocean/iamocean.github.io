@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Debian 7 安装 ss 科学上网 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -106,38 +106,24 @@
     </header>
     <div class="entry markdown-body post-bd">
       
-        <h1 id="前言">前言</h1>
-<p>在安装 <strong>Shadowsocks(Node.js版)</strong> 之前请确保已安装了 <strong>Node.js</strong>，若有还未装过的请看 <a href="/2014/10/06/debian-install-nodejs/">Debian 7 安装 Node.js</a></p>
-<h1 id="服务器端">服务器端</h1>
-<h2 id="安装_Shadowsocks">安装 Shadowsocks</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) npm install shadowsocks -g</div></pre></td></tr></table></figure>
-
+        <h1 id="前言">前言</h1><p>在安装 <strong>Shadowsocks(Node.js版)</strong> 之前请确保已安装了 <strong>Node.js</strong>，若有还未装过的请看 <a href="/2014/10/06/debian-install-nodejs/">Debian 7 安装 Node.js</a></p>
+<h1 id="服务器端">服务器端</h1><h2 id="安装_Shadowsocks">安装 Shadowsocks</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> npm install shadowsocks -g</span><br></pre></td></tr></table></figure>
 <p>简单吗？..哈哈！</p>
-<h2 id="配置_Shadowscoks">配置 Shadowscoks</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">sudo</span>) mkdir /etc/shadowsocks</div><div class="line">(<span class="built_in">sudo</span>) vim /etc/shadowsocks/config.json</div></pre></td></tr></table></figure>
-
+<h2 id="配置_Shadowscoks">配置 Shadowscoks</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(sudo) mkdir <span class="regexp">/etc/</span>shadowsocks</span><br><span class="line">(sudo) vim <span class="regexp">/etc/</span>shadowsocks<span class="regexp">/config.json</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <p>具体配置如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    <span class="string">"server"</span>: <span class="string">"我的服务器 IP"</span>,  <span class="comment">// 服务端上建议填写 0.0.0.0，客户端上填写服务器的 IP</span></div><div class="line">    <span class="string">"server_port"</span>: <span class="number">8388</span>,  <span class="comment">// 服务端监听端口</span></div><div class="line">    <span class="string">"local_port"</span>: <span class="number">1080</span>,   <span class="comment">// 客户端监听端口</span></div><div class="line">    <span class="string">"password"</span>: <span class="string">"barfoo!"</span>, <span class="comment">// 用于加密传输的密码</span></div><div class="line">    <span class="string">"timeout"</span>: <span class="number">600</span>,  <span class="comment">// 断开连接的的超时时间</span></div><div class="line">    <span class="string">"method"</span>: <span class="string">"table"</span>  <span class="comment">// 加密方法 推荐使用 aes-256-cfb</span></div><div class="line">}</div></pre></td></tr></table></figure>
-
-<h2 id="启动与运行">启动与运行</h2>
-<p>让 <strong>shadowsocks</strong> 一直在服务器后台运行着</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">(sodu) ssserver -c /etc/shadowsocks/config.json &gt;</span> /var/log/shadowsocks.log&</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"我的服务器 IP"</span>,  <span class="comment">// 服务端上建议填写 0.0.0.0，客户端上填写服务器的 IP</span></span><br><span class="line">    <span class="string">"server_port"</span>: <span class="number">8388</span>,  <span class="comment">// 服务端监听端口</span></span><br><span class="line">    <span class="string">"local_port"</span>: <span class="number">1080</span>,   <span class="comment">// 客户端监听端口</span></span><br><span class="line">    <span class="string">"password"</span>: <span class="string">"barfoo!"</span>, <span class="comment">// 用于加密传输的密码</span></span><br><span class="line">    <span class="string">"timeout"</span>: <span class="number">600</span>,  <span class="comment">// 断开连接的的超时时间</span></span><br><span class="line">    <span class="string">"method"</span>: <span class="string">"table"</span>  <span class="comment">// 加密方法 推荐使用 aes-256-cfb</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="启动与运行">启动与运行</h2><p>让 <strong>shadowsocks</strong> 一直在服务器后台运行着</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sodu) ssserver -c /etc/shadowsocks/config.json &#62; /var/log/shadowsocks.log&#38;</span><br></pre></td></tr></table></figure>
 <p>到这里为止，服务端方面的 <strong>Shadowsocks</strong> 已配置完毕了。</p>
-<h1 id="客户端">客户端</h1>
-<h2 id="安装">安装</h2>
-<p>客户端的安装配置跟服务器的安装配置基本一样，主要区别有两点吧<br>以 <strong>Mac OS X</strong> 为例子</p>
+<h1 id="客户端">客户端</h1><h2 id="安装">安装</h2><p>客户端的安装配置跟服务器的安装配置基本一样，主要区别有两点吧<br>以 <strong>Mac OS X</strong> 为例子</p>
 <ul>
 <li>一是 <strong>config.json</strong> 配置文件，<strong>server</strong> 这个值一定要填写你服务器的 <strong>IP</strong></li>
 <li>二是 在本地运行 <strong>Shadowsocks</strong> 时需要注意下，启动的命令</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sodu) sslocal <span class="regexp">/etc/</span>shadowsocks<span class="regexp">/config.json</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sodu) sslocal <span class="regexp">/etc/</span>shadowsocks<span class="regexp">/config.json</span></span><br></pre></td></tr></table></figure>
 <p>强烈推荐到官方上去下载客户端<a href="https://github.com/shadowsocks/shadowsocks-gui" target="_blank" rel="external">GUI</a>，不仅简单、容易，而且还挺方便的设置与操作</p>
-<h2 id="Chrome_浏览器配合_Proxy_SwitchySharp_使用">Chrome 浏览器配合 Proxy SwitchySharp 使用</h2>
-<p>鼠标移动到 Proxy SwitchySharp 图标上</p>
+<h2 id="Chrome_浏览器配合_Proxy_SwitchySharp_使用">Chrome 浏览器配合 Proxy SwitchySharp 使用</h2><p>鼠标移动到 Proxy SwitchySharp 图标上</p>
 <ol>
 <li>点击右键选择选项</li>
 <li>新建情景模式，输入情景模式名称</li>
@@ -145,8 +131,7 @@
 <li>最后保存配置</li>
 </ol>
 <p>在 <strong>Chrome</strong> 地址栏里输入你想要上的那个网址就可以了<br>放松心情、尽情的享受外面的世界<br>和看看局域网外面一切好与不好的事情…<br>哈哈！！！</p>
-<h3 id="参考资料">参考资料</h3>
-<ul>
+<h3 id="参考资料">参考资料</h3><ul>
 <li><a href="http://neue.v2ex.com/t/96250" target="_blank" rel="external">http://neue.v2ex.com/t/96250</a></li>
 <li><a href="https://github.com/clowwindy/shadowsocks-nodejs/wiki/shadowsocks-nodejs-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">https://github.com/clowwindy/shadowsocks-nodejs/wiki/shadowsocks-nodejs-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</a></li>
 <li><a href="https://github.com/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks</a></li>
@@ -171,15 +156,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -211,23 +187,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -258,7 +236,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -294,9 +272,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -304,7 +284,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -316,9 +298,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -326,13 +314,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -342,13 +338,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -381,7 +379,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -396,18 +394,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

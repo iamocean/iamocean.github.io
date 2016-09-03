@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>js | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -76,148 +76,33 @@
 <h2 class="archive-title tag">js</h2>
 
 
+<div class="archive">
+  <dl class="archive-list">
+  
+  
+    
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
     
-      <img src="">
+      <dt> 2014 </dt>
+      
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+
+      <dd>
+        <time class="date" datetime="2014-01-12T14:14:49.000Z">2014-01-12</time>
+        <a href="/2014/01/12/javascript-some-skill/" class="title">JavaScript的一些技巧</a>
+      </dd>
+  
+    
+
+    
+
+      <dd>
+        <time class="date" datetime="2014-01-07T13:46:39.000Z">2014-01-07</time>
+        <a href="/2014/01/07/js-array-combine/" class="title">js两个数组合并</a>
+      </dd>
+  
+  </dl>
 </div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/01/12/javascript-some-skill/">JavaScript的一些技巧</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-01-12T14:14:49.000Z">日期：<a href="/2014/01/12/javascript-some-skill/">2014/01/12</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <h3 id="1-_为什么有一些匿名函数前面会多个分号呢？">1. 为什么有一些匿名函数前面会多个分号呢？</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">    <span class="comment">// coding...</span></div><div class="line">});</div></pre></td></tr></table></figure>
-
-<ul>
-<li>防止多文件合并成一个文件后，高压缩导致语法错误。</li>
-<li>这是一个匿名函数，一般js库都采用这种自执行的匿名函数来保护内部变量 (function(){})()</li>
-<li>因为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined作比较的话，程序就可以不用搜索undefined到window，可以提高程序性能</li>
-</ul>
-<h3 id="2-_这样声明变量有什么好处呢？">2. 这样声明变量有什么好处呢？</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var obj </span>=<span class="string"> obj || {};</span></div></pre></td></tr></table></figure>
-
-<ul>
-<li>如果第一个操作数是对象，则返回第一个操作数；</li>
-<li>如果第一个操作数的求值结果为false，则返回第二个操作数；</li>
-<li>如果两个操作数都是对象，则返回第一个操作数；</li>
-<li>如果两个操作数都是null，则返回null；</li>
-<li>如果两个操作数都是NaN，则返回NaN；</li>
-<li>如果两个操作数都是undefined，则返回undefined；</li>
-</ul>
-<p>简单来说就是：<strong>如果已存在obj，则保持不变，否则将 {} 赋值给obj。</strong></p>
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header class="post-hd">
-      
-  
-    <h1 class="title"><a href="/2014/01/07/js-array-combine/">js两个数组合并</a></h1>
-  
-
-      
-        <div class="icon"></div>
-        <time class="date" datetime="2014-01-07T13:46:39.000Z">日期：<a href="/2014/01/07/js-array-combine/">2014/01/07</a></time>
-        
-  
-  <span class="categories">
-    所属：<a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/Learning/">Learning</a>
-  </span>
-
-
-      
-    </header>
-    <div class="entry markdown-body post-bd">
-      
-        <p>昨天遇到一个需求，假如现在有两组数组分别为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>];</div></pre></td></tr></table></figure>
-
-<p>想要将上面这两组数组以arr1为key，以arr2为value合并成新数组对象<br>最终结果如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">{ <span class="number">5</span>: <span class="string">'a'</span>, <span class="number">6</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span>, <span class="number">8</span>: <span class="string">'d'</span>, <span class="number">9</span>: <span class="string">'e'</span> }</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="post-ft">
-      
-        
-          <div class="more">
-            <a href="/2014/01/07/js-array-combine/#more" class="more-link">继续阅读…</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  
-
-  <nav class="page-nav clearfix">
-  <span class="page-number current">1</span>
-</nav>
-
-
 
       </div>
     </div>
@@ -247,23 +132,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -294,7 +181,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -330,9 +217,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -340,7 +229,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -352,9 +243,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -362,13 +259,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -378,13 +283,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -417,7 +324,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -432,18 +339,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

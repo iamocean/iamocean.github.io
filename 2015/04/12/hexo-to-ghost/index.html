@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>从Hexo迁移到Ghost博客 | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,20 +107,12 @@
     <div class="entry markdown-body post-bd">
       
         <p>一时心血来潮，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">DO</a> 上搭建了个 <a href="http://oceanlau.com/" target="_blank" rel="external">Ghost</a> 博客，数据迁移是个问题。<br>经过短暂的搜索，发现了一个好东西 —— <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a>，目测是个外国友人写的。<br>一个 <strong>npm</strong> 包，安装和使用都很简单、很方便。</p>
-<h2 id="使用方法：">使用方法：</h2>
-<h3 id="安装_oghost_npm_包">安装 <strong>oghost npm</strong> 包</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> npm install oghost -g</div></pre></td></tr></table></figure>
-
-<h3 id="进入__post_目录">进入 <strong>_post</strong> 目录</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</div><div class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</div></pre></td></tr></table></figure>
-
+<h2 id="使用方法：">使用方法：</h2><h3 id="安装_oghost_npm_包">安装 <strong>oghost npm</strong> 包</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="operator"><span class="keyword">install</span> oghost -<span class="keyword">g</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="进入__post_目录">进入 <strong>_post</strong> 目录</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</span><br><span class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<h3 id="上传_data-json">上传 <strong>data.json</strong></h3>
-<p>访问 <code>http://您的域名/ghost/settings/labs</code>, 把刚才导出的 <strong>data.json</strong> 直接即可。</p>
+<h3 id="上传_data-json">上传 <strong>data.json</strong></h3><p>访问 <code>http://您的域名/ghost/settings/labs</code>, 把刚才导出的 <strong>data.json</strong> 直接即可。</p>
 <p>另外我不太喜欢 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 当前这个版本，自动截取出来的文章 <strong>URL</strong> 路径，我觉得不太好友，所以在 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 的基础上做了些修改，让文章 <strong>URL</strong> 保持和原来 <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> 上的 <strong>URL</strong> 一致，修改后的<a href="https://github.com/iamocean/oghost" target="_blank" rel="external">oghost</a>。</p>
-<h4 id="参考资料">参考资料</h4>
-<ul>
+<h4 id="参考资料">参考资料</h4><ul>
 <li><a href="https://github.com/kuropen/oghost" target="_blank" rel="external">https://github.com/kuropen/oghost</a></li>
 </ul>
 
@@ -133,7 +125,7 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Hexo/">Hexo</a> <a href="/tags/Ghost/">Ghost</a> <a href="/tags/Blog/">Blog</a>
+    <a href="/tags/Blog/">Blog</a> <a href="/tags/Ghost/">Ghost</a> <a href="/tags/Hexo/">Hexo</a>
   </div>
 
         
@@ -143,15 +135,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -183,23 +166,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -230,7 +215,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -266,9 +251,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -276,7 +263,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -288,9 +277,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -298,13 +293,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -314,13 +317,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -353,7 +358,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -368,18 +373,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 

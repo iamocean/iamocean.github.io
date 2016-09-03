@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <title>Mac下生成ssh keys连接Github | Iamocean</title>
-  <meta name="author" content="ocean">
+  <meta name="author" content="iamocean">
   
   <meta name="description" content="学习、记录与分享">
   
@@ -107,44 +107,30 @@
     <div class="entry markdown-body post-bd">
       
         <p>Mac下一般都自带安装了<strong>git</strong>，在这就不继续说如何安装<strong>git</strong>了.</p>
-<h2 id="检查是否存在ssh_keys">检查是否存在ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
-
+<h2 id="检查是否存在ssh_keys">检查是否存在ssh keys</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 <p>如果显示<strong>No such file or directory</strong>，则直接跳到第三步去</p>
-<h2 id="如果存在-ssh目录，请先备份好你的ssh_keys">如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir ssh_key_backup    <span class="comment">// 创建备份</span></div><div class="line">cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span></div><div class="line">rm id_rsa*</div></pre></td></tr></table></figure>
-
+<h2 id="如果存在-ssh目录，请先备份好你的ssh_keys">如果存在<strong>.ssh</strong>目录，请先备份好你的ssh keys</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mkdir</span> ssh_key_backup    <span class="comment">// 创建备份</span></span><br><span class="line">cp id_rsa* ssh_key_backup    <span class="comment">// 移动到备份文件夹下</span></span><br><span class="line"><span class="keyword">rm</span> id_rsa*</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-
-<h2 id="生成一个新的ssh_keys">生成一个新的ssh keys</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C “your_email@example.com”   <span class="comment"> // 输入您的邮箱</span></div><div class="line"><span class="comment"># Creates a new ssh key, using the provided email as a label</span></div><div class="line">Generating public/<span class="keyword">private</span> rsa key pair.</div><div class="line">Enter <span class="built_in">file</span> <span class="operator">in</span> which <span class="built_in">to</span> save <span class="operator">the</span> key (/Users/you/.ssh/id_rsa): [Press enter]    <span class="comment"> // 按下Enter键即可</span></div></pre></td></tr></table></figure>
-
+<h2 id="生成一个新的ssh_keys">生成一个新的ssh keys</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C “your_email@example.com”   <span class="comment"> // 输入您的邮箱</span></span><br><span class="line"><span class="comment"># Creates a new ssh key, using the provided email as a label</span></span><br><span class="line">Generating public/<span class="keyword">private</span> rsa key pair.</span><br><span class="line">Enter <span class="built_in">file</span> <span class="operator">in</span> which <span class="built_in">to</span> save <span class="operator">the</span> key (/Users/you/.ssh/id_rsa): [Press enter]    <span class="comment"> // 按下Enter键即可</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>按完Enter键后，会出现下面的提示</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (<span class="keyword">empty</span> <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span></div><div class="line">Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span></div></pre></td></tr></table></figure>
-
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (<span class="keyword">empty</span> <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> a passphrase]    <span class="comment">// 输入密码</span></span><br><span class="line">Enter same passphrase again: [<span class="keyword">Type</span> passphrase again]    <span class="comment">// 再次输入密码确认</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>接着会出现类似下面的提示</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Your identification has been saved <span class="keyword">in</span> /Users/you/<span class="string">.ssh</span>/id_rsa.</div><div class="line">Your <span class="preprocessor">public</span> key has been saved <span class="keyword">in</span> /Users/you/<span class="string">.ssh</span>/id_rsa.pub.</div><div class="line">The key fingerprint is:<span class="number">01</span>:0f:f4:3b:ca:<span class="number">85</span>:d6:<span class="number">17</span>:a1:<span class="number">7d</span>:f0:<span class="number">68</span>:<span class="number">9d</span>:f0:a2:<span class="pseudo">db</span>  your_email@example.com</div></pre></td></tr></table></figure>
-
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> <span class="regexp">/Users/</span>you<span class="regexp">/.ssh/</span>id_rsa.</span><br><span class="line">Your <span class="keyword">public</span> key has been saved <span class="keyword">in</span> <span class="regexp">/Users/</span>you<span class="regexp">/.ssh/</span>id_rsa.pub.</span><br><span class="line">The key fingerprint <span class="string">is:</span><span class="number">01</span>:<span class="number">0</span><span class="string">f:</span><span class="string">f4:</span><span class="number">3</span><span class="string">b:</span><span class="string">ca:</span><span class="number">85</span>:<span class="string">d6:</span><span class="number">17</span>:<span class="string">a1:</span><span class="number">7</span><span class="string">d:</span><span class="string">f0:</span><span class="number">68</span>:<span class="number">9</span><span class="string">d:</span><span class="string">f0:</span><span class="string">a2:</span>db  your_email<span class="annotation">@example</span>.com</span><br></pre></td></tr></table></figure>
 <p>说明已生成成功，在<strong> ./ssh </strong>目录下面会多出<strong> id_rsa </strong>和<strong> id_rsa.pub </strong>这两个文件</p>
-<h2 id="在GitHub网站上添加你的ssh_keys">在<a href="https://github.com/" target="_blank" rel="external">GitHub</a>网站上添加你的ssh keys</h2>
-<ul>
+<h2 id="在GitHub网站上添加你的ssh_keys">在<a href="https://github.com/" target="_blank" rel="external">GitHub</a>网站上添加你的ssh keys</h2><ul>
 <li>找到刚才生成的 <strong>id_rsa.pub</strong>，复制里面的内容</li>
 <li>打开 <a href="https://github.com/" target="_blank" rel="external">GitHub</a> 网站并登录，找到 “<strong>Account Settings</strong>”，点击 “<strong>SSH Keys</strong>”，然后”<strong>Add SSH key</strong>”, 把刚才<strong>id_rsa.pub</strong>里面的内容粘贴进去就可以了</li>
 </ul>
-<h2 id="验证你的GitHub连接">验证你的<a href="https://github.com/" target="_blank" rel="external">GitHub</a>连接</h2>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com</div></pre></td></tr></table></figure>
-
+<h2 id="验证你的GitHub连接">验证你的<a href="https://github.com/" target="_blank" rel="external">GitHub</a>连接</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
 <p>然后有又一堆提示，输入<strong>yes</strong>就可以了</p>
 <p>最后验证成功的话，会出现类似下面的提示</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hi username! You<span class="attribute">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</div></pre></td></tr></table></figure>
-
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure>
 <p>大功告成..!<br>少年觉得如何？简单吧，使劲的折腾吧..!</p>
-<h4 id="参考资料">参考资料</h4>
+<p>####参考资料</p>
 <ul>
 <li><a href="http://justjavac.com/git/2011/11/22/mac-git-and-github.html" target="_blank" rel="external">http://justjavac.com/git/2011/11/22/mac-git-and-github.html</a></li>
 <li><a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="external">https://help.github.com/articles/generating-ssh-keys</a></li>
@@ -159,7 +145,7 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Mac/">Mac</a> <a href="/tags/ssh-keys/">ssh-keys</a> <a href="/tags/Git/">Git</a> <a href="/tags/Github/">Github</a>
+    <a href="/tags/Git/">Git</a> <a href="/tags/Github/">Github</a> <a href="/tags/Mac/">Mac</a> <a href="/tags/ssh-keys/">ssh-keys</a>
   </div>
 
         
@@ -169,15 +155,6 @@
   </div>
 </article>
 
-
-<section id="comment" class="extra-comment">
-    <h1 class="title">留言</h1>
-
-    <!-- Duoshuo Comment BEGIN -->
-    <div class="ds-thread"></div>
-    <!-- 移动到 after_footer.ejs -->
-    <!-- Duoshuo Comment END -->
-</section>
 
 
 
@@ -209,23 +186,25 @@
   
     <li><a href="/categories/LESSCSS/">LESSCSS</a><sup>1</sup></li>
   
-    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
-  
     <li><a href="/categories/Learning/">Learning</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>6</sup></li>
+    <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/Linux/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Nodejs/">Node.js</a><sup>1</sup></li>
+    <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tools/">Tools</a><sup>9</sup></li>
+    <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
-    <li><a href="/categories/Tutorials/">Tutorials</a><sup>9</sup></li>
+    <li><a href="/categories/Tools/">Tools</a><sup>10</sup></li>
+  
+    <li><a href="/categories/Tutorials/">Tutorials</a><sup>11</sup></li>
   
   </ul>
 </div>
@@ -256,7 +235,7 @@
   
     <li><a href="/tags/EJS/">EJS</a><small>1</small></li>
   
-    <li><a href="/tags/Ghost/">Ghost</a><small>2</small></li>
+    <li><a href="/tags/Ghost/">Ghost</a><small>3</small></li>
   
     <li><a href="/tags/Git/">Git</a><small>2</small></li>
   
@@ -292,9 +271,11 @@
   
     <li><a href="/tags/PPTP/">PPTP</a><small>1</small></li>
   
+    <li><a href="/tags/React-Native/">React Native</a><small>1</small></li>
+  
     <li><a href="/tags/SVN/">SVN</a><small>2</small></li>
   
-    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>4</small></li>
+    <li><a href="/tags/Sublime-Text/">Sublime Text</a><small>5</small></li>
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
@@ -302,7 +283,9 @@
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
   
-    <li><a href="/tags/Underscorejs/">Underscore.js</a><small>1</small></li>
+    <li><a href="/tags/Theme/">Theme</a><small>1</small></li>
+  
+    <li><a href="/tags/Underscore-js/">Underscore.js</a><small>1</small></li>
   
     <li><a href="/tags/VPN/">VPN</a><small>1</small></li>
   
@@ -314,9 +297,15 @@
   
     <li><a href="/tags/Yosemite/">Yosemite</a><small>1</small></li>
   
+    <li><a href="/tags/blog/">blog</a><small>1</small></li>
+  
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
+    <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
     <li><a href="/tags/height/">height</a><small>1</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>1</small></li>
   
     <li><a href="/tags/js/">js</a><small>2</small></li>
   
@@ -324,13 +313,21 @@
   
     <li><a href="/tags/object/">object</a><small>1</small></li>
   
-    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>1</small></li>
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UI/">seti_UI</a><small>1</small></li>
+  
+    <li><a href="/tags/seti-UX/">seti_UX</a><small>1</small></li>
+  
+    <li><a href="/tags/shadowsocks/">shadowsocks</a><small>2</small></li>
   
     <li><a href="/tags/ssh-keys/">ssh-keys</a><small>1</small></li>
   
     <li><a href="/tags/st/">st</a><small>1</small></li>
   
     <li><a href="/tags/svndiff/">svndiff</a><small>1</small></li>
+  
+    <li><a href="/tags/tree/">tree</a><small>1</small></li>
   
     <li><a href="/tags/vimdiff/">vimdiff</a><small>1</small></li>
   
@@ -340,13 +337,15 @@
   
     <li><a href="/tags/升级/">升级</a><small>1</small></li>
   
+    <li><a href="/tags/博客升级/">博客升级</a><small>1</small></li>
+  
     <li><a href="/tags/变量声明/">变量声明</a><small>1</small></li>
   
     <li><a href="/tags/字符转义/">字符转义</a><small>1</small></li>
   
     <li><a href="/tags/安装/">安装</a><small>1</small></li>
   
-    <li><a href="/tags/安装Nodejs/">安装Node.js</a><small>1</small></li>
+    <li><a href="/tags/安装Node-js/">安装Node.js</a><small>1</small></li>
   
     <li><a href="/tags/常用软件/">常用软件</a><small>1</small></li>
   
@@ -379,7 +378,7 @@
 
   <footer id="footer" class="footer">
     <p class="copyright">
-    &copy; 2015 ocean
+    &copy; 2016 iamocean
 </p>
 
 <p class="power">
@@ -394,18 +393,6 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
-
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"iamocean"};
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 
 
 
