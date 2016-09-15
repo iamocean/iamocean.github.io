@@ -10,6 +10,9 @@
 .post .gallery {
   display: none;
 }
+.post .post-content {
+  /*font-size:1.4em;*/
+}
 .post .post-content .post-hd {
   margin-bottom: 24px;
 }
@@ -207,12 +210,10 @@
 .post .post-content .post-ft .more {
   text-align: right;
 }
-.post .post-content .post-ft .more,
-.post .post-content .post-ft .tags {
+.post .post-content .post-ft .more {
   letter-spacing: -0.31em;
 }
-.post .post-content .post-ft .more a,
-.post .post-content .post-ft .tags a {
+.post .post-content .post-ft .more a {
   display: inline-block;
   margin-right: 8px;
   padding: 5px 10px;
@@ -224,17 +225,29 @@
   border-radius: 3px;
 }
 .post .post-content .post-ft .more a:link,
-.post .post-content .post-ft .tags a:link,
-.post .post-content .post-ft .more a:visited,
-.post .post-content .post-ft .tags a:visited {
+.post .post-content .post-ft .more a:visited {
   color: #000;
   -webkit-transition: color .3s ease;
 }
 .post .post-content .post-ft .more a:hover,
-.post .post-content .post-ft .tags a:hover,
-.post .post-content .post-ft .more a:active,
-.post .post-content .post-ft .tags a:active {
+.post .post-content .post-ft .more a:active {
   opacity: .5;
+}
+.post .post-content .post-tags {
+  letter-spacing: -0.31em;
+}
+.post .post-content .post-tags .item-tags {
+  padding: 5px 0;
+  margin-right: 8px;
+  letter-spacing: normal;
+}
+.post .post-content .post-tags a:link,
+.post .post-content .post-tags a:visited {
+  color: #777;
+}
+.post .post-content .post-tags a:hover,
+.post .post-content .post-tags a:active {
+  color: #00BBFF;
 }
 @media only screen and (max-width: 480px) {
   .post .post-content .post-hd {

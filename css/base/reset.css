@@ -1,5 +1,9 @@
 html {
   color: #333;
+  /*
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body,
@@ -77,15 +81,17 @@ h5,
 h6 {
   font-size: 100%;
 }
-/* i,em{font-style:normal;} */
-/* ul,ol{ list-style:none;} markdown样式又冲突... */
+/* markdown样式冲突
+i,em{font-style:normal;}
+ul,ol{ list-style:none;}
+*/
 button,
 iframe {
   border: 0 none;
 }
 a:link,
 a:visited {
-  color: #999;
+  color: #777;
   text-decoration: none;
 }
 a:hover,

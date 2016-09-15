@@ -26,8 +26,8 @@
 .archive .archive-list dd {
   position: relative;
   z-index: 1;
-  margin: 4px 8px;
-  padding-left: 4px;
+  margin-left: 8px;
+  padding: 2px 8px;
 }
 .archive .archive-list dd:before {
   display: block;
@@ -48,6 +48,7 @@
   color: #777;
 }
 .archive .archive-list .title {
+  display: block;
   font-size: 14px;
 }
 .archive .archive-list a:link,

@@ -1,5 +1,9 @@
 html {
   color: #333;
+  /*
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body,
@@ -77,15 +81,17 @@ h5,
 h6 {
   font-size: 100%;
 }
-/* i,em{font-style:normal;} */
-/* ul,ol{ list-style:none;} markdown样式又冲突... */
+/* markdown样式冲突
+i,em{font-style:normal;}
+ul,ol{ list-style:none;}
+*/
 button,
 iframe {
   border: 0 none;
 }
 a:link,
 a:visited {
-  color: #999;
+  color: #777;
   text-decoration: none;
 }
 a:hover,
@@ -286,8 +292,8 @@ a:active {
 .archive .archive-list dd {
   position: relative;
   z-index: 1;
-  margin: 4px 8px;
-  padding-left: 4px;
+  margin-left: 8px;
+  padding: 2px 8px;
 }
 .archive .archive-list dd:before {
   display: block;
@@ -308,6 +314,7 @@ a:active {
   color: #777;
 }
 .archive .archive-list .title {
+  display: block;
   font-size: 14px;
 }
 .archive .archive-list a:link,
@@ -330,6 +337,9 @@ a:active {
 }
 .post .gallery {
   display: none;
+}
+.post .post-content {
+  /*font-size:1.4em;*/
 }
 .post .post-content .post-hd {
   margin-bottom: 24px;
@@ -528,12 +538,10 @@ a:active {
 .post .post-content .post-ft .more {
   text-align: right;
 }
-.post .post-content .post-ft .more,
-.post .post-content .post-ft .tags {
+.post .post-content .post-ft .more {
   letter-spacing: -0.31em;
 }
-.post .post-content .post-ft .more a,
-.post .post-content .post-ft .tags a {
+.post .post-content .post-ft .more a {
   display: inline-block;
   margin-right: 8px;
   padding: 5px 10px;
@@ -545,17 +553,29 @@ a:active {
   border-radius: 3px;
 }
 .post .post-content .post-ft .more a:link,
-.post .post-content .post-ft .tags a:link,
-.post .post-content .post-ft .more a:visited,
-.post .post-content .post-ft .tags a:visited {
+.post .post-content .post-ft .more a:visited {
   color: #000;
   -webkit-transition: color .3s ease;
 }
 .post .post-content .post-ft .more a:hover,
-.post .post-content .post-ft .tags a:hover,
-.post .post-content .post-ft .more a:active,
-.post .post-content .post-ft .tags a:active {
+.post .post-content .post-ft .more a:active {
   opacity: .5;
+}
+.post .post-content .post-tags {
+  letter-spacing: -0.31em;
+}
+.post .post-content .post-tags .item-tags {
+  padding: 5px 0;
+  margin-right: 8px;
+  letter-spacing: normal;
+}
+.post .post-content .post-tags a:link,
+.post .post-content .post-tags a:visited {
+  color: #777;
+}
+.post .post-content .post-tags a:hover,
+.post .post-content .post-tags a:active {
+  color: #00BBFF;
 }
 @media only screen and (max-width: 480px) {
   .post .post-content .post-hd {
