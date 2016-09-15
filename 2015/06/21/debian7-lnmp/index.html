@@ -107,9 +107,9 @@
     <div class="entry markdown-body post-bd">
       
         <p>最近又在折腾 <strong>VPS</strong>，主要是因为 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 最近抽风得太厉害了，不得不换个新的 <strong>IP</strong> 地址来缓缓下，就顺便再重新搭个 <strong>LNMP</strong> 环境来玩玩，虽然之前有折腾过，但是每次重新折腾还是习惯性的去找 <a href="https://www.google.com/" target="_blank" rel="external">Google大神</a>，这次就想记录下安装的过程和了解下所用到的每个安装包和组件，大概是做什么用的，下面就直接进入主题吧。</p>
-<h1 id="安装_MySQL">安装 MySQL</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sudo) apt-get <span class="operator"><span class="keyword">install</span> -y mysql-<span class="keyword">server</span> mysql-<span class="keyword">client</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get <span class="keyword">install</span> -y mysql-<span class="keyword">server</span> mysql-<span class="keyword">client</span></div></pre></td></tr></table></figure>
 <p><code>mysql-server</code> 是 <strong>MySQL</strong> 服务器核心程序，服务器端主程序。<br><code>mysql-client</code> 是 <strong>MySQL</strong> 客户端程序，用于连接并操作 <strong>MySQL</strong>。用以通过命令行方式登录管理 <strong>MySQL</strong> 服务器。<br>在安装的过程，会弹出个界面让你输入 <strong>root</strong> 用户的密码</p>
-<h2 id="初始化数据库默认设置">初始化数据库默认设置</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h2 id="初始化数据库默认设置"><a href="#初始化数据库默认设置" class="headerlink" title="初始化数据库默认设置"></a>初始化数据库默认设置</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) mysql_secure_installation</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>敲完上面那句命令后，期间会询问以下几个问题</p>
 <ol>
@@ -120,27 +120,27 @@
 <li>对于刚才的修改是否重新刷新呢？</li>
 </ol>
 <p>基本上一路按 <code>Y</code> 就行了</p>
-<h2 id="验证_MySQL_是否安装成功">验证 MySQL 是否安装成功</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mysql</span> -V</span><br></pre></td></tr></table></figure>
-<h1 id="安装_PHP">安装 PHP</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> apt-get install php5-fpm php5-gd php5-mysql</span><br></pre></td></tr></table></figure>
+<h2 id="验证-MySQL-是否安装成功"><a href="#验证-MySQL-是否安装成功" class="headerlink" title="验证 MySQL 是否安装成功"></a>验证 MySQL 是否安装成功</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">mysql -V</span></div></pre></td></tr></table></figure>
+<h1 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h1><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get install php5-fpm php5-gd php5-mysql</div></pre></td></tr></table></figure>
 <p><code>php5-fpm</code> 服务器端 <strong>PHP-FPM</strong> 程序，对 <strong>Nginx</strong> 处理 <strong>PHP</strong> 很重要。<br><code>php5-gd</code> <strong>PHP5</strong> 的 <strong>GD</strong> 模块，<strong>GD</strong> 是一套开源图像处理库，一般 <strong>DZ</strong> 生成缩略图或者加水印都需要它。<br><code>php5-mysql</code> <strong>PHP5</strong> 的 <strong>MySQL</strong> 模块，让你的网站可以访问到数据库，此模块必备的。</p>
-<h2 id="修改_PHP_默认配置">修改 PHP 默认配置</h2><p>在 <code>/etc/php5/fpm/php.ini</code> 配置文件中，找到 <code>cgi.fix_pathinfo=1</code>，将 <strong>1</strong> 成 <strong>0</strong>,</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cgi.fix_pathinfo=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改-PHP-默认配置"><a href="#修改-PHP-默认配置" class="headerlink" title="修改 PHP 默认配置"></a>修改 PHP 默认配置</h2><p>在 <code>/etc/php5/fpm/php.ini</code> 配置文件中，找到 <code>cgi.fix_pathinfo=1</code>，将 <strong>1</strong> 成 <strong>0</strong>,</p>
+<figure class="highlight fix"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">cgi.fix_pathinfo</span>=<span class="string">0</span></div></pre></td></tr></table></figure>
 <p>防止 <strong>PHP</strong> 在无穷的解析匹配路径，避免风险。</p>
-<h1 id="安装_Nginx">安装 Nginx</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> apt-get install -y nginx-full</span><br></pre></td></tr></table></figure>
+<h1 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install -y nginx-full</div></pre></td></tr></table></figure>
 <p><code>nginx-full</code> <strong>Nginx web</strong> 服务器完全安装</p>
-<h2 id="设置_Nginx_默认配置文件">设置 Nginx 默认配置文件</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/</span><span class="keyword">default</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置-Nginx-默认配置文件"><a href="#设置-Nginx-默认配置文件" class="headerlink" title="设置 Nginx 默认配置文件"></a>设置 Nginx 默认配置文件</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/</span><span class="keyword">default</span></div></pre></td></tr></table></figure>
 <p>先找到配置文件，然后修改成内容如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="comment"># 默认端口</span></span><br><span class="line">    <span class="title">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="comment"># 默认指向路径</span></span><br><span class="line">    <span class="title">root</span> /usr/share/nginx/www;</span><br><span class="line">    <span class="comment"># 默认首页</span></span><br><span class="line">    <span class="title">index</span> index.html index.htm;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绑定域名</span></span><br><span class="line">    <span class="title">server_name</span> localhost;</span><br><span class="line"></span><br><span class="line">    <span class="title">location</span> / &#123;</span><br><span class="line">        <span class="title">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义错误页</span></span><br><span class="line">    <span class="title">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line"></span><br><span class="line">    <span class="title">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html</span><br><span class="line">    location = 50x.html &#123;</span><br><span class="line">      <span class="title">root</span> /usr/share/ngnix/www;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#PHP</span></span><br><span class="line">    <span class="title">location</span> <span class="regexp">~ \.php$</span> &#123;</span><br><span class="line">      <span class="title">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</span><br><span class="line">      <span class="title">fastcgi_index</span> index.php;</span><br><span class="line">      <span class="title">fastcgi_pass</span> <span class="url">unix:/var/run/php5-fpm.sock</span>;</span><br><span class="line">      <span class="title">include</span> fastcgi_params;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="comment"># 默认端口</span></div><div class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">    <span class="comment"># 默认指向路径</span></div><div class="line">    <span class="attribute">root</span> /usr/share/nginx/www;</div><div class="line">    <span class="comment"># 默认首页</span></div><div class="line">    <span class="attribute">index</span> index.html index.htm;</div><div class="line"></div><div class="line">    <span class="comment"># 绑定域名</span></div><div class="line">    <span class="attribute">server_name</span> localhost;</div><div class="line"></div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment"># 定义错误页</span></div><div class="line">    <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</div><div class="line"></div><div class="line">    <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html</div><div class="line">    location = 50x.html &#123;</div><div class="line">      <span class="attribute">root</span> /usr/share/ngnix/www;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">#PHP</span></div><div class="line">    <span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;</div><div class="line">      <span class="attribute">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</div><div class="line">      <span class="attribute">fastcgi_index</span> index.php;</div><div class="line">      <span class="attribute">fastcgi_pass</span> unix:/var/run/php5-fpm.sock;</div><div class="line">      <span class="attribute">include</span> fastcgi_params;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>注意： 如果涉及到修改 <strong>Nginx</strong> 配置文件的，一定要重启下 <strong>Nginx</strong>，配置才会生效的。</p>
-<h2 id="启动服务">启动服务</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 启动 Nginx</span><br><span class="line">(sudo) service nginx <span class="built_in">start</span><span class="comment"></span><br><span class="line">// 重启 Nginx</span></span><br><span class="line">(sudo) service nginx restart<span class="comment"></span><br><span class="line">// 停止 Nginx</span></span><br><span class="line">(sudo) service nginx <span class="built_in">stop</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 启动 Nginx</span></div><div class="line">(sudo) service nginx start</div><div class="line"><span class="comment">// 重启 Nginx</span></div><div class="line">(sudo) service nginx restart</div><div class="line"><span class="comment">// 停止 Nginx</span></div><div class="line">(sudo) service nginx <span class="built_in">stop</span></div></pre></td></tr></table></figure>
 <p>如要重启、停止其他服务，把 <strong>nginx</strong> 替换成 <strong>php5-fpm</strong>、<strong>mysql</strong> 即可。</p>
-<h2 id="验证下是否安装成功">验证下是否安装成功</h2><h3 id="先来验证下_Nginx_服务">先来验证下 <strong>Nginx</strong> 服务</h3><p>在浏览器里访问 <code>http://你的IP</code> ，会出现 <code>Welcome to nginx!</code> 字样，则说明你已经安装成功了。</p>
-<h3 id="接着来验证下_PHP_服务">接着来验证下 <strong>PHP</strong> 服务</h3><p>在 <code>/usr/share/nginx/www/</code> 下, 新建一个 <code>test.php</code> 文件</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sudo) vim <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>www<span class="regexp">/test.php</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证下是否安装成功"><a href="#验证下是否安装成功" class="headerlink" title="验证下是否安装成功"></a>验证下是否安装成功</h2><h3 id="先来验证下-Nginx-服务"><a href="#先来验证下-Nginx-服务" class="headerlink" title="先来验证下 Nginx 服务"></a>先来验证下 <strong>Nginx</strong> 服务</h3><p>在浏览器里访问 <code>http://你的IP</code> ，会出现 <code>Welcome to nginx!</code> 字样，则说明你已经安装成功了。</p>
+<h3 id="接着来验证下-PHP-服务"><a href="#接着来验证下-PHP-服务" class="headerlink" title="接着来验证下 PHP 服务"></a>接着来验证下 <strong>PHP</strong> 服务</h3><p>在 <code>/usr/share/nginx/www/</code> 下, 新建一个 <code>test.php</code> 文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>www<span class="regexp">/test.php</span></div></pre></td></tr></table></figure>
 <p>敲入内容如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="preprocessor">&lt;?php</span></span><br><span class="line">    phpinfo();</span><br><span class="line"><span class="preprocessor">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">    phpinfo();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <p>然后在浏览器里，访问 <code>http://你的IP/test.php</code>，会出现一个关于 <strong>PHP</strong> 的相关配置信息，能看到表明你已经成功搭建好了 <strong>LNMP</strong> 环境。</p>
-<h4 id="参考资料">参考资料</h4><ul>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
 <li><a href="http://www.cnblogs.com/heinoc/p/3808048.html" target="_blank" rel="external">http://www.cnblogs.com/heinoc/p/3808048.html</a></li>
 <li><a href="http://jybb.me/debian-lnmp" target="_blank" rel="external">http://jybb.me/debian-lnmp</a></li>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7</a></li>
@@ -160,7 +160,6 @@
     <a href="/tags/Debian/">Debian</a> <a href="/tags/Digitalocean/">Digitalocean</a> <a href="/tags/LNMP/">LNMP</a>
   </div>
 
-        
       
       <div class="clearfix"></div>
     </footer>
@@ -174,13 +173,6 @@
     </div>
     <aside id="sidebar" class="sidebar">
       
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:iamocean.net">
-  </form>
-</div>
-
   
 <div class="widget category">
   <h3 class="title">分类</h3>
@@ -202,15 +194,15 @@
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>8</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
-  
     <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
@@ -237,11 +229,11 @@
   
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
-    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+    <li><a href="/tags/Debian/">Debian</a><small>3</small></li>
   
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
   
-    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>4</small></li>
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
@@ -291,6 +283,8 @@
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
+    <li><a href="/tags/TLS/">TLS</a><small>1</small></li>
+  
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
@@ -314,6 +308,8 @@
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
+    <li><a href="/tags/ftp/">ftp</a><small>1</small></li>
   
     <li><a href="/tags/height/">height</a><small>1</small></li>
   
@@ -381,6 +377,54 @@
   
     <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
   
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/100/" style="font-size: 10px;">100%</a> <a href="/tags/Aria2/" style="font-size: 10px;">Aria2</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cocos2d-js/" style="font-size: 10px;">Cocos2d-js</a> <a href="/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/tags/Debian-7/" style="font-size: 15px;">Debian 7</a> <a href="/tags/Digitalocean/" style="font-size: 17.5px;">Digitalocean</a> <a href="/tags/Dropbox/" style="font-size: 10px;">Dropbox</a> <a href="/tags/EJS/" style="font-size: 10px;">EJS</a> <a href="/tags/Ghost/" style="font-size: 15px;">Ghost</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Gulp/" style="font-size: 12.5px;">Gulp</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Homebrew/" style="font-size: 12.5px;">Homebrew</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/JsFormat/" style="font-size: 12.5px;">JsFormat</a> <a href="/tags/LESSCSS/" style="font-size: 10px;">LESSCSS</a> <a href="/tags/LNMP/" style="font-size: 10px;">LNMP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MAMP/" style="font-size: 10px;">MAMP</a> <a href="/tags/MBL/" style="font-size: 10px;">MBL</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Markdown/" style="font-size: 12.5px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PPTP/" style="font-size: 10px;">PPTP</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/SVN/" style="font-size: 12.5px;">SVN</a> <a href="/tags/Sublime-Text/" style="font-size: 20px;">Sublime Text</a> <a href="/tags/TAE/" style="font-size: 10px;">TAE</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/Underscore-js/" style="font-size: 10px;">Underscore.js</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/Webui/" style="font-size: 10px;">Webui</a> <a href="/tags/Wiki/" style="font-size: 10px;">Wiki</a> <a href="/tags/Yaaw/" style="font-size: 10px;">Yaaw</a> <a href="/tags/Yosemite/" style="font-size: 10px;">Yosemite</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/ftp/" style="font-size: 10px;">ftp</a> <a href="/tags/height/" style="font-size: 10px;">height</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/license/" style="font-size: 10px;">license</a> <a href="/tags/object/" style="font-size: 10px;">object</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/seti-UI/" style="font-size: 10px;">seti_UI</a> <a href="/tags/seti-UX/" style="font-size: 10px;">seti_UX</a> <a href="/tags/shadowsocks/" style="font-size: 12.5px;">shadowsocks</a> <a href="/tags/ssh-keys/" style="font-size: 10px;">ssh-keys</a> <a href="/tags/st/" style="font-size: 10px;">st</a> <a href="/tags/svndiff/" style="font-size: 10px;">svndiff</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/vimdiff/" style="font-size: 10px;">vimdiff</a> <a href="/tags/入门/" style="font-size: 10px;">入门</a> <a href="/tags/分号/" style="font-size: 10px;">分号</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/博客升级/" style="font-size: 10px;">博客升级</a> <a href="/tags/变量声明/" style="font-size: 10px;">变量声明</a> <a href="/tags/字符转义/" style="font-size: 10px;">字符转义</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/安装Node-js/" style="font-size: 10px;">安装Node.js</a> <a href="/tags/常用软件/" style="font-size: 10px;">常用软件</a> <a href="/tags/插件/" style="font-size: 15px;">插件</a> <a href="/tags/数组合并/" style="font-size: 10px;">数组合并</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/自定义设置/" style="font-size: 10px;">自定义设置</a> <a href="/tags/表格/" style="font-size: 10px;">表格</a> <a href="/tags/软链接/" style="font-size: 10px;">软链接</a> <a href="/tags/过滤/" style="font-size: 10px;">过滤</a> <a href="/tags/高度自适应/" style="font-size: 10px;">高度自适应</a>
+  </div>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/04/debian-install-proftpd/">在debian上搭建proftpd</a>
+      </li>
+    
+      <li>
+        <a href="/2016/09/03/debian-shadowsocks-python/">再次搭建shadowsocks服务（python版）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/28/upgrade-ghost-blog/">Ghost 博客从 0.6.5 升级到 0.9.0 版本</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/08/sublime-text-theme/">Sublime Text Theme</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/29/react-native-for-ios/">搭建 React Native 环境之iOS篇</a>
+      </li>
+    
   </ul>
 </div>
 

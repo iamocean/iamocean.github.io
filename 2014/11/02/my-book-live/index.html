@@ -106,25 +106,25 @@
     </header>
     <div class="entry markdown-body post-bd">
       
-        <h1 id="前言">前言</h1><p>很久之前有个同事建议买个 My Book Live 来玩玩，但一直都不太想买，自从把 1TB 移动盘摔坏了，对移动硬盘之类的就不太感兴趣。<br>刚好最近 MAC OS X 要升级 10.10，想开 TimeMachine 备份下发现没硬盘可用。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>很久之前有个同事建议买个 My Book Live 来玩玩，但一直都不太想买，自从把 1TB 移动盘摔坏了，对移动硬盘之类的就不太感兴趣。<br>刚好最近 MAC OS X 要升级 10.10，想开 TimeMachine 备份下发现没硬盘可用。</p>
 <p>网上找了一圈，刚好就看上 My Book Live 这货了。<br>主要有以下两点：</p>
 <ul>
 <li>每次 TimeMachine 备份不用插拔，大大降低了被我摔坏的风险</li>
 <li>可以下大片（家里网络不给力，每次三个人同时在线看电影都受不了那破网速，晚上睡觉时可以偷偷在哪里下载）</li>
 </ul>
 <p>当然 MBL 还有其他更多优点，我不一一列举了，更多功能到官网上去看。</p>
-<h2 id="什么是_Aria2">什么是 Aria2</h2><p>Aria2 是一个命令行下运行、多协议、多来源下载工具（HTTP/HTTPS、FTP、BitTorrent、Metalink）。</p>
-<h2 id="搭建_Aria2_系统服务">搭建 Aria2 系统服务</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - <span class="string">http:</span><span class="comment">//jiaoting.baotuba.com/aria2/aria2online.sh |sh</span></span><br></pre></td></tr></table></figure>
+<h2 id="什么是-Aria2"><a href="#什么是-Aria2" class="headerlink" title="什么是 Aria2"></a>什么是 Aria2</h2><p>Aria2 是一个命令行下运行、多协议、多来源下载工具（HTTP/HTTPS、FTP、BitTorrent、Metalink）。</p>
+<h2 id="搭建-Aria2-系统服务"><a href="#搭建-Aria2-系统服务" class="headerlink" title="搭建 Aria2 系统服务"></a>搭建 Aria2 系统服务</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/aria2online.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 <p>如果网络没问题，等个一分钟应该就装完了。<br>然后打开浏览器输入 <a href="http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看" target="_blank" rel="external">http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看</a> MBL 的相关信息。</p>
 <a id="more"></a>
-<h2 id="安装_Yaaw_界面">安装 Yaaw 界面</h2><h3 id="自动安装">自动安装</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - <span class="string">http:</span><span class="comment">//jiaoting.baotuba.com/aria2/yaaw.sh |sh</span></span><br></pre></td></tr></table></figure>
-<h3 id="手动安装">手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载安装包</span></span><br><span class="line">wget https:<span class="comment">//github.com/binux/yaaw/archive/master.zip -O /shares/Public/yaaw.zip</span></span><br><span class="line"><span class="keyword">cd</span> /shares/Public/</span><br><span class="line"><span class="comment">// 解压缩</span></span><br><span class="line">unzip yaaw.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</span><br><span class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</span><br><span class="line"><span class="comment">// 重命名</span></span><br><span class="line">mv yaaw-master yaaw</span><br><span class="line"><span class="comment">// 修改文件夹的权限</span></span><br><span class="line">chmod -R 755 * /<span class="keyword">var</span>/www/yaaw</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Yaaw-界面"><a href="#安装-Yaaw-界面" class="headerlink" title="安装 Yaaw 界面"></a>安装 Yaaw 界面</h2><h3 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/yaaw.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载安装包</span></div><div class="line">wget https:<span class="comment">//github.com/binux/yaaw/archive/master.zip -O /shares/Public/yaaw.zip</span></div><div class="line"><span class="keyword">cd</span> /shares/Public/</div><div class="line"><span class="comment">// 解压缩</span></div><div class="line">unzip yaaw.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="comment">// 重命名</span></div><div class="line">mv yaaw-master yaaw</div><div class="line"><span class="comment">// 修改文件夹的权限</span></div><div class="line">chmod -R 755 * /<span class="keyword">var</span>/www/yaaw</div></pre></td></tr></table></figure>
 <p>然后验证是否安装成功？<br>打开浏览器输入 <a href="http://MBL的IP/yaaw" target="_blank" rel="external">http://MBL的IP/yaaw</a><br>看看右上角是否有 Aria2 x.x.x 类似这样的版本号<br>如果有那恭喜你已安装成功了。</p>
-<h2 id="安装_Webui_界面">安装 Webui 界面</h2><h3 id="自动安装-1">自动安装</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - <span class="string">http:</span><span class="comment">//jiaoting.baotuba.com/aria2/webui.sh |sh</span></span><br></pre></td></tr></table></figure>
-<h3 id="手动安装-1">手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="comment">//github.com/ziahamza/webui-aria2/archive/master.zip -O /shares/Public/webui.zip</span></span><br><span class="line"><span class="keyword">cd</span> /shares/Public/</span><br><span class="line">unzip webui.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</span><br><span class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</span><br><span class="line">mv webui-aria2-master webui</span><br><span class="line">chmod -R 755 * /<span class="keyword">var</span>/www/webui</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Webui-界面"><a href="#安装-Webui-界面" class="headerlink" title="安装 Webui 界面"></a>安装 Webui 界面</h2><h3 id="自动安装-1"><a href="#自动安装-1" class="headerlink" title="自动安装"></a>自动安装</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/webui.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<h3 id="手动安装-1"><a href="#手动安装-1" class="headerlink" title="手动安装"></a>手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget https:<span class="comment">//github.com/ziahamza/webui-aria2/archive/master.zip -O /shares/Public/webui.zip</span></div><div class="line"><span class="keyword">cd</span> /shares/Public/</div><div class="line">unzip webui.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</div><div class="line">mv webui-aria2-master webui</div><div class="line">chmod -R 755 * /<span class="keyword">var</span>/www/webui</div></pre></td></tr></table></figure>
 <p>验证方法同上，把 yaaw 改成 webui 就行了。</p>
 <p>其实 Yaaw 和 Webui 只是一个展示界面来的，装其中一个就行了。<br>当然不装也行了<br>可以用在线版的 <a href="http://app.baotuba.com/yaaw/" target="_blank" rel="external">Yaaw</a> 或者 <a href="http://app.baotuba.com/aria2webui/" target="_blank" rel="external">Webui</a></p>
-<h2 id="其他">其他</h2><p>MBL 其实就是个 debian 系统，可以做很多事情，比如：</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>MBL 其实就是个 debian 系统，可以做很多事情，比如：</p>
 <ul>
 <li>MBL 配合百度网盘下载各种资源</li>
 <li>MBL 配合迅雷离线下载</li>
@@ -132,7 +132,7 @@
 <li>MBL 搭建云同步</li>
 <li><a href="http://www.nasyun.com/thread-557-1-1.html" target="_blank" rel="external">MBL 资源贴</a></li>
 </ul>
-<h3 id="参考资料">参考资料</h3><ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://www.nasyun.com/thread-23004-1-1.html" target="_blank" rel="external">安装 Aria2 系统服务</a></li>
 <li><a href="http://www.nasyun.com/thread-22995-1-1.html" target="_blank" rel="external">在线安装最新版 Yaaw</a></li>
 <li><a href="http://www.nasyun.com/thread-22994-1-1.html" target="_blank" rel="external">在线安装最新版 Webui</a></li>
@@ -149,10 +149,9 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Aria2/">Aria2</a> <a href="/tags/MBL/">MBL</a> <a href="/tags/Webui/">Webui</a> <a href="/tags/Yaaw/">Yaaw</a>
+    <a href="/tags/MBL/">MBL</a> <a href="/tags/Aria2/">Aria2</a> <a href="/tags/Yaaw/">Yaaw</a> <a href="/tags/Webui/">Webui</a>
   </div>
 
-        
       
       <div class="clearfix"></div>
     </footer>
@@ -166,13 +165,6 @@
     </div>
     <aside id="sidebar" class="sidebar">
       
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:iamocean.net">
-  </form>
-</div>
-
   
 <div class="widget category">
   <h3 class="title">分类</h3>
@@ -194,15 +186,15 @@
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>8</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
-  
     <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
@@ -229,11 +221,11 @@
   
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
-    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+    <li><a href="/tags/Debian/">Debian</a><small>3</small></li>
   
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
   
-    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>4</small></li>
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
@@ -283,6 +275,8 @@
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
+    <li><a href="/tags/TLS/">TLS</a><small>1</small></li>
+  
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
@@ -306,6 +300,8 @@
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
+    <li><a href="/tags/ftp/">ftp</a><small>1</small></li>
   
     <li><a href="/tags/height/">height</a><small>1</small></li>
   
@@ -373,6 +369,54 @@
   
     <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
   
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/100/" style="font-size: 10px;">100%</a> <a href="/tags/Aria2/" style="font-size: 10px;">Aria2</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cocos2d-js/" style="font-size: 10px;">Cocos2d-js</a> <a href="/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/tags/Debian-7/" style="font-size: 15px;">Debian 7</a> <a href="/tags/Digitalocean/" style="font-size: 17.5px;">Digitalocean</a> <a href="/tags/Dropbox/" style="font-size: 10px;">Dropbox</a> <a href="/tags/EJS/" style="font-size: 10px;">EJS</a> <a href="/tags/Ghost/" style="font-size: 15px;">Ghost</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Gulp/" style="font-size: 12.5px;">Gulp</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Homebrew/" style="font-size: 12.5px;">Homebrew</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/JsFormat/" style="font-size: 12.5px;">JsFormat</a> <a href="/tags/LESSCSS/" style="font-size: 10px;">LESSCSS</a> <a href="/tags/LNMP/" style="font-size: 10px;">LNMP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MAMP/" style="font-size: 10px;">MAMP</a> <a href="/tags/MBL/" style="font-size: 10px;">MBL</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Markdown/" style="font-size: 12.5px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PPTP/" style="font-size: 10px;">PPTP</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/SVN/" style="font-size: 12.5px;">SVN</a> <a href="/tags/Sublime-Text/" style="font-size: 20px;">Sublime Text</a> <a href="/tags/TAE/" style="font-size: 10px;">TAE</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/Underscore-js/" style="font-size: 10px;">Underscore.js</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/Webui/" style="font-size: 10px;">Webui</a> <a href="/tags/Wiki/" style="font-size: 10px;">Wiki</a> <a href="/tags/Yaaw/" style="font-size: 10px;">Yaaw</a> <a href="/tags/Yosemite/" style="font-size: 10px;">Yosemite</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/ftp/" style="font-size: 10px;">ftp</a> <a href="/tags/height/" style="font-size: 10px;">height</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/license/" style="font-size: 10px;">license</a> <a href="/tags/object/" style="font-size: 10px;">object</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/seti-UI/" style="font-size: 10px;">seti_UI</a> <a href="/tags/seti-UX/" style="font-size: 10px;">seti_UX</a> <a href="/tags/shadowsocks/" style="font-size: 12.5px;">shadowsocks</a> <a href="/tags/ssh-keys/" style="font-size: 10px;">ssh-keys</a> <a href="/tags/st/" style="font-size: 10px;">st</a> <a href="/tags/svndiff/" style="font-size: 10px;">svndiff</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/vimdiff/" style="font-size: 10px;">vimdiff</a> <a href="/tags/入门/" style="font-size: 10px;">入门</a> <a href="/tags/分号/" style="font-size: 10px;">分号</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/博客升级/" style="font-size: 10px;">博客升级</a> <a href="/tags/变量声明/" style="font-size: 10px;">变量声明</a> <a href="/tags/字符转义/" style="font-size: 10px;">字符转义</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/安装Node-js/" style="font-size: 10px;">安装Node.js</a> <a href="/tags/常用软件/" style="font-size: 10px;">常用软件</a> <a href="/tags/插件/" style="font-size: 15px;">插件</a> <a href="/tags/数组合并/" style="font-size: 10px;">数组合并</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/自定义设置/" style="font-size: 10px;">自定义设置</a> <a href="/tags/表格/" style="font-size: 10px;">表格</a> <a href="/tags/软链接/" style="font-size: 10px;">软链接</a> <a href="/tags/过滤/" style="font-size: 10px;">过滤</a> <a href="/tags/高度自适应/" style="font-size: 10px;">高度自适应</a>
+  </div>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/04/debian-install-proftpd/">在debian上搭建proftpd</a>
+      </li>
+    
+      <li>
+        <a href="/2016/09/03/debian-shadowsocks-python/">再次搭建shadowsocks服务（python版）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/28/upgrade-ghost-blog/">Ghost 博客从 0.6.5 升级到 0.9.0 版本</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/08/sublime-text-theme/">Sublime Text Theme</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/29/react-native-for-ios/">搭建 React Native 环境之iOS篇</a>
+      </li>
+    
   </ul>
 </div>
 

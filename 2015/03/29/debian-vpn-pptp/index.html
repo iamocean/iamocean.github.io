@@ -106,27 +106,27 @@
     </header>
     <div class="entry markdown-body post-bd">
       
-        <h1 id="PPTP_是什么?">PPTP 是什么?</h1><p>PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。</p>
+        <h1 id="PPTP-是什么"><a href="#PPTP-是什么" class="headerlink" title="PPTP 是什么?"></a>PPTP 是什么?</h1><p>PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。</p>
 <p>没有自己的 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">VPS</a> 吗？赶紧到 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上注册一个吧。不然别再浪费时间往下继续看了。哈哈哈！！</p>
-<h1 id="安装_PPTP">安装 PPTP</h1><p>这以 <strong>debian</strong> 系统为例，其它 <strong>Linux</strong> 系统类似。</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> apt-get install pptpd</span><br></pre></td></tr></table></figure>
-<h1 id="配置_IP_地址">配置 IP 地址</h1><p>修改 <code>/etc/pptpd.conf</code> 文件，在最后面添加以下两行</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localip <span class="number">192.168</span><span class="number">.9</span><span class="number">.1</span></span><br><span class="line">remoteip <span class="number">192.168</span><span class="number">.9</span><span class="number">.11</span>-<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装-PPTP"><a href="#安装-PPTP" class="headerlink" title="安装 PPTP"></a>安装 PPTP</h1><p>这以 <strong>debian</strong> 系统为例，其它 <strong>Linux</strong> 系统类似。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install pptpd</div></pre></td></tr></table></figure>
+<h1 id="配置-IP-地址"><a href="#配置-IP-地址" class="headerlink" title="配置 IP 地址"></a>配置 IP 地址</h1><p>修改 <code>/etc/pptpd.conf</code> 文件，在最后面添加以下两行</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip <span class="number">192.168</span><span class="number">.9</span><span class="number">.1</span></div><div class="line">remoteip <span class="number">192.168</span><span class="number">.9</span><span class="number">.11</span><span class="number">-30</span></div></pre></td></tr></table></figure>
 <p>这里的 <strong>IP</strong> 地址可以随便填写，只要是 <strong>ABC</strong> 三类中的私有地址都可以的，另外需要注意是 <strong>IP</strong> 地址避免冲突。<br>这两句话的意思就是当外部计算机通过 <strong>PPTP</strong> 联接到 <strong>VPN</strong> 后所能拿到的 <strong>IP</strong> 地址范围和服务器的<strong>IP</strong> 地址设置。<br><strong>localip</strong> 是服务器内部使用的网关，<strong>remoteip</strong> 是分配给客户用的。</p>
 <a id="more"></a>
-<h1 id="配置_DNS_服务器">配置 DNS 服务器</h1><p>修改 <code>/etc/ppp/options</code> 文件，把 <strong>DNS</strong> 替换成谷歌的 <strong>DNS</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ms-dns <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br><span class="line">ms-dns <span class="number">8.8</span><span class="number">.4</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
-<h1 id="添加_VPN_帐号">添加 VPN 帐号</h1><p>修改 <code>/etc/ppp/chap-secrets</code>文件，添加 <strong>VPN</strong> 用户名和密码，格式如下：</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username pptp password <span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+<h1 id="配置-DNS-服务器"><a href="#配置-DNS-服务器" class="headerlink" title="配置 DNS 服务器"></a>配置 DNS 服务器</h1><p>修改 <code>/etc/ppp/options</code> 文件，把 <strong>DNS</strong> 替换成谷歌的 <strong>DNS</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ms-dns</span> 8<span class="selector-class">.8</span><span class="selector-class">.8</span><span class="selector-class">.8</span></div><div class="line"><span class="selector-tag">ms-dns</span> 8<span class="selector-class">.8</span><span class="selector-class">.4</span><span class="selector-class">.4</span></div></pre></td></tr></table></figure>
+<h1 id="添加-VPN-帐号"><a href="#添加-VPN-帐号" class="headerlink" title="添加 VPN 帐号"></a>添加 VPN 帐号</h1><p>修改 <code>/etc/ppp/chap-secrets</code>文件，添加 <strong>VPN</strong> 用户名和密码，格式如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">username</span> pptp password *</div></pre></td></tr></table></figure>
 <p>其中 <strong>username</strong> 就是 <strong>VPN</strong> 帐号的用户名，<strong>password</strong> 就是 <strong>VPN</strong> 帐号的密码，<em> 表示 <strong>IP</strong> 地址随机分配，（<strong>IP</strong> 地址是刚刚配置的 <strong>remoteip</strong>）,如需指定 <strong>IP</strong> 地址，则把 </em> 换成某个人具体的静态 <strong>IP</strong> 地址即可。</p>
-<h1 id="配置系统转发">配置系统转发</h1><p>修改 <code>/etc/sysctl.conf</code>，去掉 <code>net.ipv4.ip_forward=1</code> 前的注释（#）<br>运行如下命令使用配置修改生效</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sysctl</span> -p</span><br></pre></td></tr></table></figure>
-<h1 id="安装_iptables">安装 iptables</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">sudo</span>)</span> apt-get install iptables</span><br></pre></td></tr></table></figure>
-<h1 id="开启iptabls转发">开启iptabls转发</h1><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -<span class="literal">A</span> POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<h1 id="配置系统转发"><a href="#配置系统转发" class="headerlink" title="配置系统转发"></a>配置系统转发</h1><p>修改 <code>/etc/sysctl.conf</code>，去掉 <code>net.ipv4.ip_forward=1</code> 前的注释（#）<br>运行如下命令使用配置修改生效</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">sysctl -p</span></div></pre></td></tr></table></figure>
+<h1 id="安装-iptables"><a href="#安装-iptables" class="headerlink" title="安装 iptables"></a>安装 iptables</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install iptables</div></pre></td></tr></table></figure>
+<h1 id="开启iptabls转发"><a href="#开启iptabls转发" class="headerlink" title="开启iptabls转发"></a>开启iptabls转发</h1><figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo iptables -t nat -<span class="keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE</div></pre></td></tr></table></figure>
 <p>避免重启后配置失效，还需要修改 <code>/etc/rc.local</code> 文件, 在 <code>exit 0</code> 这行上面加上 <code>iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</code></p>
-<h1 id="重启pptpd服务">重启pptpd服务</h1><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/pptpd restart</span></span><br></pre></td></tr></table></figure>
+<h1 id="重启pptpd服务"><a href="#重启pptpd服务" class="headerlink" title="重启pptpd服务"></a>重启pptpd服务</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/pptpd restart</span></div></pre></td></tr></table></figure>
 <p>到这里 <strong>VPN</strong> 已配置完成了。<br>接下来用电脑、移动设备进行测试，输入以前想看却看不了、想上却上不去的网站体验下哈。</p>
-<h4 id="参考资料">参考资料</h4><ul>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
 <li><a href="http://zh.wikipedia.org/wiki/%E9%BB%9E%E5%B0%8D%E9%BB%9E%E9%9A%A7%E9%81%93%E5%8D%94%E8%AD%B0" target="_blank" rel="external">http://zh.wikipedia.org/wiki/%E9%BB%9E%E5%B0%8D%E9%BB%9E%E9%9A%A7%E9%81%93%E5%8D%94%E8%AD%B0</a></li>
 <li><a href="http://wtser.com/2015/01/14/vps-vpn-pptp.html" target="_blank" rel="external">http://wtser.com/2015/01/14/vps-vpn-pptp.html</a></li>
 <li><a href="http://www.nigesb.com/setup-your-own-vpn-with-pptp.html" target="_blank" rel="external">http://www.nigesb.com/setup-your-own-vpn-with-pptp.html</a></li>
@@ -142,10 +142,9 @@
   
   <div class="tags">
     <!-- 去掉, -->
-    <a href="/tags/Linux/">Linux</a> <a href="/tags/PPTP/">PPTP</a> <a href="/tags/VPN/">VPN</a>
+    <a href="/tags/VPN/">VPN</a> <a href="/tags/PPTP/">PPTP</a> <a href="/tags/Linux/">Linux</a>
   </div>
 
-        
       
       <div class="clearfix"></div>
     </footer>
@@ -159,13 +158,6 @@
     </div>
     <aside id="sidebar" class="sidebar">
       
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:iamocean.net">
-  </form>
-</div>
-
   
 <div class="widget category">
   <h3 class="title">分类</h3>
@@ -187,15 +179,15 @@
   
     <li><a href="/categories/JavaScript/Learning/">Learning</a><sup>2</sup></li>
   
-    <li><a href="/categories/Linux/">Linux</a><sup>7</sup></li>
+    <li><a href="/categories/Linux/">Linux</a><sup>8</sup></li>
   
     <li><a href="/categories/Tutorials/Mac/">Mac</a><sup>3</sup></li>
   
     <li><a href="/categories/Mac-OS-X/">Mac OS X</a><sup>1</sup></li>
   
-    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
-  
     <li><a href="/categories/Linux/Node-js/">Node.js</a><sup>1</sup></li>
+  
+    <li><a href="/categories/EJS/Node-js/">Node.js</a><sup>1</sup></li>
   
     <li><a href="/categories/Sublime-Text/">Sublime Text</a><sup>1</sup></li>
   
@@ -222,11 +214,11 @@
   
     <li><a href="/tags/Cocos2d-js/">Cocos2d-js</a><small>1</small></li>
   
-    <li><a href="/tags/Debian/">Debian</a><small>2</small></li>
+    <li><a href="/tags/Debian/">Debian</a><small>3</small></li>
   
     <li><a href="/tags/Debian-7/">Debian 7</a><small>3</small></li>
   
-    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>3</small></li>
+    <li><a href="/tags/Digitalocean/">Digitalocean</a><small>4</small></li>
   
     <li><a href="/tags/Dropbox/">Dropbox</a><small>1</small></li>
   
@@ -276,6 +268,8 @@
   
     <li><a href="/tags/TAE/">TAE</a><small>1</small></li>
   
+    <li><a href="/tags/TLS/">TLS</a><small>1</small></li>
+  
     <li><a href="/tags/Terminal/">Terminal</a><small>1</small></li>
   
     <li><a href="/tags/TexturePacker/">TexturePacker</a><small>1</small></li>
@@ -299,6 +293,8 @@
     <li><a href="/tags/cache/">cache</a><small>1</small></li>
   
     <li><a href="/tags/clock/">clock</a><small>1</small></li>
+  
+    <li><a href="/tags/ftp/">ftp</a><small>1</small></li>
   
     <li><a href="/tags/height/">height</a><small>1</small></li>
   
@@ -366,6 +362,54 @@
   
     <li><a href="/tags/高度自适应/">高度自适应</a><small>1</small></li>
   
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/100/" style="font-size: 10px;">100%</a> <a href="/tags/Aria2/" style="font-size: 10px;">Aria2</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cocos2d-js/" style="font-size: 10px;">Cocos2d-js</a> <a href="/tags/Debian/" style="font-size: 15px;">Debian</a> <a href="/tags/Debian-7/" style="font-size: 15px;">Debian 7</a> <a href="/tags/Digitalocean/" style="font-size: 17.5px;">Digitalocean</a> <a href="/tags/Dropbox/" style="font-size: 10px;">Dropbox</a> <a href="/tags/EJS/" style="font-size: 10px;">EJS</a> <a href="/tags/Ghost/" style="font-size: 15px;">Ghost</a> <a href="/tags/Git/" style="font-size: 12.5px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Gulp/" style="font-size: 12.5px;">Gulp</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Homebrew/" style="font-size: 12.5px;">Homebrew</a> <a href="/tags/JavaScript/" style="font-size: 12.5px;">JavaScript</a> <a href="/tags/JsFormat/" style="font-size: 12.5px;">JsFormat</a> <a href="/tags/LESSCSS/" style="font-size: 10px;">LESSCSS</a> <a href="/tags/LNMP/" style="font-size: 10px;">LNMP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MAMP/" style="font-size: 10px;">MAMP</a> <a href="/tags/MBL/" style="font-size: 10px;">MBL</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Markdown/" style="font-size: 12.5px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PPTP/" style="font-size: 10px;">PPTP</a> <a href="/tags/React-Native/" style="font-size: 10px;">React Native</a> <a href="/tags/SVN/" style="font-size: 12.5px;">SVN</a> <a href="/tags/Sublime-Text/" style="font-size: 20px;">Sublime Text</a> <a href="/tags/TAE/" style="font-size: 10px;">TAE</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/TexturePacker/" style="font-size: 10px;">TexturePacker</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/Underscore-js/" style="font-size: 10px;">Underscore.js</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/Webui/" style="font-size: 10px;">Webui</a> <a href="/tags/Wiki/" style="font-size: 10px;">Wiki</a> <a href="/tags/Yaaw/" style="font-size: 10px;">Yaaw</a> <a href="/tags/Yosemite/" style="font-size: 10px;">Yosemite</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/clock/" style="font-size: 10px;">clock</a> <a href="/tags/ftp/" style="font-size: 10px;">ftp</a> <a href="/tags/height/" style="font-size: 10px;">height</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/license/" style="font-size: 10px;">license</a> <a href="/tags/object/" style="font-size: 10px;">object</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/seti-UI/" style="font-size: 10px;">seti_UI</a> <a href="/tags/seti-UX/" style="font-size: 10px;">seti_UX</a> <a href="/tags/shadowsocks/" style="font-size: 12.5px;">shadowsocks</a> <a href="/tags/ssh-keys/" style="font-size: 10px;">ssh-keys</a> <a href="/tags/st/" style="font-size: 10px;">st</a> <a href="/tags/svndiff/" style="font-size: 10px;">svndiff</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/vimdiff/" style="font-size: 10px;">vimdiff</a> <a href="/tags/入门/" style="font-size: 10px;">入门</a> <a href="/tags/分号/" style="font-size: 10px;">分号</a> <a href="/tags/升级/" style="font-size: 10px;">升级</a> <a href="/tags/博客升级/" style="font-size: 10px;">博客升级</a> <a href="/tags/变量声明/" style="font-size: 10px;">变量声明</a> <a href="/tags/字符转义/" style="font-size: 10px;">字符转义</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/安装Node-js/" style="font-size: 10px;">安装Node.js</a> <a href="/tags/常用软件/" style="font-size: 10px;">常用软件</a> <a href="/tags/插件/" style="font-size: 15px;">插件</a> <a href="/tags/数组合并/" style="font-size: 10px;">数组合并</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/自定义设置/" style="font-size: 10px;">自定义设置</a> <a href="/tags/表格/" style="font-size: 10px;">表格</a> <a href="/tags/软链接/" style="font-size: 10px;">软链接</a> <a href="/tags/过滤/" style="font-size: 10px;">过滤</a> <a href="/tags/高度自适应/" style="font-size: 10px;">高度自适应</a>
+  </div>
+</div>
+
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/04/debian-install-proftpd/">在debian上搭建proftpd</a>
+      </li>
+    
+      <li>
+        <a href="/2016/09/03/debian-shadowsocks-python/">再次搭建shadowsocks服务（python版）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/28/upgrade-ghost-blog/">Ghost 博客从 0.6.5 升级到 0.9.0 版本</a>
+      </li>
+    
+      <li>
+        <a href="/2016/08/08/sublime-text-theme/">Sublime Text Theme</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/29/react-native-for-ios/">搭建 React Native 环境之iOS篇</a>
+      </li>
+    
   </ul>
 </div>
 
