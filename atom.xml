@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Iamocean</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://iamocean.github.io/"/>
+  <updated>2016-09-12T16:40:52.000Z</updated>
+  <id>http://iamocean.github.io/</id>
+  
+  <author>
+    <name>iamocean</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在debian上搭建proftpd</title>
+    <link href="http://iamocean.github.io/2016/09/04/debian-install-proftpd/"/>
+    <id>http://iamocean.github.io/2016/09/04/debian-install-proftpd/</id>
+    <published>2016-09-04T15:36:33.000Z</published>
+    <updated>2016-09-12T16:40:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单的记录下，搭建 <strong>proFTPd</strong> 带 <strong>TLS</strong> 服务的过程</p>
+<h2 id="安装-proFTPd"><a href="#安装-proFTPd" class="headerlink" title="安装 proFTPd"></a>安装 proFTPd</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install proftpd</div></pre></td></tr></table></figure>
+<p>回车后会弹出一个对话框，这里我是选择 <code>standalone</code></p>
+<h2 id="配置-proFTPd"><a href="#配置-proFTPd" class="headerlink" title="配置 proFTPd"></a>配置 proFTPd</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) <span class="keyword">vim</span> /etc/proftpd/proftpd.<span class="keyword">conf</span></div></pre></td></tr></table></figure>
+<p>修改下 <strong>FTP</strong> 用户操作权限，如：上传文件后的存放路径等。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">DefaultRoot</span> <span class="regexp">~</span></div><div class="line">ServerIdent <span class="literal">on</span> <span class="string">"FTP Server ready."</span></div></pre></td></tr></table></figure>
+<p>第一行代表用户只能操作它的 <code>home</code> 目录</p>
+<p>第二行隐藏 <strong>FTP</strong> 服务器的信息，包括使用的软件版本，系统等等信息。</p>
+<a id="more"></a>
+<h3 id="安装-openssl"><a href="#安装-openssl" class="headerlink" title="安装 openssl"></a>安装 openssl</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install openssl</div></pre></td></tr></table></figure>
+<p>为了使用 <strong>TLS</strong> 创建 <strong>SSL</strong> 证书<br>首页创建个目录，用于存放证书的</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) mkdir <span class="regexp">/etc/</span>proftpd<span class="regexp">/ssl/</span></div></pre></td></tr></table></figure>
+<p>生成 SSL 证书</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) openssl req -new -x509 -days <span class="number">365</span> -nodes -out /etc/proftpd/ssl/proftpd<span class="selector-class">.cert</span><span class="selector-class">.pem</span> -keyout /etc/proftpd/ssl/proftpd<span class="selector-class">.key</span><span class="selector-class">.pem</span></div></pre></td></tr></table></figure>
+<p>根据提示回答一堆问题</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Country <span class="keyword">Name</span> (<span class="number">2</span> letter code) [AU]:</div><div class="line">State or Province <span class="keyword">Name</span> (full <span class="keyword">name</span>) [Some-State]:</div><div class="line">Locality <span class="keyword">Name</span> (eg, city) []:</div><div class="line">Organization <span class="keyword">Name</span> (eg, company) [Internet Widgits Pty Ltd]:</div><div class="line">Organizational <span class="keyword">Unit</span> <span class="keyword">Name</span> (eg, section) []:</div><div class="line"><span class="keyword">Common</span> <span class="keyword">Name</span> (e.g. server FQDN or YOUR <span class="keyword">name</span>) []:</div><div class="line">Email Address []:</div></pre></td></tr></table></figure>
+<p>回答问题完后<br>会在刚才创建的 ssl 目录多出两个文件来</p>
+<p>修改这两个文件的权限</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod <span class="number">600</span> <span class="regexp">/etc/</span>proftpd<span class="regexp">/ssl/</span>proftpd.*</div></pre></td></tr></table></figure>
+<h2 id="再次配置-proFTPd"><a href="#再次配置-proFTPd" class="headerlink" title="再次配置 proFTPd"></a>再次配置 proFTPd</h2><p>再次打开 <strong>proftp.conf</strong> 配置文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) <span class="keyword">vim</span> /etc/proftpd/proftpd.<span class="keyword">conf</span></div></pre></td></tr></table></figure>
+<p>找到下面这一行，把前面的注释去掉。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Include</span> <span class="regexp">/etc/</span>proftpd<span class="regexp">/tls.conf</span></div></pre></td></tr></table></figure>
+<h2 id="配置-tls"><a href="#配置-tls" class="headerlink" title="配置 tls"></a>配置 tls</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) <span class="keyword">vim</span> /etc/proftpd/tls.<span class="keyword">conf</span></div></pre></td></tr></table></figure>
+<p>修改配置文件如下：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="params">&lt;IfModule mod_tls.c&gt;</span></div><div class="line">TLSEngine                  on</div><div class="line">TLSLog                     <span class="meta-keyword">/var/</span>log<span class="meta-keyword">/proftpd/</span>tls.log</div><div class="line">TLSProtocol                SSLv23</div><div class="line">TLSOptions                 NoCertRequest AllowClientRenegotiations</div><div class="line">TLSRSACertificateFile      <span class="meta-keyword">/etc/</span>proftpd<span class="meta-keyword">/ssl/</span>proftpd.cert.pem</div><div class="line">TLSRSACertificateKeyFile   <span class="meta-keyword">/etc/</span>proftpd<span class="meta-keyword">/ssl/</span>proftpd.key.pem</div><div class="line">TLSVerifyClient            off</div><div class="line">TLSRequired                on</div><div class="line"><span class="params">&lt;/IfModule&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="重启-proFTPd-服务"><a href="#重启-proFTPd-服务" class="headerlink" title="重启 proFTPd 服务"></a>重启 proFTPd 服务</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo <span class="regexp">/etc/</span>init.d/proftpd restart</div><div class="line">[ ok ] Stopping ftp <span class="string">server:</span> proftpd.</div><div class="line">[....] Starting ftp <span class="string">server:</span> proftpdserver1 proftpd[<span class="number">6052</span>]: mod_tls_memcache/<span class="number">0.1</span>: <span class="string">notice:</span> unable to register <span class="string">'memcache'</span> SSL session <span class="string">cache:</span> Memcache support not enabled</div><div class="line">. ok</div></pre></td></tr></table></figure>
+<p>如有以上提示，则需要编辑下 <code>/etc/proftpd/modules.conf</code> 文件</p>
+<p>找到下面一行，在前面加上注释掉它</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">……</div><div class="line"><span class="selector-id">#LoadModule</span> mod_tls_memcache<span class="selector-class">.c</span></div><div class="line">……</div></pre></td></tr></table></figure>
+<p>下载 <strong>FileZilla</strong> 客户端，选择 <strong>TLS</strong> 验证登录一下</p>
+<p>如果没有 <strong>FTP</strong> 账户，则新创建一个。</p>
+<h2 id="创建-FTP-用户"><a href="#创建-FTP-用户" class="headerlink" title="创建 FTP 用户"></a>创建 FTP 用户</h2><p>这里创建一个名为 <strong>ocean</strong> 的用户</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) useradd --shell <span class="regexp">/bin/</span><span class="keyword">false</span> ocean</div></pre></td></tr></table></figure>
+<p>再给它创建 <strong>home</strong> 目录和指定用户组与权限</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(sudo) <span class="built_in">mkdir</span> /<span class="built_in">home</span>/ocean</div><div class="line">(sudo) chown ocean:ocean /<span class="built_in">home</span>/ocean/</div></pre></td></tr></table></figure>
+<p>给新账户初始化密码</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">sudo passwd ocean</span></div></pre></td></tr></table></figure>
+<p>整个 <strong>proFTPd</strong> 带 <strong>TLS</strong> 服务的搭建过程到这里就结束了。</p>
+<p>Have a nice day.！</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://www.howtoforge.com/tutorial/proftpd-installation-on-debian-and-ubuntu/" target="_blank" rel="external">https://www.howtoforge.com/tutorial/proftpd-installation-on-debian-and-ubuntu/</a></li>
+<li><a href="http://www.proftpd.org/docs/howto/TLS.html" target="_blank" rel="external">http://www.proftpd.org/docs/howto/TLS.html</a></li>
+<li><a href="http://blog.topspeedsnail.com/archives/5018" target="_blank" rel="external">http://blog.topspeedsnail.com/archives/5018</a></li>
+<li><a href="https://www.digitalocean.com/community/questions/proftpd-login-failing-with-530" target="_blank" rel="external">https://www.digitalocean.com/community/questions/proftpd-login-failing-with-530</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单的记录下，搭建 &lt;strong&gt;proFTPd&lt;/strong&gt; 带 &lt;strong&gt;TLS&lt;/strong&gt; 服务的过程&lt;/p&gt;
+&lt;h2 id=&quot;安装-proFTPd&quot;&gt;&lt;a href=&quot;#安装-proFTPd&quot; class=&quot;headerlink&quot; title=&quot;安装 proFTPd&quot;&gt;&lt;/a&gt;安装 proFTPd&lt;/h2&gt;&lt;figure class=&quot;highlight lisp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(&lt;span class=&quot;name&quot;&gt;sudo&lt;/span&gt;) apt-get install proftpd&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;回车后会弹出一个对话框，这里我是选择 &lt;code&gt;standalone&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;配置-proFTPd&quot;&gt;&lt;a href=&quot;#配置-proFTPd&quot; class=&quot;headerlink&quot; title=&quot;配置 proFTPd&quot;&gt;&lt;/a&gt;配置 proFTPd&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(sudo) &lt;span class=&quot;keyword&quot;&gt;vim&lt;/span&gt; /etc/proftpd/proftpd.&lt;span class=&quot;keyword&quot;&gt;conf&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改下 &lt;strong&gt;FTP&lt;/strong&gt; 用户操作权限，如：上传文件后的存放路径等。&lt;/p&gt;
+&lt;figure class=&quot;highlight nginx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;DefaultRoot&lt;/span&gt; &lt;span class=&quot;regexp&quot;&gt;~&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ServerIdent&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;FTP Server ready.&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;第一行代表用户只能操作它的 &lt;code&gt;home&lt;/code&gt; 目录&lt;/p&gt;
+&lt;p&gt;第二行隐藏 &lt;strong&gt;FTP&lt;/strong&gt; 服务器的信息，包括使用的软件版本，系统等等信息。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="Debian" scheme="http://iamocean.github.io/tags/Debian/"/>
+    
+      <category term="ftp" scheme="http://iamocean.github.io/tags/ftp/"/>
+    
+      <category term="TLS" scheme="http://iamocean.github.io/tags/TLS/"/>
+    
+      <category term="Digitalocean" scheme="http://iamocean.github.io/tags/Digitalocean/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>再次搭建shadowsocks服务（python版）</title>
+    <link href="http://iamocean.github.io/2016/09/03/debian-shadowsocks-python/"/>
+    <id>http://iamocean.github.io/2016/09/03/debian-shadowsocks-python/</id>
+    <published>2016-09-03T15:31:36.000Z</published>
+    <updated>2016-09-03T16:16:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前自己搭了个 <strong>Node.js</strong> 版的 <strong>shadowsocks</strong> 服务在用，一直也没出过什么问题，不好一点就是内存占用的比较多，最近把 node 升级到 v6.4.0 版本后出现了一些问题，加上很久已没人维护了，而且官方现在已不推荐 <strong>nodejs</strong> 版本，于是就替换成 <strong>python</strong> 版本来了，所以有了这边笔记。。。</p>
+<h2 id="安装-shadowsocks"><a href="#安装-shadowsocks" class="headerlink" title="安装 shadowsocks"></a>安装 shadowsocks</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get <span class="keyword">install</span> python-pip</div><div class="line">pip <span class="keyword">install</span> shadowsocks</div></pre></td></tr></table></figure>
+<p><em>注：我 VPS 上搭建的是 debian 系统</em></p>
+<a id="more"></a>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>到 <code>/etc/shadowsocks/</code> 下，新建个 <code>config.json</code> 文件<br>配置文件内容如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>, // 服务端上建议填写 <span class="number">0.0</span><span class="meta">.0</span><span class="meta">.0</span>，客户端上填写服务器的 <span class="built_in">IP</span></div><div class="line">    <span class="string">"server_port"</span>:<span class="number">8388</span>,</div><div class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">    <span class="string">"password"</span>:<span class="string">"mypassword"</span>,</div><div class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</div><div class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="string">"fast_open"</span>: false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h2><p>让 <strong>shadowsocks</strong> 运行在后台</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(sudo) ssserver -c /etc/shadowsocks/config<span class="selector-class">.json</span> -d start  <span class="comment">// 开始</span></div><div class="line">(sudo) ssserver -c /etc/shadowsocks/config<span class="selector-class">.json</span> -d stop   <span class="comment">// 停止</span></div><div class="line">(sudo) less /var/log/shadowsocks<span class="selector-class">.log</span>  <span class="comment">// 查看日志</span></div></pre></td></tr></table></figure>
+<p>客户端配置详情，请参考我之前写的<a href="/2014/10/06/debian-install-shadowsocks/">科学上网篇</a></p>
+<p>Have a nice day~!</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</a></li>
+<li><a href="https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前自己搭了个 &lt;strong&gt;Node.js&lt;/strong&gt; 版的 &lt;strong&gt;shadowsocks&lt;/strong&gt; 服务在用，一直也没出过什么问题，不好一点就是内存占用的比较多，最近把 node 升级到 v6.4.0 版本后出现了一些问题，加上很久已没人维护了，而且官方现在已不推荐 &lt;strong&gt;nodejs&lt;/strong&gt; 版本，于是就替换成 &lt;strong&gt;python&lt;/strong&gt; 版本来了，所以有了这边笔记。。。&lt;/p&gt;
+&lt;h2 id=&quot;安装-shadowsocks&quot;&gt;&lt;a href=&quot;#安装-shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;安装 shadowsocks&quot;&gt;&lt;/a&gt;安装 shadowsocks&lt;/h2&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;apt-get &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; python-pip&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pip &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; shadowsocks&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;注：我 VPS 上搭建的是 debian 系统&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="shadowsocks" scheme="http://iamocean.github.io/tags/shadowsocks/"/>
+    
+      <category term="python" scheme="http://iamocean.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ghost 博客从 0.6.5 升级到 0.9.0 版本</title>
+    <link href="http://iamocean.github.io/2016/08/28/upgrade-ghost-blog/"/>
+    <id>http://iamocean.github.io/2016/08/28/upgrade-ghost-blog/</id>
+    <published>2016-08-28T13:53:16.000Z</published>
+    <updated>2016-08-28T15:12:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前用 <a href="https://ghost.org/" target="_blank" rel="external">Ghost</a> 搭建了个<a href="http://oceanlau.com/" target="_blank" rel="external">博客</a>，看了下博客上最新的一篇文章已是一年前的。<br>顺便翻了下 <a href="https://ghost.org/developers/" target="_blank" rel="external">Ghost 官网</a>，发现最新版已是 <code>0.9.0</code>，另外还新推出了个<a href="https://ghost.org/downloads/" target="_blank" rel="external">桌面版</a>，看起来很酷哦！</p>
+<h2 id="升级前准备"><a href="#升级前准备" class="headerlink" title="升级前准备"></a>升级前准备</h2><p>1.备份文件</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cp</span> -rp path/www/ghost  ./ghost_backup</div></pre></td></tr></table></figure>
+<p>2.下载最新版本</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -LOk https:<span class="regexp">//g</span>host.org<span class="regexp">/zip/g</span>host-latest.zip</div></pre></td></tr></table></figure>
+<p>3.解压 <strong>Ghost</strong> 到临时目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uzip ghost-latest <span class="_">-d</span> ghost-temp</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>4.删除原 <strong>Ghost</strong> 目录下的旧代码</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">path</span>/ghost</div><div class="line">rm -rf core</div></pre></td></tr></table></figure>
+<p>5.把刚刚下载解压好 <code>ghost-temp</code> 目录里的 <strong>core</strong> 文件夹和其他主要文件 <code>index.js</code> 、<code>*.json</code> 复制过来</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp -R path/ghost-temp/core ./</div><div class="line">cp -R index<span class="selector-class">.js</span> *<span class="selector-class">.json</span> ./</div></pre></td></tr></table></figure>
+<p>6.安装生产环境下最新依赖</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> <span class="comment">--production</span></div></pre></td></tr></table></figure>
+<p>7.启动 <strong>Ghost</strong> 程序</p>
+<p>这里本人推荐使用 <strong>PM2</strong> 来管理 <strong>Ghost</strong> 程序<br>如果你还没有安装请先安装好 <code>PM2</code></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install pm2 -g  <span class="comment">// 安装 PM2</span></div></pre></td></tr></table></figure>
+<p>如果已安装好的，则使用 <strong>PM2</strong> 来启动 <strong>Ghost</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">NODE_ENV</span>=production pm2 start index.js --name <span class="string">"GhostBlog"</span></div></pre></td></tr></table></figure>
+<p>然后将它添加至 <strong>PM2</strong> 管理列表里</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 <span class="keyword">save</span></div></pre></td></tr></table></figure>
+<p>最后把它添加到系统启动项</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo p<span class="name">m2</span> startup</div></pre></td></tr></table></figure>
+<p>可以重启下系，统验证是否成功？</p>
+<p><em>注: Ghost 对 Node 版本问题，要一定要求的。0.9.0 目前只要支持 4.2.0 ~ 5.0.0 之间的版本，更多详情请看 <a href="http://support.ghost.org/supported-node-versions/" target="_blank" rel="external">http://support.ghost.org/supported-node-versions/</a> </em></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://support.ghost.org/how-to-upgrade/#command-guide" target="_blank" rel="external">http://support.ghost.org/how-to-upgrade/#command-guide</a></li>
+<li><a href="http://www.d0u9.xyz/sheng-ji-ghostbo-ke-bing-shi-yong-pm2guan-li/" target="_blank" rel="external">http://www.d0u9.xyz/sheng-ji-ghostbo-ke-bing-shi-yong-pm2guan-li/</a></li>
+<li><a href="https://happycoder.net/how-to-update-ghost-on-digital-ocean/" target="_blank" rel="external">https://happycoder.net/how-to-update-ghost-on-digital-ocean/</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前用 &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt; 搭建了个&lt;a href=&quot;http://oceanlau.com/&quot;&gt;博客&lt;/a&gt;，看了下博客上最新的一篇文章已是一年前的。&lt;br&gt;顺便翻了下 &lt;a href=&quot;https://ghost.org/developers/&quot;&gt;Ghost 官网&lt;/a&gt;，发现最新版已是 &lt;code&gt;0.9.0&lt;/code&gt;，另外还新推出了个&lt;a href=&quot;https://ghost.org/downloads/&quot;&gt;桌面版&lt;/a&gt;，看起来很酷哦！&lt;/p&gt;
+&lt;h2 id=&quot;升级前准备&quot;&gt;&lt;a href=&quot;#升级前准备&quot; class=&quot;headerlink&quot; title=&quot;升级前准备&quot;&gt;&lt;/a&gt;升级前准备&lt;/h2&gt;&lt;p&gt;1.备份文件&lt;/p&gt;
+&lt;figure class=&quot;highlight avrasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;cp&lt;/span&gt; -rp path/www/ghost  ./ghost_backup&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.下载最新版本&lt;/p&gt;
+&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;curl -LOk https:&lt;span class=&quot;regexp&quot;&gt;//g&lt;/span&gt;host.org&lt;span class=&quot;regexp&quot;&gt;/zip/g&lt;/span&gt;host-latest.zip&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3.解压 &lt;strong&gt;Ghost&lt;/strong&gt; 到临时目录下&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;uzip ghost-latest &lt;span class=&quot;_&quot;&gt;-d&lt;/span&gt; ghost-temp&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Tutorials" scheme="http://iamocean.github.io/categories/Tutorials/"/>
+    
+    
+      <category term="Ghost" scheme="http://iamocean.github.io/tags/Ghost/"/>
+    
+      <category term="blog" scheme="http://iamocean.github.io/tags/blog/"/>
+    
+      <category term="博客升级" scheme="http://iamocean.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sublime Text Theme</title>
+    <link href="http://iamocean.github.io/2016/08/08/sublime-text-theme/"/>
+    <id>http://iamocean.github.io/2016/08/08/sublime-text-theme/</id>
+    <published>2016-08-07T16:15:56.000Z</published>
+    <updated>2016-08-07T16:53:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近把用了快两年的主题 <code>Theme-itg.flat</code> 替换成 <code>seti_UI</code><br>本以为是个简单的事情，没想到作者能把皮肤给单独处理，需要独立再安装一个 <strong>package</strong></p>
+<h2 id="安装-seti-UI-主题"><a href="#安装-seti-UI-主题" class="headerlink" title="安装 seti_UI 主题"></a>安装 seti_UI 主题</h2><ol>
+<li>打开 <strong>Sublime Text</strong> 编辑器, <code>ctrl/command + shift + p</code> 调出窗口</li>
+<li>输入 <strong>install package</strong> 按 <strong>Enter</strong> 后，再输入 <strong>seti_UI</strong>，静静等待安装</li>
+<li>重复上面两步，把 <strong>seti_UI</strong> 替换成 <strong>seti_UX</strong></li>
+</ol>
+<p><strong>seti_UI</strong> 和 <strong>seti_UX</strong> 都安装成功后，找到顶部菜单 Sublime Text -&gt; Preferences -&gt; settings User 加上如下配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"color_scheme"</span>: <span class="string">"Packages/Seti_UX/Seti.tmTheme"</span>,</div><div class="line">  <span class="attr">"theme"</span>: <span class="string">"Seti_orig.sublime-theme"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于 <strong>seti_UI</strong> 主题的 <strong>options</strong>，请到 <a href="https://github.com/ctf0/Seti_ST3" target="_blank" rel="external">https://github.com/ctf0/Seti_ST3</a> 上看看。</p>
+<p>Enjoy Your Coding！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近把用了快两年的主题 &lt;code&gt;Theme-itg.flat&lt;/code&gt; 替换成 &lt;code&gt;seti_UI&lt;/code&gt;&lt;br&gt;本以为是个简单的事情，没想到作者能把皮肤给单独处理，需要独立再安装一个 &lt;strong&gt;package&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 
+    
+    </summary>
+    
+      <category term="Sublime Text" scheme="http://iamocean.github.io/categories/Sublime-Text/"/>
+    
+    
+      <category term="Sublime Text" scheme="http://iamocean.github.io/tags/Sublime-Text/"/>
+    
+      <category term="Theme" scheme="http://iamocean.github.io/tags/Theme/"/>
+    
+      <category term="seti_UI" scheme="http://iamocean.github.io/tags/seti-UI/"/>
+    
+      <category term="seti_UX" scheme="http://iamocean.github.io/tags/seti-UX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建 React Native 环境之iOS篇</title>
+    <link href="http://iamocean.github.io/2015/11/29/react-native-for-ios/"/>
+    <id>http://iamocean.github.io/2015/11/29/react-native-for-ios/</id>
+    <published>2015-11-29T14:36:12.000Z</published>
+    <updated>2016-08-28T16:45:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚好碰到有个需求需要用 <strong>React Native</strong>，在这里我顺便记录下，如何在 <strong>Mac</strong> 下快速搭建 <strong>React Native</strong> 环境，前提是你要有台 <strong>Mac</strong>, 当然你喜欢折腾用黑苹果也是可以的。。。哈哈哈！</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p><strong>Node.js</strong> 需要 4.0 或 4.0 以上的版本<br>由于之前我已安装过 0.10.x 版本的 <strong>Node.js</strong>，为了方便管理，使用 <strong>NVM</strong> 来管理与安装 <strong>Node.js</strong> 的不同版本</p>
+<p>在 <strong>React Native</strong> 官方推荐下，加上是在 <strong>Mac</strong> 环境里，自己也喜欢用 <strong>Homebrew</strong> 来管理软件包<br>因此这里就统一用 <strong>Homebrew</strong> 来安装</p>
+<h2 id="删除旧版-Node-js"><a href="#删除旧版-Node-js" class="headerlink" title="删除旧版 Node.js"></a>删除旧版 Node.js</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash</span></div><div class="line">lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom \</div><div class="line">| <span class="keyword">while</span> read i; <span class="keyword">do</span></div><div class="line">  sudo rm /usr/local/$&#123;i&#125;</div><div class="line">done</div><div class="line">sudo rm -rf /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">node</span> \</span></div><div class="line">     /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">node_modules</span> \</span></div><div class="line">     /var/db/receipts/org.nodejs.*</div></pre></td></tr></table></figure>
+<p>把这段代码复制文本上另存为 <code>uninstall_node_pkg.sh</code>，然后打开 <code>Terminal</code> (终端)，运行 <code>./uninstall_node_pkg.sh</code> 就会自动删除 <strong>Node.js</strong> 。</p>
+<p>其实这一步可以直接跳过，这是为那(hei)些(chu)爱(nv)干(zuo)净的同学准备的。</p>
+<a id="more"></a>
+<h2 id="安装-NVM-和-Node-js"><a href="#安装-NVM-和-Node-js" class="headerlink" title="安装 NVM 和 Node.js"></a>安装 NVM 和 Node.js</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">brew install nvm  <span class="comment">// 安装 nvm</span></div><div class="line">nvm install v4<span class="number">.2</span><span class="number">.2</span>  <span class="comment">// 安装 nodejs v4.2.2 版本</span></div><div class="line">nvm use <span class="number">4.2</span><span class="number">.2</span>  <span class="comment">// 用 nvm 切换到 4.2.2 版本</span></div><div class="line">nvm alias <span class="section">default</span> <span class="number">4.2</span><span class="number">.2</span> <span class="comment">// 修改 nvm 默认指向 4.2.2 版本</span></div></pre></td></tr></table></figure>
+<h1 id="安装-React-Native-iOS-版环境"><a href="#安装-React-Native-iOS-版环境" class="headerlink" title="安装 React Native iOS 版环境"></a>安装 React Native iOS 版环境</h1><h2 id="安装-watchman-和-flow"><a href="#安装-watchman-和-flow" class="headerlink" title="安装 watchman 和 flow"></a>安装 watchman 和 flow</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>watchman</div><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>flow</div></pre></td></tr></table></figure>
+<p><strong>watchman</strong> 用于监控文件变化<br><strong>flow</strong> 是一个 <code>JavaScript</code> 的静态类型检查器，以方便找出代码中可能存在的类型错误</p>
+<h2 id="安装-xCode"><a href="#安装-xCode" class="headerlink" title="安装 xCode"></a>安装 xCode</h2><p><strong>xCode</strong> 需要 7.0 或 7.0 以上的版本<br>如没有安装过或者版本太低，请自行到 <strong>APP Store</strong> 里下载更新</p>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>如果输入 <code>react-native -v</code> 显示命令不存在的，请先安装 <strong>React Native Cli</strong></p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install -g react-<span class="keyword">native</span>-cli</div></pre></td></tr></table></figure>
+<p>然后再初始化名称为 <strong>ReactNativeDemo</strong> 的 <strong>React Native</strong> 项目</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-<span class="keyword">native</span> init ReactNativeDemo</div></pre></td></tr></table></figure>
+<p>目录结构大体如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">❯ tree -L <span class="number">2</span></div><div class="line">.</div><div class="line">└── ReactNativeDemo</div><div class="line">    ├── android</div><div class="line">    ├── index<span class="selector-class">.android</span><span class="selector-class">.js</span></div><div class="line">    ├── index<span class="selector-class">.ios</span><span class="selector-class">.js</span></div><div class="line">    ├── ios</div><div class="line">    ├── node_modules</div><div class="line">    └── package<span class="selector-class">.json</span></div><div class="line"></div><div class="line"><span class="number">4</span> directories, <span class="number">3</span> files</div></pre></td></tr></table></figure>
+<p>其中 <code>index.ios.js</code> 和 <code>index.android.js</code> 两个 <strong>JS</strong> 文件分别对应的是 <strong>iOS</strong> 平台和 <strong>Android</strong> 平台的入口</p>
+<h2 id="项目跑起来"><a href="#项目跑起来" class="headerlink" title="项目跑起来"></a>项目跑起来</h2><p>切换到 <code>ReactNativeDemo/ios</code> 目录下找到，找到 <strong>ReactNativeDemo.xcodeproj</strong> 然后双击打开 <strong>xCode</strong> 运行起来<br>然后再使用快捷键 <strong>(command + R)</strong> 打开模拟器，第一次可能需要几分钟，就会出现一个新界面显示 <strong>welcome to React Native!</strong>，效果大致如下：</p>
+<p><img src="/images/react-native-ios-demo.png" alt=""></p>
+<h1 id="安装-React-Native-Android-版环境"><a href="#安装-React-Native-Android-版环境" class="headerlink" title="安装 React Native Android 版环境"></a>安装 React Native Android 版环境</h1><h2 id="安装-Java-环境"><a href="#安装-Java-环境" class="headerlink" title="安装 Java 环境"></a>安装 Java 环境</h2><p>到官方下载 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">SDK</a>，然后自行安装拉</p>
+<p>安装后成功后，输入 <code>java -version</code><br>验证下是否你装安装那个 <strong>Java</strong> 版本</p>
+<h2 id="安装-android-sdk"><a href="#安装-android-sdk" class="headerlink" title="安装 android-sdk"></a>安装 android-sdk</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span><span class="keyword">android-sdk</span></div></pre></td></tr></table></figure>
+<p>安装完后照着提示，把  <code>android sdk</code> 的路径（<code>export ANDROID_HOME=/usr/local/opt/android-sdk</code>）加到 <code>.bashrc</code> 或者 <code>.zshrc</code>中去，具体是那个配置文件是看你自己用的是什么终端</p>
+<h3 id="配置各种代理"><a href="#配置各种代理" class="headerlink" title="配置各种代理"></a>配置各种代理</h3><p>打开 <strong>Terminal</strong>（终端），输入 <code>android</code> 会打开 <code>Android SDK Manager</code> ，注意左上角。</p>
+<p><img src="/images/android-sdk-1.jpg" alt=""><br><img src="/images/android-sdk-2.jpg" alt=""><br><img src="/images/android-sdk-3.jpg" alt=""><br><img src="/images/android-sdk-4.jpg" alt=""></p>
+<h3 id="下载-Android-模拟器"><a href="#下载-Android-模拟器" class="headerlink" title="下载 Android 模拟器"></a>下载 Android 模拟器</h3><p>首先到 <a href="https://www.genymotion.com/" target="_blank" rel="external">Genymotion</a> 上注册帐号下载安装包</p>
+<p>添加虚拟设备</p>
+<p><img src="/images/android-genymotion.jpg" alt=""></p>
+<p>然后在命令行里输入 <code>react-native run-android</code> 运行起来，显示如下界面。</p>
+<p><img src="/images/react-native-android-demo.jpg" alt=""></p>
+<p>到这里 <strong>Mac</strong> 上的 <strong>iOS</strong> 和 <strong>Android</strong> 环境都已搭建完成了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://yijiebuyi.com/blog/21f40895e86f4f62bc29956a21a85215.html" target="_blank" rel="external">React Native 环境安装</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近刚好碰到有个需求需要用 &lt;strong&gt;React Native&lt;/strong&gt;，在这里我顺便记录下，如何在 &lt;strong&gt;Mac&lt;/strong&gt; 下快速搭建 &lt;strong&gt;React Native&lt;/strong&gt; 环境，前提是你要有台 &lt;strong&gt;Mac&lt;/strong&gt;, 当然你喜欢折腾用黑苹果也是可以的。。。哈哈哈！&lt;/p&gt;
+&lt;h1 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Node.js&lt;/strong&gt; 需要 4.0 或 4.0 以上的版本&lt;br&gt;由于之前我已安装过 0.10.x 版本的 &lt;strong&gt;Node.js&lt;/strong&gt;，为了方便管理，使用 &lt;strong&gt;NVM&lt;/strong&gt; 来管理与安装 &lt;strong&gt;Node.js&lt;/strong&gt; 的不同版本&lt;/p&gt;
+&lt;p&gt;在 &lt;strong&gt;React Native&lt;/strong&gt; 官方推荐下，加上是在 &lt;strong&gt;Mac&lt;/strong&gt; 环境里，自己也喜欢用 &lt;strong&gt;Homebrew&lt;/strong&gt; 来管理软件包&lt;br&gt;因此这里就统一用 &lt;strong&gt;Homebrew&lt;/strong&gt; 来安装&lt;/p&gt;
+&lt;h2 id=&quot;删除旧版-Node-js&quot;&gt;&lt;a href=&quot;#删除旧版-Node-js&quot; class=&quot;headerlink&quot; title=&quot;删除旧版 Node.js&quot;&gt;&lt;/a&gt;删除旧版 Node.js&lt;/h2&gt;&lt;figure class=&quot;highlight crystal&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/bin/bash&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom \&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;| &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; read i; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  sudo rm /usr/local/$&amp;#123;i&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;done&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo rm -rf /usr/local/&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;lib&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;node&lt;/span&gt; \&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     /usr/local/&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;lib&lt;/span&gt;/&lt;span class=&quot;title&quot;&gt;node_modules&lt;/span&gt; \&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     /var/db/receipts/org.nodejs.*&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;把这段代码复制文本上另存为 &lt;code&gt;uninstall_node_pkg.sh&lt;/code&gt;，然后打开 &lt;code&gt;Terminal&lt;/code&gt; (终端)，运行 &lt;code&gt;./uninstall_node_pkg.sh&lt;/code&gt; 就会自动删除 &lt;strong&gt;Node.js&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;其实这一步可以直接跳过，这是为那(hei)些(chu)爱(nv)干(zuo)净的同学准备的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tutorials" scheme="http://iamocean.github.io/categories/Tutorials/"/>
+    
+    
+      <category term="React Native" scheme="http://iamocean.github.io/tags/React-Native/"/>
+    
+      <category term="iOS" scheme="http://iamocean.github.io/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 下两个不错的工具</title>
+    <link href="http://iamocean.github.io/2015/09/05/useful-tools/"/>
+    <id>http://iamocean.github.io/2015/09/05/useful-tools/</id>
+    <published>2015-09-05T14:51:35.000Z</published>
+    <updated>2015-09-05T15:10:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p><code>tree</code>  是以树的形式展开所有文件和文件夹，用于解释某个项目结构时特别清晰。</p>
+<p>效果如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">mini-wiki git/master</div><div class="line">❯ tree .</div><div class="line">.</div><div class="line">├── README<span class="selector-class">.md</span></div><div class="line">├── assets</div><div class="line">│   ├── css</div><div class="line">│   │   ├── github-markdown<span class="selector-class">.css</span></div><div class="line">│   │   └── style<span class="selector-class">.css</span></div><div class="line">│   ├── <span class="selector-tag">img</span></div><div class="line">│   └── js</div><div class="line">│       └── main<span class="selector-class">.js</span></div><div class="line">├── gulpfile<span class="selector-class">.js</span></div><div class="line">├── index<span class="selector-class">.html</span></div><div class="line">├── layout</div><div class="line">│   └── master<span class="selector-class">.html</span></div><div class="line">├── markdown</div><div class="line">│   └── index<span class="selector-class">.md</span></div><div class="line">├── package<span class="selector-class">.json</span></div><div class="line">└── upload</div><div class="line">    └── topic<span class="selector-class">.png</span></div><div class="line"></div><div class="line"><span class="number">7</span> directories, <span class="number">10</span> files</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="cloc"><a href="#cloc" class="headerlink" title="cloc"></a>cloc</h2><p><code>cloc</code> 是用作代码统计的，想知道某个项目具体用了什么语言、写了多少行代码、注释等。</p>
+<p>效果如下：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mini-wiki git/master</div><div class="line">❯ cloc .</div><div class="line"><span class="code">      10 text files.</span></div><div class="line"><span class="code">      10 unique files.</span></div><div class="line"><span class="code">       4 files ignored.</span></div><div class="line"></div><div class="line"><span class="section">http://cloc.sourceforge.net v 1.62  T=0.06 s (113.1 files/s, 15620.2 lines/s)</span></div><div class="line">-------------------------------------------------------------------------------</div><div class="line"><span class="section">Language                     files          blank        comment           code</span></div><div class="line">-------------------------------------------------------------------------------</div><div class="line">CSS                              2            125              3            619</div><div class="line">HTML                             2             11             21             87</div><div class="line">Javascript                       2             13             38             29</div><div class="line"><span class="section">JSON                             1              0              0             21</span></div><div class="line">-------------------------------------------------------------------------------</div><div class="line"><span class="section">SUM:                             7            149             62            756</span></div><div class="line">-------------------------------------------------------------------------------</div></pre></td></tr></table></figure>
+<h2 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h2><p><strong>Mac</strong> 下安装挺方便的，前提是已安装好了 <strong>brew</strong>，直接 <code>brew install xxx</code> 即可。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://www.cnblogs.com/ayseeing/p/4097066.html" target="_blank" rel="external">http://www.cnblogs.com/ayseeing/p/4097066.html</a></li>
+<li><a href="http://www.cnblogs.com/yingkong1987/p/3359654.html" target="_blank" rel="external">http://www.cnblogs.com/yingkong1987/p/3359654.html</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;tree&quot;&gt;&lt;a href=&quot;#tree&quot; class=&quot;headerlink&quot; title=&quot;tree&quot;&gt;&lt;/a&gt;tree&lt;/h2&gt;&lt;p&gt;&lt;code&gt;tree&lt;/code&gt;  是以树的形式展开所有文件和文件夹，用于解释某个项目结构时特别清晰。&lt;/p&gt;
+&lt;p&gt;效果如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;mini-wiki git/master&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;❯ tree .&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── README&lt;span class=&quot;selector-class&quot;&gt;.md&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── assets&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   ├── css&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   │   ├── github-markdown&lt;span class=&quot;selector-class&quot;&gt;.css&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   │   └── style&lt;span class=&quot;selector-class&quot;&gt;.css&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   ├── &lt;span class=&quot;selector-tag&quot;&gt;img&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   └── js&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│       └── main&lt;span class=&quot;selector-class&quot;&gt;.js&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── gulpfile&lt;span class=&quot;selector-class&quot;&gt;.js&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── index&lt;span class=&quot;selector-class&quot;&gt;.html&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── layout&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   └── master&lt;span class=&quot;selector-class&quot;&gt;.html&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── markdown&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;│   └── index&lt;span class=&quot;selector-class&quot;&gt;.md&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;├── package&lt;span class=&quot;selector-class&quot;&gt;.json&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;└── upload&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    └── topic&lt;span class=&quot;selector-class&quot;&gt;.png&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt; directories, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; files&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://iamocean.github.io/categories/Tools/"/>
+    
+    
+      <category term="tree" scheme="http://iamocean.github.io/tags/tree/"/>
+    
+      <category term="clock" scheme="http://iamocean.github.io/tags/clock/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Gulp 搭建的演示文档</title>
+    <link href="http://iamocean.github.io/2015/08/19/wiki-gulp-markdown/"/>
+    <id>http://iamocean.github.io/2015/08/19/wiki-gulp-markdown/</id>
+    <published>2015-08-18T16:19:56.000Z</published>
+    <updated>2015-08-18T16:39:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在整理项目相关的东西时，要写些注释说明和帮助其他人快速的了解整理个项目的大概情况，不想每次都跟其他人解释一遍，于是就有了这个东西拉。</p>
+<h2 id="Mini-Wiki-是什么？"><a href="#Mini-Wiki-是什么？" class="headerlink" title="Mini Wiki 是什么？"></a>Mini Wiki 是什么？</h2><p>Mini Wiki —- 用 <strong>Gulp + Markdown</strong> 等开源组件搭建起来的，用于简单文档演示站点。</p>
+<h2 id="Mini-Wiki-目的"><a href="#Mini-Wiki-目的" class="headerlink" title="Mini Wiki 目的"></a>Mini Wiki 目的</h2><p><del>解决某些项目里样式文件多、乱…，而且也没多少人明白，此处省略一万个字，说多就是泪呐！</del></p>
+<p>写文档、写文档、写文档…</p>
+<h2 id="安装与用法"><a href="#安装与用法" class="headerlink" title="安装与用法"></a>安装与用法</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http<span class="variable">s:</span>//github.<span class="keyword">com</span>/iamocean/mini-wiki.git</div><div class="line"><span class="keyword">cd</span> mini-wiki/</div><div class="line">npm install</div><div class="line">gulp</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol>
+<li>先从 <strong>Github</strong> 上把代码 <strong>clone</strong> 下来</li>
+<li>然后进入对应的目录（如：<strong>mini-wiki</strong>），安装依赖包(<strong>npm install</strong>)</li>
+<li>执行 <strong>gulp</strong> 预览</li>
+<li>修改 <strong>markdown</strong> 文件夹的 <strong>*.md</strong> 可实时更新预览</li>
+</ol>
+<h2 id="目录结构说明"><a href="#目录结构说明" class="headerlink" title="目录结构说明"></a>目录结构说明</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mini-wiki</div><div class="line">├── assets/</div><div class="line">│     ├── css/</div><div class="line">│     ├── img/</div><div class="line">│     ├── js/</div><div class="line">├── layout/</div><div class="line">├── markdown/</div><div class="line">├── <span class="selector-class">.gitnore</span></div><div class="line">├── gulpfile<span class="selector-class">.js</span></div><div class="line">├── index<span class="selector-class">.html</span></div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>assets</strong> 是用来放静态资源的</li>
+<li><strong>markdown</strong> 是用来放 <strong>.md</strong> 的源文件</li>
+</ul>
+<p>嗯，其他的不解释了..</p>
+<p>重点注意下 <strong>layout</strong> 是用来 <strong>HTML</strong> 拆出来的结构，这里需要注意下 <code>gulp-html-extend</code> 插件语法。（<a href="https://github.com/FrankFang/gulp-html-extend" target="_blank" rel="external">我是传送门</a>）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在整理项目相关的东西时，要写些注释说明和帮助其他人快速的了解整理个项目的大概情况，不想每次都跟其他人解释一遍，于是就有了这个东西拉。&lt;/p&gt;
+&lt;h2 id=&quot;Mini-Wiki-是什么？&quot;&gt;&lt;a href=&quot;#Mini-Wiki-是什么？&quot; class=&quot;headerlink&quot; title=&quot;Mini Wiki 是什么？&quot;&gt;&lt;/a&gt;Mini Wiki 是什么？&lt;/h2&gt;&lt;p&gt;Mini Wiki —- 用 &lt;strong&gt;Gulp + Markdown&lt;/strong&gt; 等开源组件搭建起来的，用于简单文档演示站点。&lt;/p&gt;
+&lt;h2 id=&quot;Mini-Wiki-目的&quot;&gt;&lt;a href=&quot;#Mini-Wiki-目的&quot; class=&quot;headerlink&quot; title=&quot;Mini Wiki 目的&quot;&gt;&lt;/a&gt;Mini Wiki 目的&lt;/h2&gt;&lt;p&gt;&lt;del&gt;解决某些项目里样式文件多、乱…，而且也没多少人明白，此处省略一万个字，说多就是泪呐！&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;写文档、写文档、写文档…&lt;/p&gt;
+&lt;h2 id=&quot;安装与用法&quot;&gt;&lt;a href=&quot;#安装与用法&quot; class=&quot;headerlink&quot; title=&quot;安装与用法&quot;&gt;&lt;/a&gt;安装与用法&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;http&lt;span class=&quot;variable&quot;&gt;s:&lt;/span&gt;//github.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/iamocean/mini-wiki.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;cd&lt;/span&gt; mini-wiki/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm install&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;gulp&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://iamocean.github.io/categories/Tools/"/>
+    
+    
+      <category term="Gulp" scheme="http://iamocean.github.io/tags/Gulp/"/>
+    
+      <category term="Markdown" scheme="http://iamocean.github.io/tags/Markdown/"/>
+    
+      <category term="Wiki" scheme="http://iamocean.github.io/tags/Wiki/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sublime Text 之代码片段</title>
+    <link href="http://iamocean.github.io/2015/08/11/sublime-text-snippet/"/>
+    <id>http://iamocean.github.io/2015/08/11/sublime-text-snippet/</id>
+    <published>2015-08-11T15:28:49.000Z</published>
+    <updated>2016-02-19T04:15:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近总被人问起，如何提高工作效率？<br>以前写 <strong>CSS</strong> 都是直接用 <strong>LESS</strong> 来弄的，根本就不用担心浏览器的前缀、<strong>CSS 选择器</strong>等问题，而现在这都是问题了，虽然说一直都有把 <strong>CSS</strong> 公用的东西抽离出来，打包成一个个组件，但是每次复制、粘贴、调整也还是有的麻烦的。<br>有天晚上跟龙哥去等车时，边走边无聊中说起来，发现他在琢磨这方面的东西，然后就简单的给我介绍起来，就是 <strong>Sublime Text Snippet</strong> 功能。其实以前也有简单用过来这个功能，感觉没有卵用处，那现在不防试试看吧。</p>
+<h2 id="创建-Snippet"><a href="#创建-Snippet" class="headerlink" title="创建 Snippet"></a>创建 Snippet</h2><p>打开 <strong>SublimeText</strong> 编辑器，找到菜单栏 <code>Tools -&gt; New Snippet...</code></p>
+<p>会看到如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;snippet&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">content</span>&gt;</span>&lt;![CDATA[</span></div><div class="line">Hello, $&#123;1:this&#125; is a $&#123;2:snippet&#125;.</div><div class="line">]]&gt;<span class="tag">&lt;/<span class="name">content</span>&gt;</span></div><div class="line">  &lt;!-- Optional: <span class="built_in">Set</span> a tabTrigger to define how to trigger the snippet --&gt;</div><div class="line">  <span class="xml"><span class="comment">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span></span></div><div class="line">  <span class="comment">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">snippet</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol>
+<li>注意下 <code>&lt;![CDATA[ ]]</code> 中括号里面的内容，我们的代码片段要放在这个中括号里面</li>
+<li><code>${1:this}</code> 表示当代码插入后，鼠标会停留在这个位置，<strong>this</strong> 表示自定义参数，默认显示 <strong>this</strong>（可选）</li>
+<li><code>${2:snippet}</code> 表示当代码插入后，点击 <strong>tab</strong> 则会跳到当前这个位置（按顺序跳转），<strong>${3}</strong>、<strong>${4}</strong>等等同理可得，<strong>snippet</strong> 同上</li>
+<li><code>tabTrigger</code> 是指自定义快捷键，比如：<code>1-ocean</code>，然后在 <strong>Sublime Text</strong> 编辑器，敲出 <code>1-ocean</code> 点击 <code>tab键</code> 就是显示出你刚定义好的代码片段</li>
+<li><code>scope</code> 是指限定在某类文件名上生效</li>
+<li>还可以自己加上 <code>&lt;description&gt;这里是描述信息..&lt;/description&gt;</code>，当你敲出快捷键时会显示出相关提示</li>
+</ol>
+<h2 id="编写-Snippet-Demo"><a href="#编写-Snippet-Demo" class="headerlink" title="编写 Snippet Demo"></a>编写 Snippet Demo</h2><p>这里先来编写个 HTML Snippet Demo</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;snippet&gt;</div><div class="line">  &lt;content&gt;&lt;![CDATA[</div><div class="line">&lt;p class="$&#123;1:className&#125;"&gt;$&#123;2:HTML Snippet Demo.&#125;&lt;/p&gt;</div><div class="line">]]&gt;&lt;/content&gt;</div><div class="line">  &lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</div><div class="line">  &lt;tabTrigger&gt;html-p&lt;/tabTrigger&gt;</div><div class="line">  &lt;description&gt;HTML - Snippet Demo&lt;/description&gt;</div><div class="line">  &lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</div><div class="line">  &lt;scope&gt;text.html&lt;/scope&gt;</div><div class="line">&lt;/snippet&gt;</div></pre></td></tr></table></figure>
+<p>然后保存再 <code>Packages\User</code> 文件夹里面，命名为 <strong>xxx.sublime-snippet</strong><br>然后打开一个 <strong>HTML</strong> 文件，输入 <code>html-p</code>，敲入 <strong>TAB 键</strong>，代码就会插入进来了。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://docs.sublimetext.info/en/latest/extensibility/snippets.html" target="_blank" rel="external">http://docs.sublimetext.info/en/latest/extensibility/snippets.html</a></li>
+<li><a href="http://www.bluesdream.com/blog/sublime-text-snippets-function.html" target="_blank" rel="external">http://www.bluesdream.com/blog/sublime-text-snippets-function.html</a></li>
+<li><a href="http://stackoverflow.com/questions/18808514/sublime-snippet-not-working" target="_blank" rel="external">http://stackoverflow.com/questions/18808514/sublime-snippet-not-working</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近总被人问起，如何提高工作效率？&lt;br&gt;以前写 &lt;strong&gt;CSS&lt;/strong&gt; 都是直接用 &lt;strong&gt;LESS&lt;/strong&gt; 来弄的，根本就不用担心浏览器的前缀、&lt;strong&gt;CSS 选择器&lt;/strong&gt;等问题，而现在这都是问题了，虽然说一直都有把 &lt;strong&gt;CSS&lt;/strong&gt; 公用的东西抽离出来，打包成一个个组件，但是每次复制、粘贴、调整也还是有的麻烦的。&lt;br&gt;有天晚上跟龙哥去等车时，边走边无聊中说起来，发现他在琢磨这方面的东西，然后就简单的给我介绍起来，就是 &lt;strong&gt;Sublime Text Snippet&lt;/strong&gt; 功能。其实以前也有简单用过来这个功能，感觉没有卵用处，那现在不防试试看吧。&lt;/p&gt;
+&lt;h2 id=&quot;创建-Snippet&quot;&gt;&lt;a href=&quot;#创建-Snippet&quot; class=&quot;headerlink&quot; title=&quot;创建 Snippet&quot;&gt;&lt;/a&gt;创建 Snippet&lt;/h2&gt;&lt;p&gt;打开 &lt;strong&gt;SublimeText&lt;/strong&gt; 编辑器，找到菜单栏 &lt;code&gt;Tools -&amp;gt; New Snippet...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;会看到如下代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;snippet&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;![CDATA[&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Hello, $&amp;#123;1:this&amp;#125; is a $&amp;#123;2:snippet&amp;#125;.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;]]&amp;gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;lt;!-- Optional: &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt; a tabTrigger to define how to trigger the snippet --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- &amp;lt;tabTrigger&amp;gt;hello&amp;lt;/tabTrigger&amp;gt; --&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Optional: Set a scope to limit where the snippet will trigger --&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- &amp;lt;scope&amp;gt;source.python&amp;lt;/scope&amp;gt; --&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;snippet&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://iamocean.github.io/categories/Tools/"/>
+    
+    
+      <category term="Sublime Text" scheme="http://iamocean.github.io/tags/Sublime-Text/"/>
+    
+      <category term="插件" scheme="http://iamocean.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+      <category term="JsFormat" scheme="http://iamocean.github.io/tags/JsFormat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Debian 7 上搭建 LNMP 环境</title>
+    <link href="http://iamocean.github.io/2015/06/21/debian7-lnmp/"/>
+    <id>http://iamocean.github.io/2015/06/21/debian7-lnmp/</id>
+    <published>2015-06-21T15:03:01.000Z</published>
+    <updated>2015-06-21T15:37:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近又在折腾 <strong>VPS</strong>，主要是因为 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 最近抽风得太厉害了，不得不换个新的 <strong>IP</strong> 地址来缓缓下，就顺便再重新搭个 <strong>LNMP</strong> 环境来玩玩，虽然之前有折腾过，但是每次重新折腾还是习惯性的去找 <a href="https://www.google.com/" target="_blank" rel="external">Google大神</a>，这次就想记录下安装的过程和了解下所用到的每个安装包和组件，大概是做什么用的，下面就直接进入主题吧。</p>
+<h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get <span class="keyword">install</span> -y mysql-<span class="keyword">server</span> mysql-<span class="keyword">client</span></div></pre></td></tr></table></figure>
+<p><code>mysql-server</code> 是 <strong>MySQL</strong> 服务器核心程序，服务器端主程序。<br><code>mysql-client</code> 是 <strong>MySQL</strong> 客户端程序，用于连接并操作 <strong>MySQL</strong>。用以通过命令行方式登录管理 <strong>MySQL</strong> 服务器。<br>在安装的过程，会弹出个界面让你输入 <strong>root</strong> 用户的密码</p>
+<h2 id="初始化数据库默认设置"><a href="#初始化数据库默认设置" class="headerlink" title="初始化数据库默认设置"></a>初始化数据库默认设置</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) mysql_secure_installation</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>敲完上面那句命令后，期间会询问以下几个问题</p>
+<ol>
+<li>是否修改 root 用户密码？</li>
+<li>是否删除匿名用户？</li>
+<li>是否禁止 root 用户远程登录？</li>
+<li>是否删除默认 test 数据库表呢？</li>
+<li>对于刚才的修改是否重新刷新呢？</li>
+</ol>
+<p>基本上一路按 <code>Y</code> 就行了</p>
+<h2 id="验证-MySQL-是否安装成功"><a href="#验证-MySQL-是否安装成功" class="headerlink" title="验证 MySQL 是否安装成功"></a>验证 MySQL 是否安装成功</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">mysql -V</span></div></pre></td></tr></table></figure>
+<h1 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h1><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) apt-get install php5-fpm php5-gd php5-mysql</div></pre></td></tr></table></figure>
+<p><code>php5-fpm</code> 服务器端 <strong>PHP-FPM</strong> 程序，对 <strong>Nginx</strong> 处理 <strong>PHP</strong> 很重要。<br><code>php5-gd</code> <strong>PHP5</strong> 的 <strong>GD</strong> 模块，<strong>GD</strong> 是一套开源图像处理库，一般 <strong>DZ</strong> 生成缩略图或者加水印都需要它。<br><code>php5-mysql</code> <strong>PHP5</strong> 的 <strong>MySQL</strong> 模块，让你的网站可以访问到数据库，此模块必备的。</p>
+<h2 id="修改-PHP-默认配置"><a href="#修改-PHP-默认配置" class="headerlink" title="修改 PHP 默认配置"></a>修改 PHP 默认配置</h2><p>在 <code>/etc/php5/fpm/php.ini</code> 配置文件中，找到 <code>cgi.fix_pathinfo=1</code>，将 <strong>1</strong> 成 <strong>0</strong>,</p>
+<figure class="highlight fix"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">cgi.fix_pathinfo</span>=<span class="string">0</span></div></pre></td></tr></table></figure>
+<p>防止 <strong>PHP</strong> 在无穷的解析匹配路径，避免风险。</p>
+<h1 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install -y nginx-full</div></pre></td></tr></table></figure>
+<p><code>nginx-full</code> <strong>Nginx web</strong> 服务器完全安装</p>
+<h2 id="设置-Nginx-默认配置文件"><a href="#设置-Nginx-默认配置文件" class="headerlink" title="设置 Nginx 默认配置文件"></a>设置 Nginx 默认配置文件</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/</span><span class="keyword">default</span></div></pre></td></tr></table></figure>
+<p>先找到配置文件，然后修改成内容如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="comment"># 默认端口</span></div><div class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">    <span class="comment"># 默认指向路径</span></div><div class="line">    <span class="attribute">root</span> /usr/share/nginx/www;</div><div class="line">    <span class="comment"># 默认首页</span></div><div class="line">    <span class="attribute">index</span> index.html index.htm;</div><div class="line"></div><div class="line">    <span class="comment"># 绑定域名</span></div><div class="line">    <span class="attribute">server_name</span> localhost;</div><div class="line"></div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment"># 定义错误页</span></div><div class="line">    <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</div><div class="line"></div><div class="line">    <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html</div><div class="line">    location = 50x.html &#123;</div><div class="line">      <span class="attribute">root</span> /usr/share/ngnix/www;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">#PHP</span></div><div class="line">    <span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;</div><div class="line">      <span class="attribute">fastcgi_split_path_info</span><span class="regexp"> ^(.+\.php)(/.+)$</span>;</div><div class="line">      <span class="attribute">fastcgi_index</span> index.php;</div><div class="line">      <span class="attribute">fastcgi_pass</span> unix:/var/run/php5-fpm.sock;</div><div class="line">      <span class="attribute">include</span> fastcgi_params;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意： 如果涉及到修改 <strong>Nginx</strong> 配置文件的，一定要重启下 <strong>Nginx</strong>，配置才会生效的。</p>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 启动 Nginx</span></div><div class="line">(sudo) service nginx start</div><div class="line"><span class="comment">// 重启 Nginx</span></div><div class="line">(sudo) service nginx restart</div><div class="line"><span class="comment">// 停止 Nginx</span></div><div class="line">(sudo) service nginx <span class="built_in">stop</span></div></pre></td></tr></table></figure>
+<p>如要重启、停止其他服务，把 <strong>nginx</strong> 替换成 <strong>php5-fpm</strong>、<strong>mysql</strong> 即可。</p>
+<h2 id="验证下是否安装成功"><a href="#验证下是否安装成功" class="headerlink" title="验证下是否安装成功"></a>验证下是否安装成功</h2><h3 id="先来验证下-Nginx-服务"><a href="#先来验证下-Nginx-服务" class="headerlink" title="先来验证下 Nginx 服务"></a>先来验证下 <strong>Nginx</strong> 服务</h3><p>在浏览器里访问 <code>http://你的IP</code> ，会出现 <code>Welcome to nginx!</code> 字样，则说明你已经安装成功了。</p>
+<h3 id="接着来验证下-PHP-服务"><a href="#接着来验证下-PHP-服务" class="headerlink" title="接着来验证下 PHP 服务"></a>接着来验证下 <strong>PHP</strong> 服务</h3><p>在 <code>/usr/share/nginx/www/</code> 下, 新建一个 <code>test.php</code> 文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/usr/</span>share<span class="regexp">/nginx/</span>www<span class="regexp">/test.php</span></div></pre></td></tr></table></figure>
+<p>敲入内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">    phpinfo();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>然后在浏览器里，访问 <code>http://你的IP/test.php</code>，会出现一个关于 <strong>PHP</strong> 的相关配置信息，能看到表明你已经成功搭建好了 <strong>LNMP</strong> 环境。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://www.cnblogs.com/heinoc/p/3808048.html" target="_blank" rel="external">http://www.cnblogs.com/heinoc/p/3808048.html</a></li>
+<li><a href="http://jybb.me/debian-lnmp" target="_blank" rel="external">http://jybb.me/debian-lnmp</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04</a></li>
+<li><a href="http://bbs.aliyun.com/read/135940.html?uid=1349361&amp;displayMode=1" target="_blank" rel="external">http://bbs.aliyun.com/read/135940.html?uid=1349361&amp;displayMode=1</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近又在折腾 &lt;strong&gt;VPS&lt;/strong&gt;，主要是因为 &lt;a href=&quot;https://www.digitalocean.com/?refcode=84a0b9b4bc28&quot;&gt;Digitalocean&lt;/a&gt; 最近抽风得太厉害了，不得不换个新的 &lt;strong&gt;IP&lt;/strong&gt; 地址来缓缓下，就顺便再重新搭个 &lt;strong&gt;LNMP&lt;/strong&gt; 环境来玩玩，虽然之前有折腾过，但是每次重新折腾还是习惯性的去找 &lt;a href=&quot;https://www.google.com/&quot;&gt;Google大神&lt;/a&gt;，这次就想记录下安装的过程和了解下所用到的每个安装包和组件，大概是做什么用的，下面就直接进入主题吧。&lt;/p&gt;
+&lt;h1 id=&quot;安装-MySQL&quot;&gt;&lt;a href=&quot;#安装-MySQL&quot; class=&quot;headerlink&quot; title=&quot;安装 MySQL&quot;&gt;&lt;/a&gt;安装 MySQL&lt;/h1&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(sudo) apt-get &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; -y mysql-&lt;span class=&quot;keyword&quot;&gt;server&lt;/span&gt; mysql-&lt;span class=&quot;keyword&quot;&gt;client&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;mysql-server&lt;/code&gt; 是 &lt;strong&gt;MySQL&lt;/strong&gt; 服务器核心程序，服务器端主程序。&lt;br&gt;&lt;code&gt;mysql-client&lt;/code&gt; 是 &lt;strong&gt;MySQL&lt;/strong&gt; 客户端程序，用于连接并操作 &lt;strong&gt;MySQL&lt;/strong&gt;。用以通过命令行方式登录管理 &lt;strong&gt;MySQL&lt;/strong&gt; 服务器。&lt;br&gt;在安装的过程，会弹出个界面让你输入 &lt;strong&gt;root&lt;/strong&gt; 用户的密码&lt;/p&gt;
+&lt;h2 id=&quot;初始化数据库默认设置&quot;&gt;&lt;a href=&quot;#初始化数据库默认设置&quot; class=&quot;headerlink&quot; title=&quot;初始化数据库默认设置&quot;&gt;&lt;/a&gt;初始化数据库默认设置&lt;/h2&gt;&lt;figure class=&quot;highlight lisp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(&lt;span class=&quot;name&quot;&gt;sudo&lt;/span&gt;) mysql_secure_installation&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="Debian" scheme="http://iamocean.github.io/tags/Debian/"/>
+    
+      <category term="Digitalocean" scheme="http://iamocean.github.io/tags/Digitalocean/"/>
+    
+      <category term="LNMP" scheme="http://iamocean.github.io/tags/LNMP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Debian 7上搭建 Ghost 博客</title>
+    <link href="http://iamocean.github.io/2015/06/21/debian7-ghost-blog/"/>
+    <id>http://iamocean.github.io/2015/06/21/debian7-ghost-blog/</id>
+    <published>2015-06-21T15:02:38.000Z</published>
+    <updated>2015-06-21T15:37:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个 <strong>$5/M</strong> 的 VPS，当时是为了能科学上网，只搭建了个 <a href="http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/">Shadowsocks</a> 而已，好像有点浪费的样子，而最近刚好又在学习 <strong>Node.js</strong> 方面的东西，于是就顺便搭了个 <strong>Ghost</strong> 博客…</p>
+<h1 id="下载-Ghost-源码"><a href="#下载-Ghost-源码" class="headerlink" title="下载 Ghost 源码"></a>下载 Ghost 源码</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载源码</span></div><div class="line">wget https:<span class="comment">//ghost.org/zip/ghost-latest.zip</span></div><div class="line"><span class="comment">// 解压</span></div><div class="line">unzip -uo ghost-latest<span class="selector-class">.zip</span> -d ghost</div></pre></td></tr></table></figure>
+<p>目前最新版本是 <strong>0.6.4</strong>，可以在 <a href="https://github.com/TryGhost/Ghost/" target="_blank" rel="external">Github</a> 或者 <a href="https://ghost.org/download/" target="_blank" rel="external">Ghost</a> 官方网站上找到。</p>
+<a id="more"></a>
+<h1 id="安装-node-相关依赖"><a href="#安装-node-相关依赖" class="headerlink" title="安装 node 相关依赖"></a>安装 node 相关依赖</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> 进入到刚才指定的路径</div><div class="line">cd <span class="regexp">/www/g</span>host</div><div class="line"><span class="regexp">//</span> 以生产环境模式安装相关依赖</div><div class="line">npm install --production</div><div class="line"><span class="regexp">//</span> 运行 Ghost</div><div class="line">npm start</div></pre></td></tr></table></figure>
+<p><code>/www/ghost</code> 在这里只是举个例子，按照的自己的真实路径请自行替换哈！</p>
+<h1 id="使用-PM2-来管理"><a href="#使用-PM2-来管理" class="headerlink" title="使用 PM2 来管理"></a>使用 PM2 来管理</h1><p>由于是直接用 <code>npm start</code> 这种方式来运行 <strong>Ghost</strong>，当关闭终端时，<strong>Ghost</strong> 也会停止运行的，为了能让 <strong>Ghost</strong> 始终保持运行着，即使重启系统也能一直运行着，这时就需要靠 <a href="https://github.com/Unitech/pm2" target="_blank" rel="external">PM2</a>、<a href="https://www.npmjs.com/package/forever" target="_blank" rel="external">Forever</a>、<a href="https://www.npmjs.com/package/supervisor" target="_blank" rel="external">supervisor</a>等等之类的来辅助管理了，在这里以 <strong>PM2</strong> 为例子</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 安装 PM2</span></div><div class="line">npm install -g pm2</div></pre></td></tr></table></figure>
+<p>然后进入刚刚安装 <strong>Ghost</strong> 目录里</p>
+<h2 id="以生产模式运行-Ghost"><a href="#以生产模式运行-Ghost" class="headerlink" title="以生产模式运行 Ghost"></a>以生产模式运行 Ghost</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NODE_ENV=production pm2 start <span class="built_in">index</span>.js --<span class="keyword">name</span> GhostBlog</div></pre></td></tr></table></figure>
+<p>可以用来 pm2 stop GhostBlog 或 pm2 restart GhostBlog，更多的命令请输入 pm2 help 进行查看。</p>
+<h2 id="生成-PM2-自动运行脚本"><a href="#生成-PM2-自动运行脚本" class="headerlink" title="生成 PM2 自动运行脚本"></a>生成 PM2 自动运行脚本</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p<span class="name">m2</span> startup debia<span class="symbol">n</span></div></pre></td></tr></table></figure>
+<h2 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h2><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 <span class="keyword">save</span></div></pre></td></tr></table></figure>
+<h1 id="利用-Nginx-做反向代理"><a href="#利用-Nginx-做反向代理" class="headerlink" title="利用 Nginx 做反向代理"></a>利用 Nginx 做反向代理</h1><p>新建一个 <strong>ghost.conf</strong> 配置文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/g</span>host.conf</div></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">  <span class="attribute">server_name</span> example.com;</div><div class="line">  <span class="attribute">location</span> / &#123;</div><div class="line">    <span class="attribute">proxy_set_header</span>   X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">    <span class="attribute">proxy_set_header</span>   Host      <span class="variable">$http_host</span>;</div><div class="line">    <span class="attribute">proxy_pass</span>         http://127.0.0.1:2368;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>example.com</code> 替换成您自己的域名</p>
+<p><code>http://example.com</code> 验证下是否成功访问<br><code>http://example.com/ghost</code> 初次登陆先完善用户信息</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://docs.ghost.org/zh/installation/linux/" target="_blank" rel="external">http://docs.ghost.org/zh/installation/linux/</a></li>
+<li><a href="https://github.com/TryGhost/Ghost/" target="_blank" rel="external">https://github.com/TryGhost/Ghost/</a></li>
+<li><a href="https://ghost.org/download/" target="_blank" rel="external">https://ghost.org/download/</a></li>
+<li><a href="http://zhezhang.co/install-ghost-with-nginx-on-digitalocean/" target="_blank" rel="external">http://zhezhang.co/install-ghost-with-nginx-on-digitalocean/</a></li>
+<li><a href="http://segmentfault.com/blog/vish/1190000002397419" target="_blank" rel="external">http://segmentfault.com/blog/vish/1190000002397419</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间，在 &lt;a href=&quot;https://www.digitalocean.com/?refcode=84a0b9b4bc28&quot;&gt;Digitalocean&lt;/a&gt; 上买了个 &lt;strong&gt;$5/M&lt;/strong&gt; 的 VPS，当时是为了能科学上网，只搭建了个 &lt;a href=&quot;http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/&quot;&gt;Shadowsocks&lt;/a&gt; 而已，好像有点浪费的样子，而最近刚好又在学习 &lt;strong&gt;Node.js&lt;/strong&gt; 方面的东西，于是就顺便搭了个 &lt;strong&gt;Ghost&lt;/strong&gt; 博客…&lt;/p&gt;
+&lt;h1 id=&quot;下载-Ghost-源码&quot;&gt;&lt;a href=&quot;#下载-Ghost-源码&quot; class=&quot;headerlink&quot; title=&quot;下载 Ghost 源码&quot;&gt;&lt;/a&gt;下载 Ghost 源码&lt;/h1&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 下载源码&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;wget https:&lt;span class=&quot;comment&quot;&gt;//ghost.org/zip/ghost-latest.zip&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 解压&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;unzip -uo ghost-latest&lt;span class=&quot;selector-class&quot;&gt;.zip&lt;/span&gt; -d ghost&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目前最新版本是 &lt;strong&gt;0.6.4&lt;/strong&gt;，可以在 &lt;a href=&quot;https://github.com/TryGhost/Ghost/&quot;&gt;Github&lt;/a&gt; 或者 &lt;a href=&quot;https://ghost.org/download/&quot;&gt;Ghost&lt;/a&gt; 官方网站上找到。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="Debian" scheme="http://iamocean.github.io/tags/Debian/"/>
+    
+      <category term="Digitalocean" scheme="http://iamocean.github.io/tags/Digitalocean/"/>
+    
+      <category term="Ghost" scheme="http://iamocean.github.io/tags/Ghost/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>申请 TexturePacker 免费注册码</title>
+    <link href="http://iamocean.github.io/2015/06/14/get-free-license-for-texturepacker/"/>
+    <id>http://iamocean.github.io/2015/06/14/get-free-license-for-texturepacker/</id>
+    <published>2015-06-14T04:15:15.000Z</published>
+    <updated>2015-06-14T04:29:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果你是人开发人员，你需要使用 TexturePacker 工具制作精灵表，则可以通过 <a href="https://www.codeandweb.com/request-free-license" target="_blank" rel="external">https://www.codeandweb.com/request-free-license</a> 申请免费的注册码。</p>
+<p>请真实填写你的信息，主要是需要提供你的技术博客。提交申请后返回信息如下：</p>
+<p>Please prove that you are the blog’s owner by placing this code somewhere in a post:</p>
+<p>TP:E1F2F29E</p>
+<p>Place it somewhere where I can easily find it — you can remove the code in about 1-4 days.</p>
+<p>你需要在你的博客中包含 TP:E1F2F29E 信息，这样可以证明这个博客是你的，他们会进行审核。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果你是人开发人员，你需要使用 TexturePacker 工具制作精灵表，则可以通过 &lt;a href=&quot;https://www.codeandweb.com/request-free-license&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://iamocean.github.io/categories/Tools/"/>
+    
+    
+      <category term="TexturePacker" scheme="http://iamocean.github.io/tags/TexturePacker/"/>
+    
+      <category term="license" scheme="http://iamocean.github.io/tags/license/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从Hexo迁移到Ghost博客</title>
+    <link href="http://iamocean.github.io/2015/04/12/hexo-to-ghost/"/>
+    <id>http://iamocean.github.io/2015/04/12/hexo-to-ghost/</id>
+    <published>2015-04-12T15:45:05.000Z</published>
+    <updated>2015-06-21T15:38:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一时心血来潮，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">DO</a> 上搭建了个 <a href="http://oceanlau.com/" target="_blank" rel="external">Ghost</a> 博客，数据迁移是个问题。<br>经过短暂的搜索，发现了一个好东西 —— <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a>，目测是个外国友人写的。<br>一个 <strong>npm</strong> 包，安装和使用都很简单、很方便。</p>
+<h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><h3 id="安装-oghost-npm-包"><a href="#安装-oghost-npm-包" class="headerlink" title="安装 oghost npm 包"></a>安装 <strong>oghost npm</strong> 包</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm <span class="keyword">install</span> oghost -g</div></pre></td></tr></table></figure>
+<h3 id="进入-post-目录"><a href="#进入-post-目录" class="headerlink" title="进入 _post 目录"></a>进入 <strong>_post</strong> 目录</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> path/<span class="keyword">to</span>/<span class="keyword">source</span>/_posts</div><div class="line">oghost &gt; ~/path/<span class="keyword">to</span>/data.json</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="上传-data-json"><a href="#上传-data-json" class="headerlink" title="上传 data.json"></a>上传 <strong>data.json</strong></h3><p>访问 <code>http://您的域名/ghost/settings/labs</code>, 把刚才导出的 <strong>data.json</strong> 直接即可。</p>
+<p>另外我不太喜欢 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 当前这个版本，自动截取出来的文章 <strong>URL</strong> 路径，我觉得不太好友，所以在 <a href="https://github.com/kuropen/oghost" target="_blank" rel="external">oghost</a> 的基础上做了些修改，让文章 <strong>URL</strong> 保持和原来 <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> 上的 <strong>URL</strong> 一致，修改后的<a href="https://github.com/iamocean/oghost" target="_blank" rel="external">oghost</a>。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://github.com/kuropen/oghost" target="_blank" rel="external">https://github.com/kuropen/oghost</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一时心血来潮，在 &lt;a href=&quot;https://www.digitalocean.com/?refcode=84a0b9b4bc28&quot;&gt;DO&lt;/a&gt; 上搭建了个 &lt;a href=&quot;http://oceanlau.com/&quot;&gt;Ghost&lt;/a&gt; 博客，数据迁移是个问题。&lt;br&gt;经过短暂的搜索，发现了一个好东西 —— &lt;a href=&quot;https://github.com/kuropen/oghost&quot;&gt;oghost&lt;/a&gt;，目测是个外国友人写的。&lt;br&gt;一个 &lt;strong&gt;npm&lt;/strong&gt; 包，安装和使用都很简单、很方便。&lt;/p&gt;
+&lt;h2 id=&quot;使用方法：&quot;&gt;&lt;a href=&quot;#使用方法：&quot; class=&quot;headerlink&quot; title=&quot;使用方法：&quot;&gt;&lt;/a&gt;使用方法：&lt;/h2&gt;&lt;h3 id=&quot;安装-oghost-npm-包&quot;&gt;&lt;a href=&quot;#安装-oghost-npm-包&quot; class=&quot;headerlink&quot; title=&quot;安装 oghost npm 包&quot;&gt;&lt;/a&gt;安装 &lt;strong&gt;oghost npm&lt;/strong&gt; 包&lt;/h3&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo npm &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; oghost -g&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;进入-post-目录&quot;&gt;&lt;a href=&quot;#进入-post-目录&quot; class=&quot;headerlink&quot; title=&quot;进入 _post 目录&quot;&gt;&lt;/a&gt;进入 &lt;strong&gt;_post&lt;/strong&gt; 目录&lt;/h3&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;cd&lt;/span&gt; path/&lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;source&lt;/span&gt;/_posts&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;oghost &amp;gt; ~/path/&lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt;/data.json&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://iamocean.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Ghost" scheme="http://iamocean.github.io/tags/Ghost/"/>
+    
+      <category term="Hexo" scheme="http://iamocean.github.io/tags/Hexo/"/>
+    
+      <category term="Blog" scheme="http://iamocean.github.io/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPN PPTP 配置教程</title>
+    <link href="http://iamocean.github.io/2015/03/29/debian-vpn-pptp/"/>
+    <id>http://iamocean.github.io/2015/03/29/debian-vpn-pptp/</id>
+    <published>2015-03-29T08:35:39.000Z</published>
+    <updated>2015-03-29T09:33:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PPTP-是什么"><a href="#PPTP-是什么" class="headerlink" title="PPTP 是什么?"></a>PPTP 是什么?</h1><p>PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。</p>
+<p>没有自己的 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">VPS</a> 吗？赶紧到 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上注册一个吧。不然别再浪费时间往下继续看了。哈哈哈！！</p>
+<h1 id="安装-PPTP"><a href="#安装-PPTP" class="headerlink" title="安装 PPTP"></a>安装 PPTP</h1><p>这以 <strong>debian</strong> 系统为例，其它 <strong>Linux</strong> 系统类似。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install pptpd</div></pre></td></tr></table></figure>
+<h1 id="配置-IP-地址"><a href="#配置-IP-地址" class="headerlink" title="配置 IP 地址"></a>配置 IP 地址</h1><p>修改 <code>/etc/pptpd.conf</code> 文件，在最后面添加以下两行</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localip <span class="number">192.168</span><span class="number">.9</span><span class="number">.1</span></div><div class="line">remoteip <span class="number">192.168</span><span class="number">.9</span><span class="number">.11</span><span class="number">-30</span></div></pre></td></tr></table></figure>
+<p>这里的 <strong>IP</strong> 地址可以随便填写，只要是 <strong>ABC</strong> 三类中的私有地址都可以的，另外需要注意是 <strong>IP</strong> 地址避免冲突。<br>这两句话的意思就是当外部计算机通过 <strong>PPTP</strong> 联接到 <strong>VPN</strong> 后所能拿到的 <strong>IP</strong> 地址范围和服务器的<strong>IP</strong> 地址设置。<br><strong>localip</strong> 是服务器内部使用的网关，<strong>remoteip</strong> 是分配给客户用的。</p>
+<a id="more"></a>
+<h1 id="配置-DNS-服务器"><a href="#配置-DNS-服务器" class="headerlink" title="配置 DNS 服务器"></a>配置 DNS 服务器</h1><p>修改 <code>/etc/ppp/options</code> 文件，把 <strong>DNS</strong> 替换成谷歌的 <strong>DNS</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ms-dns</span> 8<span class="selector-class">.8</span><span class="selector-class">.8</span><span class="selector-class">.8</span></div><div class="line"><span class="selector-tag">ms-dns</span> 8<span class="selector-class">.8</span><span class="selector-class">.4</span><span class="selector-class">.4</span></div></pre></td></tr></table></figure>
+<h1 id="添加-VPN-帐号"><a href="#添加-VPN-帐号" class="headerlink" title="添加 VPN 帐号"></a>添加 VPN 帐号</h1><p>修改 <code>/etc/ppp/chap-secrets</code>文件，添加 <strong>VPN</strong> 用户名和密码，格式如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">username</span> pptp password *</div></pre></td></tr></table></figure>
+<p>其中 <strong>username</strong> 就是 <strong>VPN</strong> 帐号的用户名，<strong>password</strong> 就是 <strong>VPN</strong> 帐号的密码，<em> 表示 <strong>IP</strong> 地址随机分配，（<strong>IP</strong> 地址是刚刚配置的 <strong>remoteip</strong>）,如需指定 <strong>IP</strong> 地址，则把 </em> 换成某个人具体的静态 <strong>IP</strong> 地址即可。</p>
+<h1 id="配置系统转发"><a href="#配置系统转发" class="headerlink" title="配置系统转发"></a>配置系统转发</h1><p>修改 <code>/etc/sysctl.conf</code>，去掉 <code>net.ipv4.ip_forward=1</code> 前的注释（#）<br>运行如下命令使用配置修改生效</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">sysctl -p</span></div></pre></td></tr></table></figure>
+<h1 id="安装-iptables"><a href="#安装-iptables" class="headerlink" title="安装 iptables"></a>安装 iptables</h1><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) apt-get install iptables</div></pre></td></tr></table></figure>
+<h1 id="开启iptabls转发"><a href="#开启iptabls转发" class="headerlink" title="开启iptabls转发"></a>开启iptabls转发</h1><figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo iptables -t nat -<span class="keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE</div></pre></td></tr></table></figure>
+<p>避免重启后配置失效，还需要修改 <code>/etc/rc.local</code> 文件, 在 <code>exit 0</code> 这行上面加上 <code>iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</code></p>
+<h1 id="重启pptpd服务"><a href="#重启pptpd服务" class="headerlink" title="重启pptpd服务"></a>重启pptpd服务</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/pptpd restart</span></div></pre></td></tr></table></figure>
+<p>到这里 <strong>VPN</strong> 已配置完成了。<br>接下来用电脑、移动设备进行测试，输入以前想看却看不了、想上却上不去的网站体验下哈。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://zh.wikipedia.org/wiki/%E9%BB%9E%E5%B0%8D%E9%BB%9E%E9%9A%A7%E9%81%93%E5%8D%94%E8%AD%B0" target="_blank" rel="external">http://zh.wikipedia.org/wiki/%E9%BB%9E%E5%B0%8D%E9%BB%9E%E9%9A%A7%E9%81%93%E5%8D%94%E8%AD%B0</a></li>
+<li><a href="http://wtser.com/2015/01/14/vps-vpn-pptp.html" target="_blank" rel="external">http://wtser.com/2015/01/14/vps-vpn-pptp.html</a></li>
+<li><a href="http://www.nigesb.com/setup-your-own-vpn-with-pptp.html" target="_blank" rel="external">http://www.nigesb.com/setup-your-own-vpn-with-pptp.html</a></li>
+<li><a href="http://www.777s.me/debian-pptp.html" target="_blank" rel="external">http://www.777s.me/debian-pptp.html</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;PPTP-是什么&quot;&gt;&lt;a href=&quot;#PPTP-是什么&quot; class=&quot;headerlink&quot; title=&quot;PPTP 是什么?&quot;&gt;&lt;/a&gt;PPTP 是什么?&lt;/h1&gt;&lt;p&gt;PPTP (Point to Point Tunneling Protocol) 即点对点隧道协议，是实现虚拟专用网（VPN）的方式之一。PPTP 使用传输控制协议（TCP），创建控制通道来发送控制命令，以及利用通用路由封装（GRE）通道来封装点对点协议（PPP）数据包以发送数据。&lt;/p&gt;
+&lt;p&gt;没有自己的 &lt;a href=&quot;https://www.digitalocean.com/?refcode=84a0b9b4bc28&quot;&gt;VPS&lt;/a&gt; 吗？赶紧到 &lt;a href=&quot;https://www.digitalocean.com/?refcode=84a0b9b4bc28&quot;&gt;Digitalocean&lt;/a&gt; 上注册一个吧。不然别再浪费时间往下继续看了。哈哈哈！！&lt;/p&gt;
+&lt;h1 id=&quot;安装-PPTP&quot;&gt;&lt;a href=&quot;#安装-PPTP&quot; class=&quot;headerlink&quot; title=&quot;安装 PPTP&quot;&gt;&lt;/a&gt;安装 PPTP&lt;/h1&gt;&lt;p&gt;这以 &lt;strong&gt;debian&lt;/strong&gt; 系统为例，其它 &lt;strong&gt;Linux&lt;/strong&gt; 系统类似。&lt;/p&gt;
+&lt;figure class=&quot;highlight lisp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(&lt;span class=&quot;name&quot;&gt;sudo&lt;/span&gt;) apt-get install pptpd&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;配置-IP-地址&quot;&gt;&lt;a href=&quot;#配置-IP-地址&quot; class=&quot;headerlink&quot; title=&quot;配置 IP 地址&quot;&gt;&lt;/a&gt;配置 IP 地址&lt;/h1&gt;&lt;p&gt;修改 &lt;code&gt;/etc/pptpd.conf&lt;/code&gt; 文件，在最后面添加以下两行&lt;/p&gt;
+&lt;figure class=&quot;highlight lsl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;localip &lt;span class=&quot;number&quot;&gt;192.168&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.9&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;remoteip &lt;span class=&quot;number&quot;&gt;192.168&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.9&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.11&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-30&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里的 &lt;strong&gt;IP&lt;/strong&gt; 地址可以随便填写，只要是 &lt;strong&gt;ABC&lt;/strong&gt; 三类中的私有地址都可以的，另外需要注意是 &lt;strong&gt;IP&lt;/strong&gt; 地址避免冲突。&lt;br&gt;这两句话的意思就是当外部计算机通过 &lt;strong&gt;PPTP&lt;/strong&gt; 联接到 &lt;strong&gt;VPN&lt;/strong&gt; 后所能拿到的 &lt;strong&gt;IP&lt;/strong&gt; 地址范围和服务器的&lt;strong&gt;IP&lt;/strong&gt; 地址设置。&lt;br&gt;&lt;strong&gt;localip&lt;/strong&gt; 是服务器内部使用的网关，&lt;strong&gt;remoteip&lt;/strong&gt; 是分配给客户用的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="VPN" scheme="http://iamocean.github.io/tags/VPN/"/>
+    
+      <category term="PPTP" scheme="http://iamocean.github.io/tags/PPTP/"/>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS 高度100%自适应</title>
+    <link href="http://iamocean.github.io/2015/02/08/css-height-adaptive/"/>
+    <id>http://iamocean.github.io/2015/02/08/css-height-adaptive/</id>
+    <published>2015-02-08T08:07:55.000Z</published>
+    <updated>2015-04-12T06:32:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在做移动端 <strong>WEB</strong> 页面时，遇到了个问题，给 <strong>div</strong> 设置了 <code>height:100%;</code><br>目的是想让它铺满全屏的，先来看看 <a href="/demo/css-height-adaptive/demo-01.html">DEMO1</a>  效果，但发现实际显示效果却不是我们想像的那样。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">background-color</span>:red;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span>测试高度为100%是否生效...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">`</div></pre></td></tr></table></figure>
+<p>后来经过测试后发现，跟它父级关。<br>现在先来看看 <a href="/demo/css-height-adaptive/demo-02.html">DEMO2</a> 的效果</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">  <span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="selector-tag">html</span>,<span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">background-color</span>:red;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span>测试高度为100%是否生效...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在 <strong>DEMO</strong> 里可以看到 <strong>div</strong> 的父级是 <strong>body</strong> 元素，而 <strong>div</strong> 的高度是否可以使用百分比来显示，取决于它的父元素。<br>浏览器渲染时 <strong>body</strong> 默认是没有设置高度的，所以即便我们在 <a href="/demo/css-height-adaptive/demo-01.html">DEMO1</a> 里给 <strong>div</strong> 设置了 <code>height:100%;</code> 也不铺满全屏的。<br>因此，在 <a href="/demo/css-height-adaptive/demo-02.html">DEMO2</a> 给 <strong>html/body</strong> 标签加上 <code>height:100%;</code> 后，那才是我们要效果。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://www.cnblogs.com/youxin/p/3345085.html" target="_blank" rel="external">http://www.cnblogs.com/youxin/p/3345085.html</a></li>
+<li><a href="http://www.lhyum.com/%E3%80%90%E8%BD%AC%E3%80%91css%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94height100-%E9%97%AE%E9%A2%98.html" target="_blank" rel="external">http://www.lhyum.com/%E3%80%90%E8%BD%AC%E3%80%91css%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94height100-%E9%97%AE%E9%A2%98.html</a></li>
+<li><a href="http://www.bkjia.com/Javascript/848233.html" target="_blank" rel="external">http://www.bkjia.com/Javascript/848233.html</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在做移动端 &lt;strong&gt;WEB&lt;/strong&gt; 页面时，遇到了个问题，给 &lt;strong&gt;div&lt;/strong&gt; 设置了 &lt;code&gt;height:100%;&lt;/code&gt;&lt;br&gt;目的是想让它铺满全屏的，先来看看 &lt;a href=&quot;/demo/css-height-
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://iamocean.github.io/categories/CSS/"/>
+    
+    
+      <category term="height" scheme="http://iamocean.github.io/tags/height/"/>
+    
+      <category term="100%" scheme="http://iamocean.github.io/tags/100/"/>
+    
+      <category term="高度自适应" scheme="http://iamocean.github.io/tags/%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sublime Text 插件之JsFormat</title>
+    <link href="http://iamocean.github.io/2015/02/08/sublime-text-js-format/"/>
+    <id>http://iamocean.github.io/2015/02/08/sublime-text-js-format/</id>
+    <published>2015-02-07T16:17:36.000Z</published>
+    <updated>2015-04-12T06:34:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
+<li>在 Sublime Text 里快捷键 <code>Ctrl/Command + Shift + P</code> 输入 <strong>Install Package</strong> 稍等片刻.</li>
+<li>然后再输入 <strong>JsFormat</strong> 回车安装插件</li>
+</ol>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><ol>
+<li>把混淆格式的 js 代码或者 json 数据，以 .js 或 .json 文件格式保存下来</li>
+<li>选中 js 代码或者 json 数据，然后调用快捷键 <code>Ctrl/Command + Shift + P</code> 输入 <strong>Format:Javascript</strong>进行格式化，或者使用快捷键 <code>Ctrl + Alt + F</code> 进行格式化</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;在 Sublime Text 里快捷键 &lt;code&gt;Ctrl/Command + Shift + P&lt;/code&gt; 输入 &lt;st
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://iamocean.github.io/categories/Tools/"/>
+    
+    
+      <category term="Sublime Text" scheme="http://iamocean.github.io/tags/Sublime-Text/"/>
+    
+      <category term="插件" scheme="http://iamocean.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+      <category term="JsFormat" scheme="http://iamocean.github.io/tags/JsFormat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gulp 快速入门</title>
+    <link href="http://iamocean.github.io/2015/01/12/gulp-getting-started/"/>
+    <id>http://iamocean.github.io/2015/01/12/gulp-getting-started/</id>
+    <published>2015-01-12T15:39:54.000Z</published>
+    <updated>2015-01-13T13:37:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Gulp-是什么？"><a href="#Gulp-是什么？" class="headerlink" title="Gulp 是什么？"></a>Gulp 是什么？</h1><p>来自于官方的解释：The streaming build system</p>
+<p>简单来理解就是：Gulp 是基于 Node.js 的构建工具，处理速度很快。</p>
+<h1 id="Gulp-API"><a href="#Gulp-API" class="headerlink" title="Gulp API"></a>Gulp API</h1><ul>
+<li>Gulp.task(name, fn) 用来定义任务的</li>
+<li>Gulp.run(tasks…) 从3.5开始弃用，将在4.0中删除。<a href="https://github.com/gulpjs/gulp/blob/master/index.js#L16" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/index.js#L16</a></li>
+<li>Gulp.src(glob) 用来读取文件</li>
+<li>Gulp.dest(folder) 用来写入文件</li>
+<li>Gulp.watch(glob, fn) 用来监听文件是否改动过</li>
+</ul>
+<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><h2 id="安装-Gulp"><a href="#安装-Gulp" class="headerlink" title="安装 Gulp"></a>安装 Gulp</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) npm install -g gulp</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="使用-Gulp"><a href="#使用-Gulp" class="headerlink" title="使用 Gulp"></a>使用 Gulp</h2><h3 id="编写-Gulpfile-js-和-package-json"><a href="#编写-Gulpfile-js-和-package-json" class="headerlink" title="编写 Gulpfile.js 和 package.json"></a>编写 Gulpfile.js 和 package.json</h3><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd &lt;你的项目&gt;</div><div class="line">npm install gulp --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p><code>--save-dev</code> 表示会将 <code>gulp</code> 更新到 <code>package.json</code> 的 <code>devDependencies</code> 中去。</p>
+<p>gulpfile.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引入Gulp</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="comment">// 定义任务</span></div><div class="line">gulp.task(<span class="string">'demo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello Gulp...'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>然后在终端则运行 <code>gulp demo</code>, 则会显示 “Hello Gulp…”。</p>
+<h2 id="Gulp-实例"><a href="#Gulp-实例" class="headerlink" title="Gulp 实例"></a>Gulp 实例</h2><p>假设有个需求，在js文件里有a.js、b.js两个脚本文件，现在想要将它们合并、校验、压缩，并生成一个新的 c.min.js 文件。</p>
+<p>思路大致是这样的：</p>
+<ol>
+<li>找到 js 文件</li>
+<li>校验 js 语法是否有警告、错误</li>
+<li>合并 a.js 和 b.js 文件</li>
+<li>压缩</li>
+<li>输出到指定文件夹</li>
+</ol>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">demo</div><div class="line"> - js</div><div class="line">    - <span class="selector-tag">a</span><span class="selector-class">.js</span></div><div class="line">    - <span class="selector-tag">b</span><span class="selector-class">.js</span></div><div class="line"> - dist    <span class="comment">// 压缩后的目录</span></div><div class="line">    - c<span class="selector-class">.min</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
+<h3 id="安装相关依赖包"><a href="#安装相关依赖包" class="headerlink" title="安装相关依赖包"></a>安装相关依赖包</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> gulp gulp-jshint gulp-uglify gulp-<span class="keyword">concat</span> gulp-<span class="keyword">rename</span> <span class="comment">--save-dev</span></div></pre></td></tr></table></figure>
+<h3 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>);</div><div class="line"></div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./js/*.js'</span>)</div><div class="line">           .pipe(jshint())</div><div class="line">           .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">           .pipe(concat(<span class="string">'c.js'</span>))</div><div class="line">           .pipe(uglify())</div><div class="line">           .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">           .pipe(gulp.dest(<span class="string">'./dist/js'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在命令行了直接 <code>gulp</code> 或者 <code>gulp default</code> 即可。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md" target="_blank" rel="external">https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md</a></li>
+<li><a href="http://segmentfault.com/blog/laopopo/1190000000372547" target="_blank" rel="external">http://segmentfault.com/blog/laopopo/1190000000372547</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Gulp-是什么？&quot;&gt;&lt;a href=&quot;#Gulp-是什么？&quot; class=&quot;headerlink&quot; title=&quot;Gulp 是什么？&quot;&gt;&lt;/a&gt;Gulp 是什么？&lt;/h1&gt;&lt;p&gt;来自于官方的解释：The streaming build system&lt;/p&gt;
+&lt;p&gt;简单来理解就是：Gulp 是基于 Node.js 的构建工具，处理速度很快。&lt;/p&gt;
+&lt;h1 id=&quot;Gulp-API&quot;&gt;&lt;a href=&quot;#Gulp-API&quot; class=&quot;headerlink&quot; title=&quot;Gulp API&quot;&gt;&lt;/a&gt;Gulp API&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Gulp.task(name, fn) 用来定义任务的&lt;/li&gt;
+&lt;li&gt;Gulp.run(tasks…) 从3.5开始弃用，将在4.0中删除。&lt;a href=&quot;https://github.com/gulpjs/gulp/blob/master/index.js#L16&quot;&gt;https://github.com/gulpjs/gulp/blob/master/index.js#L16&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Gulp.src(glob) 用来读取文件&lt;/li&gt;
+&lt;li&gt;Gulp.dest(folder) 用来写入文件&lt;/li&gt;
+&lt;li&gt;Gulp.watch(glob, fn) 用来监听文件是否改动过&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;快速上手&quot;&gt;&lt;a href=&quot;#快速上手&quot; class=&quot;headerlink&quot; title=&quot;快速上手&quot;&gt;&lt;/a&gt;快速上手&lt;/h1&gt;&lt;h2 id=&quot;安装-Gulp&quot;&gt;&lt;a href=&quot;#安装-Gulp&quot; class=&quot;headerlink&quot; title=&quot;安装 Gulp&quot;&gt;&lt;/a&gt;安装 Gulp&lt;/h2&gt;&lt;figure class=&quot;highlight lisp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(&lt;span class=&quot;name&quot;&gt;sudo&lt;/span&gt;) npm install -g gulp&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Tutorials" scheme="http://iamocean.github.io/categories/Tutorials/"/>
+    
+      <category term="Gulp" scheme="http://iamocean.github.io/categories/Tutorials/Gulp/"/>
+    
+    
+      <category term="Gulp" scheme="http://iamocean.github.io/tags/Gulp/"/>
+    
+      <category term="入门" scheme="http://iamocean.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac OS X 升级 10.10 后 Homebrew 不能用</title>
+    <link href="http://iamocean.github.io/2014/11/17/fixing-homebrew-yosemite/"/>
+    <id>http://iamocean.github.io/2014/11/17/fixing-homebrew-yosemite/</id>
+    <published>2014-11-17T07:11:29.000Z</published>
+    <updated>2014-11-17T07:38:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>10.9 升级到 10.10 后，Homebrew 报错，原因是在 10.10 里苹果把默认自带的 Ruby 从 1.9 升级到了 2.0 导致的。</p>
+<p>具体解决方法如下：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /usr/<span class="keyword">local</span>/Library</div><div class="line">git pull origin master</div><div class="line">brew <span class="keyword">update</span></div><div class="line">brew upgrade <span class="comment">// 更新所有用 brew 安装的软件</span></div></pre></td></tr></table></figure>
+<p>然后输入 <code>brew --help</code> 验证是否已修复成功。</p>
+<p>当然处女座还可以继续运行 <code>brew doctor</code>，这时可能会出现一些软链接不存在的错误提示，直接根据提示操作即可。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite" target="_blank" rel="external">http://apple.stackexchange.com/questions/153790/how-to-fix-brew-after-its-upgrade-to-yosemite</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;10.9 升级到 10.10 后，Homebrew 报错，原因是在 10.10 里苹果把默认自带的 Ruby 从 1.9 升级到了 2.0 导致的。&lt;/p&gt;
+&lt;p&gt;具体解决方法如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;t
+    
+    </summary>
+    
+      <category term="Mac OS X" scheme="http://iamocean.github.io/categories/Mac-OS-X/"/>
+    
+    
+      <category term="Homebrew" scheme="http://iamocean.github.io/tags/Homebrew/"/>
+    
+      <category term="Yosemite" scheme="http://iamocean.github.io/tags/Yosemite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My Book Live 入手小记</title>
+    <link href="http://iamocean.github.io/2014/11/02/my-book-live/"/>
+    <id>http://iamocean.github.io/2014/11/02/my-book-live/</id>
+    <published>2014-11-02T08:55:49.000Z</published>
+    <updated>2015-01-12T15:54:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>很久之前有个同事建议买个 My Book Live 来玩玩，但一直都不太想买，自从把 1TB 移动盘摔坏了，对移动硬盘之类的就不太感兴趣。<br>刚好最近 MAC OS X 要升级 10.10，想开 TimeMachine 备份下发现没硬盘可用。</p>
+<p>网上找了一圈，刚好就看上 My Book Live 这货了。<br>主要有以下两点：</p>
+<ul>
+<li>每次 TimeMachine 备份不用插拔，大大降低了被我摔坏的风险</li>
+<li>可以下大片（家里网络不给力，每次三个人同时在线看电影都受不了那破网速，晚上睡觉时可以偷偷在哪里下载）</li>
+</ul>
+<p>当然 MBL 还有其他更多优点，我不一一列举了，更多功能到官网上去看。</p>
+<h2 id="什么是-Aria2"><a href="#什么是-Aria2" class="headerlink" title="什么是 Aria2"></a>什么是 Aria2</h2><p>Aria2 是一个命令行下运行、多协议、多来源下载工具（HTTP/HTTPS、FTP、BitTorrent、Metalink）。</p>
+<h2 id="搭建-Aria2-系统服务"><a href="#搭建-Aria2-系统服务" class="headerlink" title="搭建 Aria2 系统服务"></a>搭建 Aria2 系统服务</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/aria2online.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<p>如果网络没问题，等个一分钟应该就装完了。<br>然后打开浏览器输入 <a href="http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看" target="_blank" rel="external">http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看</a> MBL 的相关信息。</p>
+<a id="more"></a>
+<h2 id="安装-Yaaw-界面"><a href="#安装-Yaaw-界面" class="headerlink" title="安装 Yaaw 界面"></a>安装 Yaaw 界面</h2><h3 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/yaaw.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载安装包</span></div><div class="line">wget https:<span class="comment">//github.com/binux/yaaw/archive/master.zip -O /shares/Public/yaaw.zip</span></div><div class="line"><span class="keyword">cd</span> /shares/Public/</div><div class="line"><span class="comment">// 解压缩</span></div><div class="line">unzip yaaw.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="comment">// 重命名</span></div><div class="line">mv yaaw-master yaaw</div><div class="line"><span class="comment">// 修改文件夹的权限</span></div><div class="line">chmod -R 755 * /<span class="keyword">var</span>/www/yaaw</div></pre></td></tr></table></figure>
+<p>然后验证是否安装成功？<br>打开浏览器输入 <a href="http://MBL的IP/yaaw" target="_blank" rel="external">http://MBL的IP/yaaw</a><br>看看右上角是否有 Aria2 x.x.x 类似这样的版本号<br>如果有那恭喜你已安装成功了。</p>
+<h2 id="安装-Webui-界面"><a href="#安装-Webui-界面" class="headerlink" title="安装 Webui 界面"></a>安装 Webui 界面</h2><h3 id="自动安装-1"><a href="#自动安装-1" class="headerlink" title="自动安装"></a>自动安装</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - http://jiaoting.baotuba.<span class="keyword">com</span>/aria2/webui.<span class="keyword">sh</span> |<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<h3 id="手动安装-1"><a href="#手动安装-1" class="headerlink" title="手动安装"></a>手动安装</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget https:<span class="comment">//github.com/ziahamza/webui-aria2/archive/master.zip -O /shares/Public/webui.zip</span></div><div class="line"><span class="keyword">cd</span> /shares/Public/</div><div class="line">unzip webui.<span class="keyword">zip</span> -<span class="keyword">d</span> /<span class="keyword">var</span>/www/</div><div class="line"><span class="keyword">cd</span> /<span class="keyword">var</span>/www/</div><div class="line">mv webui-aria2-master webui</div><div class="line">chmod -R 755 * /<span class="keyword">var</span>/www/webui</div></pre></td></tr></table></figure>
+<p>验证方法同上，把 yaaw 改成 webui 就行了。</p>
+<p>其实 Yaaw 和 Webui 只是一个展示界面来的，装其中一个就行了。<br>当然不装也行了<br>可以用在线版的 <a href="http://app.baotuba.com/yaaw/" target="_blank" rel="external">Yaaw</a> 或者 <a href="http://app.baotuba.com/aria2webui/" target="_blank" rel="external">Webui</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>MBL 其实就是个 debian 系统，可以做很多事情，比如：</p>
+<ul>
+<li>MBL 配合百度网盘下载各种资源</li>
+<li>MBL 配合迅雷离线下载</li>
+<li>MBL 搭建科学上网</li>
+<li>MBL 搭建云同步</li>
+<li><a href="http://www.nasyun.com/thread-557-1-1.html" target="_blank" rel="external">MBL 资源贴</a></li>
+</ul>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://www.nasyun.com/thread-23004-1-1.html" target="_blank" rel="external">安装 Aria2 系统服务</a></li>
+<li><a href="http://www.nasyun.com/thread-22995-1-1.html" target="_blank" rel="external">在线安装最新版 Yaaw</a></li>
+<li><a href="http://www.nasyun.com/thread-22994-1-1.html" target="_blank" rel="external">在线安装最新版 Webui</a></li>
+<li><a href="http://www.nasyun.com/thread-23015-1-1.html" target="_blank" rel="external">更多的 MBL 资源贴</a></li>
+<li><a href="http://wiki.ubuntu.org.cn/Aria2" target="_blank" rel="external">Aria2</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;很久之前有个同事建议买个 My Book Live 来玩玩，但一直都不太想买，自从把 1TB 移动盘摔坏了，对移动硬盘之类的就不太感兴趣。&lt;br&gt;刚好最近 MAC OS X 要升级 10.10，想开 TimeMachine 备份下发现没硬盘可用。&lt;/p&gt;
+&lt;p&gt;网上找了一圈，刚好就看上 My Book Live 这货了。&lt;br&gt;主要有以下两点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每次 TimeMachine 备份不用插拔，大大降低了被我摔坏的风险&lt;/li&gt;
+&lt;li&gt;可以下大片（家里网络不给力，每次三个人同时在线看电影都受不了那破网速，晚上睡觉时可以偷偷在哪里下载）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然 MBL 还有其他更多优点，我不一一列举了，更多功能到官网上去看。&lt;/p&gt;
+&lt;h2 id=&quot;什么是-Aria2&quot;&gt;&lt;a href=&quot;#什么是-Aria2&quot; class=&quot;headerlink&quot; title=&quot;什么是 Aria2&quot;&gt;&lt;/a&gt;什么是 Aria2&lt;/h2&gt;&lt;p&gt;Aria2 是一个命令行下运行、多协议、多来源下载工具（HTTP/HTTPS、FTP、BitTorrent、Metalink）。&lt;/p&gt;
+&lt;h2 id=&quot;搭建-Aria2-系统服务&quot;&gt;&lt;a href=&quot;#搭建-Aria2-系统服务&quot; class=&quot;headerlink&quot; title=&quot;搭建 Aria2 系统服务&quot;&gt;&lt;/a&gt;搭建 Aria2 系统服务&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;wget -O - http://jiaoting.baotuba.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/aria2/aria2online.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; |&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果网络没问题，等个一分钟应该就装完了。&lt;br&gt;然后打开浏览器输入 &lt;a href=&quot;http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看&quot;&gt;http://MBL的IP/fpkmgr，会看到个登录页面，输入密码即可登录，查看&lt;/a&gt; MBL 的相关信息。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tutorials" scheme="http://iamocean.github.io/categories/Tutorials/"/>
+    
+    
+      <category term="MBL" scheme="http://iamocean.github.io/tags/MBL/"/>
+    
+      <category term="Aria2" scheme="http://iamocean.github.io/tags/Aria2/"/>
+    
+      <category term="Yaaw" scheme="http://iamocean.github.io/tags/Yaaw/"/>
+    
+      <category term="Webui" scheme="http://iamocean.github.io/tags/Webui/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian 7 安装 ss 科学上网</title>
+    <link href="http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/"/>
+    <id>http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/</id>
+    <published>2014-10-06T08:56:30.000Z</published>
+    <updated>2014-10-07T10:00:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在安装 <strong>Shadowsocks(Node.js版)</strong> 之前请确保已安装了 <strong>Node.js</strong>，若有还未装过的请看 <a href="/2014/10/06/debian-install-nodejs/">Debian 7 安装 Node.js</a></p>
+<h1 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h1><h2 id="安装-Shadowsocks"><a href="#安装-Shadowsocks" class="headerlink" title="安装 Shadowsocks"></a>安装 Shadowsocks</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">sudo</span>) npm install shadowsocks -g</div></pre></td></tr></table></figure>
+<p>简单吗？..哈哈！</p>
+<h2 id="配置-Shadowscoks"><a href="#配置-Shadowscoks" class="headerlink" title="配置 Shadowscoks"></a>配置 Shadowscoks</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(sudo) <span class="built_in">mkdir</span> /etc/shadowsocks</div><div class="line">(sudo) vim /etc/shadowsocks/<span class="built_in">config</span>.json</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>具体配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"server"</span>: <span class="string">"我的服务器 IP"</span>,  <span class="comment">// 服务端上建议填写 0.0.0.0，客户端上填写服务器的 IP</span></div><div class="line">    <span class="string">"server_port"</span>: <span class="number">8388</span>,  <span class="comment">// 服务端监听端口</span></div><div class="line">    <span class="string">"local_port"</span>: <span class="number">1080</span>,   <span class="comment">// 客户端监听端口</span></div><div class="line">    <span class="string">"password"</span>: <span class="string">"barfoo!"</span>, <span class="comment">// 用于加密传输的密码</span></div><div class="line">    <span class="string">"timeout"</span>: <span class="number">600</span>,  <span class="comment">// 断开连接的的超时时间</span></div><div class="line">    <span class="string">"method"</span>: <span class="string">"table"</span>  <span class="comment">// 加密方法 推荐使用 aes-256-cfb</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="启动与运行"><a href="#启动与运行" class="headerlink" title="启动与运行"></a>启动与运行</h2><p>让 <strong>shadowsocks</strong> 一直在服务器后台运行着</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sodu) ssserver -c /etc/shadowsocks/config.json &gt; /var/log/shadowsocks.log&amp;</div></pre></td></tr></table></figure>
+<p>到这里为止，服务端方面的 <strong>Shadowsocks</strong> 已配置完毕了。</p>
+<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>客户端的安装配置跟服务器的安装配置基本一样，主要区别有两点吧<br>以 <strong>Mac OS X</strong> 为例子</p>
+<ul>
+<li>一是 <strong>config.json</strong> 配置文件，<strong>server</strong> 这个值一定要填写你服务器的 <strong>IP</strong></li>
+<li>二是 在本地运行 <strong>Shadowsocks</strong> 时需要注意下，启动的命令</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sodu) sslocal /etc/shadowsocks/<span class="built_in">config</span>.json</div></pre></td></tr></table></figure>
+<p>强烈推荐到官方上去下载客户端<a href="https://github.com/shadowsocks/shadowsocks-gui" target="_blank" rel="external">GUI</a>，不仅简单、容易，而且还挺方便的设置与操作</p>
+<h2 id="Chrome-浏览器配合-Proxy-SwitchySharp-使用"><a href="#Chrome-浏览器配合-Proxy-SwitchySharp-使用" class="headerlink" title="Chrome 浏览器配合 Proxy SwitchySharp 使用"></a>Chrome 浏览器配合 Proxy SwitchySharp 使用</h2><p>鼠标移动到 Proxy SwitchySharp 图标上</p>
+<ol>
+<li>点击右键选择选项</li>
+<li>新建情景模式，输入情景模式名称</li>
+<li>在手动配置项中选择 <strong>SOCKS</strong> 代理，输入 <strong>IP</strong> 与端口号，一定要选中 <strong>SOCKS v5</strong></li>
+<li>最后保存配置</li>
+</ol>
+<p>在 <strong>Chrome</strong> 地址栏里输入你想要上的那个网址就可以了<br>放松心情、尽情的享受外面的世界<br>和看看局域网外面一切好与不好的事情…<br>哈哈！！！</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://neue.v2ex.com/t/96250" target="_blank" rel="external">http://neue.v2ex.com/t/96250</a></li>
+<li><a href="https://github.com/clowwindy/shadowsocks-nodejs/wiki/shadowsocks-nodejs-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">https://github.com/clowwindy/shadowsocks-nodejs/wiki/shadowsocks-nodejs-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E</a></li>
+<li><a href="https://github.com/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在安装 &lt;strong&gt;Shadowsocks(Node.js版)&lt;/strong&gt; 之前请确保已安装了 &lt;strong&gt;Node.js&lt;/strong&gt;，若有还未装过的请看 &lt;a href=&quot;/2014/10/06/debian-install-nodejs/&quot;&gt;Debian 7 安装 Node.js&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;服务器端&quot;&gt;&lt;a href=&quot;#服务器端&quot; class=&quot;headerlink&quot; title=&quot;服务器端&quot;&gt;&lt;/a&gt;服务器端&lt;/h1&gt;&lt;h2 id=&quot;安装-Shadowsocks&quot;&gt;&lt;a href=&quot;#安装-Shadowsocks&quot; class=&quot;headerlink&quot; title=&quot;安装 Shadowsocks&quot;&gt;&lt;/a&gt;安装 Shadowsocks&lt;/h2&gt;&lt;figure class=&quot;highlight lisp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(&lt;span class=&quot;name&quot;&gt;sudo&lt;/span&gt;) npm install shadowsocks -g&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;简单吗？..哈哈！&lt;/p&gt;
+&lt;h2 id=&quot;配置-Shadowscoks&quot;&gt;&lt;a href=&quot;#配置-Shadowscoks&quot; class=&quot;headerlink&quot; title=&quot;配置 Shadowscoks&quot;&gt;&lt;/a&gt;配置 Shadowscoks&lt;/h2&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(sudo) &lt;span class=&quot;built_in&quot;&gt;mkdir&lt;/span&gt; /etc/shadowsocks&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) vim /etc/shadowsocks/&lt;span class=&quot;built_in&quot;&gt;config&lt;/span&gt;.json&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+    
+      <category term="Debian 7" scheme="http://iamocean.github.io/tags/Debian-7/"/>
+    
+      <category term="shadowsocks" scheme="http://iamocean.github.io/tags/shadowsocks/"/>
+    
+      <category term="科学上网" scheme="http://iamocean.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian 7 安装 Node.js</title>
+    <link href="http://iamocean.github.io/2014/10/06/debian-install-nodejs/"/>
+    <id>http://iamocean.github.io/2014/10/06/debian-install-nodejs/</id>
+    <published>2014-10-06T08:26:11.000Z</published>
+    <updated>2014-10-07T10:00:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>检查是否已安装 <strong>Python</strong>？安装 <strong>Node.js</strong> 编译时需要用到</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">python -V</span></div></pre></td></tr></table></figure>
+<p>系统默认已安装好了，版本为 <strong>Python 2.7.3</strong></p>
+<h1 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 编译源码时需要用到的基础工具</div><div class="line">apt-get install g++ make</div><div class="line">// 下载 <span class="keyword">Node</span>.<span class="title">js</span> 源码</div><div class="line">wget http://nodejs.org/dist/v0.<span class="number">10.32</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span>.tar.gz</div><div class="line">// 解压</div><div class="line">tar -zxvf <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span>.tar.gz</div><div class="line">// 进入目录</div><div class="line">cd <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span></div><div class="line">// 开始编译并安装</div><div class="line">(sudo) ./configure</div><div class="line">(sudo) make</div><div class="line">(sudo) make install</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span></div><div class="line">npm -v</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;检查是否已安装 &lt;strong&gt;Python&lt;/strong&gt;？安装 &lt;strong&gt;Node.js&lt;/strong&gt; 编译时需要用到&lt;/p&gt;
+&lt;figure class=&quot;highlight ebnf&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;python -V&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;系统默认已安装好了，版本为 &lt;strong&gt;Python 2.7.3&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;安装-Node-js&quot;&gt;&lt;a href=&quot;#安装-Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装 Node.js&quot;&gt;&lt;/a&gt;安装 Node.js&lt;/h1&gt;&lt;figure class=&quot;highlight crmsh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// 编译源码时需要用到的基础工具&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;apt-get install g++ make&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 下载 &lt;span class=&quot;keyword&quot;&gt;Node&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;js&lt;/span&gt; 源码&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;wget http://nodejs.org/dist/v0.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 解压&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tar -zxvf &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 进入目录&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 开始编译并安装&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) ./configure&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) make&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) make install&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
+    
+      <category term="Node.js" scheme="http://iamocean.github.io/categories/Linux/Node-js/"/>
+    
+    
+      <category term="Debian 7" scheme="http://iamocean.github.io/tags/Debian-7/"/>
+    
+      <category term="安装Node.js" scheme="http://iamocean.github.io/tags/%E5%AE%89%E8%A3%85Node-js/"/>
+    
+  </entry>
+  
+</feed>
