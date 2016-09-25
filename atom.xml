@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://iamocean.github.io/"/>
-  <updated>2016-09-12T16:40:52.000Z</updated>
+  <updated>2016-09-25T16:25:03.000Z</updated>
   <id>http://iamocean.github.io/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MacOS清理垃圾文件</title>
+    <link href="http://iamocean.github.io/2016/09/19/mac-disk-cleanup/"/>
+    <id>http://iamocean.github.io/2016/09/19/mac-disk-cleanup/</id>
+    <published>2016-09-19T15:31:49.000Z</published>
+    <updated>2016-09-25T16:25:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的 RMBP，虽然服役了三年左右，但是电脑里的文件也不多呀<br>256G 容量竟然被用剩了 20G多，本抱着删掉一些视频和照片之类的腾出点空间来。<br>查看完每个文件的大小后，发现我只有 140G 左右，奇怪了还有 100G+ 跑哪里去了呢？</p>
+<p><img src="/images/mac-disk-cleanup/01.png" alt=""></p>
+<a id="more"></a>
+<p>于是网上随便搜下了，发现不了人都存在这问题<br>就连在知乎上都有人问了<br>后面的这些操作就是跟着知乎里的<a href="https://www.zhihu.com/question/23533295" target="_blank" rel="external">答案</a>来操作的</p>
+<p>我选择使用 <a href="http://www.derlien.com/" target="_blank" rel="external">Disk Inventory X</a> 这款软件帮助我清理垃圾文件<br>下载完成后，需要到 <code>系统设置 -&gt; 安全性与隐私 -&gt; 修改允许任何来源</code> 才能软件运行起来<br>运行后界面如下：</p>
+<p><img src="/images/mac-disk-cleanup/02.png" alt=""></p>
+<p>然后选择要清理的那个盘，点击 <code>Open Volume</code> 按钮进行检测，这里可能需要花费几分钟的时间。</p>
+<p><img src="/images/mac-disk-cleanup/03.png" alt=""></p>
+<p>运行完成后，那些文件占用了多少一目了然，那个占用大就去删除那个就好了，建议先从 <strong>TextEdit Document</strong> 这件文件夹先入手清理，里面有一堆 <strong>Xcode</strong> 旧版本的文件，不用担心删错文件的问题，如果删掉错了，它会有提示的，并不会把文件给删掉。</p>
+<p><img src="/images/mac-disk-cleanup/04.png" alt=""></p>
+<p>经过清理后，将近捡回了 <strong>30G</strong> 空间来。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="https://www.zhihu.com/question/23533295" target="_blank" rel="external">https://www.zhihu.com/question/23533295</a></li>
+<li><a href="https://www.newmobilelife.com/2016/08/02/mac-app-disk-inventory-x/" target="_blank" rel="external">https://www.newmobilelife.com/2016/08/02/mac-app-disk-inventory-x/</a></li>
+<li><a href="http://www.derlien.com/downloads/index.html" target="_blank" rel="external">http://www.derlien.com/downloads/index.html</a></li>
+<li><a href="http://www.cleverfiles.com/help/how-to-uninstall-disk-drill/" target="_blank" rel="external">http://www.cleverfiles.com/help/how-to-uninstall-disk-drill/</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我的 RMBP，虽然服役了三年左右，但是电脑里的文件也不多呀&lt;br&gt;256G 容量竟然被用剩了 20G多，本抱着删掉一些视频和照片之类的腾出点空间来。&lt;br&gt;查看完每个文件的大小后，发现我只有 140G 左右，奇怪了还有 100G+ 跑哪里去了呢？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/mac-disk-cleanup/01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Tutorials" scheme="http://iamocean.github.io/categories/Tutorials/"/>
+    
+      <category term="Mac" scheme="http://iamocean.github.io/categories/Tutorials/Mac/"/>
+    
+    
+      <category term="Mac OS" scheme="http://iamocean.github.io/tags/Mac-OS/"/>
+    
+      <category term="Disk Inventory X" scheme="http://iamocean.github.io/tags/Disk-Inventory-X/"/>
+    
+  </entry>
   
   <entry>
     <title>在debian上搭建proftpd</title>
@@ -513,7 +557,7 @@
     <link href="http://iamocean.github.io/2015/06/21/debian7-ghost-blog/"/>
     <id>http://iamocean.github.io/2015/06/21/debian7-ghost-blog/</id>
     <published>2015-06-21T15:02:38.000Z</published>
-    <updated>2015-06-21T15:37:53.000Z</updated>
+    <updated>2016-09-16T10:57:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>前段时间，在 <a href="https://www.digitalocean.com/?refcode=84a0b9b4bc28" target="_blank" rel="external">Digitalocean</a> 上买了个 <strong>$5/M</strong> 的 VPS，当时是为了能科学上网，只搭建了个 <a href="http://iamocean.github.io/2014/10/06/debian-install-shadowsocks/">Shadowsocks</a> 而已，好像有点浪费的样子，而最近刚好又在学习 <strong>Node.js</strong> 方面的东西，于是就顺便搭了个 <strong>Ghost</strong> 博客…</p>
 <h1 id="下载-Ghost-源码"><a href="#下载-Ghost-源码" class="headerlink" title="下载 Ghost 源码"></a>下载 Ghost 源码</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下载源码</span></div><div class="line">wget https:<span class="comment">//ghost.org/zip/ghost-latest.zip</span></div><div class="line"><span class="comment">// 解压</span></div><div class="line">unzip -uo ghost-latest<span class="selector-class">.zip</span> -d ghost</div></pre></td></tr></table></figure>
@@ -532,14 +576,16 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(sudo) vim <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/g</span>host.conf</div></pre></td></tr></table></figure>
 <p>内容如下：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">  <span class="attribute">server_name</span> example.com;</div><div class="line">  <span class="attribute">location</span> / &#123;</div><div class="line">    <span class="attribute">proxy_set_header</span>   X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">    <span class="attribute">proxy_set_header</span>   Host      <span class="variable">$http_host</span>;</div><div class="line">    <span class="attribute">proxy_pass</span>         http://127.0.0.1:2368;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>example.com</code> 替换成您自己的域名</p>
-<p><code>http://example.com</code> 验证下是否成功访问<br><code>http://example.com/ghost</code> 初次登陆先完善用户信息</p>
+<p>然后创建个软链接，否则域名无法解析</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/g</span>host.conf <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-enabled/g</span>host.conf</div></pre></td></tr></table></figure>
+<p><code>example.com</code> 替换成您自己的域名<br><code>http://example.com</code> 验证下是否成功访问<br><code>http://example.com/ghost</code> 初次登陆先完善用户信息</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://docs.ghost.org/zh/installation/linux/" target="_blank" rel="external">http://docs.ghost.org/zh/installation/linux/</a></li>
 <li><a href="https://github.com/TryGhost/Ghost/" target="_blank" rel="external">https://github.com/TryGhost/Ghost/</a></li>
 <li><a href="https://ghost.org/download/" target="_blank" rel="external">https://ghost.org/download/</a></li>
 <li><a href="http://zhezhang.co/install-ghost-with-nginx-on-digitalocean/" target="_blank" rel="external">http://zhezhang.co/install-ghost-with-nginx-on-digitalocean/</a></li>
 <li><a href="http://segmentfault.com/blog/vish/1190000002397419" target="_blank" rel="external">http://segmentfault.com/blog/vish/1190000002397419</a></li>
+<li><a href="http://blog.didispace.com/nodejs-ghost/" target="_blank" rel="external">http://blog.didispace.com/nodejs-ghost/</a></li>
 </ul>
 ]]></content>
     
@@ -986,41 +1032,6 @@
       <category term="shadowsocks" scheme="http://iamocean.github.io/tags/shadowsocks/"/>
     
       <category term="科学上网" scheme="http://iamocean.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Debian 7 安装 Node.js</title>
-    <link href="http://iamocean.github.io/2014/10/06/debian-install-nodejs/"/>
-    <id>http://iamocean.github.io/2014/10/06/debian-install-nodejs/</id>
-    <published>2014-10-06T08:26:11.000Z</published>
-    <updated>2014-10-07T10:00:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>检查是否已安装 <strong>Python</strong>？安装 <strong>Node.js</strong> 编译时需要用到</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">python -V</span></div></pre></td></tr></table></figure>
-<p>系统默认已安装好了，版本为 <strong>Python 2.7.3</strong></p>
-<h1 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 编译源码时需要用到的基础工具</div><div class="line">apt-get install g++ make</div><div class="line">// 下载 <span class="keyword">Node</span>.<span class="title">js</span> 源码</div><div class="line">wget http://nodejs.org/dist/v0.<span class="number">10.32</span>/<span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span>.tar.gz</div><div class="line">// 解压</div><div class="line">tar -zxvf <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span>.tar.gz</div><div class="line">// 进入目录</div><div class="line">cd <span class="keyword">node</span><span class="title">-v0</span>.<span class="number">10.32</span></div><div class="line">// 开始编译并安装</div><div class="line">(sudo) ./configure</div><div class="line">(sudo) make</div><div class="line">(sudo) make install</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h1><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span></div><div class="line">npm -v</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;检查是否已安装 &lt;strong&gt;Python&lt;/strong&gt;？安装 &lt;strong&gt;Node.js&lt;/strong&gt; 编译时需要用到&lt;/p&gt;
-&lt;figure class=&quot;highlight ebnf&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;python -V&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;系统默认已安装好了，版本为 &lt;strong&gt;Python 2.7.3&lt;/strong&gt;&lt;/p&gt;
-&lt;h1 id=&quot;安装-Node-js&quot;&gt;&lt;a href=&quot;#安装-Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装 Node.js&quot;&gt;&lt;/a&gt;安装 Node.js&lt;/h1&gt;&lt;figure class=&quot;highlight crmsh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// 编译源码时需要用到的基础工具&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;apt-get install g++ make&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 下载 &lt;span class=&quot;keyword&quot;&gt;Node&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;js&lt;/span&gt; 源码&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;wget http://nodejs.org/dist/v0.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 解压&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tar -zxvf &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 进入目录&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd &lt;span class=&quot;keyword&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;title&quot;&gt;-v0&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;10.32&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// 开始编译并安装&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) ./configure&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) make&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;(sudo) make install&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://iamocean.github.io/categories/Linux/"/>
-    
-      <category term="Node.js" scheme="http://iamocean.github.io/categories/Linux/Node-js/"/>
-    
-    
-      <category term="Debian 7" scheme="http://iamocean.github.io/tags/Debian-7/"/>
-    
-      <category term="安装Node.js" scheme="http://iamocean.github.io/tags/%E5%AE%89%E8%A3%85Node-js/"/>
     
   </entry>
   
