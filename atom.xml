@@ -282,11 +282,11 @@
   </entry>
   
   <entry>
-    <title>搭建 React Native 环境之iOS篇</title>
-    <link href="http://iamocean.github.io/2015/11/29/react-native-for-ios/"/>
-    <id>http://iamocean.github.io/2015/11/29/react-native-for-ios/</id>
+    <title>搭建 React Native 环境之 macOS 篇</title>
+    <link href="http://iamocean.github.io/2015/11/29/react-native-for-macos/"/>
+    <id>http://iamocean.github.io/2015/11/29/react-native-for-macos/</id>
     <published>2015-11-29T14:36:12.000Z</published>
-    <updated>2016-08-28T16:45:42.000Z</updated>
+    <updated>2016-10-09T17:16:55.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚好碰到有个需求需要用 <strong>React Native</strong>，在这里我顺便记录下，如何在 <strong>Mac</strong> 下快速搭建 <strong>React Native</strong> 环境，前提是你要有台 <strong>Mac</strong>, 当然你喜欢折腾用黑苹果也是可以的。。。哈哈哈！</p>
 <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p><strong>Node.js</strong> 需要 4.0 或 4.0 以上的版本<br>由于之前我已安装过 0.10.x 版本的 <strong>Node.js</strong>，为了方便管理，使用 <strong>NVM</strong> 来管理与安装 <strong>Node.js</strong> 的不同版本</p>
